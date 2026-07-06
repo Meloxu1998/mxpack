@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="cake-box.svg">
+<defs>
+  <pattern id="dots" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="2" fill="#000" opacity=".13"/></pattern>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="18" dy="18" stdDeviation="0" flood-color="#000" flood-opacity="1"/></filter>
+  <linearGradient id="warm" x1="0" x2="1"><stop offset="0" stop-color="#ff7e47"/><stop offset="1" stop-color="#ffb199"/></linearGradient>
+</defs>
+
+<rect width="1200" height="900" fill="#ffdfd4"/>
+<path d="M0 740h1200v160H0z" fill="#000"/>
+<text x="60" y="820" font-family="Arial Black" font-size="72" fill="#fff">WINDOW BAKERY BOX</text>
+<g transform="translate(195 145)" filter="url(#shadow)">
+ <rect x="0" y="0" width="770" height="520" fill="#fff" stroke="#000" stroke-width="14"/>
+ <rect x="75" y="70" width="620" height="300" rx="0" fill="#c8f3ff" stroke="#000" stroke-width="10" opacity=".75"/>
+ <path d="M130 410h510" stroke="#000" stroke-width="16"/>
+ <circle cx="240" cy="220" r="70" fill="#ff7e47" stroke="#000" stroke-width="10"/>
+ <circle cx="385" cy="220" r="70" fill="#fff" stroke="#000" stroke-width="10"/>
+ <circle cx="530" cy="220" r="70" fill="#ffb199" stroke="#000" stroke-width="10"/>
+</g>
+<text x="65" y="92" font-family="Montserrat, Arial" font-size="30" font-weight="900" fill="#000">CLEAR PET WINDOW • CAKE / COOKIE / DESSERT DISPLAY</text>
+
+</svg>

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="1200" height="900" role="img" aria-label="hero-packaging.svg">
+<defs>
+  <pattern id="dots" width="32" height="32" patternUnits="userSpaceOnUse"><circle cx="4" cy="4" r="2" fill="#000" opacity=".13"/></pattern>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="18" dy="18" stdDeviation="0" flood-color="#000" flood-opacity="1"/></filter>
+  <linearGradient id="warm" x1="0" x2="1"><stop offset="0" stop-color="#ff7e47"/><stop offset="1" stop-color="#ffb199"/></linearGradient>
+</defs>
+
+<rect width="1200" height="900" fill="#ff7e47"/>
+<rect width="1200" height="900" fill="url(#dots)"/>
+<g opacity=".16" fill="none" stroke="#000" stroke-width="4"><path d="M52 170h1090M52 330h1090M52 490h1090M52 650h1090"/><path d="M220 48v804M460 48v804M700 48v804M940 48v804"/></g>
+<g filter="url(#shadow)">
+  <path d="M240 280h510l120 98v300H365L240 570Z" fill="#fff" stroke="#000" stroke-width="12"/>
+  <path d="M240 280 365 380h505" fill="none" stroke="#000" stroke-width="12"/>
+  <path d="M365 380v298" fill="none" stroke="#000" stroke-width="12"/>
+  <rect x="440" y="455" width="315" height="112" fill="#000"/>
+  <text x="466" y="526" font-family="Arial Black, Montserrat" font-size="54" fill="#fff">MX</text>
+  <text x="565" y="526" font-family="Arial Black, Montserrat" font-size="54" fill="#ff7e47">PACK</text>
+</g>
+<g transform="translate(710 110) rotate(9)" filter="url(#shadow)">
+  <rect x="0" y="0" width="300" height="210" fill="#fff" stroke="#000" stroke-width="10"/>
+  <rect x="30" y="42" width="240" height="94" fill="#ffdfd4" stroke="#000" stroke-width="7"/>
+  <circle cx="92" cy="88" r="30" fill="#ff7e47" stroke="#000" stroke-width="7"/>
+  <path d="M140 114h90" stroke="#000" stroke-width="12"/>
+  <text x="40" y="178" font-family="Arial Black" font-size="28" fill="#000">FOOD GRADE</text>
+</g>
+<g transform="translate(120 640) rotate(-5)">
+  <rect x="0" y="0" width="360" height="100" fill="#000"/>
+  <text x="25" y="62" font-family="Arial Black" font-size="42" fill="#fff">DIRECT FACTORY</text>
+</g>
+<text x="78" y="145" font-family="Arial Black" font-size="72" fill="#000">CUSTOM FOOD PACKAGING</text>
+<text x="82" y="210" font-family="Montserrat, Arial" font-size="26" font-weight="800" fill="#000">OEM / ODM • FAST SAMPLE • GLOBAL EXPORT</text>
+
+</svg>

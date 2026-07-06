@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-label="Foshan packaging factory production line">
+<defs><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.6" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .08"/></feComponentTransfer></filter></defs>
+<rect width="1200" height="900" fill="#111111"/>
+<rect width="1200" height="900" filter="url(#n)"/>
+<g stroke="#000" stroke-width="12" fill="none">
+  <rect x="120" y="190" width="360" height="260" fill="#fff"/>
+  <path d="M120 190 L300 95 L480 190" fill="#ffc4b0"/>
+  <rect x="650" y="250" width="360" height="320" fill="#fff"/>
+  <path d="M650 250 L830 150 L1010 250" fill="#ffdfd4"/>
+  <path d="M220 560 H900 L990 760 H130 Z" fill="#fff"/>
+</g>
+<g font-family="Arial, Helvetica, sans-serif" font-weight="900" text-anchor="middle">
+  <text x="600" y="690" font-size="92" fill="#000">MX PACK</text>
+  <text x="600" y="780" font-size="38" fill="#000">CUSTOM FOOD PACKAGING</text>
+</g>
+</svg>

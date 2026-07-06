@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 120" width="420" height="120" role="img" aria-label="MX PACK logo">
+<rect x="8" y="12" width="96" height="96" fill="#000"/>
+<path d="M30 88V32h16l12 21 12-21h16v56H70V58L58 78 46 58v30H30Z" fill="#fff"/>
+<path d="M132 88 164 32h22l32 56h-24l-9-16-9 16h-22l20-35-11-21-30 56h-1Z" fill="#000"/>
+<text x="230" y="54" font-family="Arial Black, Montserrat, sans-serif" font-size="40" font-weight="900" letter-spacing="-2" fill="#000">MX PACK</text>
+<text x="232" y="84" font-family="Montserrat, Arial, sans-serif" font-size="13" font-weight="800" letter-spacing="4" fill="#000">CUSTOM FOOD PACKAGING</text>
+</svg>
