@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" version="1.1">
+  <rect width="1024" height="1024" fill="#FFFFFF"/>
+  <defs>
+    <linearGradient id="topGrad" x1="230" y1="250" x2="850" y2="430" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFB000"/>
+      <stop offset="0.48" stop-color="#FF8A00"/>
+      <stop offset="1" stop-color="#FF5A00"/>
+    </linearGradient>
+    <linearGradient id="topLight" x1="300" y1="260" x2="760" y2="380" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFC824"/>
+      <stop offset="1" stop-color="#FF9200"/>
+    </linearGradient>
+    <linearGradient id="redGrad" x1="260" y1="420" x2="730" y2="780" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F71923"/>
+      <stop offset="0.55" stop-color="#E50918"/>
+      <stop offset="1" stop-color="#C80010"/>
+    </linearGradient>
+    <linearGradient id="orangeGrad" x1="620" y1="420" x2="870" y2="740" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FF7A00"/>
+      <stop offset="1" stop-color="#FFA900"/>
+    </linearGradient>
+    <linearGradient id="trayRed" x1="230" y1="700" x2="825" y2="870" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F51A22"/>
+      <stop offset="0.58" stop-color="#E20716"/>
+      <stop offset="1" stop-color="#C80010"/>
+    </linearGradient>
+    <linearGradient id="trayOrange" x1="690" y1="680" x2="875" y2="830" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FF9800"/>
+      <stop offset="1" stop-color="#FF5D00"/>
+    </linearGradient>
+    <linearGradient id="innerYellow" x1="300" y1="650" x2="820" y2="720" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFC72C"/>
+      <stop offset="1" stop-color="#FF9000"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Top opened burger box lid -->
+  <path d="M248 347 C254 312 288 264 329 242 L457 203 C486 194 688 195 714 204 C759 220 806 257 849 302 L785 342 L419 353 Z" fill="url(#topGrad)" stroke="#FFFFFF" stroke-width="14" stroke-linejoin="round"/>
+  <path d="M330 242 L457 203 C486 194 688 195 714 204 C759 220 806 257 849 302 L602 307 L248 347 C254 312 288 264 329 242 Z" fill="url(#topLight)" opacity="0.72"/>
+  <path d="M602 307 L849 302 L785 342 L666 361 Z" fill="#FF6A00" opacity="0.86"/>
+  <path d="M309 352 L652 343 C670 343 679 358 688 371 L795 371 L730 427 L357 420 L322 393 L268 396 Z" fill="url(#topLight)" stroke="#FFFFFF" stroke-width="14" stroke-linejoin="round"/>
+  <path d="M248 347 L309 352 L322 393 L268 396 L219 437 L224 387 C226 369 235 357 248 347 Z" fill="#FF6A00" stroke="#FFFFFF" stroke-width="14" stroke-linejoin="round"/>
+  <path d="M795 371 L875 328 L827 397 L730 427 Z" fill="#FF9E00" stroke="#FFFFFF" stroke-width="14" stroke-linejoin="round"/>
+
+  <!-- Stylized MX mark, centered inside the open box -->
+  <path d="M258 423 L379 423 L511 573 L628 423 L716 423 L646 750 L544 750 L585 574 L510 662 L440 574 L418 750 L314 750 L348 493 L258 493 Z" fill="url(#redGrad)" stroke="#FFFFFF" stroke-width="16" stroke-linejoin="round"/>
+  <path d="M621 420 L725 420 L850 748 L738 748 Z" fill="url(#orangeGrad)" stroke="#FFFFFF" stroke-width="16" stroke-linejoin="round"/>
+  <path d="M850 420 L744 420 L618 748 L730 748 Z" fill="url(#orangeGrad)" stroke="#FFFFFF" stroke-width="16" stroke-linejoin="round"/>
+  <path d="M706 425 L793 425 L718 617 L628 750 L545 750 L633 603 Z" fill="#E70B18" opacity="0.98" stroke="#FFFFFF" stroke-width="16" stroke-linejoin="round"/>
+
+  <!-- Bottom opened burger box base -->
+  <path d="M282 680 L407 635 L666 635 L868 675 L760 739 L425 755 Z" fill="url(#innerYellow)" stroke="#FFFFFF" stroke-width="14" stroke-linejoin="round"/>
+  <path d="M212 684 L333 744 L356 865 L243 823 Z" fill="#D80713" stroke="#FFFFFF" stroke-width="14" stroke-linejoin="round"/>
+  <path d="M333 744 L760 739 L730 865 C695 889 384 894 356 865 Z" fill="url(#trayRed)" stroke="#FFFFFF" stroke-width="14" stroke-linejoin="round"/>
+  <path d="M760 739 L868 675 L821 822 L730 865 Z" fill="url(#trayOrange)" stroke="#FFFFFF" stroke-width="14" stroke-linejoin="round"/>
+  <path d="M333 744 L423 780 L656 768 L760 739 L730 794 L620 803 L606 821 L432 821 L412 803 L356 785 Z" fill="#FFFFFF" opacity="0.96"/>
+  <path d="M356 715 L438 752 L657 743 L820 682" fill="none" stroke="#FFFFFF" stroke-width="13" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
