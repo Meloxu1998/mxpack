@@ -114,20 +114,6 @@
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
     .container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
-    .topbar {
-      background: var(--peach);
-      border-bottom: var(--line);
-      font-size: 14px;
-      font-weight: 700;
-    }
-    .topbar .container {
-      min-height: 38px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-    }
-    .topbar a { border-bottom: 1px dotted currentColor; }
     .nav {
       position: sticky;
       top: 0;
@@ -288,7 +274,7 @@
       border: 0;
       border-radius: 0;
       overflow: hidden;
-      background: var(--orange);
+      background: transparent;
       box-shadow: none;
       z-index: 4;
     }
@@ -438,7 +424,7 @@
       border-bottom: var(--line);
     }
     .client-logos {
-      padding: 28px 0;
+      padding: 32px 0;
       overflow: hidden;
       border-bottom: var(--line);
       background: var(--paper);
@@ -448,13 +434,13 @@
       width: max-content;
       display: flex;
       align-items: center;
-      gap: 40px;
+      gap: 48px;
       animation: logoScroll 42s linear infinite;
     }
     .client-logos:hover .logo-track { animation-play-state: paused; }
     .logo-item {
-      width: 200px;
-      height: 76px;
+      width: 240px;
+      height: 100px;
       box-sizing: border-box;
       flex: 0 0 auto;
       display: grid;
@@ -469,16 +455,16 @@
       width: auto;
       height: auto;
       max-width: 100%;
-      max-height: 62px;
+      max-height: 82px;
       object-fit: contain;
       object-position: center;
       pointer-events: none;
     }
     .logo-item.logo-duc img { transform: rotate(180deg); }
     .logo-item.logo-duc img,
-    .logo-item.logo-color img { max-height: 66px; }
-    .logo-item.text-logo { color: var(--ink); font-weight: 900; font-size: 20px; text-align: center; text-transform: uppercase; }
-    @keyframes logoScroll { to { transform: translateX(calc(-50% - 20px)); } }
+    .logo-item.logo-color img { max-height: 88px; }
+    .logo-item.text-logo { color: var(--ink); font-weight: 900; font-size: 24px; text-align: center; text-transform: uppercase; }
+    @keyframes logoScroll { to { transform: translateX(calc(-50% - 24px)); } }
     section { padding: 92px 0; }
     .section-head {
       display: flex;
@@ -947,15 +933,12 @@
     }
     @media (max-width: 640px) {
       .container { width: min(100% - 24px, var(--max)); }
-      .topbar .container { align-items: flex-start; flex-direction: column; padding: 10px 0; }
       .nav-inner { height: 68px; }
       .brand { font-size: 23px; }
       .brand img { width: 42px; height: 42px; border-radius: 11px; }
       .nav .btn { display: none; }
       .hero { padding-top: 34px; }
       .hero .container { width: auto; margin-inline: 12px; }
-      .topbar .container > * { display: block; width: 100%; min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
-      .topbar .container span { width: 320px; max-width: 320px; white-space: normal; }
       .hero-grid { display: block; width: 100%; max-width: 100%; }
       .hero-grid > div { width: 100%; max-width: 100%; }
       h1 { width: 100%; max-width: 340px; font-size: 32px; text-wrap: balance; }
@@ -970,10 +953,10 @@
         box-shadow: none;
       }
       .clean-motion { height: 390px; }
-      .logo-item { width: 164px; height: 68px; padding: 7px 8px; }
-      .logo-item img { max-height: 52px; }
+      .logo-item { width: 190px; height: 82px; padding: 7px 8px; }
+      .logo-item img { max-height: 66px; }
       .logo-item.logo-duc img,
-      .logo-item.logo-color img { max-height: 54px; }
+      .logo-item.logo-color img { max-height: 70px; }
       section { padding: 64px 0; }
       .product-grid, .popular-grid, .proof-strip, .faq-list { grid-template-columns: 1fr; }
       .proof-layout { grid-template-columns: 1fr; }
@@ -993,13 +976,6 @@
   </style>
 </head>
 <body id="top">
-  <div class="topbar">
-    <div class="container">
-      <span>Factory-direct custom food packaging from Foshan, China. Low MOQ, fast samples, global export support.</span>
-      <a href="tel:+8615521163050">+86 155 2116 3050</a>
-    </div>
-  </div>
-
   <nav class="nav">
     <div class="container nav-inner">
       <a class="brand" href="#top">
