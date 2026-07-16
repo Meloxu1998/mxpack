@@ -108,11 +108,17 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:transparent
   cake.innerHTML=html;
 
   var stage=document.getElementById('stage'),box=document.getElementById('box'),hinge=document.getElementById('hinge'),lidInside=document.getElementById('lid-inside');
-  var yaw=-32,pitch=-24,dragging=false,lx=0,ly=0,idle=0;
+  var yaw=-32,pitch=-24,dragging=false,lx=0,ly=0,idle=0,autoTime=0;
   var lid=0,lidTarget=0,phase=0,timer=0;
   var HOLD_CLOSED=170,HOLD_OPEN=240;
   function loop(){
-    if(!dragging){ if(idle>0){idle--;} else {yaw+=0.3;} }
+    if(!dragging){
+      if(idle>0){idle--;}
+      else{
+        autoTime+=0.012;
+        yaw+=((-30+Math.sin(autoTime)*8)-yaw)*0.025;
+      }
+    }
     timer++;
     if(phase===0&&timer>HOLD_CLOSED){phase=1;lidTarget=112;timer=0;}
     else if(phase===1&&timer>HOLD_OPEN){phase=0;lidTarget=0;timer=0;}
