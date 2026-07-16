@@ -1,0 +1,133 @@
+<h2 class="sr-only" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);">8寸3D向日葵蛋糕盒动画：纯白内衬，盒盖内侧印有新版扁平风MX餐盒logo，盖子自动循环开合露出柠檬雏菊蛋糕，可拖动旋转</h2>
+<style>
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:transparent;}
+#stage{height:100vh!important;min-height:420px;}
+#stage>div:first-child{display:none!important;}
+.face{position:absolute;backface-visibility:hidden;}
+.sun{background-color:#FFE14D;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='120' height='120' viewBox='0 0 120 120'><g transform='translate(60 60)'><g transform='rotate(40)'><ellipse cx='34' cy='18' rx='11' ry='5' fill='%234C8C2B' transform='rotate(35 34 18)'/><ellipse cx='-32' cy='22' rx='11' ry='5' fill='%235EA338' transform='rotate(-30 -32 22)'/><g fill='%23F6A81C'><ellipse cx='0' cy='-25' rx='8' ry='16'/><ellipse cx='0' cy='-25' rx='8' ry='16' transform='rotate(45)'/><ellipse cx='0' cy='-25' rx='8' ry='16' transform='rotate(90)'/><ellipse cx='0' cy='-25' rx='8' ry='16' transform='rotate(135)'/><ellipse cx='0' cy='-25' rx='8' ry='16' transform='rotate(180)'/><ellipse cx='0' cy='-25' rx='8' ry='16' transform='rotate(225)'/><ellipse cx='0' cy='-25' rx='8' ry='16' transform='rotate(270)'/><ellipse cx='0' cy='-25' rx='8' ry='16' transform='rotate(315)'/></g><g fill='%23FFCE3D'><ellipse cx='0' cy='-20' rx='6' ry='13' transform='rotate(22)'/><ellipse cx='0' cy='-20' rx='6' ry='13' transform='rotate(67)'/><ellipse cx='0' cy='-20' rx='6' ry='13' transform='rotate(112)'/><ellipse cx='0' cy='-20' rx='6' ry='13' transform='rotate(157)'/><ellipse cx='0' cy='-20' rx='6' ry='13' transform='rotate(202)'/><ellipse cx='0' cy='-20' rx='6' ry='13' transform='rotate(247)'/><ellipse cx='0' cy='-20' rx='6' ry='13' transform='rotate(292)'/><ellipse cx='0' cy='-20' rx='6' ry='13' transform='rotate(337)'/></g><circle r='13' fill='%237A4A1F'/><circle r='7' fill='%23593514'/></g></g></svg>");background-size:112px 112px;}
+.inner{background:#FFFFFF;}
+.ribbon{position:absolute;top:0;bottom:0;left:50%;width:28px;margin-left:-14px;background:#FFC400;border-left:1px solid #E3A800;border-right:1px solid #E3A800;}
+.shade{position:absolute;inset:0;pointer-events:none;}
+.bgline{margin:0;text-align:center;text-transform:uppercase;font-weight:500;color:var(--text-muted);letter-spacing:0.04em;}
+</style>
+<div id="stage" style="position:relative;height:540px;display:flex;align-items:center;justify-content:center;perspective:1300px;touch-action:none;cursor:grab;user-select:none;overflow:hidden;">
+  <div style="position:absolute;inset:0;z-index:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px 8px;pointer-events:none;">
+    <div>
+      <p class="bgline" style="font-size:12px;letter-spacing:0.35em;">Baked · Fresh · Every day</p>
+      <p class="bgline" style="font-size:26px;line-height:1.25;color:var(--text-secondary);">Sunshine in every slice —<br>handcrafted bakery delights</p>
+    </div>
+    <p class="bgline" style="font-size:20px;color:var(--text-secondary);">Freshly baked with passion, every day</p>
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;font-size:11px;font-style:italic;color:var(--text-muted);">
+      <span>Visual identity<br>Package design — 8寸向日葵蛋糕盒 (24 × 24 × 11.5 cm)</span>
+      <span style="text-align:right;">Project: MXPACK<br>Bakery brand design</span>
+    </div>
+  </div>
+
+  <div id="box" style="position:relative;z-index:1;width:250px;height:120px;transform-style:preserve-3d;">
+    <div class="face sun" style="width:250px;height:120px;left:0;top:0;transform:translateZ(125px);border-top:2px solid #F5D53E;"><div class="ribbon"></div><div class="shade" style="background:rgba(0,0,0,0.02);"></div></div>
+    <div class="face sun" style="width:250px;height:120px;left:0;top:0;transform:rotateY(180deg) translateZ(125px);border-top:2px solid #F5D53E;"><div class="ribbon"></div><div class="shade" style="background:rgba(0,0,0,0.10);"></div></div>
+    <div class="face sun" style="width:250px;height:120px;left:0;top:0;transform:rotateY(90deg) translateZ(125px);border-top:2px solid #F5D53E;"><div class="ribbon"></div><div class="shade" style="background:rgba(0,0,0,0.06);"></div></div>
+    <div class="face sun" style="width:250px;height:120px;left:0;top:0;transform:rotateY(-90deg) translateZ(125px);border-top:2px solid #F5D53E;"><div class="ribbon"></div><div class="shade" style="background:rgba(0,0,0,0.06);"></div></div>
+
+    <div class="face inner" style="width:250px;height:120px;left:0;top:0;transform:translateZ(124px) rotateY(180deg);"></div>
+    <div class="face inner" style="width:250px;height:120px;left:0;top:0;transform:translateZ(-124px);"></div>
+    <div class="face inner" style="width:250px;height:120px;left:0;top:0;transform:rotateY(90deg) translateZ(124px) rotateY(180deg);"></div>
+    <div class="face inner" style="width:250px;height:120px;left:0;top:0;transform:rotateY(-90deg) translateZ(124px) rotateY(180deg);"></div>
+    <div class="face" style="width:250px;height:250px;left:0;top:-65px;transform:rotateX(-90deg) translateZ(60px);background:#E8B923;"></div>
+    <div class="face inner" style="width:250px;height:250px;left:0;top:-65px;transform:rotateX(90deg) translateZ(-59px);"></div>
+
+    <div id="cake" style="position:absolute;left:125px;top:60px;width:0;height:0;transform-style:preserve-3d;transform:translateY(20px);"></div>
+
+    <div id="hinge" style="position:absolute;left:0;top:0;width:250px;height:0;transform-style:preserve-3d;transform:translateZ(-125px);">
+      <div style="position:absolute;left:0;top:0;width:250px;height:247px;transform-origin:50% 0;transform:rotateX(90deg);transform-style:preserve-3d;">
+        <div class="face" style="inset:0;width:250px;height:247px;background:#FEFCF6;border:1px solid #ECE5D3;">
+          <div style="position:absolute;left:8px;right:8px;bottom:30px;height:1px;background:#E3DCC8;"></div>
+          <div style="position:absolute;left:50%;bottom:27px;width:26px;height:7px;margin-left:-13px;background:#F1EADA;border:1px solid #E3DCC8;border-bottom:none;border-radius:4px 4px 0 0;"></div>
+          <div style="position:absolute;top:0;bottom:0;left:50%;width:28px;margin-left:-14px;background:#FFC400;"></div>
+          <div style="position:absolute;left:0;right:0;top:50%;height:28px;margin-top:-14px;background:#FFC400;"></div>
+          <svg viewBox="0 0 120 120" style="position:absolute;left:50%;top:50%;width:130px;height:130px;transform:translate(-50%,-50%);" aria-hidden="true">
+            <path d="M60 60 C30 30 8 38 12 56 C15 72 42 70 60 60 Z" fill="#FFC400" stroke="#E3A800" stroke-width="2"/>
+            <path d="M60 60 C90 30 112 38 108 56 C105 72 78 70 60 60 Z" fill="#FFC400" stroke="#E3A800" stroke-width="2"/>
+            <path d="M60 60 C34 44 20 48 24 60 C27 70 46 68 60 60 Z" fill="#FFD75E"/>
+            <path d="M60 60 C86 44 100 48 96 60 C93 70 74 68 60 60 Z" fill="#FFD75E"/>
+            <path d="M60 62 L42 96 L54 92 L58 102 Z" fill="#FFC400" stroke="#E3A800" stroke-width="2" stroke-linejoin="round"/>
+            <path d="M60 62 L78 96 L66 92 L62 102 Z" fill="#FFC400" stroke="#E3A800" stroke-width="2" stroke-linejoin="round"/>
+            <circle cx="60" cy="60" r="10" fill="#F0B000" stroke="#D89C00" stroke-width="2"/>
+          </svg>
+        </div>
+        <div class="face" style="inset:0;width:250px;height:247px;background:#FFFFFF;transform:rotateY(180deg);">
+          <div style="position:absolute;left:50%;top:50%;width:160px;height:160px;transform:translate(-50%,-50%) rotate(180deg);">
+            <svg viewBox="0 0 1024 1024" style="width:100%;height:100%;" aria-hidden="true">
+              <g stroke="#FFFFFF" stroke-width="14" stroke-linejoin="round">
+                <path d="M340 186 L705 170 L832 256 L642 302 L348 318 Z" fill="#F9A11C"/>
+                <path d="M340 186 L348 318 L252 414 L214 338 C220 300 280 232 340 186 Z" fill="#EF7D10"/>
+                <path d="M348 332 L520 322 L532 344 L612 340 L620 316 L832 272 L768 334 L620 372 L352 386 Z" fill="#FFC429"/>
+              </g>
+              <g stroke="#FFFFFF" stroke-width="16" stroke-linejoin="round">
+                <path d="M621 420 L725 420 L850 748 L738 748 Z" fill="#F68B1F"/>
+                <path d="M850 420 L744 420 L618 748 L730 748 Z" fill="#F68B1F"/>
+                <path d="M258 423 L379 423 L511 573 L628 423 L716 423 L646 750 L544 750 L585 574 L510 662 L440 574 L418 750 L314 750 L348 493 L258 493 Z" fill="#E31119"/>
+              </g>
+              <g stroke="#FFFFFF" stroke-width="14" stroke-linejoin="round">
+                <path d="M268 630 L800 618 L862 652 L698 692 L332 700 Z" fill="#FFB921"/>
+                <path d="M240 642 L332 700 L560 696 L572 716 L652 712 L662 692 L700 692 L862 650 L906 666 L856 832 C826 862 402 872 354 842 L232 700 Z" fill="#E31119"/>
+                <path d="M232 644 L330 702 L356 844 L262 788 Z" fill="#BE0D13"/>
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div style="position:absolute;left:8px;top:247px;width:234px;height:42px;transform-origin:50% 0;transform:rotateX(-90deg);background:#FFFFFF;border:1px solid #EFECE4;border-radius:0 0 6px 6px;"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var cake=document.getElementById('cake');
+  var N=12,R=100,segW=54,segH=78,html='';
+  for(var k=0;k<N;k++){
+    html+='<div style="position:absolute;left:-27px;top:-39px;width:'+segW+'px;height:'+segH+'px;backface-visibility:hidden;background:#F7E3A6;transform:rotateY('+(k*30)+'deg) translateZ('+R+'px);">'
+        +'<div style="position:absolute;left:0;right:0;top:0;height:18px;background:#FFE24A;border-radius:0 0 11px 11px;"></div></div>';
+  }
+  html+='<div style="position:absolute;left:-100px;top:-100px;width:200px;height:200px;border-radius:50%;backface-visibility:hidden;background:#FFE24A;transform:rotateX(90deg) translateZ(39px);">'
+      +'<svg viewBox="0 0 200 200" style="position:absolute;inset:0;width:100%;height:100%;" aria-hidden="true">'
+      +'<circle cx="100" cy="100" r="66" fill="none" stroke="#F5CE1F" stroke-width="3.5"/>'
+      +'<circle cx="100" cy="100" r="44" fill="none" stroke="#F5CE1F" stroke-width="3.5"/>'
+      +'<circle cx="100" cy="100" r="22" fill="none" stroke="#F5CE1F" stroke-width="3.5"/>'
+      +'<defs><g id="dz"><ellipse cx="0" cy="-9" rx="4.5" ry="9" fill="#FFFFFF"/><ellipse cx="8" cy="-4.5" rx="4.5" ry="9" fill="#FFFFFF" transform="rotate(60)"/><ellipse cx="8" cy="4.5" rx="4.5" ry="9" fill="#FFFFFF" transform="rotate(120)"/><ellipse cx="0" cy="9" rx="4.5" ry="9" fill="#FFFFFF" transform="rotate(180)"/><ellipse cx="-8" cy="4.5" rx="4.5" ry="9" fill="#FFFFFF" transform="rotate(240)"/><ellipse cx="-8" cy="-4.5" rx="4.5" ry="9" fill="#FFFFFF" transform="rotate(300)"/><circle r="5" fill="#F6C21C"/></g></defs>';
+  for(var a=0;a<8;a++){
+    var rad=a*Math.PI/4, dx=100+Math.cos(rad)*75, dy=100+Math.sin(rad)*75;
+    html+='<use href="#dz" transform="translate('+dx.toFixed(1)+' '+dy.toFixed(1)+')"/>';
+  }
+  html+='<g><circle cx="124" cy="66" r="24" fill="#FCE85A" stroke="#FFFFFF" stroke-width="3.5"/><g stroke="#FFFFFF" stroke-width="2.5"><line x1="124" y1="45" x2="124" y2="87"/><line x1="103" y1="66" x2="145" y2="66"/><line x1="109" y1="51" x2="139" y2="81"/><line x1="139" y1="51" x2="109" y2="81"/></g>'
+      +'<circle cx="150" cy="84" r="19" fill="#FCE85A" stroke="#FFFFFF" stroke-width="3.5"/><g stroke="#FFFFFF" stroke-width="2.5"><line x1="150" y1="67" x2="150" y2="101"/><line x1="133" y1="84" x2="167" y2="84"/></g></g></svg></div>';
+  cake.innerHTML=html;
+
+  var stage=document.getElementById('stage'),box=document.getElementById('box'),hinge=document.getElementById('hinge');
+  var yaw=-32,pitch=-24,dragging=false,lx=0,ly=0,idle=0;
+  var lid=0,lidTarget=0,phase=0,timer=0;
+  var HOLD_CLOSED=170,HOLD_OPEN=240;
+  function loop(){
+    if(!dragging){ if(idle>0){idle--;} else {yaw+=0.3;} }
+    timer++;
+    if(phase===0&&timer>HOLD_CLOSED){phase=1;lidTarget=112;timer=0;}
+    else if(phase===1&&timer>HOLD_OPEN){phase=0;lidTarget=0;timer=0;}
+    lid+=(lidTarget-lid)*0.055;
+    box.style.transform='translateY(16px) rotateX('+pitch+'deg) rotateY('+yaw+'deg)';
+    hinge.style.transform='translateZ(-125px) rotateX('+lid+'deg)';
+    requestAnimationFrame(loop);
+  }
+  stage.addEventListener('pointerdown',function(e){dragging=true;lx=e.clientX;ly=e.clientY;stage.style.cursor='grabbing';stage.setPointerCapture(e.pointerId);});
+  stage.addEventListener('pointermove',function(e){
+    if(!dragging)return;
+    yaw+=(e.clientX-lx)*0.4;
+    pitch-=(e.clientY-ly)*0.3;
+    if(pitch>12)pitch=12; if(pitch<-72)pitch=-72;
+    lx=e.clientX;ly=e.clientY;
+  });
+  function up(){dragging=false;idle=150;stage.style.cursor='grab';}
+  stage.addEventListener('pointerup',up);
+  stage.addEventListener('pointercancel',up);
+  loop();
+})();
+</script>

@@ -103,7 +103,7 @@
       --max: 1240px;
     }
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: auto; }
     body {
       margin: 0;
       font-family: "Plus Jakarta Sans", Arial, sans-serif;
@@ -198,6 +198,7 @@
       gap: 56px;
       align-items: center;
     }
+    .hero-grid > * { min-width: 0; }
     .eyebrow {
       display: inline-flex;
       align-items: center;
@@ -225,18 +226,18 @@
       margin: 0;
     }
     h1 {
-      font-size: clamp(46px, 5.4vw, 84px);
-      line-height: .92;
+      font-size: clamp(42px, 4.45vw, 68px);
+      line-height: .94;
       text-transform: uppercase;
       max-width: 650px;
     }
     .hero-title-small {
       display: block;
-      font-size: .32em;
+      font-size: inherit;
       font-weight: 900;
       letter-spacing: 0;
-      line-height: 1.1;
-      margin-bottom: 10px;
+      line-height: inherit;
+      margin-bottom: 0;
     }
     .hero-title-main {
       display: block;
@@ -273,20 +274,30 @@
     }
     .box-stage {
       position: relative;
-      min-height: 540px;
+      min-height: 520px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-end;
     }
     .clean-motion {
       position: relative;
       width: min(100%, 660px);
       height: 500px;
       margin-left: auto;
-      padding: 18px;
-      border-radius: 22px;
-      border: 3px solid var(--ink);
+      padding: 0;
+      border: 0;
+      border-radius: 0;
       overflow: hidden;
       background: var(--orange);
-      box-shadow: 18px 18px 0 var(--ink);
+      box-shadow: none;
       z-index: 4;
+    }
+    .box-animation-frame {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: 0;
+      background: transparent;
     }
     .clean-motion::before { display: none; }
     .box-gif {
@@ -426,6 +437,35 @@
       background: var(--paper);
       border-bottom: var(--line);
     }
+    .client-logos {
+      padding: 26px 0;
+      overflow: hidden;
+      border-bottom: var(--line);
+      background: var(--ink);
+      color: white;
+    }
+    .logo-track {
+      width: max-content;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      animation: logoScroll 28s linear infinite;
+    }
+    .client-logos:hover .logo-track { animation-play-state: paused; }
+    .logo-item {
+      width: 240px;
+      height: 82px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,.7);
+      background: white;
+    }
+    .logo-item img,
+    .logo-item object { width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
+    .logo-item.text-logo { color: var(--ink); font-weight: 900; font-size: 20px; text-transform: uppercase; }
+    @keyframes logoScroll { to { transform: translateX(calc(-50% - 9px)); } }
     section { padding: 92px 0; }
     .section-head {
       display: flex;
@@ -495,17 +535,17 @@
     .step:nth-child(even) { grid-template-columns: 1fr 260px; }
     .step:nth-child(even) .step-art { order: 2; }
     .step-art {
-      min-height: 210px;
-      border: 3px solid var(--ink);
-      border-radius: 28px;
-      background: white;
-      box-shadow: 9px 9px 0 rgba(255,155,61,.8);
+      min-height: 230px;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      box-shadow: none;
       display: grid;
       place-items: center;
       position: relative;
       overflow: hidden;
     }
-    .step-art img { width: 82%; max-height: 180px; object-fit: contain; }
+    .step-art img { width: 88%; max-height: 210px; object-fit: contain; }
     .step-num {
       position: absolute;
       top: 14px;
@@ -659,7 +699,7 @@
       overflow: hidden;
     }
     .proof .section-head {
-      align-items: end;
+      display: block;
       margin-bottom: 34px;
     }
     .proof .section-head h2 {
@@ -669,8 +709,9 @@
     }
     .proof .section-head p {
       display: block;
-      max-width: 390px;
+      max-width: 760px;
       color: rgba(16,16,16,.72);
+      margin-top: 18px;
     }
     .proof-layout {
       display: grid;
@@ -703,6 +744,15 @@
       background: var(--soft-orange);
       position: relative;
       overflow: hidden;
+      box-shadow: 14px 14px 0 rgba(255,155,61,.72);
+    }
+    .brand-memory-image {
+      width: 100%;
+      min-height: 430px;
+      height: 100%;
+      object-fit: cover;
+      border: var(--line);
+      border-radius: 28px;
       box-shadow: 14px 14px 0 rgba(255,155,61,.72);
     }
     .share-phone {
@@ -890,14 +940,23 @@
       .brand img { width: 42px; height: 42px; border-radius: 11px; }
       .nav .btn { display: none; }
       .hero { padding-top: 34px; }
-      h1 { font-size: 44px; }
-      .hero-title-small { font-size: .5em; }
+      .hero .container { width: auto; margin-inline: 12px; }
+      .topbar .container > * { display: block; width: 100%; min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
+      .topbar .container span { width: 320px; max-width: 320px; white-space: normal; }
+      .hero-grid { display: block; width: 100%; max-width: 100%; }
+      .hero-grid > div { width: 100%; max-width: 100%; }
+      h1 { width: 100%; max-width: 340px; font-size: 32px; text-wrap: balance; }
+      .hero-title-main, .hero-title-small { max-width: 100%; overflow-wrap: normal; }
+      .hero-title-small { font-size: inherit; }
+      .eyebrow { max-width: 100%; font-size: 10px; padding: 7px 10px; }
+      .hero-copy { width: 100%; max-width: 340px; font-size: 16px; }
       .box-stage { min-height: auto; }
       .clean-motion {
         width: 100%;
         height: 340px;
-        box-shadow: 10px 10px 0 var(--ink);
+        box-shadow: none;
       }
+      .logo-item { width: 180px; height: 68px; }
       section { padding: 64px 0; }
       .product-grid, .popular-grid, .proof-strip, .faq-list { grid-template-columns: 1fr; }
       .proof-layout { grid-template-columns: 1fr; }
@@ -945,7 +1004,7 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <div class="eyebrow">Custom food packaging made for your brand</div>
+          <div class="eyebrow">Custom packaging designed to fit your business</div>
           <h1>
             <span class="hero-title-small">LET FOLKS ENJOY THE TASTE</span>
             <span class="hero-title-main">OF YOUR FOOD</span>
@@ -954,29 +1013,30 @@
           <p class="hero-copy">We can create a complete packaging solution for your brand, offering comprehensive customization services, instant quotes, and the lowest MOQ.</p>
           <div class="hero-actions">
             <a class="btn" href="https://wa.me/447704644465" target="_blank" rel="noopener">Start a Quote</a>
-            <a class="btn alt" href="/custom-food-packaging">Explore Boxes</a>
-          </div>
-          <div class="trust-row">
-            <span>200 pcs available</span>
-            <span>OEM / ODM</span>
-            <span>Food-grade options</span>
-            <span>Global export</span>
           </div>
         </div>
         <div class="box-stage" aria-label="Animated custom food packaging preview">
-          <div class="clean-motion" aria-label="Safe animated custom packaging banner">
-            <div class="box-motion" aria-label="MX PACK box-only animated packaging preview">
-              <div class="motion-pack one"><strong>MX PACK</strong><span>custom food box</span></div>
-              <div class="motion-pack two"><strong>OEM / ODM</strong><span>food grade</span></div>
-              <div class="motion-pack three"><strong>200 MOQ</strong><span>fast sample</span></div>
-              <div class="motion-stamp">FOOD<br>GRADE</div>
-            </div>
+          <div class="clean-motion" aria-label="Interactive MX PACK cake box animation">
+            <iframe class="box-animation-frame" src="assets/interactive/sunflower-cake-box.html" title="Interactive MX PACK sunflower cake box" loading="eager"></iframe>
           </div>
         </div>
       </div>
     </section>
 
     <div class="curve" aria-hidden="true"></div>
+
+    <section class="client-logos" aria-label="Selected customer brands">
+      <div class="logo-track">
+        <div class="logo-item"><img src="assets/brand-logos/color-3.svg" alt="Customer brand logo"></div>
+        <div class="logo-item"><img src="assets/brand-logos/duc.svg" alt="DUC customer brand logo"></div>
+        <div class="logo-item text-logo">Joe &amp; The Juice</div>
+        <div class="logo-item"><object data="assets/brand-logos/logo-collection.pdf#toolbar=0&amp;navpanes=0&amp;scrollbar=0&amp;view=FitH" type="application/pdf" aria-label="Customer logo collection"></object></div>
+        <div class="logo-item"><img src="assets/brand-logos/color-3.svg" alt="" aria-hidden="true"></div>
+        <div class="logo-item"><img src="assets/brand-logos/duc.svg" alt="" aria-hidden="true"></div>
+        <div class="logo-item text-logo" aria-hidden="true">Joe &amp; The Juice</div>
+        <div class="logo-item"><object data="assets/brand-logos/logo-collection.pdf#toolbar=0&amp;navpanes=0&amp;scrollbar=0&amp;view=FitH" type="application/pdf" aria-label=""></object></div>
+      </div>
+    </section>
 
     <section id="boxes">
       <div class="container">
@@ -986,7 +1046,7 @@
         </div>
         <div class="product-grid">
           <article class="product-card">
-            <figure><img src="assets/img/mx-fast-food-box.jpg" alt="Fast food packaging box"></figure>
+            <figure><img src="assets/img/category-fast-food.jpg" alt="Custom fast food boxes and takeaway packaging"></figure>
             <div class="body">
               <h3>Fast Food Box</h3>
               <p>Grease-resistant, foldable and brand-ready for burgers, fries, noodles, snacks and takeaway meals.</p>
@@ -994,7 +1054,7 @@
             </div>
           </article>
           <article class="product-card">
-            <figure><img src="assets/img/mx-grazing-box.jpg" alt="Grazing box packaging"></figure>
+            <figure><img src="assets/img/category-grazing.jpg" alt="Premium grazing box packaging"></figure>
             <div class="body">
               <h3>Grazing Box</h3>
               <p>Presentation-ready structures for catering, fruit, desserts, party platters and premium food sets.</p>
@@ -1002,7 +1062,7 @@
             </div>
           </article>
           <article class="product-card">
-            <figure><img src="assets/img/mx-cake-box.jpg" alt="Cake box packaging"></figure>
+            <figure><img src="assets/img/category-cake.jpg" alt="Custom cake box packaging"></figure>
             <div class="body">
               <h3>Cake Box</h3>
               <p>Window, handle and display box options for bakeries, pastry shops, cookies and dessert brands.</p>
@@ -1010,7 +1070,7 @@
             </div>
           </article>
           <article class="product-card">
-            <figure><img src="assets/img/mx-more-choices.jpg" alt="More custom food packaging options"></figure>
+            <figure><img src="assets/img/category-more.png" alt="More custom packaging styles"></figure>
             <div class="body">
               <h3>More Choices</h3>
               <p>Mailer boxes, product boxes, pizza boxes, shipping boxes and tailored structures for your food brand.</p>
@@ -1025,13 +1085,12 @@
       <div class="container">
         <div class="section-head">
           <h2>Custom packaging made easy</h2>
-          <p>No online 3D configurator yet, so MX PACK uses a practical B2B workflow: share requirements, receive dieline/sample advice, approve proof, then produce.</p>
         </div>
         <div class="steps">
           <div class="step">
             <figure class="step-art">
               <span class="step-num">1</span>
-              <img src="assets/img/popular-gable-box.webp" alt="Choose custom box style">
+              <img src="assets/img/food-box.svg" alt="Choose a custom packaging box style">
             </figure>
             <div class="step-copy">
               <h3>Choose your box</h3>
@@ -1041,7 +1100,7 @@
           <div class="step">
             <figure class="step-art">
               <span class="step-num">2</span>
-              <img src="assets/img/logo-mxpack-official.svg" alt="Add your logo and artwork">
+              <img src="assets/img/feature-printing.svg" alt="Design your packaging brand artwork">
             </figure>
             <div class="step-copy">
               <h3>Design your brand</h3>
@@ -1051,7 +1110,7 @@
           <div class="step">
             <figure class="step-art">
               <span class="step-num">3</span>
-              <img src="assets/img/popular-shipping-box.jpg" alt="Approve proof and start production">
+              <img src="assets/img/certificate.svg" alt="Approve packaging proof and begin production">
             </figure>
             <div class="step-copy">
               <h3>Approve and produce</h3>
@@ -1093,24 +1152,7 @@
             <p>40% of consumers share unique unboxing experiences related to packaging on social media.</p>
             <p>Packaging not only represents your hard work, but it's also a perfect promotional tool.</p>
           </div>
-          <div class="share-board" aria-label="Diners sharing food packaging on social media">
-            <div class="share-phone one">
-              <img src="assets/img/food-box.svg" alt="Fast food box packaging illustration">
-              <strong>Fast food box</strong>
-              <span>Clean product preview</span>
-            </div>
-            <div class="share-phone two">
-              <img src="assets/img/cake-box.svg" alt="Cake box packaging illustration">
-              <strong>Bakery box</strong>
-              <span>Custom structure display</span>
-            </div>
-            <div class="share-phone three">
-              <img src="assets/img/paper-bag.svg" alt="Paper bag packaging illustration">
-              <strong>Retail pack</strong>
-              <span>Brand-ready packaging</span>
-            </div>
-            <div class="share-bubble">More shares, more brand memory</div>
-          </div>
+          <img class="brand-memory-image" src="assets/img/brand-memory-unboxing.png" alt="Customer enjoying a memorable branded packaging unboxing experience">
         </div>
       </div>
     </section>
