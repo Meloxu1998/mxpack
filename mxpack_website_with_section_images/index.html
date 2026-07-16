@@ -438,7 +438,7 @@
       border-bottom: var(--line);
     }
     .client-logos {
-      padding: 26px 0;
+      padding: 22px 0;
       overflow: hidden;
       border-bottom: var(--line);
       background: var(--ink);
@@ -448,24 +448,33 @@
       width: max-content;
       display: flex;
       align-items: center;
-      gap: 18px;
-      animation: logoScroll 28s linear infinite;
+      gap: 14px;
+      animation: logoScroll 42s linear infinite;
     }
     .client-logos:hover .logo-track { animation-play-state: paused; }
     .logo-item {
-      width: 240px;
-      height: 82px;
+      width: 220px;
+      height: 94px;
       flex: 0 0 auto;
       display: grid;
       place-items: center;
       overflow: hidden;
-      border: 2px solid rgba(255,255,255,.7);
+      padding: 12px 18px;
+      border: 1px solid rgba(255,255,255,.6);
       background: white;
     }
-    .logo-item img,
-    .logo-item object { width: 100%; height: 100%; object-fit: contain; pointer-events: none; }
-    .logo-item.text-logo { color: var(--ink); font-weight: 900; font-size: 20px; text-transform: uppercase; }
-    @keyframes logoScroll { to { transform: translateX(calc(-50% - 9px)); } }
+    .logo-item img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      pointer-events: none;
+    }
+    .logo-item.logo-duc img { transform: rotate(180deg); }
+    .logo-item.logo-color img { width: auto; height: 64px; max-width: 100%; }
+    .logo-item.text-logo { color: var(--ink); font-weight: 900; font-size: 20px; text-align: center; text-transform: uppercase; }
+    @keyframes logoScroll { to { transform: translateX(calc(-50% - 7px)); } }
     section { padding: 92px 0; }
     .section-head {
       display: flex;
@@ -956,7 +965,8 @@
         height: 340px;
         box-shadow: none;
       }
-      .logo-item { width: 180px; height: 68px; }
+      .clean-motion { height: 390px; }
+      .logo-item { width: 176px; height: 76px; padding: 9px 12px; }
       section { padding: 64px 0; }
       .product-grid, .popular-grid, .proof-strip, .faq-list { grid-template-columns: 1fr; }
       .proof-layout { grid-template-columns: 1fr; }
@@ -1025,16 +1035,30 @@
 
     <div class="curve" aria-hidden="true"></div>
 
-    <section class="client-logos" aria-label="Selected customer brands">
+    <section class="client-logos" id="client-logos" aria-label="Selected customer brands">
       <div class="logo-track">
-        <div class="logo-item"><img src="assets/brand-logos/color-3.svg" alt="Customer brand logo"></div>
-        <div class="logo-item"><img src="assets/brand-logos/duc.svg" alt="DUC customer brand logo"></div>
+        <div class="logo-item"><img src="assets/brand-logos/collection-sweet-bites.png" alt="Sweet Bites"></div>
+        <div class="logo-item"><img src="assets/brand-logos/collection-texas-womans-university.png" alt="Texas Woman's University"></div>
+        <div class="logo-item"><img src="assets/brand-logos/collection-cowboys.png" alt="Cowboys"></div>
+        <div class="logo-item"><img src="assets/brand-logos/collection-ltk.png" alt="LTK"></div>
+        <div class="logo-item"><img src="assets/brand-logos/collection-sugoi-mart.png" alt="Sugoi Mart"></div>
+        <div class="logo-item"><img src="assets/brand-logos/collection-peter-fell.png" alt="Peter Fell"></div>
+        <div class="logo-item"><img src="assets/brand-logos/collection-pro-supra.png" alt="Pro Supra"></div>
+        <div class="logo-item"><img src="assets/brand-logos/collection-three-hills.png" alt="Three Hills"></div>
+        <div class="logo-item logo-color"><img src="assets/brand-logos/color-3.svg" alt="Customer brand logo"></div>
+        <div class="logo-item logo-duc"><img src="assets/brand-logos/duc.svg" alt="DUC customer brand logo"></div>
         <div class="logo-item text-logo">Joe &amp; The Juice</div>
-        <div class="logo-item"><object data="assets/brand-logos/logo-collection.pdf#toolbar=0&amp;navpanes=0&amp;scrollbar=0&amp;view=FitH" type="application/pdf" aria-label="Customer logo collection"></object></div>
-        <div class="logo-item"><img src="assets/brand-logos/color-3.svg" alt="" aria-hidden="true"></div>
-        <div class="logo-item"><img src="assets/brand-logos/duc.svg" alt="" aria-hidden="true"></div>
+        <div class="logo-item"><img src="assets/brand-logos/collection-sweet-bites.png" alt="" aria-hidden="true"></div>
+        <div class="logo-item"><img src="assets/brand-logos/collection-texas-womans-university.png" alt="" aria-hidden="true"></div>
+        <div class="logo-item"><img src="assets/brand-logos/collection-cowboys.png" alt="" aria-hidden="true"></div>
+        <div class="logo-item"><img src="assets/brand-logos/collection-ltk.png" alt="" aria-hidden="true"></div>
+        <div class="logo-item"><img src="assets/brand-logos/collection-sugoi-mart.png" alt="" aria-hidden="true"></div>
+        <div class="logo-item"><img src="assets/brand-logos/collection-peter-fell.png" alt="" aria-hidden="true"></div>
+        <div class="logo-item"><img src="assets/brand-logos/collection-pro-supra.png" alt="" aria-hidden="true"></div>
+        <div class="logo-item"><img src="assets/brand-logos/collection-three-hills.png" alt="" aria-hidden="true"></div>
+        <div class="logo-item logo-color"><img src="assets/brand-logos/color-3.svg" alt="" aria-hidden="true"></div>
+        <div class="logo-item logo-duc"><img src="assets/brand-logos/duc.svg" alt="" aria-hidden="true"></div>
         <div class="logo-item text-logo" aria-hidden="true">Joe &amp; The Juice</div>
-        <div class="logo-item"><object data="assets/brand-logos/logo-collection.pdf#toolbar=0&amp;navpanes=0&amp;scrollbar=0&amp;view=FitH" type="application/pdf" aria-label=""></object></div>
       </div>
     </section>
 

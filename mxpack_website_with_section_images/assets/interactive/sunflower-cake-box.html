@@ -113,7 +113,7 @@ html,body{margin:0;width:100%;height:100%;overflow:hidden;background:transparent
     if(phase===0&&timer>HOLD_CLOSED){phase=1;lidTarget=112;timer=0;}
     else if(phase===1&&timer>HOLD_OPEN){phase=0;lidTarget=0;timer=0;}
     lid+=(lidTarget-lid)*0.055;
-    box.style.transform='translateY(16px) rotateX('+pitch+'deg) rotateY('+yaw+'deg)';
+    box.style.transform='translateY(78px) rotateX('+pitch+'deg) rotateY('+yaw+'deg)';
     hinge.style.transform='translateZ(-125px) rotateX('+lid+'deg)';
     requestAnimationFrame(loop);
   }
