@@ -1,3 +1,24 @@
+const GA_MEASUREMENT_ID = 'G-9VZK4M6KDS';
+
+window.dataLayer = window.dataLayer || [];
+window.gtag = window.gtag || function gtag() {
+  window.dataLayer.push(arguments);
+};
+window.gtag('js', new Date());
+window.gtag('config', GA_MEASUREMENT_ID);
+
+const googleTag = document.createElement('script');
+googleTag.async = true;
+googleTag.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+document.head.appendChild(googleTag);
+
+const trackEvent = (eventName, parameters = {}) => {
+  window.gtag('event', eventName, {
+    source_page: window.location.pathname,
+    ...parameters,
+  });
+};
+
 const menuToggle = document.querySelector('[data-menu-toggle]');
 const mobileNav = document.querySelector('[data-mobile-nav]');
 
@@ -39,11 +60,7 @@ if (quoteForm) {
   };
 
   const trackLead = (method) => {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({ event: 'generate_lead', lead_method: method });
-    if (typeof window.gtag === 'function') {
-      window.gtag('event', 'generate_lead', { method });
-    }
+    trackEvent('generate_lead', { method });
   };
 
   quoteForm.addEventListener('submit', (event) => {
@@ -78,11 +95,26 @@ if (quoteForm) {
 
 document.querySelectorAll('a[href^="/get-a-quote"]').forEach((link) => {
   link.addEventListener('click', () => {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push({
-      event: 'quote_cta_click',
-      source_page: window.location.pathname,
+    trackEvent('quote_cta_click', {
       destination: link.getAttribute('href'),
+      link_text: link.textContent.trim(),
+    });
+  });
+});
+
+document.querySelectorAll('a[href]').forEach((link) => {
+  const href = link.getAttribute('href') || '';
+  let method = '';
+
+  if (href.includes('wa.me/')) method = 'WhatsApp link';
+  if (href.startsWith('mailto:')) method = 'Email link';
+  if (href.startsWith('tel:')) method = 'Phone link';
+  if (!method) return;
+
+  link.addEventListener('click', () => {
+    trackEvent('generate_lead', {
+      method,
+      link_text: link.textContent.trim() || link.getAttribute('aria-label') || method,
     });
   });
 });
