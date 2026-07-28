@@ -1,0 +1,13 @@
+priority,slug,page_type,primary_keyword,status,reason,required_inputs
+1,food-packaging-manufacturer-china,commercial landing page,custom food packaging manufacturer china,ready_for_serp,Strong factory and export purchase intent,Factory photos and verified production facts
+2,low-moq-custom-food-packaging,commercial guide,low moq custom food packaging,ready_for_brief,Directly supports the verified 200 piece offer,Eligible formats and price examples
+3,custom-food-packaging-price,buyer guide,custom food packaging price,needs_facts,High intent pricing question,Anonymized quote ranges and pricing factors
+4,custom-food-box-samples,commercial guide,custom food box samples,needs_facts,Reduces buyer risk before a quote,Sample types costs and verified timing
+5,food-safe-packaging-materials,technical guide,food safe packaging materials,needs_facts,Important trust and material-selection topic,Material list test reports and compliance wording
+6,custom-packaging-lead-time,buyer guide,custom packaging lead time,needs_facts,Common pre-purchase objection,Verified sample production and shipping ranges
+7,restaurant-takeaway-packaging,use-case page,restaurant takeaway packaging,ready_for_serp,Strong fit across several product categories,Restaurant product photos and common combinations
+8,food-packaging-for-startups,use-case page,food packaging for startups,ready_for_brief,Matches low MOQ and one-stop buying proposition,Example startup pack plan
+9,recyclable-food-packaging-boxes,technical guide,recyclable food packaging boxes,needs_facts,Relevant sustainability demand,Verified recyclable materials and disposal guidance
+10,custom-packaging-dieline-template,resource page,custom packaging dieline template,needs_asset,Linkable resource with buyer utility,Approved sample dielines and download policy
+11,custom-packaging-artwork-guide,resource page,how to prepare artwork for packaging,ready_for_brief,Supports prepress and reduces rework,Accepted file formats bleed and color rules
+12,custom-food-packaging-case-studies,case-study hub,custom food packaging case studies,needs_facts,Highest-trust proof for B2B buyers,Three approved projects with photos specs and outcomes

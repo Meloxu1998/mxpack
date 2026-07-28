@@ -1,0 +1,41 @@
+keyword,cluster,intent,stage,source,business_fit,buyer_intent,msv,kd,cpc_usd,target_url,status
+custom food packaging,core commercial,commercial,bottom,product,5,5,,,,/custom-food-packaging,published
+custom food boxes,core commercial,commercial,bottom,product,5,5,,,,/products,published
+food packaging manufacturer,core commercial,commercial,bottom,commercial modifier,5,5,,,,,candidate
+custom food packaging manufacturer china,core commercial,commercial,bottom,commercial modifier,5,5,,,,,candidate
+low moq custom food packaging,core commercial,commercial,bottom,buyer question,5,5,,,,,candidate
+custom food packaging wholesale,core commercial,commercial,bottom,commercial modifier,5,5,,,,,candidate
+custom food packaging price,pricing,commercial,bottom,buyer question,5,5,,,,,candidate
+custom packaging quote,pricing,transactional,bottom,buyer question,5,5,,,,/get-a-quote,published
+custom takeaway boxes,takeaway,commercial,bottom,product,5,5,,,,/takeaway-food-boxes,published
+takeaway food packaging manufacturer,takeaway,commercial,bottom,commercial modifier,5,5,,,,/takeaway-food-boxes,published
+custom burger boxes,burger,commercial,bottom,product,5,5,,,,/burger-boxes,published
+printed burger boxes,burger,commercial,bottom,product variation,5,5,,,,/burger-boxes,published
+burger boxes wholesale,burger,commercial,bottom,commercial modifier,5,5,,,,/burger-boxes,published
+custom pizza boxes,pizza,commercial,bottom,product,5,5,,,,/pizza-boxes,published
+printed pizza boxes,pizza,commercial,bottom,product variation,5,5,,,,/pizza-boxes,published
+pizza box manufacturer,pizza,commercial,bottom,commercial modifier,5,5,,,,/pizza-boxes,published
+custom cake boxes,bakery,commercial,bottom,product,5,5,,,,/bakery-cake-boxes,published
+custom bakery packaging,bakery,commercial,bottom,use case,5,5,,,,/bakery-cake-boxes,published
+cake box manufacturer,bakery,commercial,bottom,commercial modifier,5,5,,,,/bakery-cake-boxes,published
+custom sushi boxes,sushi,commercial,bottom,product,5,5,,,,/sushi-boxes,published
+sushi takeaway packaging,sushi,commercial,bottom,use case,5,5,,,,/sushi-boxes,published
+custom catering boxes,catering,commercial,bottom,product,5,5,,,,/grazing-catering-boxes,published
+custom grazing boxes,catering,commercial,bottom,product,5,5,,,,/grazing-catering-boxes,published
+catering packaging supplier,catering,commercial,bottom,commercial modifier,5,5,,,,/grazing-catering-boxes,published
+custom paper bags,paper bags,commercial,bottom,product,5,5,,,,/custom-paper-bags,published
+printed paper bags wholesale,paper bags,commercial,bottom,commercial modifier,5,5,,,,/custom-paper-bags,published
+custom mailer boxes,shipping,commercial,bottom,product,5,5,,,,/mailer-shipping-boxes,published
+custom shipping boxes,shipping,commercial,bottom,product,5,5,,,,/mailer-shipping-boxes,published
+food safe packaging materials,materials,informational,middle,buyer question,4,3,,,,,candidate
+grease resistant food boxes,materials,commercial,middle,product feature,5,4,,,,,candidate
+recyclable food packaging boxes,sustainability,commercial,middle,buyer question,4,4,,,,,candidate
+kraft food boxes custom,materials,commercial,bottom,product feature,5,5,,,,,candidate
+custom food box samples,sampling,commercial,bottom,buyer question,5,5,,,,,candidate
+custom packaging dieline template,artwork,informational,middle,buyer question,4,3,,,,,candidate
+how to prepare artwork for packaging,artwork,informational,middle,paa,4,3,,,,,candidate
+custom packaging lead time,production,commercial,bottom,buyer question,5,5,,,,,candidate
+how much do custom food boxes cost,pricing,commercial,bottom,paa,5,5,,,,,candidate
+restaurant takeaway packaging,restaurant,commercial,bottom,use case,5,5,,,,,candidate
+food delivery packaging boxes,restaurant,commercial,bottom,use case,5,5,,,,,candidate
+food packaging for startups,startups,commercial,middle,use case,5,4,,,,,candidate

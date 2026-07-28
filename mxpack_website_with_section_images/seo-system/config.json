@@ -1,0 +1,48 @@
+{
+  "brand": "MX PACK",
+  "company": "Foshan Xumelo Technology Co., Ltd.",
+  "site_url": "https://mxpackpro.com",
+  "primary_locale": "en",
+  "market": "Global English-language B2B buyers",
+  "market_confirmation_required": true,
+  "business_model": "Factory-direct custom packaging manufacturer and exporter",
+  "minimum_order": {
+    "value": 200,
+    "unit": "pieces",
+    "scope": "Selected custom formats"
+  },
+  "verified_contacts": {
+    "phone": "+86 155 2116 3050",
+    "email": "meloxu98@gmail.com",
+    "whatsapp": "+44 7704 644465"
+  },
+  "analytics": {
+    "ga4_measurement_id": "G-9VZK4M6KDS",
+    "gsc_property": "sc-domain:mxpackpro.com"
+  },
+  "product_clusters": [
+    "Takeaway food boxes",
+    "Burger boxes",
+    "Pizza boxes",
+    "Bakery and cake boxes",
+    "Sushi boxes",
+    "Grazing and catering boxes",
+    "Custom paper bags",
+    "Mailer and shipping boxes"
+  ],
+  "approved_value_propositions": [
+    "MOQ starts from 200 pieces for selected formats",
+    "Custom size, structure and printing support",
+    "Food-grade material options selected by project",
+    "Sample and export shipment planning support"
+  ],
+  "claims_requiring_evidence": [
+    "Named certifications",
+    "Exact production capacity",
+    "Guaranteed sample or production lead time",
+    "Guaranteed shipping time",
+    "Customer revenue or conversion results",
+    "Material sustainability percentages",
+    "Named customer endorsement"
+  ]
+}
