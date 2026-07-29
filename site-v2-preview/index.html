@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MXPACKPRO | Custom Food Packaging for Restaurants and Food Brands</title>
+  <meta name="description" content="Custom food packaging for restaurants, cafes and food brands. Explore takeout boxes, paper cups, paper bags and fully customized packaging from MXPACKPRO.">
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Libre+Franklin:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest-950: #062e25;
+      --forest-900: #073a2e;
+      --forest-800: #0b4b3a;
+      --forest-700: #17644b;
+      --cream: #f7f2e8;
+      --paper: #fffdf8;
+      --sage: #e7efd8;
+      --sage-strong: #bed16a;
+      --lime: #aec62d;
+      --coral: #ef5136;
+      --coral-dark: #d9412a;
+      --ink: #112d25;
+      --muted: #5f6c65;
+      --line: rgba(7, 58, 46, .16);
+      --max: 1200px;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "DM Sans", Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--sans);
+      line-height: 1.55;
+      overflow-x: hidden;
+    }
+    body.menu-open { overflow: hidden; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .container { width: min(var(--max), calc(100% - 48px)); margin-inline: auto; }
+    .eyebrow {
+      margin: 0 0 14px;
+      color: #708416;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .section-title {
+      max-width: 720px;
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(34px, 4vw, 56px);
+      line-height: 1.03;
+      font-weight: 600;
+    }
+    .button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 20px;
+      border: 1px solid transparent;
+      border-radius: 6px;
+      background: var(--coral);
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      transition: background .2s ease, transform .2s ease;
+    }
+    .button:hover { background: var(--coral-dark); transform: translateY(-2px); }
+    .button-outline { border-color: rgba(255,255,255,.7); background: transparent; }
+    .button-outline:hover { background: white; color: var(--forest-900); }
+    .button-light { background: white; color: var(--coral); }
+    .button-light:hover { background: var(--cream); color: var(--coral-dark); }
+    .icon { width: 18px; height: 18px; flex: 0 0 18px; stroke-width: 1.8; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      color: white;
+      background: rgba(6, 46, 37, .96);
+      border-bottom: 1px solid rgba(255,255,255,.16);
+      backdrop-filter: blur(12px);
+    }
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 26px;
+    }
+    .brand {
+      min-width: max-content;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: white;
+      font-family: "Libre Franklin", Arial, sans-serif;
+      font-size: 23px;
+      font-weight: 700;
+    }
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border-radius: 6px;
+      background: white;
+    }
+    .brand-mark img { width: 100%; height: 100%; object-fit: contain; transform: scale(1.5); }
+    .brand-accent { color: var(--sage-strong); }
+    .nav-links { display: flex; align-items: stretch; gap: 3px; }
+    .nav-item { position: relative; }
+    .nav-item > a {
+      height: 72px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 0 13px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .nav-item > a:hover { color: var(--sage-strong); }
+    .nav-item > a .icon { width: 13px; height: 13px; }
+    .dropdown {
+      width: 245px;
+      position: absolute;
+      left: 0;
+      top: calc(100% - 1px);
+      padding: 10px;
+      border: 1px solid var(--line);
+      border-radius: 0 0 8px 8px;
+      background: white;
+      color: var(--ink);
+      box-shadow: 0 18px 40px rgba(6, 46, 37, .14);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity .18s ease, transform .18s ease, visibility .18s ease;
+    }
+    .nav-item:hover .dropdown,
+    .nav-item:focus-within .dropdown { opacity: 1; visibility: visible; transform: translateY(0); }
+    .dropdown a { display: block; padding: 10px 11px; border-radius: 5px; font-size: 13px; font-weight: 600; }
+    .dropdown a:hover { background: var(--sage); color: var(--forest-800); }
+    .nav-quote { min-height: 42px; padding-inline: 16px; }
+    .menu-toggle {
+      width: 44px;
+      height: 44px;
+      display: none;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 6px;
+      color: white;
+      background: transparent;
+      cursor: pointer;
+    }
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 72px 0 0;
+      z-index: 90;
+      padding: 20px 24px 32px;
+      background: var(--forest-950);
+      color: white;
+      overflow-y: auto;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu details { border-bottom: 1px solid rgba(255,255,255,.16); }
+    .mobile-menu summary { padding: 16px 0; list-style: none; font-weight: 700; cursor: pointer; }
+    .mobile-menu summary::-webkit-details-marker { display: none; }
+    .mobile-menu details a { display: block; padding: 9px 14px; color: rgba(255,255,255,.78); font-size: 14px; }
+    .mobile-menu > a { display: block; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,.16); font-weight: 700; }
+    .mobile-menu .button { display: flex; margin-top: 22px; }
+
+    .hero { min-height: 600px; display: grid; grid-template-columns: minmax(420px, 43%) minmax(0, 57%); background: var(--forest-950); color: white; }
+    .hero-copy-wrap { display: flex; justify-content: flex-end; padding-left: max(24px, calc((100vw - var(--max)) / 2)); }
+    .hero-copy {
+      width: 100%;
+      max-width: 540px;
+      align-self: center;
+      padding: 68px 50px 72px 0;
+    }
+    .hero h1 {
+      max-width: 510px;
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(45px, 4.6vw, 70px);
+      line-height: .98;
+      font-weight: 600;
+    }
+    .hero-copy > p { max-width: 480px; margin: 22px 0 28px; color: rgba(255,255,255,.78); font-size: 17px; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+    .hero-benefits { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 40px; }
+    .hero-benefit { display: flex; align-items: center; gap: 10px; color: rgba(255,255,255,.84); font-size: 12px; line-height: 1.3; }
+    .hero-benefit .icon { width: 28px; height: 28px; color: var(--sage-strong); flex-basis: 28px; }
+    .hero-media {
+      min-height: 600px;
+      overflow: hidden;
+      clip-path: ellipse(91% 92% at 100% 50%);
+      background: #d7d1c5;
+    }
+    .hero-media img { width: 100%; height: 100%; min-height: 600px; object-fit: cover; object-position: center; }
+
+    .trusted { padding: 24px 0 26px; overflow: hidden; background: #fff; border-bottom: 1px solid var(--line); }
+    .trusted-title { margin: 0 0 18px; text-align: center; color: var(--forest-800); font-size: 10px; font-weight: 700; text-transform: uppercase; }
+    .logo-viewport { width: 100%; overflow: hidden; }
+    .logo-track { width: max-content; display: flex; align-items: center; animation: logo-marquee 42s linear infinite; }
+    .logo-group { display: flex; align-items: center; gap: 44px; padding-right: 44px; }
+    .logo-item { width: 170px; height: 66px; flex: 0 0 170px; display: grid; place-items: center; padding: 4px 8px; overflow: visible; }
+    .logo-item img { display: block; width: auto; height: auto; max-width: 100%; max-height: 58px; object-fit: contain; object-position: center; }
+    .logo-item.text-logo { color: #171717; font-size: 18px; font-weight: 800; text-align: center; white-space: nowrap; }
+    .logo-item.logo-color img { max-height: 62px; }
+    .logo-item.logo-duc img { max-height: 62px; transform: rotate(180deg); }
+    .trusted:hover .logo-track { animation-play-state: paused; }
+    @keyframes logo-marquee { to { transform: translateX(-50%); } }
+
+    .products { padding: 78px 0 88px; background: var(--paper); }
+    .products-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 30px; }
+    .products-head p { max-width: 430px; margin: 0; color: var(--muted); }
+    .product-grid { width: min(100%, 1080px); margin-inline: auto; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+    .product-card {
+      min-height: 360px;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      isolation: isolate;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .product-card:hover { transform: translateY(-5px); box-shadow: 0 18px 36px rgba(7,58,46,.12); }
+    .product-card:nth-child(1) { background: #e3e5bd; }
+    .product-card:nth-child(2) { background: #fbd0bf; }
+    .product-card:nth-child(3) { background: #ffecd0; }
+    .product-card:nth-child(4) { background: #e9eecf; }
+    .product-card-copy { position: relative; z-index: 2; padding: 17px 17px 0; }
+    .product-card h2 { max-width: 150px; margin: 0 0 7px; font-family: var(--serif); font-size: 21px; line-height: 1.02; font-weight: 600; }
+    .product-card p { max-width: 165px; margin: 0; color: #45534c; font-size: 10.5px; line-height: 1.45; }
+    .product-card img {
+      width: calc(100% + 2px);
+      height: auto;
+      position: absolute;
+      left: -1px;
+      right: -1px;
+      bottom: -1px;
+      z-index: 0;
+      object-fit: contain;
+      object-position: center bottom;
+      -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 8%);
+      mask-image: linear-gradient(to bottom, transparent 0, #000 8%);
+    }
+    .card-link {
+      position: absolute;
+      left: 17px;
+      bottom: 15px;
+      z-index: 3;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 10.5px;
+      font-weight: 700;
+    }
+    .card-link .icon { width: 15px; height: 15px; }
+
+    .partner { display: grid; grid-template-columns: 1fr 1fr; background: var(--cream); }
+    .partner-media { display: flex; align-items: center; justify-content: center; min-width: 0; background: #f4efe5; }
+    .partner-media img { display: block; width: 100%; height: auto; object-fit: contain; }
+    .partner-copy { display: flex; align-items: center; padding: 60px max(30px, calc((100vw - var(--max)) / 2)) 60px 60px; }
+    .partner-inner { max-width: 520px; }
+    .partner-inner > p:not(.eyebrow) { margin: 22px 0; color: var(--muted); }
+    .check-list { display: grid; gap: 12px; padding: 0; margin: 0 0 30px; list-style: none; }
+    .check-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 14px; }
+    .check-list .icon { width: 19px; height: 19px; color: #85a913; fill: #85a913; }
+
+    .business { padding: 76px 0 70px; background: var(--forest-950); color: white; }
+    .business-head { margin-bottom: 38px; text-align: center; }
+    .business .eyebrow { color: var(--sage-strong); }
+    .business .section-title { max-width: none; font-size: clamp(34px, 3.7vw, 52px); }
+    .business-grid { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); }
+    .business-item { min-height: 235px; padding: 18px 24px; border-right: 1px solid rgba(255,255,255,.2); text-align: center; }
+    .business-item:last-child { border-right: 0; }
+    .business-item > .icon { width: 44px; height: 44px; margin: 0 auto 17px; color: var(--sage-strong); stroke-width: 1.5; }
+    .business-item h3 { min-height: 44px; margin: 0 0 9px; font-size: 14px; line-height: 1.35; }
+    .business-item p { min-height: 60px; margin: 0 0 14px; color: rgba(255,255,255,.66); font-size: 12px; }
+    .business-item a { display: inline-flex; align-items: center; gap: 5px; color: var(--sage-strong); font-size: 12px; font-weight: 700; }
+    .business-item a .icon { width: 14px; height: 14px; }
+
+    .cta { padding: 30px 0; color: white; background: var(--coral); }
+    .cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
+    .cta-copy { display: flex; align-items: center; gap: 22px; }
+    .cta-icon {
+      width: 64px;
+      height: 64px;
+      display: grid;
+      place-items: center;
+      flex: 0 0 64px;
+      border: 1px solid rgba(255,255,255,.65);
+      border-radius: 50%;
+    }
+    .cta-icon .icon { width: 31px; height: 31px; }
+    .cta h2 { margin: 0; font-family: var(--serif); font-size: clamp(27px, 3vw, 39px); line-height: 1.05; font-weight: 600; }
+    .cta p { margin: 6px 0 0; color: rgba(255,255,255,.82); }
+
+    .footer { padding: 48px 0 22px; color: white; background: var(--forest-950); }
+    .footer-grid { display: grid; grid-template-columns: 1.45fr repeat(4, 1fr); gap: 40px; padding-bottom: 36px; }
+    .footer-brand p { max-width: 250px; color: rgba(255,255,255,.62); font-size: 13px; }
+    .footer .brand { margin-bottom: 16px; }
+    .socials { display: flex; gap: 9px; margin-top: 20px; }
+    .socials a { width: 35px; height: 35px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.35); border-radius: 50%; }
+    .socials .icon { width: 16px; height: 16px; }
+    .footer h3 { margin: 4px 0 14px; font-size: 13px; }
+    .footer-links { display: grid; gap: 8px; }
+    .footer-links a, .footer-links span { color: rgba(255,255,255,.65); font-size: 12px; }
+    .footer-links a:hover { color: white; }
+    .footer-contact a { display: flex; align-items: flex-start; gap: 8px; }
+    .footer-contact .icon { width: 14px; height: 14px; margin-top: 2px; }
+    .footer-bottom { display: flex; justify-content: space-between; gap: 20px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.14); color: rgba(255,255,255,.45); font-size: 11px; }
+    .footer-legal { display: flex; gap: 18px; }
+    .whatsapp {
+      width: 56px;
+      height: 56px;
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 80;
+      display: grid;
+      place-items: center;
+      border: 3px solid white;
+      border-radius: 50%;
+      background: #20b85a;
+      color: white;
+      box-shadow: 0 8px 24px rgba(6,46,37,.22);
+    }
+    .whatsapp .icon { width: 26px; height: 26px; }
+
+    @media (max-width: 1080px) {
+      .nav-links, .nav-quote { display: none; }
+      .menu-toggle { display: grid; }
+      .hero { grid-template-columns: 48% 52%; }
+      .hero-copy { padding-right: 28px; }
+      .hero-benefits { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+      .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .business-grid { grid-template-columns: repeat(3, 1fr); }
+      .business-item:nth-child(3) { border-right: 0; }
+      .business-item:nth-child(-n+3) { border-bottom: 1px solid rgba(255,255,255,.2); }
+      .footer-grid { grid-template-columns: 1.4fr repeat(2, 1fr); }
+    }
+
+    @media (max-width: 760px) {
+      .container { width: min(100% - 32px, var(--max)); }
+      .site-header, .mobile-menu { inset-block-start: 0; }
+      .nav { min-height: 66px; }
+      .brand { font-size: 20px; }
+      .brand-mark { width: 38px; height: 38px; }
+      .mobile-menu { inset: 66px 0 0; }
+      .hero { min-height: 0; display: flex; flex-direction: column; }
+      .hero-copy-wrap { order: 1; padding: 0 16px; }
+      .hero-copy { max-width: none; padding: 44px 0 50px; }
+      .hero h1 { max-width: 500px; font-size: clamp(42px, 13vw, 58px); }
+      .hero-copy > p { font-size: 16px; }
+      .hero-benefits { grid-template-columns: repeat(3, 1fr); margin-top: 32px; }
+      .hero-benefit { align-items: flex-start; flex-direction: column; }
+      .hero-media { min-height: 360px; order: 0; clip-path: none; }
+      .hero-media img { min-height: 360px; }
+      .logo-group { gap: 28px; padding-right: 28px; }
+      .logo-item { width: 142px; height: 58px; flex-basis: 142px; }
+      .logo-item img { max-height: 50px; }
+      .logo-item.logo-color img,
+      .logo-item.logo-duc img { max-height: 54px; }
+      .products { padding: 60px 0 68px; }
+      .products-head { align-items: flex-start; flex-direction: column; }
+      .product-card { min-height: 350px; }
+      .partner { grid-template-columns: 1fr; }
+      .partner-media { min-height: 0; }
+      .partner-copy { padding: 54px 24px 62px; }
+      .business-grid { grid-template-columns: repeat(2, 1fr); }
+      .business-item, .business-item:nth-child(3) { border-right: 1px solid rgba(255,255,255,.2); border-bottom: 1px solid rgba(255,255,255,.2); }
+      .business-item:nth-child(even) { border-right: 0; }
+      .business-item:nth-last-child(-n+2) { border-bottom: 0; }
+      .cta-inner, .cta-copy { align-items: flex-start; }
+      .cta-inner { flex-direction: column; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-brand { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 520px) {
+      .hero-actions { align-items: stretch; flex-direction: column; }
+      .hero-actions .button { width: 100%; }
+      .hero-benefits { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+      .hero-benefit { align-items: flex-start; flex-direction: column; }
+      .product-grid { grid-template-columns: 1fr; }
+      .product-card { min-height: 390px; }
+      .partner-media { min-height: 0; }
+      .business { padding-top: 60px; }
+      .business-grid { grid-template-columns: 1fr; }
+      .business-item, .business-item:nth-child(even), .business-item:nth-last-child(-n+2) { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.2); }
+      .business-item:last-child { border-bottom: 0; }
+      .cta-copy { gap: 14px; }
+      .cta-icon { width: 52px; height: 52px; flex-basis: 52px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 30px 24px; }
+      .footer-bottom { flex-direction: column; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .logo-track { animation: none; }
+      .logo-group[aria-hidden="true"] { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="MXPACKPRO homepage">
+        <span class="brand-mark"><img src="assets/img/brand/mxpack-logo.svg" alt=""></span>
+        <span>MX<span class="brand-accent">PACK</span>PRO</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <div class="nav-item">
+          <a href="products.html">Products <i data-lucide="chevron-down" class="icon"></i></a>
+          <div class="dropdown">
+            <a href="takeaway-food-boxes.html">Takeout & Food Boxes</a>
+            <a href="custom-paper-bags.html">Custom Paper Bags</a>
+            <a href="bakery-cake-boxes.html">Bakery & Cake Boxes</a>
+            <a href="mailer-shipping-boxes.html">Mailer & Shipping Boxes</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="solutions.html">Solutions <i data-lucide="chevron-down" class="icon"></i></a>
+          <div class="dropdown">
+            <a href="restaurant-takeaway-packaging.html">Restaurants & Takeaway</a>
+            <a href="bakery-dessert-packaging.html">Cafes & Bakeries</a>
+            <a href="catering-event-packaging.html">Catering & Events</a>
+            <a href="food-brand-retail-packaging.html">Food Brands & Retail</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="customization.html">Custom Packaging <i data-lucide="chevron-down" class="icon"></i></a>
+          <div class="dropdown">
+            <a href="box-styles-structures.html">Box Styles & Structures</a>
+            <a href="materials-food-safety.html">Materials & Food Safety</a>
+            <a href="printing-finishes.html">Printing & Finishes</a>
+            <a href="samples-prototyping.html">Samples & Prototyping</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="resources.html">Resources <i data-lucide="chevron-down" class="icon"></i></a>
+          <div class="dropdown">
+            <a href="packaging-buying-guide.html">Packaging Buying Guide</a>
+            <a href="moq-pricing-guide.html">MOQ & Pricing Guide</a>
+            <a href="artwork-checklist.html">Artwork Checklist</a>
+            <a href="faq.html">FAQs</a>
+          </div>
+        </div>
+        <div class="nav-item">
+          <a href="about-us.html">About <i data-lucide="chevron-down" class="icon"></i></a>
+          <div class="dropdown">
+            <a href="about-us.html">About MXPACKPRO</a>
+            <a href="factory-equipment.html">Factory & Equipment</a>
+            <a href="quality-control.html">Quality Control</a>
+            <a href="global-shipping.html">Global Shipping</a>
+          </div>
+        </div>
+      </nav>
+
+      <a class="button nav-quote" href="get-a-quote.html">Request a quote <i data-lucide="arrow-right" class="icon"></i></a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation">
+        <i data-lucide="menu" class="icon"></i>
+      </button>
+    </div>
+  </header>
+
+  <nav class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation">
+    <details>
+      <summary>Products</summary>
+      <a href="products.html">View all products</a>
+      <a href="takeaway-food-boxes.html">Takeout & Food Boxes</a>
+      <a href="custom-paper-bags.html">Custom Paper Bags</a>
+      <a href="bakery-cake-boxes.html">Bakery & Cake Boxes</a>
+    </details>
+    <details>
+      <summary>Solutions</summary>
+      <a href="restaurant-takeaway-packaging.html">Restaurants & Takeaway</a>
+      <a href="bakery-dessert-packaging.html">Cafes & Bakeries</a>
+      <a href="catering-event-packaging.html">Catering & Events</a>
+      <a href="food-brand-retail-packaging.html">Food Brands & Retail</a>
+    </details>
+    <details>
+      <summary>Custom Packaging</summary>
+      <a href="customization.html">Customization overview</a>
+      <a href="materials-food-safety.html">Materials & Food Safety</a>
+      <a href="printing-finishes.html">Printing & Finishes</a>
+    </details>
+    <details>
+      <summary>Resources</summary>
+      <a href="resources.html">Resource center</a>
+      <a href="faq.html">FAQs</a>
+      <a href="packaging-buying-guide.html">Packaging Buying Guide</a>
+    </details>
+    <a href="about-us.html">About MXPACKPRO</a>
+    <a href="get-a-quote.html">Contact</a>
+    <a class="button" href="get-a-quote.html">Request a quote</a>
+  </nav>
+
+  <main>
+    <section class="hero">
+      <div class="hero-copy-wrap">
+        <div class="hero-copy">
+          <h1>Packaging that makes your food look as good as it tastes.</h1>
+          <p>Custom foodservice packaging solutions for restaurants, cafes, and food brands, backed by responsive factory-direct support.</p>
+          <div class="hero-actions">
+            <a class="button" href="get-a-quote.html">Start a packaging project <i data-lucide="arrow-right" class="icon"></i></a>
+            <a class="button button-outline" href="products.html">Explore products</a>
+          </div>
+          <div class="hero-benefits" aria-label="Service benefits">
+            <div class="hero-benefit"><i data-lucide="leaf" class="icon"></i><span>Sustainable<br>options</span></div>
+            <div class="hero-benefit"><i data-lucide="shield-check" class="icon"></i><span>Reliable<br>supply</span></div>
+            <div class="hero-benefit"><i data-lucide="truck" class="icon"></i><span>Global export<br>support</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-media">
+        <img src="assets/img/home/hero-restaurant-packaging.webp" alt="Custom burger box, paper cup and takeout packaging in a restaurant" fetchpriority="high">
+      </div>
+    </section>
+
+    <section class="trusted" aria-label="Selected customer brands">
+      <div class="container">
+        <p class="trusted-title">Trusted by food, retail and institutional brands worldwide</p>
+        <div class="logo-viewport">
+          <div class="logo-track">
+            <div class="logo-group">
+              <div class="logo-item"><img src="assets/img/client-logos/collection-sweet-bites.png" alt="Sweet Bites"></div>
+              <div class="logo-item"><img src="assets/img/client-logos/collection-texas-womans-university.png" alt="Texas Woman's University"></div>
+              <div class="logo-item"><img src="assets/img/client-logos/collection-cowboys.png" alt="Cowboys"></div>
+              <div class="logo-item"><img src="assets/img/client-logos/collection-ltk.png" alt="LTK"></div>
+              <div class="logo-item"><img src="assets/img/client-logos/collection-sugoi-mart.png" alt="Sugoi Mart"></div>
+              <div class="logo-item"><img src="assets/img/client-logos/collection-peter-fell.png" alt="Peter Fell"></div>
+              <div class="logo-item"><img src="assets/img/client-logos/collection-pro-supra.png" alt="Pro Supra"></div>
+              <div class="logo-item"><img src="assets/img/client-logos/collection-three-hills.png" alt="Three Hills"></div>
+              <div class="logo-item logo-color"><img src="assets/img/client-logos/color-3-transparent.svg?v=3" alt="Customer brand"></div>
+              <div class="logo-item logo-duc"><img src="assets/img/client-logos/duc.svg" alt="DUC"></div>
+              <div class="logo-item text-logo">Joe &amp; The Juice</div>
+            </div>
+            <div class="logo-group" aria-hidden="true">
+              <div class="logo-item"><img src="assets/img/client-logos/collection-sweet-bites.png" alt=""></div>
+              <div class="logo-item"><img src="assets/img/client-logos/collection-texas-womans-university.png" alt=""></div>
+              <div class="logo-item"><img src="assets/img/client-logos/collection-cowboys.png" alt=""></div>
+              <div class="logo-item"><img src="assets/img/client-logos/collection-ltk.png" alt=""></div>
+              <div class="logo-item"><img src="assets/img/client-logos/collection-sugoi-mart.png" alt=""></div>
+              <div class="logo-item"><img src="assets/img/client-logos/collection-peter-fell.png" alt=""></div>
+              <div class="logo-item"><img src="assets/img/client-logos/collection-pro-supra.png" alt=""></div>
+              <div class="logo-item"><img src="assets/img/client-logos/collection-three-hills.png" alt=""></div>
+              <div class="logo-item logo-color"><img src="assets/img/client-logos/color-3-transparent.svg?v=3" alt=""></div>
+              <div class="logo-item logo-duc"><img src="assets/img/client-logos/duc.svg" alt=""></div>
+              <div class="logo-item text-logo">Joe &amp; The Juice</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="products" id="products">
+      <div class="container">
+        <div class="products-head">
+          <div>
+            <p class="eyebrow">Packaging built around your menu</p>
+            <h2 class="section-title">Start with the product your business needs.</h2>
+          </div>
+          <p>Choose a proven food packaging format or start a fully custom project with your own size, structure and printed artwork.</p>
+        </div>
+        <div class="product-grid">
+          <a class="product-card" href="takeaway-food-boxes.html">
+            <div class="product-card-copy">
+              <h2>Takeout Boxes</h2>
+              <p>Durable, leak-resistant packaging for hot meals, burgers and sides.</p>
+            </div>
+            <img src="assets/img/home/category-takeout-boxes.webp" alt="Takeout food boxes" loading="lazy">
+            <span class="card-link">View food boxes <i data-lucide="arrow-right" class="icon"></i></span>
+          </a>
+          <a class="product-card" href="products.html">
+            <div class="product-card-copy">
+              <h2>Paper Cups</h2>
+              <p>Printed hot and cold cups that carry your brand beyond the counter.</p>
+            </div>
+            <img src="assets/img/home/category-paper-cup.webp" alt="Custom printed paper cup" loading="lazy">
+            <span class="card-link">View paper cups <i data-lucide="arrow-right" class="icon"></i></span>
+          </a>
+          <a class="product-card" href="custom-paper-bags.html">
+            <div class="product-card-copy">
+              <h2>Paper Bags</h2>
+              <p>Strong, practical bags for takeaway orders, delivery and retail.</p>
+            </div>
+            <img src="assets/img/home/category-paper-bag.webp" alt="Custom kraft paper bags" loading="lazy">
+            <span class="card-link">View paper bags <i data-lucide="arrow-right" class="icon"></i></span>
+          </a>
+          <a class="product-card" href="customization.html">
+            <div class="product-card-copy">
+              <h2>Custom Packaging</h2>
+              <p>Branded packaging developed around your product, budget and goals.</p>
+            </div>
+            <img src="assets/img/home/category-custom-packaging.webp" alt="Fully customized printed packaging box" loading="lazy">
+            <span class="card-link">Explore customization <i data-lucide="arrow-right" class="icon"></i></span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="partner">
+      <div class="partner-media">
+        <img src="assets/img/home/packaging-group.webp" alt="Coordinated custom food packaging collection" loading="lazy">
+      </div>
+      <div class="partner-copy">
+        <div class="partner-inner">
+          <p class="eyebrow">One source. Endless possibilities.</p>
+          <h2 class="section-title">All your packaging needs, from one reliable partner.</h2>
+          <p>MXPACKPRO helps you source the right packaging across your menu and sales channels, so your team can focus on serving great food.</p>
+          <ul class="check-list">
+            <li><i data-lucide="circle-check-big" class="icon"></i><span>A wide selection of food packaging formats</span></li>
+            <li><i data-lucide="circle-check-big" class="icon"></i><span>Custom structure, printing and design support</span></li>
+            <li><i data-lucide="circle-check-big" class="icon"></i><span>Food-grade and sustainability-focused material options</span></li>
+            <li><i data-lucide="circle-check-big" class="icon"></i><span>Consistent quality, sampling and export coordination</span></li>
+          </ul>
+          <a class="button" href="get-a-quote.html">Start a packaging project <i data-lucide="arrow-right" class="icon"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="business" id="solutions">
+      <div class="container">
+        <div class="business-head">
+          <p class="eyebrow">Solutions for every business</p>
+          <h2 class="section-title">Packaging for every kind of food business.</h2>
+        </div>
+        <div class="business-grid">
+          <article class="business-item">
+            <i data-lucide="sandwich" class="icon"></i>
+            <h3>Restaurants</h3>
+            <p>Reliable packaging for dine-out, takeout and delivery.</p>
+            <a href="restaurant-takeaway-packaging.html">Learn more <i data-lucide="arrow-right" class="icon"></i></a>
+          </article>
+          <article class="business-item">
+            <i data-lucide="coffee" class="icon"></i>
+            <h3>Cafes & Coffee Shops</h3>
+            <p>Cups, lids, bags and accessories for daily service.</p>
+            <a href="bakery-dessert-packaging.html">Learn more <i data-lucide="arrow-right" class="icon"></i></a>
+          </article>
+          <article class="business-item">
+            <i data-lucide="shopping-bag" class="icon"></i>
+            <h3>QSR & Fast Casual</h3>
+            <p>Speed, consistency and brand impact at scale.</p>
+            <a href="enterprise-packaging.html">Learn more <i data-lucide="arrow-right" class="icon"></i></a>
+          </article>
+          <article class="business-item">
+            <i data-lucide="soup" class="icon"></i>
+            <h3>Food Trucks</h3>
+            <p>Compact, durable packaging made for meals on the go.</p>
+            <a href="restaurant-takeaway-packaging.html">Learn more <i data-lucide="arrow-right" class="icon"></i></a>
+          </article>
+          <article class="business-item">
+            <i data-lucide="briefcase-business" class="icon"></i>
+            <h3>Caterers</h3>
+            <p>Professional packaging for events of every size.</p>
+            <a href="catering-event-packaging.html">Learn more <i data-lucide="arrow-right" class="icon"></i></a>
+          </article>
+          <article class="business-item">
+            <i data-lucide="package-open" class="icon"></i>
+            <h3>Grocery & Retail</h3>
+            <p>Presentable, reliable packaging for retail-ready foods.</p>
+            <a href="food-brand-retail-packaging.html">Learn more <i data-lucide="arrow-right" class="icon"></i></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="container cta-inner">
+        <div class="cta-copy">
+          <span class="cta-icon"><i data-lucide="package-open" class="icon"></i></span>
+          <div>
+            <h2>Ready to elevate your packaging?</h2>
+            <p>Tell us what you need and receive a project-ready recommendation.</p>
+          </div>
+        </div>
+        <a class="button button-light" href="get-a-quote.html">Request a quote <i data-lucide="arrow-right" class="icon"></i></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html">
+            <span class="brand-mark"><img src="assets/img/brand/mxpack-logo.svg" alt=""></span>
+            <span>MX<span class="brand-accent">PACK</span>PRO</span>
+          </a>
+          <p>Factory-direct custom food packaging for brands that care about quality, consistency and presentation.</p>
+          <div class="socials">
+            <a href="https://www.linkedin.com/" aria-label="LinkedIn"><i data-lucide="linkedin" class="icon"></i></a>
+            <a href="https://www.instagram.com/" aria-label="Instagram"><i data-lucide="instagram" class="icon"></i></a>
+            <a href="mailto:meloxu98@gmail.com" aria-label="Email"><i data-lucide="mail" class="icon"></i></a>
+          </div>
+        </div>
+        <div>
+          <h3>Products</h3>
+          <div class="footer-links">
+            <a href="takeaway-food-boxes.html">Takeout Boxes</a>
+            <a href="products.html">Paper Cups</a>
+            <a href="custom-paper-bags.html">Paper Bags</a>
+            <a href="bakery-cake-boxes.html">Bakery Boxes</a>
+            <a href="products.html">View all products</a>
+          </div>
+        </div>
+        <div>
+          <h3>Solutions</h3>
+          <div class="footer-links">
+            <a href="restaurant-takeaway-packaging.html">Restaurants</a>
+            <a href="bakery-dessert-packaging.html">Cafes & Bakeries</a>
+            <a href="catering-event-packaging.html">Catering</a>
+            <a href="food-brand-retail-packaging.html">Food Brands & Retail</a>
+          </div>
+        </div>
+        <div>
+          <h3>Resources</h3>
+          <div class="footer-links">
+            <a href="resources.html">Resource Center</a>
+            <a href="packaging-buying-guide.html">Buying Guide</a>
+            <a href="sustainability.html">Sustainability</a>
+            <a href="faq.html">FAQs</a>
+            <a href="get-a-quote.html">Request Samples</a>
+          </div>
+        </div>
+        <div>
+          <h3>Contact Us</h3>
+          <div class="footer-links footer-contact">
+            <a href="tel:+8615521163050"><i data-lucide="phone" class="icon"></i><span>+86 155 2116 3050</span></a>
+            <a href="mailto:meloxu98@gmail.com"><i data-lucide="mail" class="icon"></i><span>meloxu98@gmail.com</span></a>
+            <a href="https://wa.me/447704644465" target="_blank" rel="noopener"><i data-lucide="message-circle" class="icon"></i><span>WhatsApp +44 7704 644465</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 MXPACKPRO / XUMELO TECHNOLOGY. All rights reserved.</span>
+        <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+      </div>
+    </div>
+  </footer>
+
+  <a class="whatsapp" href="https://wa.me/447704644465?text=Hello%20MXPACKPRO%2C%20I%20would%20like%20a%20packaging%20quote." target="_blank" rel="noopener" aria-label="Chat with MXPACKPRO on WhatsApp">
+    <i data-lucide="message-circle" class="icon"></i>
+  </a>
+
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <script>
+    if (window.lucide) window.lucide.createIcons();
+
+    const menuToggle = document.querySelector(".menu-toggle");
+    const mobileMenu = document.querySelector(".mobile-menu");
+
+    menuToggle.addEventListener("click", () => {
+      const open = mobileMenu.classList.toggle("open");
+      document.body.classList.toggle("menu-open", open);
+      menuToggle.setAttribute("aria-expanded", String(open));
+      menuToggle.setAttribute("aria-label", open ? "Close navigation" : "Open navigation");
+      menuToggle.innerHTML = open
+        ? '<i data-lucide="x" class="icon"></i>'
+        : '<i data-lucide="menu" class="icon"></i>';
+      if (window.lucide) window.lucide.createIcons();
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth > 1080 && mobileMenu.classList.contains("open")) {
+        mobileMenu.classList.remove("open");
+        document.body.classList.remove("menu-open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.setAttribute("aria-label", "Open navigation");
+        menuToggle.innerHTML = '<i data-lucide="menu" class="icon"></i>';
+        if (window.lucide) window.lucide.createIcons();
+      }
+    });
+  </script>
+</body>
+</html>
