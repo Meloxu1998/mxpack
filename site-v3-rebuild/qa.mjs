@@ -16,6 +16,7 @@ try {
 const issues = [];
 const titles = new Map();
 const canonicals = new Map();
+const headings = new Map();
 
 for (const file of files) {
   const html = await readFile(path.join(root, file), 'utf8');
@@ -23,6 +24,7 @@ for (const file of files) {
   const description = html.match(/<meta\s+name="description"\s+content="([^"]+)"/i)?.[1]?.trim();
   const canonical = html.match(/<link\s+rel="canonical"\s+href="([^"]+)"/i)?.[1]?.trim();
   const h1Count = (html.match(/<h1\b/gi) || []).length;
+  const h1 = html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1]?.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
   if (!title || title.length < 20 || title.length > 70) issues.push(`${file}: title length ${title?.length || 0}`);
   if (!description || description.length < 80 || description.length > 170) issues.push(`${file}: description length ${description?.length || 0}`);
   if (!canonical) issues.push(`${file}: missing canonical`);
@@ -30,6 +32,7 @@ for (const file of files) {
   if (/noindex/i.test(html)) issues.push(`${file}: contains noindex`);
   if (titles.has(title)) issues.push(`${file}: duplicate title with ${titles.get(title)}`); else titles.set(title, file);
   if (canonicals.has(canonical)) issues.push(`${file}: duplicate canonical with ${canonicals.get(canonical)}`); else canonicals.set(canonical, file);
+  if (headings.has(h1)) issues.push(`${file}: duplicate H1 with ${headings.get(h1)}`); else headings.set(h1, file);
 
   for (const match of html.matchAll(/<(?:a|img|script|link)\b[^>]*(?:href|src)="([^"]+)"/gi)) {
     const url = match[1];

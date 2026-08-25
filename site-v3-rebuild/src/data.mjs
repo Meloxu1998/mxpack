@@ -15,15 +15,16 @@ export const nav = [
     ['Takeout Food Boxes', 'takeaway-food-boxes.html'],
     ['Burger Boxes', 'burger-boxes.html'],
     ['Pizza Boxes', 'pizza-boxes.html'],
-    ['Bakery & Cake Boxes', 'bakery-cake-boxes.html'],
-    ['Paper Bags', 'custom-paper-bags.html']
+    ['Paper Cups', 'paper-cups.html'],
+    ['Paper Bags', 'custom-paper-bags.html'],
+    ['Bakery & Cake Boxes', 'bakery-cake-boxes.html']
   ]},
   { label: 'Solutions', href: 'solutions.html', items: [
-    ['Restaurants & Takeaway', 'restaurant-takeaway-packaging.html'],
-    ['Catering & Events', 'catering-event-packaging.html'],
-    ['Food Brands & Retail', 'food-brand-retail-packaging.html'],
-    ['Low MOQ for Startups', 'low-moq-startups.html'],
-    ['Enterprise Projects', 'enterprise-packaging.html']
+    ['Restaurants & Takeaway', 'solutions.html#restaurants'],
+    ['Catering & Events', 'solutions.html#catering'],
+    ['Food Brands & Retail', 'solutions.html#food-brands'],
+    ['Low MOQ for Startups', 'solutions.html#startups'],
+    ['Enterprise Projects', 'solutions.html#enterprise']
   ]},
   { label: 'Custom Packaging', href: 'custom-packaging.html', items: [
     ['How Custom Packaging Works', 'custom-packaging.html'],
@@ -39,8 +40,8 @@ export const nav = [
     ['Materials Guide', 'materials-food-safety.html'],
     ['Frequently Asked Questions', 'faq.html']
   ]},
-  { label: 'Company', href: 'about-us.html', items: [
-    ['About MX PACK', 'about-us.html'],
+  { label: 'About', href: 'about-us.html', items: [
+    ['About MXPACKPRO', 'about-us.html'],
     ['How We Work', 'about-us.html#process'],
     ['Quality Approach', 'about-us.html#quality'],
     ['Contact Us', 'get-a-quote.html'],
@@ -83,6 +84,17 @@ export const products = [
     use: ['Pizza', 'Flatbreads', 'Pastries', 'Sharing meals']
   },
   {
+    slug: 'paper-cups',
+    name: 'Custom Paper Cups',
+    shortName: 'Paper Cups',
+    image: 'home/category-paper-cup.webp',
+    description: 'Printed hot and cold paper cups designed to carry your brand beyond the counter.',
+    material: 'Food-grade cup paper with application-specific barrier',
+    structure: 'Single-wall or double-wall formats by project',
+    coating: 'PE or alternative barrier options by specification',
+    use: ['Coffee', 'Cold drinks', 'Tea', 'Desserts']
+  },
+  {
     slug: 'custom-paper-bags',
     name: 'Custom Paper Bags',
     shortName: 'Paper Bags',
@@ -97,7 +109,7 @@ export const products = [
     slug: 'bakery-cake-boxes',
     name: 'Bakery & Cake Boxes',
     shortName: 'Bakery Boxes',
-    image: 'home/category-custom-packaging.webp',
+    image: 'v4/bakery-cake-box.webp',
     description: 'Presentation-focused boxes with window, handle and insert options for desserts and cakes.',
     material: 'Food-grade paperboard or corrugated board',
     structure: 'Folding, window or handled formats',
