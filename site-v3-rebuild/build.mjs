@@ -52,7 +52,7 @@ function head({ title, description, slug = '', image = 'assets/img/home/hero-res
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="icon" href="assets/img/brand/mxpack-logo.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/css/v3.css">
+  <link rel="stylesheet" href="assets/css/v3.css?v=20260825-2">
   ${analytics()}
   ${schemas.map((item) => `<script type="application/ld+json">${JSON.stringify(item)}</script>`).join('\n  ')}
 </head>`;
@@ -98,7 +98,7 @@ function footer() {
   <a class="mail" href="mailto:${site.email}" aria-label="Email MXPACKPRO" data-track="email_click">${icon('mail')}</a>
 </div>
 <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
-<script src="assets/js/v3.js"></script>`;
+<script src="assets/js/v3.js?v=20260825-2"></script>`;
 }
 
 function layout(meta, body, active = '') {
