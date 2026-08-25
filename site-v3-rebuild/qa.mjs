@@ -36,7 +36,11 @@ for (const file of files) {
     if (/^(?:https?:|mailto:|tel:|#)/i.test(url)) continue;
     const clean = decodeURIComponent(url.split(/[?#]/)[0]);
     if (!clean) continue;
-    try { await stat(path.join(root, clean)); } catch { issues.push(`${file}: missing local target ${url}`); }
+    try {
+      await stat(path.join(root, clean));
+    } catch {
+      try { await stat(path.join(root, `${clean}.html`)); } catch { issues.push(`${file}: missing local target ${url}`); }
+    }
   }
 
   for (const match of html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/gi)) {

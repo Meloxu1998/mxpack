@@ -31,7 +31,7 @@ function organizationSchema() {
 }
 
 function head({ title, description, slug = '', image = 'assets/img/home/hero-restaurant-packaging.webp', schema = [] }) {
-  const canonical = `${site.domain}/${slug}`;
+  const canonical = `${site.domain}/${slug.replace(/\.html$/, '')}`;
   const schemas = [organizationSchema(), ...schema];
   return `<!doctype html>
 <html lang="en">
@@ -316,14 +316,19 @@ async function build() {
   await cp(sourceAssets, path.join(out, 'assets', 'img'), { recursive: true });
   await cp(path.join(root, 'src', 'styles.css'), path.join(out, 'assets', 'css', 'v3.css'));
   await cp(path.join(root, 'src', 'site.js'), path.join(out, 'assets', 'js', 'v3.js'));
-  for (const [file, content] of pages) await writeFile(path.join(out, file), content, 'utf8');
+  for (const [file, content] of pages) {
+    const productionHtml = content
+      .replace(/href="index\.html([?#][^"]*)?"/g, 'href="/$1"')
+      .replace(/href="([^":#]+)\.html([?#][^"]*)?"/g, 'href="$1$2"');
+    await writeFile(path.join(out, file), productionHtml, 'utf8');
+  }
 
-  const urls = [...pages.keys()].map((file) => `<url><loc>${site.domain}/${file === 'index.html' ? '' : file}</loc><lastmod>2026-08-25</lastmod><changefreq>${file === 'index.html' ? 'weekly' : 'monthly'}</changefreq><priority>${file === 'index.html' ? '1.0' : file === 'products.html' || file === 'custom-packaging.html' ? '0.9' : '0.7'}</priority></url>`).join('');
+  const urls = [...pages.keys()].map((file) => `<url><loc>${site.domain}/${file === 'index.html' ? '' : file.replace(/\.html$/, '')}</loc><lastmod>2026-08-25</lastmod><changefreq>${file === 'index.html' ? 'weekly' : 'monthly'}</changefreq><priority>${file === 'index.html' ? '1.0' : file === 'products.html' || file === 'custom-packaging.html' ? '0.9' : '0.7'}</priority></url>`).join('');
   await writeFile(path.join(out, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls}</urlset>`, 'utf8');
   await writeFile(path.join(out, 'robots.txt'), `User-agent: *\nAllow: /\n\nSitemap: ${site.domain}/sitemap.xml\n`, 'utf8');
-  await writeFile(path.join(out, 'llms.txt'), `# MXPACKPRO\n\nMXPACKPRO is the international website of Foshan Xumelo Technology Co., Ltd., a custom food packaging supplier based in Foshan, China.\n\n## Core pages\n- ${site.domain}/products.html — food packaging product categories\n- ${site.domain}/custom-packaging.html — custom structure, printing and sampling process\n- ${site.domain}/solutions.html — packaging by food business type\n- ${site.domain}/resources.html — packaging buying guides\n- ${site.domain}/about-us.html — company and project support\n- ${site.domain}/faq.html — MOQ, artwork, materials, samples and production answers\n- ${site.domain}/get-a-quote.html — contact and quotation request\n\n## Verified contact\n- Email: ${site.email}\n- Phone: ${site.phone}\n- WhatsApp: +44 7704 644465\n- Location: ${site.location}\n`, 'utf8');
-  await writeFile(path.join(out, '_headers'), `/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n\n/assets/*\n  Cache-Control: public, max-age=31536000, immutable\n`, 'utf8');
-  await writeFile(path.join(out, '_redirects'), `/customization.html /custom-packaging.html 301\n/custom-food-packaging.html /custom-packaging.html 301\n/why-mxpack.html /about-us.html 301\n/contact.html /get-a-quote.html 301\n`, 'utf8');
+  await writeFile(path.join(out, 'llms.txt'), `# MXPACKPRO\n\nMXPACKPRO is the international website of Foshan Xumelo Technology Co., Ltd., a custom food packaging supplier based in Foshan, China.\n\n## Core pages\n- ${site.domain}/products — food packaging product categories\n- ${site.domain}/custom-packaging — custom structure, printing and sampling process\n- ${site.domain}/solutions — packaging by food business type\n- ${site.domain}/resources — packaging buying guides\n- ${site.domain}/about-us — company and project support\n- ${site.domain}/faq — MOQ, artwork, materials, samples and production answers\n- ${site.domain}/get-a-quote — contact and quotation request\n\n## Verified contact\n- Email: ${site.email}\n- Phone: ${site.phone}\n- WhatsApp: +44 7704 644465\n- Location: ${site.location}\n`, 'utf8');
+  await writeFile(path.join(out, '_headers'), `/*\n  X-Content-Type-Options: nosniff\n  Referrer-Policy: strict-origin-when-cross-origin\n  Permissions-Policy: camera=(), microphone=(), geolocation=()\n\n/assets/*\n  Cache-Control: public, max-age=86400\n`, 'utf8');
+  await writeFile(path.join(out, '_redirects'), `/customization.html /custom-packaging 301\n/custom-food-packaging.html /custom-packaging 301\n/why-mxpack.html /about-us 301\n/contact.html /get-a-quote 301\n`, 'utf8');
   console.log(`Built ${pages.size} pages in ${out}`);
 }
 
