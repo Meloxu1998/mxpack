@@ -57,19 +57,15 @@ document.addEventListener('click', (event) => {
 });
 
 const contactConfig = {
-  whatsapp: 'https://wa.me/447704644465?text=Hello%20MXPACKPRO%2C%20I%20need%20help%20with%20custom%20food%20packaging.%20My%20product%20is%3A%20____%2C%20quantity%3A%20____%2C%20delivery%20country%3A%20____.',
-  quote: '/get-a-quote'
+  quote: '/get-a-quote',
+  email: 'mailto:meloxu98@gmail.com?subject=Custom%20food%20packaging%20inquiry'
 };
-
-document.querySelectorAll('a[href*="wa.me/447704644465"]').forEach((link) => {
-  link.href = contactConfig.whatsapp;
-});
 
 const floatingContact = document.querySelector('.floating-contact');
 if (floatingContact) {
-  const whatsapp = floatingContact.querySelector('.wa');
+  const primaryContact = floatingContact.querySelector('.wa');
   const email = floatingContact.querySelector('.mail');
-  if (whatsapp && !whatsapp.querySelector('span')) whatsapp.insertAdjacentHTML('beforeend', '<span>WhatsApp</span>');
+  if (primaryContact && !primaryContact.querySelector('span')) primaryContact.insertAdjacentHTML('beforeend', '<span>Get a quote</span>');
   if (email && !email.querySelector('span')) email.insertAdjacentHTML('beforeend', '<span>Email</span>');
 }
 
@@ -88,15 +84,15 @@ if (contactPromptAllowed) {
       <h2 id="contact-prompt-title">Not sure which packaging fits?</h2>
       <p>Send your product, quantity and delivery country. We will help narrow down the right format.</p>
       <div class="contact-prompt-actions">
-        <a class="button contact-prompt-whatsapp" href="${contactConfig.whatsapp}" target="_blank" rel="noopener" data-track="whatsapp_prompt_click">
-          <i class="icon" data-lucide="message-circle" aria-hidden="true"></i> Chat on WhatsApp
+        <a class="button contact-prompt-whatsapp" href="${contactConfig.quote}" data-track="quote_prompt_click">
+          <i class="icon" data-lucide="file-text" aria-hidden="true"></i> Send inquiry
         </a>
-        <a class="text-link" href="${contactConfig.quote}" data-track="quote_prompt_click">Request pricing</a>
+        <a class="text-link" href="${contactConfig.email}" data-track="email_prompt_click">Email us</a>
       </div>
     </aside>
     <nav class="mobile-contact-bar" aria-label="Quick contact">
-      <a class="mobile-contact-whatsapp" href="${contactConfig.whatsapp}" target="_blank" rel="noopener" data-track="whatsapp_mobile_click"><i class="icon" data-lucide="message-circle" aria-hidden="true"></i> WhatsApp</a>
-      <a class="mobile-contact-quote" href="${contactConfig.quote}" data-track="quote_mobile_click"><i class="icon" data-lucide="file-text" aria-hidden="true"></i> Get a quote</a>
+      <a class="mobile-contact-whatsapp" href="${contactConfig.quote}" data-track="quote_mobile_click"><i class="icon" data-lucide="file-text" aria-hidden="true"></i> Get a quote</a>
+      <a class="mobile-contact-quote" href="${contactConfig.email}" data-track="email_mobile_click"><i class="icon" data-lucide="mail" aria-hidden="true"></i> Email us</a>
     </nav>
   `);
 
