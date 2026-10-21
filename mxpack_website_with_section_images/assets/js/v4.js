@@ -156,12 +156,37 @@ if (contactPromptAllowed) {
   }, { passive: true });
 }
 
+const mobileWhatsAppDevice = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+let whatsAppHelp;
+if (mobileWhatsAppDevice) {
+  document.body.insertAdjacentHTML('beforeend', `
+    <aside class="whatsapp-help" data-whatsapp-help hidden aria-label="Other contact options" aria-live="polite">
+      <button type="button" class="whatsapp-help-close" data-whatsapp-help-close aria-label="Close contact options"><i class="icon" data-lucide="x" aria-hidden="true"></i></button>
+      <strong>Other ways to contact us</strong>
+      <a data-whatsapp-fallback data-track="whatsapp_fallback_click">Continue with WhatsApp</a>
+      <div class="whatsapp-help-alternatives"><a href="${contactConfig.quote}" data-track="quote_whatsapp_fallback_click">Get a quote</a><a href="${contactConfig.email}" data-track="email_whatsapp_fallback_click">Email us</a></div>
+    </aside>`);
+  whatsAppHelp = document.querySelector('[data-whatsapp-help]');
+  const hideWhatsAppHelp = () => { whatsAppHelp.hidden = true; };
+  document.querySelector('[data-whatsapp-help-close]').addEventListener('click', hideWhatsAppHelp);
+  document.addEventListener('visibilitychange', () => { if (document.hidden) hideWhatsAppHelp(); });
+  document.addEventListener('keydown', event => { if (event.key === 'Escape') hideWhatsAppHelp(); });
+}
+
 document.querySelectorAll('[data-whatsapp]').forEach(link => {
   const productName = document.body.dataset.productId ? document.querySelector('h1')?.textContent.trim() : '';
   const message = productName ? `Hi MXPACKPRO, I am interested in ${productName}.` : 'Hi MXPACKPRO, I am interested in custom packaging.';
-  const mobileDevice = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
-  const chatEntry = mobileDevice ? 'https://wa.me/8615918968149?text=' : 'https://web.whatsapp.com/send/?phone=8615918968149&text=';
+  const chatEntry = mobileWhatsAppDevice ? 'whatsapp://send?phone=8615918968149&text=' : 'https://web.whatsapp.com/send/?phone=8615918968149&text=';
   link.href = chatEntry + encodeURIComponent(`${message}\nPage: https://mxpackpro.com${location.pathname}`);
+  if (mobileWhatsAppDevice) {
+    link.removeAttribute('target');
+    link.setAttribute('aria-label', 'Chat on WhatsApp');
+    link.addEventListener('click', () => {
+      // App launches have no reliable browser success callback. Keep recovery user-driven.
+      whatsAppHelp.querySelector('[data-whatsapp-fallback]').href = 'https://wa.me/8615918968149?text=' + encodeURIComponent(new URL(link.href).searchParams.get('text'));
+      whatsAppHelp.hidden = false;
+    });
+  }
 });
 
 if (window.lucide) window.lucide.createIcons();

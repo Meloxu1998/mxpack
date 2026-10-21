@@ -37,11 +37,30 @@ const base=process.env.QA_BASE||'http://127.0.0.1:4187';
   assert(events.includes('whatsapp_click'));assert(!events.includes('generate_lead'));
   for(const userAgent of ['Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 Version/18.0 Mobile/15E148 Safari/604.1','Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 Chrome/130.0.0.0 Mobile Safari/537.36']){
    const mobile=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,userAgent});
-   const phone=await mobile.newPage();await phone.goto(base+'/products/custom-burger-clamshell-box');
-   const url=new URL(await phone.locator('.mobile-contact-whatsapp').getAttribute('href'));
-   assert.equal(url.hostname,'wa.me');assert.equal(url.pathname,'/8615918968149');assert(url.searchParams.get('text').includes('Burger'));
+   await mobile.route(/googletagmanager\.com|google-analytics\.com/,r=>r.fulfill({status:200,body:''}));
+   const phone=await mobile.newPage();
+   // Stop the native default action: a desktop emulator cannot launch a phone app.
+   await phone.addInitScript(()=>document.addEventListener('click',event=>{if(event.target.closest('[data-whatsapp]'))event.preventDefault();},true));
+   for(const route of ['/','/products/custom-burger-clamshell-box','/get-a-quote','/custom-packaging']){
+    await phone.goto(base+route);
+    const link=phone.locator(route.includes('quote')||route.includes('custom-packaging')?'.contact-method[data-whatsapp]':'.mobile-contact-whatsapp');
+    const url=new URL(await link.getAttribute('href'));
+    assert.equal(url.protocol,'whatsapp:');assert.equal(url.hostname,'send');assert.equal(url.searchParams.get('phone'),'8615918968149');
+    assert(url.searchParams.get('text').includes('https://mxpackpro.com'+route));
+    assert.equal(await link.getAttribute('target'),null);
+    const help=phone.locator('[data-whatsapp-help]');assert(!await help.isVisible());
+    await link.click();assert(await help.isVisible());
+    const fallback=new URL(await help.locator('[data-whatsapp-fallback]').getAttribute('href'));
+    assert.equal(fallback.hostname,'wa.me');assert.equal(fallback.pathname,'/8615918968149');assert.equal(fallback.searchParams.get('text'),url.searchParams.get('text'));
+    assert.equal(await help.locator('a[href="/get-a-quote"]').count(),1);
+    assert((await help.locator('a[href^="mailto:"]').getAttribute('href')).includes('sales@mxpackpro.com'));
+    assert(await phone.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+    if(route==='/')await phone.screenshot({path:path.join(output,userAgent.includes('iPhone')?'iphone-app-fallback.png':'android-app-fallback.png')});
+    await help.locator('[data-whatsapp-help-close]').click();assert(!await help.isVisible());
+    await link.click();await phone.keyboard.press('Escape');assert(!await help.isVisible());
+   }
    await mobile.close();
   }
-  console.log('PASS: 4 routes, 3 viewports, correct WhatsApp number and product context, isolated click tracking, intercepted navigation. No message sent.');
+  console.log('PASS: desktop web routing, iOS/Android app deep links on 4 routes, user-driven recovery, quote/email retained, 3 viewports, tracking. Native app launch not tested; no message sent.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1)});

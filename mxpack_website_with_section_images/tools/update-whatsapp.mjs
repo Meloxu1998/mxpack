@@ -13,7 +13,7 @@ for(const file of files){
  if(html.includes('class="floating-contact"'))configured++;
  html=html.replace(/<a class="wa"[^>]*>[\s\S]*?<\/a>/,`<a class="wa" ${attrs} aria-label="Chat on WhatsApp (opens in a new tab)" title="Chat on WhatsApp">${icon}<span>WhatsApp</span></a>`);
  if(html.includes('class="contact-methods"')&&!html.includes('<small>WhatsApp</small>'))html=html.replace('<div class="contact-methods">','<div class="contact-methods">'+row);
- html=html.replace(/v4\.js\?v=[^"\s]+/g,'v4.js?v=20261021-8').replace(/v4\.min\.css\?v=[^"\s]+/g,'v4.min.css?v=20261021-4');
+ html=html.replace(/v4\.js\?v=[^"\s]+/g,'v4.js?v=20261021-9').replace(/v4\.min\.css\?v=[^"\s]+/g,'v4.min.css?v=20261021-5');
  fs.writeFileSync(full,html);
 }
 console.log(`WhatsApp configured on ${configured} contact-enabled pages.`);
