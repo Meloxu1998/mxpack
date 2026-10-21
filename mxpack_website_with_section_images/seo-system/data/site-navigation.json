@@ -1,7 +1,111 @@
 [
-  {"id":"products","label":"Products","url":"/products","children":[{"label":"BBQ Packaging","url":"/products?category=bbq"},{"label":"Takeout Food Boxes","url":"/takeaway-food-boxes"},{"label":"Burger Boxes","url":"/burger-boxes"},{"label":"Pizza Boxes","url":"/pizza-boxes"},{"label":"Paper Cups & Carriers","url":"/paper-cups"},{"label":"Paper Bags & Wraps","url":"/custom-paper-bags"},{"label":"Bakery & Cake Boxes","url":"/bakery-cake-boxes"},{"label":"Custom Gift Boxes","url":"/products?category=gifts"},{"label":"Christmas Packaging","url":"/christmas-packaging"}]},
-  {"id":"solutions","label":"Solutions","url":"/solutions"},
-  {"id":"custom","label":"Custom Packaging","url":"/custom-packaging"},
-  {"id":"resources","label":"Guides","url":"/resources","children":[{"label":"Packaging Buying Guide","url":"/packaging-buying-guide"},{"label":"MOQ & Pricing","url":"/moq-pricing-guide"},{"label":"Materials & Food Safety","url":"/materials-food-safety"},{"label":"Ordering FAQ","url":"/faq"}]},
-  {"id":"about","label":"About","url":"/about-us"}
+  {
+    "id": "products",
+    "label": "Products",
+    "url": "/products",
+    "children": [
+      {
+        "label": "Hot Selling",
+        "url": "/products?category=hot-selling"
+      },
+      {
+        "label": "Grazing Boxes",
+        "url": "/products?category=grazing-boxes"
+      },
+      {
+        "label": "BBQ Boxes",
+        "url": "/products?category=bbq"
+      },
+      {
+        "label": "Take Away Food Boxes",
+        "url": "/products?category=takeaway-food-boxes"
+      },
+      {
+        "label": "Cake Boxes",
+        "url": "/products?category=cake-boxes"
+      },
+      {
+        "label": "Mailer Boxes",
+        "url": "/products?category=mailer-boxes"
+      },
+      {
+        "label": "Macaron & Chocolate Boxes",
+        "url": "/products?category=macaron-chocolate"
+      },
+      {
+        "label": "Cosmetic Boxes",
+        "url": "/products?category=cosmetic-boxes"
+      },
+      {
+        "label": "Pizza Boxes",
+        "url": "/products?category=pizza-boxes"
+      },
+      {
+        "label": "Wine Boxes",
+        "url": "/products?category=wine-boxes"
+      },
+      {
+        "label": "Gift Boxes",
+        "url": "/products?category=gift-boxes"
+      },
+      {
+        "label": "Shoes & Clothing Boxes",
+        "url": "/products?category=apparel-boxes"
+      },
+      {
+        "label": "Burger Boxes",
+        "url": "/products?category=burger-boxes"
+      },
+      {
+        "label": "Paper Bags",
+        "url": "/products?category=paper-bags"
+      },
+      {
+        "label": "Paper Cups",
+        "url": "/products?category=paper-cups"
+      },
+      {
+        "label": "Christmas Boxes",
+        "url": "/products?category=christmas-boxes"
+      }
+    ]
+  },
+  {
+    "id": "solutions",
+    "label": "Solutions",
+    "url": "/solutions"
+  },
+  {
+    "id": "custom",
+    "label": "Custom Packaging",
+    "url": "/custom-packaging"
+  },
+  {
+    "id": "resources",
+    "label": "Guides",
+    "url": "/resources",
+    "children": [
+      {
+        "label": "Packaging Buying Guide",
+        "url": "/packaging-buying-guide"
+      },
+      {
+        "label": "MOQ & Pricing",
+        "url": "/moq-pricing-guide"
+      },
+      {
+        "label": "Materials & Food Safety",
+        "url": "/materials-food-safety"
+      },
+      {
+        "label": "Ordering FAQ",
+        "url": "/faq"
+      }
+    ]
+  },
+  {
+    "id": "about",
+    "label": "About",
+    "url": "/about-us"
+  }
 ]

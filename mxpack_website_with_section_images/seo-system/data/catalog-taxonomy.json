@@ -1,0 +1,229 @@
+{
+  "categories": [
+    {
+      "id": "hot-selling",
+      "label": "Hot Selling",
+      "image": "bbq-grill-kit-packaging-box",
+      "description": "Featured formats for your next packaging project.",
+      "members": [
+        "bbq-grill-kit-packaging-box",
+        "bbq-meal-tray-carry-box",
+        "custom-pyramid-catering-box",
+        "window-grazing-box-with-dividers",
+        "custom-burger-clamshell-box",
+        "custom-corrugated-pizza-box",
+        "custom-printed-corrugated-mailer",
+        "foldable-magnetic-gift-box"
+      ]
+    },
+    {
+      "id": "grazing-boxes",
+      "label": "Grazing Boxes",
+      "image": "window-grazing-box-with-dividers",
+      "description": "Sharing platters, divided trays and catering boxes.",
+      "members": [
+        "window-grazing-box-with-dividers",
+        "catering-tray-with-cup-slots",
+        "handled-catering-tray",
+        "compartment-catering-meal-tray",
+        "radial-taco-sharing-platter",
+        "triangular-portion-sharing-box",
+        "double-door-catering-box",
+        "custom-pyramid-catering-box",
+        "dessert-skewer-display-box"
+      ]
+    },
+    {
+      "id": "bbq",
+      "label": "BBQ Boxes",
+      "image": "bbq-meal-tray-carry-box",
+      "description": "Meal carriers and BBQ kit packaging.",
+      "members": [
+        "bbq-grill-kit-packaging-box",
+        "bbq-meal-tray-carry-box"
+      ]
+    },
+    {
+      "id": "takeaway-food-boxes",
+      "label": "Take Away Food Boxes",
+      "image": "printed-gable-meal-box",
+      "description": "Meal cartons, food sleeves and takeaway wraps.",
+      "members": [
+        "custom-burger-clamshell-box",
+        "hexagonal-snack-carton",
+        "printed-sushi-meal-box",
+        "custom-corrugated-pizza-box",
+        "corn-dog-paper-sleeve",
+        "taco-box-with-sauce-wells",
+        "printed-gable-meal-box",
+        "petal-opening-snack-box",
+        "tear-strip-snack-carton",
+        "custom-food-wrapping-paper"
+      ]
+    },
+    {
+      "id": "cake-boxes",
+      "label": "Cake Boxes",
+      "image": "tall-cake-box-with-handles",
+      "description": "Cake carriers, window boxes and bakery cartons.",
+      "members": [
+        "tall-cake-box-with-handles",
+        "fold-open-cake-carrier-box",
+        "window-cake-box-removable-base",
+        "custom-folding-pastry-carton",
+        "printed-donut-pastry-box",
+        "pastry-pocket-sleeve"
+      ]
+    },
+    {
+      "id": "mailer-boxes",
+      "label": "Mailer Boxes",
+      "image": "custom-printed-corrugated-mailer",
+      "description": "Corrugated mailers for branded deliveries.",
+      "members": [
+        "custom-printed-corrugated-mailer"
+      ]
+    },
+    {
+      "id": "macaron-chocolate",
+      "label": "Macaron & Chocolate Boxes",
+      "image": "macaron-sleeve-box",
+      "description": "Confectionery sleeves, cartons and gift formats.",
+      "members": [
+        "macaron-sleeve-box",
+        "custom-chocolate-bar-carton",
+        "custom-heart-shaped-rigid-gift-box",
+        "custom-cookie-assortment-drawer-box"
+      ]
+    },
+    {
+      "id": "cosmetic-boxes",
+      "label": "Cosmetic Boxes",
+      "image": "custom-window-lid-rigid-gift-box",
+      "description": "Gift structures to size around your beauty products.",
+      "members": [
+        "foldable-magnetic-gift-box",
+        "custom-heart-shaped-rigid-gift-box",
+        "custom-hexagonal-rigid-gift-box",
+        "custom-window-lid-rigid-gift-box",
+        "custom-lid-and-base-rigid-gift-box",
+        "custom-shoulder-neck-rigid-gift-box"
+      ]
+    },
+    {
+      "id": "pizza-boxes",
+      "label": "Pizza Boxes",
+      "image": "custom-corrugated-pizza-box",
+      "description": "Printed corrugated cartons for takeaway pizza.",
+      "members": [
+        "custom-corrugated-pizza-box"
+      ]
+    },
+    {
+      "id": "wine-boxes",
+      "label": "Wine Boxes",
+      "image": "custom-wine-bottle-gift-box-with-insert",
+      "description": "Bottle presentation with a fitted insert.",
+      "members": [
+        "custom-wine-bottle-gift-box-with-insert"
+      ]
+    },
+    {
+      "id": "gift-boxes",
+      "label": "Gift Boxes",
+      "image": "foldable-magnetic-gift-box",
+      "description": "Rigid, folding and shaped gift packaging.",
+      "members": [
+        "custom-pyramid-favor-gift-box",
+        "custom-cylinder-paper-tube-gift-box",
+        "custom-heart-shaped-rigid-gift-box",
+        "custom-hexagonal-rigid-gift-box",
+        "custom-double-door-drawer-advent-calendar-box",
+        "custom-wine-bottle-gift-box-with-insert",
+        "custom-medal-coin-presentation-box",
+        "custom-window-lid-rigid-gift-box",
+        "custom-lid-and-base-rigid-gift-box",
+        "custom-shoulder-neck-rigid-gift-box",
+        "custom-christmas-cracker-favor-box",
+        "custom-ornament-gift-box-with-paper-insert",
+        "custom-cookie-assortment-drawer-box",
+        "custom-printed-corrugated-mailer",
+        "foldable-magnetic-gift-box",
+        "custom-pillow-gift-box",
+        "folding-advent-calendar-carton",
+        "envelope-flap-gift-box"
+      ]
+    },
+    {
+      "id": "apparel-boxes",
+      "label": "Shoes & Clothing Boxes",
+      "image": "custom-lid-and-base-rigid-gift-box",
+      "description": "Custom-sized mailer and presentation structures.",
+      "members": [
+        "custom-printed-corrugated-mailer",
+        "foldable-magnetic-gift-box",
+        "envelope-flap-gift-box",
+        "custom-lid-and-base-rigid-gift-box"
+      ]
+    },
+    {
+      "id": "burger-boxes",
+      "label": "Burger Boxes",
+      "image": "custom-burger-clamshell-box",
+      "description": "Hinged cartons for burgers and sliders.",
+      "members": [
+        "custom-burger-clamshell-box"
+      ]
+    },
+    {
+      "id": "paper-bags",
+      "label": "Paper Bags",
+      "image": "custom-bakery-carrier-bag",
+      "description": "Bakery, bread and retail carrier bags.",
+      "members": [
+        "custom-bakery-carrier-bag",
+        "printed-baguette-bread-bag",
+        "die-cut-handle-paper-bag"
+      ]
+    },
+    {
+      "id": "paper-cups",
+      "label": "Paper Cups",
+      "image": "custom-printed-coffee-paper-cup",
+      "description": "Printed paper cups and coordinated carriers.",
+      "members": [
+        "custom-printed-coffee-paper-cup",
+        "handled-two-cup-carrier",
+        "coffee-and-snack-combo-carrier",
+        "cup-top-donut-carrier"
+      ]
+    },
+    {
+      "id": "christmas-boxes",
+      "label": "Christmas Boxes",
+      "image": "custom-christmas-cracker-favor-box",
+      "description": "Festive gifting, advent calendars and party packs.",
+      "members": [
+        "custom-christmas-cracker-favor-box",
+        "custom-ornament-gift-box-with-paper-insert",
+        "custom-cookie-assortment-drawer-box",
+        "custom-pyramid-favor-gift-box",
+        "folding-advent-calendar-carton",
+        "custom-double-door-drawer-advent-calendar-box",
+        "custom-wine-bottle-gift-box-with-insert",
+        "window-grazing-box-with-dividers",
+        "tall-cake-box-with-handles",
+        "custom-pyramid-catering-box"
+      ]
+    }
+  ],
+  "aliases": {
+    "gifts": "gift-boxes",
+    "catering": "grazing-boxes",
+    "food-boxes": "takeaway-food-boxes",
+    "bakery": "cake-boxes",
+    "drinkware": "paper-cups",
+    "bags": "paper-bags",
+    "retail": "gift-boxes"
+  }
+}

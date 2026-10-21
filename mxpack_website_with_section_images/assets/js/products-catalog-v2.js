@@ -8,6 +8,13 @@
   const count = document.querySelector('[data-catalog-result-count]');
   const empty = document.querySelector('[data-catalog-empty]');
   const grid = document.querySelector('.catalog-grid');
+  const select = document.querySelector('[data-catalog-select]');
+  const context = document.querySelector('[data-catalog-context]');
+  const config = JSON.parse(document.querySelector('[data-catalog-taxonomy]')?.textContent || '{}');
+  const resolve = value => {
+    const normalized = config.aliases?.[value] || value;
+    return filters.some(filter => filter.dataset.catalogFilter === normalized) ? normalized : 'all';
+  };
   let category = 'all';
   let searchTimer;
   const update = () => {
@@ -20,27 +27,47 @@
     if (sort?.value === 'name') ordered.sort((a,b) => a.querySelector('h2').textContent.localeCompare(b.querySelector('h2').textContent));
     let visible = 0;
     ordered.forEach(card => {
-      const match = (category === 'all' || card.dataset.catalogCategory === category)
+      const categories = (card.dataset.catalogCategories || card.dataset.catalogCategory || '').split(' ');
+      const match = (category === 'all' || categories.includes(category))
         && terms.every(term => (card.dataset.catalogSearch || card.textContent.toLowerCase()).includes(term));
       card.hidden = !match;
       if (match) visible++;
       grid?.appendChild(card);
     });
     filters.forEach(filter => filter.setAttribute('aria-pressed', String(filter.dataset.catalogFilter === category)));
+    if (select) select.value = category;
+    if (context) {
+      const description = config.categories?.find(c => c.id === category)?.description;
+      const fitNote = ['cosmetic-boxes','apparel-boxes'].includes(category)
+        ? ' These are adaptable structures, not fixed-size stock packs. Product dimensions, inserts and sample fit require review.' : '';
+      context.textContent = category === 'hot-selling'
+        ? 'A curated selection of packaging formats, not a sales ranking. Confirm the construction and quantity for your project.'
+        : (description || 'Choose a category or search all packaging formats.') + fitNote;
+    }
     if (count) count.textContent = `${visible} product${visible === 1 ? '' : 's'}`;
     if (empty) empty.hidden = visible !== 0;
   };
-  filters.forEach(filter => filter.addEventListener('click', () => {
-    category = filter.dataset.catalogFilter;
+  const choose = value => {
+    category = resolve(value);
     update();
+    const url = new URL(location.href);
+    if (category === 'all') url.searchParams.delete('category');
+    else url.searchParams.set('category', category);
+    history.pushState(null, '', url);
     window.mxpackTrack?.('catalog_filter', {filter_name:category});
-  }));
+  };
+  filters.forEach(filter => filter.addEventListener('click', () => choose(filter.dataset.catalogFilter)));
+  select?.addEventListener('change', () => choose(select.value));
+  window.addEventListener('popstate', () => {
+    category = resolve(new URLSearchParams(location.search).get('category'));
+    update();
+  });
   input?.addEventListener('input', () => {
     clearTimeout(searchTimer);
     searchTimer = setTimeout(update, 120);
   });
   sort?.addEventListener('change', update);
   const requestedCategory = new URLSearchParams(location.search).get('category');
-  if (filters.some(filter => filter.dataset.catalogFilter === requestedCategory)) category = requestedCategory;
+  category = resolve(requestedCategory);
   update();
 })();

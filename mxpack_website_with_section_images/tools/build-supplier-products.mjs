@@ -159,3 +159,4 @@ for(const p of products) if(!sitemap.includes(`<loc>${base}${url(p)}</loc>`)) si
 fs.writeFileSync(sitemapPath,sitemap);
 fs.writeFileSync(path.join(root,'seo-system/data/catalog-keyword-map.csv'),`product_id,primary_keyword,landing_page,category,starting_moq,source_id\n${products.map(p=>[p.slug,p.keyword,`${base}${url(p)}`,p.category,p.source.minimumOrder??'',p.sourceId].map(v=>`"${String(v).replace(/"/g,'""')}"`).join(',')).join('\n')}\n`);
 console.log(`Built ${products.length} source-backed product pages, category links, searchable catalog and sitemap entries.`);
+await import('./sync-catalog-taxonomy.mjs');

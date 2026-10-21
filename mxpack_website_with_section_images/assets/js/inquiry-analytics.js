@@ -36,7 +36,7 @@
     if (!eventName) return;
     const id = products[link.dataset.productId] ? link.dataset.productId : pageProduct;
     const params = { product_id: id || 'general', entry_point: eventName, destination_path: destination };
-    if (eventName === 'home_category_click' && ['takeaway-food-boxes','burger-boxes','pizza-boxes','paper-cups','custom-paper-bags','bakery-cake-boxes'].includes(link.dataset.homeFamily)) {
+    if (eventName === 'home_category_click' && ['hot-selling','grazing-boxes','bbq','takeaway-food-boxes','cake-boxes','mailer-boxes','macaron-chocolate','cosmetic-boxes','pizza-boxes','wine-boxes','gift-boxes','apparel-boxes','burger-boxes','paper-bags','paper-cups','christmas-boxes'].includes(link.dataset.homeFamily)) {
       params.entry_point = `home_${link.dataset.homeFamily}`;
       params.item_category = link.dataset.homeFamily;
     }

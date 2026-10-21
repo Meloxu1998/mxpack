@@ -24,3 +24,4 @@ for(const file of files){
  fs.writeFileSync(target,html);
 }
 console.log(`Synchronized gift navigation and product inquiry context across ${files.length} documents.`);
+await import('./sync-catalog-taxonomy.mjs');

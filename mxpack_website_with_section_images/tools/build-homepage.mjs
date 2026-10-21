@@ -7,7 +7,7 @@ let html=fs.readFileSync(file,'utf8');
 const products=JSON.parse(fs.readFileSync(path.join(root,'seo-system/data/catalog-products.json'),'utf8'));
 const sources=JSON.parse(fs.readFileSync(path.join(root,'seo-system/data/catalog-provenance.json'),'utf8')).products;
 const base='https://mxpackpro.com';
-const moqOptions=[...new Set(products.map(product=>sources.find(source=>source.id===product.sourceId)?.minimumOrder))].sort((a,b)=>a-b);
+const moqOptions=[...new Set(products.map(product=>sources.find(source=>source.id===product.sourceId)?.minimumOrder).filter(value=>value!=null))].sort((a,b)=>a-b);
 if(moqOptions.some(value=>!Number.isFinite(value)||value<=0))throw new Error('Every displayed product needs a verified starting MOQ.');
 const esc=value=>String(value).replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;');
 const icon=name=>`<i class="icon" data-lucide="${name}" aria-hidden="true"></i>`;
@@ -76,3 +76,4 @@ const graph=[
 html=html.replace('</head>',`  <script type="application/ld+json">${JSON.stringify({'@context':'https://schema.org','@graph':graph})}</script>\n</head>`);
 fs.writeFileSync(file,html);
 console.log('Rebuilt homepage: six real product categories, procurement content, seven ordering answers, connected entity markup and responsive concept media.');
+await import('./sync-catalog-taxonomy.mjs');

@@ -8,6 +8,7 @@ const additions=require('../seo-system/data/gift-catalog-20261021.json');
 const catalog=require('../seo-system/data/catalog-products.json');
 const seasonal=require('../seo-system/data/christmas-products-20261021.json');
 const provenance=require('../seo-system/data/catalog-provenance.json').products;
+const giftCategoryCount=require('../seo-system/data/catalog-taxonomy.json').categories.find(c=>c.id==='gift-boxes').members.length;
 const base=process.env.QA_BASE||'http://127.0.0.1:4187';
 const output='D:/mxpack-audits/2026-10-21/gift-catalog';
 (async()=>{
@@ -53,26 +54,28 @@ const output='D:/mxpack-audits/2026-10-21/gift-catalog';
     assert(await page.locator('#phone').getAttribute('required')!==null);
    }
    await page.goto(base+'/products?category=gifts');
-   assert.equal(await page.locator('.catalog-card:not([hidden])').count(),giftCount);
-   assert.equal(await page.locator('header a[href="/products?category=gifts"]').count(),2);
+   assert.equal(await page.locator('.catalog-card:not([hidden])').count(),giftCategoryCount);
+   assert.equal(await page.locator('header a[href="/products?category=gift-boxes"]').count(),2);
    if(width<=1060){
     await page.locator('[data-menu-toggle]').click();
     await page.locator('.mobile-menu details').first().locator('summary').click();
-    await page.locator('.mobile-menu a[href="/products?category=gifts"]').click();
+    await page.locator('.mobile-menu a[href="/products?category=gift-boxes"]').click();
    }else{
     await page.locator('[aria-controls="nav-products"]').hover();
-    await page.locator('.nav-links a[href="/products?category=gifts"]').click();
+    await page.locator('.nav-links a[href="/products?category=gift-boxes"]').click();
    }
-   await page.waitForURL('**/products?category=gifts');
-   assert.equal(await page.locator('.catalog-card:not([hidden])').count(),giftCount);
+   await page.waitForURL('**/products?category=gift-boxes');
+   assert.equal(await page.locator('.catalog-card:not([hidden])').count(),giftCategoryCount);
    await page.locator('[data-catalog-sort]').selectOption('moq');
-   assert.equal(await page.locator('.catalog-card:not([hidden])').count(),giftCount);
-   await page.locator('[data-catalog-filter="all"]').click();
+   assert.equal(await page.locator('.catalog-card:not([hidden])').count(),giftCategoryCount);
+   if(width<=760)await page.locator('[data-catalog-select]').selectOption('all');
+   else await page.locator('[data-catalog-filter="all"]').click();
    assert.equal(await page.locator('.catalog-card:not([hidden])').count(),catalog.length);
    const order=await page.locator('.catalog-grid .catalog-card').evaluateAll(cards=>cards.map(c=>c.dataset.productMoq));
    assert(order.slice(0,41).every(n=>Number(n)>0));assert(order.slice(41).every(n=>!n));
-   await page.locator('[data-catalog-filter="gifts"]').click();
-   await page.locator('.catalog-filters').scrollIntoViewIfNeeded();
+   if(width<=760)await page.locator('[data-catalog-select]').selectOption('gift-boxes');
+   else await page.locator('[data-catalog-filter="gift-boxes"]').click();
+   await page.locator('.taxonomy-sidebar').scrollIntoViewIfNeeded();
    if([1440,390].includes(width))await page.screenshot({path:path.join(output,`gift-filter-${width}.png`),fullPage:false});
    await page.locator('[data-catalog-search-input]').fill('shoulder');
    await page.waitForFunction(()=>document.querySelector('[data-catalog-result-count]').textContent==='1 product');

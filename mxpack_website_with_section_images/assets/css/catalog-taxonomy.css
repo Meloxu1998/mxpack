@@ -1,0 +1,29 @@
+.taxonomy-layout { display:grid; grid-template-columns:230px minmax(0,1fr); gap:32px; align-items:start; }
+.taxonomy-sidebar { position:sticky; top:100px; border-top:2px solid var(--green, #073c31); padding-top:18px; }
+.taxonomy-sidebar h2 { font:600 16px/1.4 var(--sans, sans-serif); margin:0 0 14px; }
+.taxonomy-buttons { display:grid; gap:2px; }
+.taxonomy-buttons .catalog-filter { display:flex; justify-content:space-between; align-items:center; gap:10px; width:100%; border:0; border-radius:4px; padding:10px 12px; text-align:left; white-space:normal; line-height:1.4; font-size:14px; background:transparent; }
+.taxonomy-buttons .catalog-filter:hover { background:#f1f5f1; }
+.taxonomy-buttons .catalog-filter[aria-pressed="true"] { background:#073c31; color:white; }
+.taxonomy-count { font-size:12px; opacity:.8; font-variant-numeric:tabular-nums; }
+.taxonomy-results { min-width:0; }
+.catalog-taxonomy .catalog-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.catalog-taxonomy .catalog-search-row { margin-top:0; }
+.taxonomy-context { min-height:44px; font-size:14px; line-height:1.6; color:#52635d; margin:0 0 20px; }
+.taxonomy-seasonal { display:block; margin-top:18px; padding-top:16px; border-top:1px solid #dce3df; font-size:13px; line-height:1.5; }
+.taxonomy-sidebar select,.taxonomy-mobile-label { display:none; }
+@media (max-width:1100px) {
+ .taxonomy-layout { grid-template-columns:205px minmax(0,1fr); gap:22px; }
+ .catalog-taxonomy .catalog-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media (max-width:760px) {
+ .taxonomy-layout { display:block; }
+ .taxonomy-sidebar { position:static; margin-bottom:24px; padding-top:14px; }
+ .taxonomy-sidebar h2,.taxonomy-buttons { display:none; }
+ .taxonomy-mobile-label { display:block; font-size:13px; margin-bottom:8px; }
+ .taxonomy-sidebar select { display:block; width:100%; min-height:48px; border:1px solid #b7c7bf; border-radius:4px; padding:10px; background:white; color:#073c31; font:inherit; }
+ .taxonomy-seasonal { margin-top:10px; padding-top:0; border:0; }
+}
+@media (max-width:520px) {
+ .catalog-taxonomy .catalog-grid { grid-template-columns:minmax(0,1fr); }
+}
