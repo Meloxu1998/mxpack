@@ -27,6 +27,8 @@ const output='D:/mxpack-audits/2026-10-21';
  for(const product of products){
   const response=await page.goto(`${base}/products/${product.slug}`);assert.equal(response.status(),200);
   assert.equal(await page.locator('h1').innerText(),product.name);
+  assert((await page.title()).length<=65);
+  assert((await page.locator('meta[name="description"]').getAttribute('content')).length<=170);
   const media=page.locator('.detail-hero-media img');await media.waitFor();
   await page.waitForFunction(()=>document.querySelector('.detail-hero-media img')?.naturalWidth>0);
   assert.equal(await media.evaluate(img=>getComputedStyle(img).objectFit),'contain');
@@ -48,6 +50,12 @@ const output='D:/mxpack-audits/2026-10-21';
   }
  }
  await page.setViewportSize({width:1440,height:1000});
+ await page.goto(`${base}/products/${products[0].slug}`);
+ await page.locator('.floating-contact .wa').click();await page.waitForURL('**/get-a-quote*');
+ assert((await page.locator('#message').inputValue()).includes(products[0].name));
+ await page.locator('[type="submit"]').click();
+ assert.equal(await page.locator('#name').evaluate(input=>input.validity.valueMissing),true);
+ assert.equal(await page.evaluate(()=>window.dataLayer.filter(args=>args[0]==='event'&&args[1]==='form_submit').length),0);
  await page.goto(`${base}/get-a-quote?product=${products[0].slug}&source=product-detail`);
  assert((await page.locator('#message').inputValue()).includes(products[0].name));
  assert(await page.locator('#phone').getAttribute('required')!==null);
