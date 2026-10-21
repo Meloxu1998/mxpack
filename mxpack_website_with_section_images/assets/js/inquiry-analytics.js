@@ -10,6 +10,11 @@
   const products = window.mxpackProducts || {};
   const query = new URLSearchParams(location.search);
   const productId = products[query.get('product')] ? query.get('product') : '';
+  const solutionNames = {
+    restaurants: 'Restaurants & takeaway', catering: 'Catering & events',
+    'food-brands': 'Food brands & retail', startups: 'Startups & new brands', enterprise: 'Enterprise projects'
+  };
+  const solution = solutionNames[query.get('solution')] || '';
   const pageProduct = document.body.dataset.productId || '';
   const context = { product_id: pageProduct || productId || 'general', source_page: location.pathname };
   const landing = storage.get('mxpackLanding') || { path: location.pathname, campaign: Object.fromEntries(['utm_source','utm_medium','utm_campaign'].filter(key => query.has(key)).map(key => [key, query.get(key).slice(0,120)])) };
@@ -59,6 +64,11 @@
       setHidden('_subject', `Packaging RFQ - ${product.name} - MXPACKPRO`);
       const message = form.querySelector('[name="Message"]');
       if (message && !message.value) message.value = `I am interested in ${product.name}.\nQuantity: \nSize / packed product: \nDelivery country: \nTarget date: `;
+    } else if (solution) {
+      setHidden('Business type', solution);
+      setHidden('_subject', `Packaging RFQ - ${solution} - MXPACKPRO`);
+      const message = form.querySelector('[name="Message"]');
+      if (message && !message.value) message.value = `Packaging for ${solution}.\nFood / products to pack: \nQuantity: \nDelivery country: `;
     }
     setHidden('Inquiry source', sourcePage);
     setHidden('Landing page', landing.path);

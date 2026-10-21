@@ -16,6 +16,20 @@ const json = data => JSON.stringify(data).replace(/</g, '\\u003c');
 const schema = data => `<script type="application/ld+json">${json({'@context':'https://schema.org', ...data})}</script>`;
 const url = p => `/products/${p.slug}`;
 const quote = p => `/get-a-quote?product=${p.slug}&source=product-detail`;
+const compactProductMarkup = (body, p) => {
+  const sentences=p.intro.split('. ');
+  const lead=sentences[0].replace(/\.$/,'')+'.';
+  const rest=sentences.slice(1).join('. ');
+  return body.replace(`<p>${esc(p.intro)}</p>`,`<p>${esc(lead)}</p>`)
+    .replace('Specify the pack you actually need.','Specifications')
+    .replace('Choose for your application.','Product fit')
+    .replace('Check fit before you commit.','Before you order')
+    .replace('Make the first quote useful.','Your quotation brief')
+    .replace('Other options for your brief.','Compare formats')
+    .replace(`Ordering ${esc(p.name.toLowerCase())}.`,'Ordering questions')
+    .replace(`<ul class="check-list">${p.checks.map(check=>`<li>${esc(check)}</li>`).join('')}</ul>`,`<ol class="buyer-check-list">${p.checks.map(check=>`<li>${esc(check)}</li>`).join('')}</ol>`)
+    .replace('<p class="section-copy">Food-contact suitability',`${rest?`<p class="section-copy">${esc(rest)}</p>`:''}<p class="section-copy">Food-contact suitability`);
+};
 const categoryNames = {'food-boxes':'Food boxes',bakery:'Bakery',catering:'Catering',drinkware:'Cups & carriers',bags:'Paper bags',retail:'Mailers & gifts'};
 const image = (p, lazy = true) => `<img src="${p.source.imagePath}" srcset="${p.source.thumbnailPath} 480w, ${p.source.imagePath} 960w" sizes="(max-width: 760px) 100vw, (max-width: 1060px) 50vw, 33vw" alt="${esc(p.name)} with example custom printed artwork" width="960" height="960" ${lazy ? 'loading="lazy"' : 'fetchpriority="high"'}>`;
 const rootify = html => html.replace(/\b(href|src)="([^"#][^"]*)"/g, (match, attr, value) =>
@@ -58,21 +72,25 @@ for (const p of products) {
   const schemas = [organization, {'@type':'CollectionPage',name:p.name,description:p.intro,url:`${base}${url(p)}`,image:`${base}${p.source.imagePath}`,about:{'@type':'Thing',name:p.keyword},isPartOf:{'@type':'CollectionPage',name:'MXPACKPRO packaging catalog',url:`${base}/products`}},
     {'@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Home',item:`${base}/`},{'@type':'ListItem',position:2,name:'Products',item:`${base}/products`},{'@type':'ListItem',position:3,name:p.name,item:`${base}${url(p)}`}]},
     {'@type':'FAQPage',mainEntity:faq.map(([q,a])=>({'@type':'Question',name:q,acceptedAnswer:{'@type':'Answer',text:a}}))}];
-  const html = `<!doctype html>\n<html lang="en"><head>${pageHead}\n${extraCss}\n${schemas.map(schema).join('\n')}</head><body class="product-detail-page" data-product-id="${p.slug}"><a class="skip-link" href="#main">Skip to content</a>${header}${body}${footer}`;
+  const html = `<!doctype html>\n<html lang="en"><head>${pageHead}\n${extraCss}\n${schemas.map(schema).join('\n')}</head><body class="product-detail-page" data-product-id="${p.slug}"><a class="skip-link" href="#main">Skip to content</a>${header}${compactProductMarkup(body,p)}${footer}`;
   fs.writeFileSync(path.join(root,'products',`${p.slug}.html`), html
     .replace('"@type":"CollectionPage","name":', '"@type":"WebPage","name":')
     .replaceAll('The supplier catalog lists a starting order of', 'This format has a starting order of')
     .replaceAll('Starting quantity is based on the selected supplier listing.', 'Starting quantity applies to the pictured format and is subject to your final specification.'));
 }
 
-const cards = products.map(p=>`<article class="catalog-card" data-catalog-category="${p.category}" data-product-id="${p.slug}" data-product-moq="${p.source.minimumOrder}" data-catalog-search="${esc([p.name,p.keyword,...p.uses].join(' ').toLowerCase())}"><a class="catalog-card-media supplier-product-media" href="${url(p)}" data-track="catalog_product_click" data-product-id="${p.slug}">${image(p)}</a><div class="catalog-card-body"><p class="catalog-card-kicker">${esc(categoryNames[p.category])}</p><h2><a href="${url(p)}" data-track="catalog_product_click" data-product-id="${p.slug}">${esc(p.name)}</a></h2><p class="catalog-card-description">${esc(p.intro.split('. ')[0])}.</p><dl class="catalog-specs"><div><dt>Starting MOQ</dt><dd>${p.source.minimumOrder} pieces*</dd></div><div><dt>Format</dt><dd>${esc(p.structure)}</dd></div><div><dt>Best for</dt><dd>${esc(p.uses[0])}</dd></div><div><dt>Custom options</dt><dd>Size, material & print review</dd></div></dl><div class="catalog-card-actions"><a class="text-link" href="${url(p)}" data-track="catalog_product_click" data-product-id="${p.slug}">View specifications</a><a class="button button-dark" href="/get-a-quote?product=${p.slug}&source=catalog" data-track="quote_product_click" data-product-id="${p.slug}">Get pricing</a></div></div></article>`).join('\n');
+const cards = products.map(p=>`<article class="catalog-card" data-catalog-category="${p.category}" data-product-id="${p.slug}" data-product-moq="${p.source.minimumOrder}" data-catalog-search="${esc([p.name,p.keyword,...p.uses].join(' ').toLowerCase())}"><a class="catalog-card-media supplier-product-media" href="${url(p)}" data-track="catalog_product_click" data-product-id="${p.slug}">${image(p)}</a><div class="catalog-card-body"><p class="catalog-card-kicker">${esc(categoryNames[p.category])}</p><h2><a href="${url(p)}" data-track="catalog_product_click" data-product-id="${p.slug}">${esc(p.name)}</a></h2><dl class="catalog-specs"><div><dt>Starting MOQ</dt><dd>${p.source.minimumOrder} pieces*</dd></div><div><dt>Best for</dt><dd>${esc(p.uses[0])}</dd></div></dl><div class="catalog-card-actions"><a class="text-link" href="${url(p)}" data-track="catalog_product_click" data-product-id="${p.slug}">View product</a><a class="button button-dark" href="/get-a-quote?product=${p.slug}&source=catalog" data-track="quote_product_click" data-product-id="${p.slug}">Get pricing</a></div></div></article>`).join('\n');
 const filters = `<div class="container catalog-filters" role="group" aria-label="Filter packaging products"><button class="catalog-filter" type="button" data-catalog-filter="all" aria-pressed="true"><i class="icon" data-lucide="layout-grid" aria-hidden="true"></i>All products</button>${Object.entries(categoryNames).map(([value,label])=>`<button class="catalog-filter" type="button" data-catalog-filter="${value}" aria-pressed="false">${label}</button>`).join('')}</div>`;
 catalog = catalog.replace(/<div class="container catalog-filters"[\s\S]*?<\/div><\/div><div class="container"><div class="catalog-grid">/,`${filters}</div><div class="container"><div class="catalog-search-row"><label class="catalog-search"><i class="icon" data-lucide="search" aria-hidden="true"></i><span class="sr-only">Search packaging products</span><input type="search" data-catalog-search-input placeholder="Search by product or use" autocomplete="off"></label><label class="catalog-sort"><span>Sort by</span><select data-catalog-sort><option value="recommended">Recommended</option><option value="moq">Lowest starting MOQ</option><option value="name">Name: A to Z</option></select></label><p data-catalog-result-count role="status" aria-live="polite">20 products</p></div><div class="catalog-grid">`);
 catalog = catalog.replace(/(<div class="catalog-grid">)[\s\S]*?(<\/div><p class="catalog-note">)/,`$1\n${cards}\n$2`);
 catalog = catalog.replace(/<p class="catalog-note">[\s\S]*?<\/p>/, '<p class="catalog-note">*Starting MOQ is taken from the selected supplier listing. Final quantity, size, materials, print, price and schedule are confirmed with your project brief. Color and artwork variants of the same structure are grouped together.</p><p class="catalog-empty" data-catalog-empty hidden>No products match your selection. Try another search or category.</p>');
 catalog = catalog.replace('Compare six practical packaging families for takeaway, delivery, drinks, bakery and retail.','Compare 20 packaging formats for takeaway, catering, drinks, bakery and retail.');
 catalog = catalog.replace('Six core product families','20 selected packaging formats').replace('Selected formats from 200 pcs','MOQ shown by product').replace('MOQ confirmed by structure and print method','Starting quantities from verified supplier listings');
+catalog = catalog.replace('<body>','<body class="catalog-page">')
+  .replace('Custom food packaging built for the way you serve.','Custom food packaging products.')
+  .replace('Choose by food, format and service model.','Find your packaging format.');
 catalog = catalog.replaceAll('Selected custom formats can start from 200 pieces. The applicable MOQ depends on structure, material, size and printing method.', 'The listed formats start from 250 or 300 pieces, depending on the product. The applicable MOQ is confirmed for your structure, material, size and printing method.')
+  .replaceAll('Selected formats from 200 pieces with custom print and sample support.', 'Custom print and sample support, with MOQ confirmed by packaging format.')
   .replaceAll('Custom Food Packaging Products | MOQ from 200 | MXPACKPRO', 'Custom Food Packaging Products | MXPACKPRO')
   .replaceAll('Starting MOQ is taken from the selected supplier listing.', 'Starting MOQ applies to the pictured format and is subject to your final specification.')
   .replaceAll('Starting quantities from verified supplier listings', 'Confirm the minimum for your exact specification');

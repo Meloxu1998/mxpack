@@ -15,23 +15,68 @@ if (menuButton && mobileMenu) {
 }
 
 document.querySelectorAll('.nav-group').forEach((group) => {
-  const trigger = group.querySelector('.nav-trigger');
+  const trigger = group.querySelector('[data-nav-toggle]');
   const menu = group.querySelector('.mega-menu');
   if (!trigger || !menu) return;
-  trigger.setAttribute('aria-haspopup', 'true');
-  trigger.setAttribute('aria-expanded', 'false');
-  group.addEventListener('mouseenter', () => trigger.setAttribute('aria-expanded', 'true'));
-  group.addEventListener('mouseleave', () => trigger.setAttribute('aria-expanded', 'false'));
-  group.addEventListener('focusin', () => trigger.setAttribute('aria-expanded', 'true'));
+  const setOpen = (open) => {
+    if (open) document.querySelectorAll('.nav-group.is-open').forEach(other => {
+      if (other === group) return;
+      other.classList.remove('is-open');
+      other.querySelector('[data-nav-toggle]')?.setAttribute('aria-expanded', 'false');
+    });
+    group.classList.toggle('is-open', open);
+    trigger.setAttribute('aria-expanded', String(open));
+  };
+  trigger.addEventListener('click', () => setOpen(!group.classList.contains('is-open')));
+  trigger.addEventListener('keydown', event => {
+    if (event.key !== 'ArrowDown') return;
+    event.preventDefault();
+    setOpen(true);
+    menu.querySelector('a')?.focus();
+  });
+  group.addEventListener('mouseenter', () => { if (matchMedia('(hover: hover)').matches) setOpen(true); });
+  group.addEventListener('mouseleave', () => { if (!group.contains(document.activeElement)) setOpen(false); });
+  group.addEventListener('focusin', event => { if (event.target.matches('a.nav-trigger')) setOpen(true); });
   group.addEventListener('focusout', (event) => {
-    if (!group.contains(event.relatedTarget)) trigger.setAttribute('aria-expanded', 'false');
+    if (!group.contains(event.relatedTarget)) setOpen(false);
+  });
+  document.addEventListener('click', event => { if (!group.contains(event.target)) setOpen(false); });
+  group.addEventListener('keydown', event => {
+    if (event.key !== 'Escape') return;
+    setOpen(false);
+    trigger.focus();
   });
 });
 
 document.addEventListener('keydown', (event) => {
   if (event.key !== 'Escape') return;
-  document.querySelectorAll('.nav-trigger').forEach((trigger) => trigger.setAttribute('aria-expanded', 'false'));
+  document.querySelectorAll('.nav-group').forEach(group => group.classList.remove('is-open'));
+  document.querySelectorAll('[data-nav-toggle]').forEach(trigger => trigger.setAttribute('aria-expanded', 'false'));
   if (mobileMenu?.classList.contains('open')) menuButton?.click();
+});
+
+document.querySelectorAll('[data-faq-filter]').forEach(button => {
+  button.addEventListener('click', () => {
+    const category = button.dataset.faqFilter;
+    document.querySelectorAll('[data-faq-filter]').forEach(item => {
+      const selected = item === button;
+      item.classList.toggle('active', selected);
+      item.setAttribute('aria-pressed', String(selected));
+    });
+    document.querySelectorAll('[data-faq-category]').forEach(item => {
+      item.hidden = category !== 'all' && item.dataset.faqCategory !== category;
+    });
+  });
+});
+
+document.querySelectorAll('.mobile-menu details').forEach(details => {
+  details.addEventListener('toggle', () => {
+    if (!details.open) return;
+    document.querySelectorAll('.mobile-menu details').forEach(other => { if (other !== details) other.open = false; });
+  });
+});
+mobileMenu?.addEventListener('click', event => {
+  if (event.target.closest('a') && mobileMenu.classList.contains('open')) menuButton?.click();
 });
 
 const contactConfig = {
@@ -48,7 +93,7 @@ if (floatingContact) {
 }
 
 const excludedContactPromptPaths = ['/get-a-quote', '/get-a-quote.html', '/thank-you', '/thank-you.html'];
-const contactPromptAllowed = !excludedContactPromptPaths.some((path) => location.pathname.endsWith(path));
+const contactPromptAllowed = !document.querySelector('[data-quote-form]') && !excludedContactPromptPaths.some((path) => location.pathname.endsWith(path));
 
 if (contactPromptAllowed) {
   document.body.classList.add('has-mobile-contact-bar');
