@@ -1,5 +1,5 @@
 .taxonomy-layout { display:grid; grid-template-columns:230px minmax(0,1fr); gap:32px; align-items:start; }
-.taxonomy-sidebar { position:sticky; top:100px; border-top:2px solid var(--green, #073c31); padding-top:18px; }
+.taxonomy-sidebar { position:sticky; top:100px; max-height:calc(100dvh - 120px); overflow-y:auto; scrollbar-width:thin; border-top:2px solid var(--green, #073c31); padding-top:18px; }
 .taxonomy-sidebar h2 { font:600 16px/1.4 var(--sans, sans-serif); margin:0 0 14px; }
 .taxonomy-buttons { display:grid; gap:2px; }
 .taxonomy-buttons .catalog-filter { display:flex; justify-content:space-between; align-items:center; gap:10px; width:100%; border:0; border-radius:4px; padding:10px 12px; text-align:left; white-space:normal; line-height:1.4; font-size:14px; background:transparent; }
@@ -18,7 +18,7 @@
 }
 @media (max-width:760px) {
  .taxonomy-layout { display:block; }
- .taxonomy-sidebar { position:static; margin-bottom:24px; padding-top:14px; }
+ .taxonomy-sidebar { position:static; max-height:none; overflow:visible; margin-bottom:24px; padding-top:14px; }
  .taxonomy-sidebar h2,.taxonomy-buttons { display:none; }
  .taxonomy-mobile-label { display:block; font-size:13px; margin-bottom:8px; }
  .taxonomy-sidebar select { display:block; width:100%; min-height:48px; border:1px solid #b7c7bf; border-radius:4px; padding:10px; background:white; color:#073c31; font:inherit; }

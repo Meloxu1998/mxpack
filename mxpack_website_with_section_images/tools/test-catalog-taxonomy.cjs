@@ -86,6 +86,11 @@ fs.mkdirSync(output,{recursive:true});
    assert(await page.locator('#phone').evaluate(n=>n.required));
   }
   assert.deepEqual(errors,[]);
+  await page.setViewportSize({width:1280,height:600});await page.goto(base+'/products');
+  await page.locator('.taxonomy-layout').scrollIntoViewIfNeeded();
+  assert(await page.locator('.taxonomy-sidebar').evaluate(n=>n.clientHeight<=480));
+  await page.locator('[data-catalog-filter="christmas-boxes"]').click();
+  assert.equal(await page.locator('.catalog-card:not([hidden])').count(),10);
   fs.writeFileSync(`${output}/${base.startsWith('https')?'live':'local'}-verification.json`,JSON.stringify({base,passed:true,results,products:54,categories:16,recordsUnchanged:true,noMessagesSent:true},null,2));
   console.log('PASS: 16 categories, 54 unchanged products, 6 viewport sizes, all filter memberships, legacy links, search, sort and history. No messages sent.');
  }finally{await browser.close();}
