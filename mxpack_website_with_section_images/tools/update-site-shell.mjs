@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {execFileSync} from 'node:child_process';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const navigation=JSON.parse(fs.readFileSync(path.join(root,'seo-system/data/site-navigation.json'),'utf8'));
 const products=JSON.parse(fs.readFileSync(path.join(root,'seo-system/data/catalog-products.json'),'utf8'));
@@ -45,3 +46,4 @@ let q=0;faq=faq.replace(/(<div class="faq-layout"><div class="accordion">)([\s\S
 if(q!==14)throw new Error('Expected all 14 purchasing questions.');
 fs.writeFileSync(path.join(root,'faq.html'),faq);
 console.log(`Updated navigation and shared assets on ${files.length} pages; unified both inquiry forms and in-page FAQ filters.`);
+execFileSync(process.execPath,[path.join(root,'tools/update-whatsapp.mjs')],{stdio:'inherit'});

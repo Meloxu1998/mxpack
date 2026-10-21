@@ -51,7 +51,10 @@ const output='D:/mxpack-audits/2026-10-21';
  }
  await page.setViewportSize({width:1440,height:1000});
  await page.goto(`${base}/products/${products[0].slug}`);
- await page.locator('.floating-contact .wa').click();await page.waitForURL('**/get-a-quote*');
+ const whatsapp=new URL(await page.locator('.floating-contact .wa').getAttribute('href'));
+ assert.equal(whatsapp.hostname,'wa.me');assert.equal(whatsapp.pathname,'/8615918968149');
+ assert(whatsapp.searchParams.get('text').includes(products[0].name));
+ await page.locator('main a[href*="get-a-quote?product="]').first().click();await page.waitForURL('**/get-a-quote*');
  assert((await page.locator('#message').inputValue()).includes(products[0].name));
  await page.locator('[type="submit"]').click();
  assert.equal(await page.locator('#name').evaluate(input=>input.validity.valueMissing),true);

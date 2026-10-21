@@ -57,7 +57,7 @@ html=html.replace(/\s*<link rel="stylesheet" href="\/assets\/css\/home-premium\.
 const assets=`  <link rel="preload" as="image" href="/assets/img/home/packaging-family-desktop-1280.webp" imagesrcset="/assets/img/home/packaging-family-desktop-1280.webp 1280w, /assets/img/home/packaging-family-desktop-1860.webp 1860w" imagesizes="100vw" media="(min-width:1241px)" fetchpriority="high">
   <link rel="preload" as="image" href="/assets/img/home/packaging-family-mobile-480.webp" imagesrcset="/assets/img/home/packaging-family-mobile-480.webp 480w, /assets/img/home/packaging-family-mobile-800.webp 800w, /assets/img/home/packaging-family-mobile-1200.webp 1200w" imagesizes="(max-width:600px) 100vw, 600px" media="(max-width:1240px)" fetchpriority="high">
   <link rel="stylesheet" href="/assets/css/home-premium.css?v=20261021-1">`;
-html=html.replace('<link rel="stylesheet" href="/assets/css/v4.min.css?v=20261021-3">',`<link rel="stylesheet" href="/assets/css/v4.min.css?v=20261021-3">\n${assets}`);
+html=html.replace(/<link rel="stylesheet" href="\/assets\/css\/v4\.min\.css\?v=[^"]+">/,`<link rel="stylesheet" href="/assets/css/v4.min.css?v=20261021-4">\n${assets}`);
 const title='Custom Food Packaging Supplier | Boxes, Cups & Bags | MXPACKPRO';
 const description='Explore custom food boxes, paper cups and paper bags from MXPACKPRO in Foshan, China. Compare formats, MOQ, printing and samples. Request a quote.';
 html=html.replace(/<title>[\s\S]*?<\/title>/,`<title>${esc(title)}</title>`)
@@ -65,7 +65,7 @@ html=html.replace(/<title>[\s\S]*?<\/title>/,`<title>${esc(title)}</title>`)
  .replace(/(<meta property="og:title" content=")[^"]*/,`$1${esc(title)}`)
  .replace(/(<meta property="og:description" content=")[^"]*/,`$1${esc(description)}`)
  .replace(/(<meta property="og:image" content=")[^"]*/,`$1${base}/assets/img/home/packaging-family-desktop-1860.webp`)
- .replace(/v4\.js\?v=[^"]+/,'v4.js?v=20261021-6')
+ .replace(/v4\.js\?v=[^"]+/,'v4.js?v=20261021-7')
  .replace(/inquiry-analytics\.js\?v=[^"]+/,'inquiry-analytics.js?v=20261021-3');
 html=html.replace(/\s*<script type="application\/ld\+json">[\s\S]*?<\/script>/g,'');
 const graph=[

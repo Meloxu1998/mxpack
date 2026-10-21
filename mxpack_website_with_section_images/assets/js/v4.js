@@ -81,6 +81,7 @@ mobileMenu?.addEventListener('click', event => {
 
 const contactConfig = {
   quote: '/get-a-quote',
+  whatsapp: 'https://wa.me/8615918968149?text=' + encodeURIComponent(`Hi MXPACKPRO, I am interested in custom packaging.\nPage: https://mxpackpro.com${location.pathname}`),
   email: 'mailto:sales@mxpackpro.com?subject=Custom%20food%20packaging%20inquiry'
 };
 
@@ -88,7 +89,7 @@ const floatingContact = document.querySelector('.floating-contact');
 if (floatingContact) {
   const primaryContact = floatingContact.querySelector('.wa');
   const email = floatingContact.querySelector('.mail');
-  if (primaryContact && !primaryContact.querySelector('span')) primaryContact.insertAdjacentHTML('beforeend', '<span>Get a quote</span>');
+  if (primaryContact && !primaryContact.querySelector('span')) primaryContact.insertAdjacentHTML('beforeend', '<span>WhatsApp</span>');
   if (email && !email.querySelector('span')) email.insertAdjacentHTML('beforeend', '<span>Email</span>');
 }
 
@@ -114,8 +115,9 @@ if (contactPromptAllowed) {
       </div>
     </aside>
     <nav class="mobile-contact-bar" aria-label="Quick contact">
-      <a class="mobile-contact-whatsapp" href="${contactConfig.quote}" data-track="quote_mobile_click"><i class="icon" data-lucide="file-text" aria-hidden="true"></i> Get a quote</a>
-      <a class="mobile-contact-quote" href="${contactConfig.email}" data-track="email_mobile_click"><i class="icon" data-lucide="mail" aria-hidden="true"></i> Email us</a>
+      <a class="mobile-contact-whatsapp" href="${contactConfig.whatsapp}" target="_blank" rel="noopener noreferrer" data-whatsapp data-track="whatsapp_click"><img class="icon" src="/assets/img/brand/whatsapp.svg" alt="" width="20" height="20"> WhatsApp</a>
+      <a class="mobile-contact-quote" href="${contactConfig.quote}" data-track="quote_mobile_click"><i class="icon" data-lucide="file-text" aria-hidden="true"></i> Get a quote</a>
+      <a class="mobile-contact-email" href="${contactConfig.email}" data-track="email_mobile_click"><i class="icon" data-lucide="mail" aria-hidden="true"></i> Email</a>
     </nav>
   `);
 
@@ -153,6 +155,12 @@ if (contactPromptAllowed) {
     if (scrollable > 0 && window.scrollY / scrollable >= .45) showContactPrompt('scroll_depth');
   }, { passive: true });
 }
+
+document.querySelectorAll('[data-whatsapp]').forEach(link => {
+  const productName = document.body.dataset.productId ? document.querySelector('h1')?.textContent.trim() : '';
+  const message = productName ? `Hi MXPACKPRO, I am interested in ${productName}.` : 'Hi MXPACKPRO, I am interested in custom packaging.';
+  link.href = 'https://wa.me/8615918968149?text=' + encodeURIComponent(`${message}\nPage: https://mxpackpro.com${location.pathname}`);
+});
 
 if (window.lucide) window.lucide.createIcons();
 else window.addEventListener('DOMContentLoaded', () => window.lucide?.createIcons());

@@ -129,13 +129,14 @@
   .feature-row { display: block; }
   .footer-bottom { display: block; }
   .footer-legal { margin-top: 12px; }
-  body.has-mobile-contact-bar { padding-bottom: 66px; }
+  body.has-mobile-contact-bar { padding-bottom: calc(66px + env(safe-area-inset-bottom)); }
   .floating-contact, .contact-prompt { display: none; }
-  .mobile-contact-bar { height: 58px; position: fixed; right: 0px; bottom: 0px; left: 0px; z-index: 90; display: grid; grid-template-columns: 1fr 1fr; background: white; box-shadow: rgba(7, 59, 49, 0.14) 0px -7px 24px; }
-  .mobile-contact-bar a { display: flex; align-items: center; justify-content: center; gap: 8px; color: white; font-size: 14px; font-weight: 800; }
+  .mobile-contact-bar { min-height: 58px; padding-bottom: env(safe-area-inset-bottom); position: fixed; right: 0px; bottom: 0px; left: 0px; z-index: 90; display: grid; grid-template-columns: 1fr 1fr 1fr; background: white; box-shadow: rgba(7, 59, 49, 0.14) 0px -7px 24px; }
+  .mobile-contact-bar a { min-height: 58px; display: flex; align-items: center; justify-content: center; gap: 6px; color: white; font-size: 12px; font-weight: 800; }
   .mobile-contact-bar .icon { width: 19px; height: 19px; }
   .mobile-contact-whatsapp { background: rgb(18, 122, 63); }
   .mobile-contact-quote { background: var(--coral); }
+  .mobile-contact-email { background: var(--forest-900); }
   .solution-row { grid-template-columns: 1fr; }
   .solution-row > .solution-products { grid-column: 1; }
   .solution-row-index { font-size: 28px; }
