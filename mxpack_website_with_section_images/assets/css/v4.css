@@ -1,10 +1,18 @@
+@font-face {
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("../fonts/dm-sans-latin.woff2") format("woff2");
+}
+
 :root {
   --forest-950: #032f26;
   --forest-900: #073b31;
   --forest-800: #105244;
   --forest-700: #1b6653;
-  --coral: #f2583e;
-  --coral-dark: #d94730;
+  --coral: #c83d2d;
+  --coral-dark: #a83224;
   --lime: #b7cf35;
   --lime-soft: #e3edb7;
   --sage: #dce9ca;
@@ -42,7 +50,8 @@ h1, h2, h3, p { overflow-wrap: break-word; letter-spacing: 0; }
 .skip-link { position: fixed; left: 12px; top: -80px; z-index: 999; padding: 10px 14px; background: var(--paper); }
 .skip-link:focus { top: 12px; }
 .eyebrow { margin: 0 0 14px; color: var(--coral); font-size: 12px; font-weight: 800; text-transform: uppercase; }
-.eyebrow.lime { color: var(--lime); }
+.eyebrow.lime { color: var(--forest-700); }
+.home-hero .eyebrow.lime, .section-dark .eyebrow.lime { color: var(--lime); }
 .display-title { margin: 0; font-family: var(--serif); font-size: clamp(44px, 5.4vw, 78px); font-weight: 500; line-height: .98; }
 .section-title { margin: 0; font-family: var(--serif); font-size: clamp(38px, 4.4vw, 60px); font-weight: 500; line-height: 1.02; }
 .section-copy { max-width: 630px; margin: 18px 0 0; color: var(--muted); font-size: 17px; }
@@ -392,7 +401,7 @@ a.contact-method:hover strong { color: var(--coral); }
 .footer-legal { display: flex; gap: 18px; }
 .floating-contact { position: fixed; right: 18px; bottom: 18px; z-index: 80; display: flex; flex-direction: column; align-items: flex-end; gap: 9px; }
 .floating-contact a { min-width: 122px; height: 46px; padding: 0 15px; display: flex; align-items: center; justify-content: flex-start; gap: 9px; border: 2px solid white; border-radius: 23px; color: white; font-size: 13px; font-weight: 700; box-shadow: 0 8px 24px rgba(0,0,0,.18); }
-.floating-contact .wa { background: #1dbb61; }
+.floating-contact .wa { background: #127a3f; }
 .floating-contact .mail { background: var(--coral); }
 .floating-contact .icon { width: 21px; height: 21px; }
 .contact-prompt { width: min(390px, calc(100vw - 36px)); position: fixed; right: 18px; bottom: 132px; z-index: 79; padding: 28px; border: 1px solid var(--line); border-radius: 8px; background: #fff; box-shadow: 0 24px 60px rgba(7,59,49,.24); opacity: 0; transform: translateY(16px); transition: opacity .22s ease, transform .22s ease; }
@@ -537,7 +546,7 @@ a.contact-method:hover strong { color: var(--coral); }
   .mobile-contact-bar { height: 58px; position: fixed; right: 0; bottom: 0; left: 0; z-index: 90; display: grid; grid-template-columns: 1fr 1fr; background: white; box-shadow: 0 -7px 24px rgba(7,59,49,.14); }
   .mobile-contact-bar a { display: flex; align-items: center; justify-content: center; gap: 8px; color: white; font-size: 14px; font-weight: 800; }
   .mobile-contact-bar .icon { width: 19px; height: 19px; }
-  .mobile-contact-whatsapp { background: #158a48; }
+  .mobile-contact-whatsapp { background: #127a3f; }
   .mobile-contact-quote { background: var(--coral); }
   .solution-row { grid-template-columns: 1fr; }
   .solution-row-index { font-size: 28px; }
