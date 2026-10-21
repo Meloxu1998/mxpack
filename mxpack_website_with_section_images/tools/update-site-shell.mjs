@@ -16,16 +16,19 @@ for(const file of files){
  const desktop=navigation.map(n=>{
   const trigger=link(n,`nav-trigger${current===n.id?' is-section-active':''}`);
   if(!n.children)return trigger;
-  const all={label:n.id==='products'?`Browse all ${products.length} products`:'Resource center',url:n.url};
+  const all={label:n.id==='products'?`Browse all ${products.length} products`:'Guide library',url:n.url};
   return `<div class="nav-group"><div class="nav-parent">${trigger}<button class="nav-menu-toggle" type="button" data-nav-toggle aria-label="Show ${n.label.toLowerCase()} menu" aria-expanded="false" aria-controls="nav-${n.id}"><i class="icon" data-lucide="chevron-down" aria-hidden="true"></i></button></div><div class="mega-menu${n.id==='products'?' mega-menu-products':''}" id="nav-${n.id}"><p class="mega-menu-heading">${n.id==='products'?'Shop by packaging format':'Plan your order'}</p>${link(all,'menu-all')}<div${n.id==='products'?' class="mega-menu-grid"':''}>${n.children.map(c=>link(c)).join('')}</div></div></div>`;
  }).join('');
- const mobile=navigation.map(n=>n.children?`<details><summary>${n.label}</summary>${link({label:n.id==='products'?'All products':'Resource center',url:n.url})}${n.children.map(c=>link(c)).join('')}</details>`:link(n)).join('')+'<a class="button" href="/get-a-quote">Request a quote <i class="icon" data-lucide="arrow-right" aria-hidden="true"></i></a>';
+ const mobile=navigation.map(n=>n.children?`<details><summary>${n.label}</summary>${link({label:n.id==='products'?'All products':'Guide library',url:n.url})}${n.children.map(c=>link(c)).join('')}</details>`:link(n)).join('')+'<a class="button" href="/get-a-quote">Request a quote <i class="icon" data-lucide="arrow-right" aria-hidden="true"></i></a>';
  html=html.replace(/<nav class="nav-links"[\s\S]*?<\/nav>/,`<nav class="nav-links" aria-label="Main navigation">${desktop}</nav>`)
   .replace(/<nav class="mobile-menu"[\s\S]*?<\/nav>/,`<nav class="mobile-menu" data-mobile-menu aria-label="Mobile navigation">${mobile}</nav>`);
  // One stylesheet source avoids stale page-specific copies of shared layout rules.
  if(file==='index.html')html=html.replace(/<style>@font-face[\s\S]*?<\/style>/,'<link rel="stylesheet" href="/assets/css/v4.min.css?v=20261021-3">');
  html=html.replace(/v4\.min\.css\?v=[^"\s]+/g,'v4.min.css?v=20261021-3').replace(/v4\.js\?v=[^"\s]+/g,file==='index.html'?'v4.js?v=20261021-6':'v4.js?v=20261021-5').replace(/catalog-products\.css\?v=[^"\s]+/g,'catalog-products.css?v=20261021-2');
  html=html.replace(/inquiry-analytics\.js\?v=[^"\s]+/g,file==='index.html'?'inquiry-analytics.js?v=20261021-3':'inquiry-analytics.js?v=20261021-2');
+ html=html.replaceAll('>Resources<','>Guides<').replaceAll('Resource center','Guide library').replaceAll('Resource Center','Guide library');
+ html=html.replace(/catalog-data\.js\?v=[^"\s]+/g,'catalog-data.js?v=20261021-2');
+ if(file==='resources.html')html=html.replaceAll('Food Packaging Guides &amp; Resources','Packaging Buying Guides').replaceAll('Food Packaging Guides & Resources','Packaging Buying Guides').replace('Better packaging decisions, made easier.','Packaging buying guides.');
  fs.writeFileSync(full,html);
 }
 

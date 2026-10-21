@@ -58,7 +58,7 @@ const guideData = {
     related: ['custom-corrugated-pizza-box', 'custom-printed-coffee-paper-cup']
   },
   'moq-pricing-guide': {
-    intro: 'The current catalog lists starting MOQs of 250 or 300 pieces by format. Final MOQ and price depend on the approved size, material, printing and quantity per design; they are confirmed in the quotation.',
+    intro: 'Check the selected product for its listed starting MOQ. Final MOQ and price depend on the approved size, material, printing and quantity per design; they are confirmed in the quotation.',
     content: section('Compare like-for-like quotations', table(['Quotation item', 'Information to provide', 'Why it changes the comparison'], [
       ['Format & size', 'Internal dimensions, packed weight and any insert or liner.', 'Material consumption and construction differ by specification.'],
       ['Order quantity', 'Units per size and artwork version; repeat-order plan if known.', 'A combined total may not satisfy the MOQ for each version.'],

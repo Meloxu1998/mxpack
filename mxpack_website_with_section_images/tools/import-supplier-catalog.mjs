@@ -9,8 +9,8 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const input = process.argv[2];
 if (!input) throw new Error('Pass the captured supplier catalog JSON path.');
 const products = JSON.parse(await fs.readFile(input, 'utf8'));
-if (products.length !== 20 || new Set(products.map(p => p.id)).size !== 20) {
-  throw new Error('Expected 20 distinct, selected supplier product IDs.');
+if (!products.length || products.length > 30 || new Set(products.map(p => p.id)).size !== products.length) {
+  throw new Error('Expected 1-30 distinct, selected supplier product IDs.');
 }
 const imageDir = path.join(root, 'assets', 'img', 'catalog');
 const dataDir = path.join(root, 'seo-system', 'data');
@@ -40,8 +40,11 @@ await Promise.all(Array.from({length: 4}, async () => {
     console.log(`${product.id}: ${original.width}x${original.height}; MOQ ${product.minimumOrder}`);
   }
 }));
-await fs.writeFile(path.join(dataDir, 'catalog-provenance.json'), `${JSON.stringify({
-  capturedAt: new Date().toISOString(), store: 'https://meloxu.en.alibaba.com/',
+const provenancePath=path.join(dataDir, 'catalog-provenance.json');
+const previous=JSON.parse(await fs.readFile(provenancePath,'utf8').catch(()=>'{}'));
+const merged=[...new Map([...(previous.products||[]),...products].map(p=>[p.id,p])).values()];
+await fs.writeFile(provenancePath, `${JSON.stringify({
+  capturedAt: previous.capturedAt || new Date().toISOString(), importedAt: new Date().toISOString(), store: 'https://meloxu.en.alibaba.com/',
   verification: 'Public store category and product listing cards; detailed specifications require project confirmation.',
-  products
+  products: merged
 }, null, 2)}\n`);

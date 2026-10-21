@@ -1,7 +1,7 @@
 [
-  {"id":"products","label":"Products","url":"/products","children":[{"label":"Takeout Food Boxes","url":"/takeaway-food-boxes"},{"label":"Burger Boxes","url":"/burger-boxes"},{"label":"Pizza Boxes","url":"/pizza-boxes"},{"label":"Paper Cups & Carriers","url":"/paper-cups"},{"label":"Paper Bags","url":"/custom-paper-bags"},{"label":"Bakery & Cake Boxes","url":"/bakery-cake-boxes"}]},
+  {"id":"products","label":"Products","url":"/products","children":[{"label":"BBQ Packaging","url":"/products?category=bbq"},{"label":"Takeout Food Boxes","url":"/takeaway-food-boxes"},{"label":"Burger Boxes","url":"/burger-boxes"},{"label":"Pizza Boxes","url":"/pizza-boxes"},{"label":"Paper Cups & Carriers","url":"/paper-cups"},{"label":"Paper Bags & Wraps","url":"/custom-paper-bags"},{"label":"Bakery & Cake Boxes","url":"/bakery-cake-boxes"}]},
   {"id":"solutions","label":"Solutions","url":"/solutions"},
   {"id":"custom","label":"Custom Packaging","url":"/custom-packaging"},
-  {"id":"resources","label":"Resources","url":"/resources","children":[{"label":"Packaging Buying Guide","url":"/packaging-buying-guide"},{"label":"MOQ & Pricing","url":"/moq-pricing-guide"},{"label":"Materials & Food Safety","url":"/materials-food-safety"},{"label":"Ordering FAQ","url":"/faq"}]},
+  {"id":"resources","label":"Guides","url":"/resources","children":[{"label":"Packaging Buying Guide","url":"/packaging-buying-guide"},{"label":"MOQ & Pricing","url":"/moq-pricing-guide"},{"label":"Materials & Food Safety","url":"/materials-food-safety"},{"label":"Ordering FAQ","url":"/faq"}]},
   {"id":"about","label":"About","url":"/about-us"}
 ]
