@@ -23,8 +23,8 @@ for(const file of files){
   .replace(/<nav class="mobile-menu"[\s\S]*?<\/nav>/,`<nav class="mobile-menu" data-mobile-menu aria-label="Mobile navigation">${mobile}</nav>`);
  // One stylesheet source avoids stale page-specific copies of shared layout rules.
  if(file==='index.html')html=html.replace(/<style>@font-face[\s\S]*?<\/style>/,'<link rel="stylesheet" href="/assets/css/v4.min.css?v=20261021-3">');
- html=html.replace(/v4\.min\.css\?v=[^"\s]+/g,'v4.min.css?v=20261021-3').replace(/v4\.js\?v=[^"\s]+/g,'v4.js?v=20261021-5').replace(/catalog-products\.css\?v=[^"\s]+/g,'catalog-products.css?v=20261021-2');
- html=html.replace(/inquiry-analytics\.js\?v=[^"\s]+/g,'inquiry-analytics.js?v=20261021-2');
+ html=html.replace(/v4\.min\.css\?v=[^"\s]+/g,'v4.min.css?v=20261021-3').replace(/v4\.js\?v=[^"\s]+/g,file==='index.html'?'v4.js?v=20261021-6':'v4.js?v=20261021-5').replace(/catalog-products\.css\?v=[^"\s]+/g,'catalog-products.css?v=20261021-2');
+ html=html.replace(/inquiry-analytics\.js\?v=[^"\s]+/g,file==='index.html'?'inquiry-analytics.js?v=20261021-3':'inquiry-analytics.js?v=20261021-2');
  fs.writeFileSync(full,html);
 }
 

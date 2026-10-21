@@ -36,6 +36,10 @@
     if (!eventName) return;
     const id = products[link.dataset.productId] ? link.dataset.productId : pageProduct;
     const params = { product_id: id || 'general', entry_point: eventName, destination_path: destination };
+    if (eventName === 'home_category_click' && ['takeaway-food-boxes','burger-boxes','pizza-boxes','paper-cups','custom-paper-bags','bakery-cake-boxes'].includes(link.dataset.homeFamily)) {
+      params.entry_point = `home_${link.dataset.homeFamily}`;
+      params.item_category = link.dataset.homeFamily;
+    }
     if (eventName.startsWith('quote_')) {
       storage.set('mxpackQuoteEntry', { ...params, source_page: location.pathname, at: Date.now() });
       if (id && destination === '/get-a-quote') {

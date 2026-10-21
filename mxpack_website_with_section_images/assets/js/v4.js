@@ -127,7 +127,7 @@ if (contactPromptAllowed) {
   let promptShown = false;
 
   const showContactPrompt = (source) => {
-    if (!prompt || promptShown || !dismissalExpired || window.innerWidth < 760) return;
+    if (!prompt || promptShown || !dismissalExpired || window.innerWidth < 760 || document.body.dataset.contactPromptMode === 'off') return;
     promptShown = true;
     prompt.hidden = false;
     requestAnimationFrame(() => prompt.classList.add('is-visible'));

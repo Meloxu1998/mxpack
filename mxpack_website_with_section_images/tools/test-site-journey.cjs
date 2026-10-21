@@ -89,7 +89,7 @@ const files = [...fs.readdirSync('.').filter(f => f.endsWith('.html')), ...fs.re
       }
     }
     for (const [route,width,selector,name] of [
-      ['/',2560,'.partner-band','ux-partner-wide'],
+      ['/',2560,'.home-stage','ux-home-wide'],
       ['/custom-packaging',1440,'#quote-form','ux-custom-form-desktop'],
       ['/custom-packaging',390,'#quote-form','ux-custom-form-mobile'],
       ['/solutions',1440,'#catering','ux-solutions-desktop'],
