@@ -58,7 +58,7 @@ document.addEventListener('click', (event) => {
 
 const contactConfig = {
   quote: '/get-a-quote',
-  email: 'mailto:meloxu98@gmail.com?subject=Custom%20food%20packaging%20inquiry'
+  email: 'mailto:sales@mxpackpro.com?subject=Custom%20food%20packaging%20inquiry'
 };
 
 const floatingContact = document.querySelector('.floating-contact');

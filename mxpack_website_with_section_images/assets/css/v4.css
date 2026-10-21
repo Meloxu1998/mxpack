@@ -251,18 +251,32 @@ h1, h2, h3, p { overflow-wrap: break-word; letter-spacing: 0; }
 .process-step h3 { margin: 0 0 8px; font-family: var(--serif); font-size: 32px; font-weight: 500; }
 .process-step p { margin: 0; color: var(--muted); }
 
-.form-layout { display: grid; grid-template-columns: .72fr 1.28fr; gap: 48px; padding: 54px; border: 1px solid var(--line); border-radius: 12px; background: linear-gradient(135deg, var(--sage-soft), #fbf9ed); }
-.form-intro { padding-right: 42px; border-right: 1px solid var(--line); }
-.form-benefits { display: grid; gap: 17px; margin-top: 30px; }
-.form-benefit { display: flex; align-items: center; gap: 12px; }
-.form-benefit .icon-wrap { width: 44px; height: 44px; flex: 0 0 44px; display: grid; place-items: center; border-radius: 50%; background: var(--forest-900); color: white; }
-.quote-form { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-.field { display: grid; gap: 7px; }
-.field.full { grid-column: 1 / -1; }
-.field label { font-size: 13px; font-weight: 800; }
-.field input, .field select, .field textarea { width: 100%; min-height: 48px; padding: 12px 13px; border: 1px solid rgba(7,59,49,.28); border-radius: 4px; background: rgba(255,255,255,.9); color: var(--ink); }
-.field textarea { min-height: 130px; resize: vertical; }
-.form-note { margin: 0; color: var(--muted); font-size: 11px; }
+.sr-only { width: 1px; height: 1px; position: absolute; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; }
+.quote-contact-section { background: #f3f6f5; }
+.quote-hero .eyebrow.lime { color: #5b7114; }
+.contact-layout { display: grid; grid-template-columns: minmax(0, .82fr) minmax(480px, 1.18fr); gap: clamp(54px, 8vw, 116px); align-items: center; }
+.contact-panel { max-width: 430px; }
+.contact-panel .section-title { font-size: clamp(46px, 5vw, 68px); }
+.contact-panel > .eyebrow { color: #b63726; }
+.contact-lead { margin: 22px 0 0; color: var(--muted); font-size: 17px; }
+.contact-methods { margin-top: 34px; border-top: 1px solid var(--line); }
+.contact-method { display: grid; grid-template-columns: 42px minmax(0, 1fr); gap: 14px; align-items: center; padding: 17px 0; border-bottom: 1px solid var(--line); }
+a.contact-method:hover strong { color: var(--coral); }
+.contact-icon { width: 42px; height: 42px; display: grid; place-items: center; border: 1px solid var(--line); color: var(--forest-800); }
+.contact-icon .icon { width: 19px; height: 19px; }
+.contact-method small { display: block; margin-bottom: 2px; color: var(--muted); font-size: 11px; font-weight: 800; text-transform: uppercase; }
+.contact-method strong { display: block; font-size: 15px; overflow-wrap: anywhere; transition: color .2s ease; }
+.contact-form { display: grid; gap: 12px; }
+.contact-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.contact-field input, .contact-field select, .contact-field textarea { width: 100%; min-height: 54px; padding: 14px 16px; border: 1px solid rgba(7,59,49,.24); border-radius: 5px; background: rgba(255,255,255,.82); color: var(--ink); outline: none; transition: border-color .2s ease, box-shadow .2s ease, background .2s ease; }
+.contact-field textarea { min-height: 144px; resize: vertical; }
+.contact-field input::placeholder, .contact-field textarea::placeholder { color: #7b8581; opacity: 1; }
+.contact-field input:focus, .contact-field select:focus, .contact-field textarea:focus { border-color: var(--forest-700); background: white; box-shadow: 0 0 0 3px rgba(27,102,83,.12); }
+.phone-field { display: grid; grid-template-columns: 150px minmax(0, 1fr); gap: 12px; }
+.contact-submit { width: 100%; min-height: 56px; background: #b93624; }
+.contact-submit:hover { background: #982b1e; }
+.form-note { margin: 2px auto 0; max-width: 620px; color: var(--muted); font-size: 11px; text-align: center; }
+.form-note a { color: var(--forest-800); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
 
 .resource-hero { min-height: 560px; display: flex; align-items: center; position: relative; overflow: hidden; background: var(--lime); }
 .resource-hero::after { content: ""; width: 46vw; height: 46vw; position: absolute; right: -8vw; bottom: -18vw; border: 2px solid rgba(7,59,49,.12); transform: rotate(28deg); }
@@ -368,6 +382,7 @@ h1, h2, h3, p { overflow-wrap: break-word; letter-spacing: 0; }
 .site-footer { padding: 62px 0 24px; background: var(--forest-950); color: white; }
 .footer-grid { display: grid; grid-template-columns: 1.35fr repeat(4, 1fr); gap: 38px; }
 .footer-brand p { color: rgba(255,255,255,.68); font-size: 13px; }
+.footer-brand p a { min-height: 24px; display: inline-flex; align-items: center; }
 .site-footer h3 { margin: 0 0 16px; color: var(--lime); font-size: 13px; text-transform: uppercase; }
 .site-footer ul { padding: 0; margin: 0; list-style: none; }
 .site-footer li { margin-bottom: 9px; }
@@ -458,16 +473,14 @@ h1, h2, h3, p { overflow-wrap: break-word; letter-spacing: 0; }
   .feature-row { grid-template-columns: 1fr; }
   .feature { padding: 18px 0; border-right: 0; border-bottom: 1px solid var(--line); }
   .feature:nth-child(2), .feature:last-child { padding-left: 0; }
-  .spec-layout, .form-layout, .featured-guide, .about-hero, .faq-layout, .custom-hero-grid, .quote-hero-grid, .buyer-split, .resource-actions { grid-template-columns: 1fr; }
+  .spec-layout, .contact-layout, .featured-guide, .about-hero, .faq-layout, .custom-hero-grid, .quote-hero-grid, .buyer-split, .resource-actions { grid-template-columns: 1fr; }
   .use-grid { grid-template-columns: repeat(2, 1fr); }
   .option-groups { grid-template-columns: 1fr; }
   .option-group { padding: 0 0 28px; border-right: 0; border-bottom: 1px solid var(--line); }
   .process-grid, .value-grid { grid-template-columns: 1fr; }
   .process-step, .value-card { min-height: 0; border-right: 0; border-bottom: 1px solid var(--line); }
-  .form-layout { padding: 30px 22px; }
-  .form-intro { padding: 0 0 30px; border-right: 0; border-bottom: 1px solid var(--line); }
-  .quote-form { grid-template-columns: 1fr; }
-  .field.full { grid-column: auto; }
+  .contact-panel { max-width: none; }
+  .contact-layout { gap: 42px; }
   .featured-guide-copy { padding: 34px 28px; }
   .featured-guide-media { min-height: 0; aspect-ratio: 4 / 3; }
   .about-copy { padding: 54px 24px; }
@@ -499,6 +512,9 @@ h1, h2, h3, p { overflow-wrap: break-word; letter-spacing: 0; }
 }
 
 @media (max-width: 460px) {
+  .contact-form-row { grid-template-columns: 1fr; }
+  .phone-field { grid-template-columns: 118px minmax(0, 1fr); }
+  .contact-field input, .contact-field select, .contact-field textarea { padding-inline: 13px; }
   .hero-actions .button { width: 100%; }
   .hero-benefits { grid-template-columns: 1fr; }
   .category-card { min-height: 300px; }

@@ -267,7 +267,7 @@ const simpleFooter = `<footer class='site-footer'>
 <li><a href='/custom-food-packaging'>Capabilities</a></li>
 <li><a href='/faq'>FAQ</a></li>
 <li><a href='/get-a-quote'>Get a Quote</a></li>
-<li><a href='mailto:meloxu98@gmail.com'>meloxu98@gmail.com</a></li>
+<li><a href='mailto:sales@mxpackpro.com'>sales@mxpackpro.com</a></li>
 </ul></div>
 </div>
 <div class='footer-bottom'>&copy; 2026 MX PACK / Foshan Xumelo Technology Co., Ltd.</div>
