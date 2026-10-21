@@ -1,0 +1,13 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const data=path.join(root,'seo-system/data');
+const product=JSON.parse(fs.readFileSync(path.join(data,'pyramid-catering-product.json'),'utf8'));
+const file=path.join(data,'catalog-products.json');
+const catalog=JSON.parse(fs.readFileSync(file,'utf8'));
+if(catalog.some(p=>p.sourceId===product.sourceId&&p.slug!==product.slug))throw Error('Supplier product already published.');
+const index=catalog.findIndex(p=>p.slug===product.slug);
+if(index===-1)catalog.push(product);else catalog[index]=product;
+fs.writeFileSync(file,'[\n  '+catalog.map(p=>JSON.stringify(p)).join(',\n  ')+'\n]\n');
+console.log(`Added one deduplicated pyramid series with three reference views; ${catalog.length} product pages.`);

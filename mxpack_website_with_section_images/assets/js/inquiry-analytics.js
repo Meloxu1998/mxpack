@@ -63,11 +63,13 @@
     const sourcePage = freshEntry?.source_page || cleanPath(document.referrer) || '/get-a-quote';
     const entryPoint = freshEntry?.entry_point || (['catalog','product-detail'].includes(query.get('source')) ? query.get('source') : 'direct_quote');
     if (product) {
+      const referenceView=Object.hasOwn(product.views||{},query.get('view'))?product.views[query.get('view')]:'';
+      if(referenceView)setHidden('Packaging reference view',referenceView);
       setHidden('Product', product.name);
       setHidden('Product page', `https://mxpackpro.com/products/${productId}`);
       setHidden('_subject', `Packaging RFQ - ${product.name} - MXPACKPRO`);
       const message = form.querySelector('[name="Message"]');
-      if (message && !message.value) message.value = `I am interested in ${product.name}.\nQuantity: \nSize / packed product: \nDelivery country: \nTarget date: `;
+      if (message && !message.value) message.value = `I am interested in ${product.name}.${referenceView?`\nReference view: ${referenceView}`:''}\nQuantity: \nSize / packed product: \nDelivery country: \nTarget date: `;
     } else if (solution) {
       setHidden('Business type', solution);
       setHidden('_subject', `Packaging RFQ - ${solution} - MXPACKPRO`);

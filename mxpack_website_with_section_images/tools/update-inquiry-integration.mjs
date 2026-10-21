@@ -3,7 +3,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const products=JSON.parse(fs.readFileSync(path.join(root,'seo-system/data/catalog-products.json'),'utf8'));
-fs.writeFileSync(path.join(root,'assets/js/catalog-data.js'),`window.mxpackProducts=${JSON.stringify(Object.fromEntries(products.map(p=>[p.slug,{name:p.name,category:p.category}])))};\n`);
+fs.writeFileSync(path.join(root,'assets/js/catalog-data.js'),`window.mxpackProducts=${JSON.stringify(Object.fromEntries(products.map(p=>[p.slug,{name:p.name,category:p.category,...(p.views?{views:Object.fromEntries(p.views.map(view=>[view.id,view.label]))}:{})}])))};\n`);
 const files=[...fs.readdirSync(root).filter(f=>f.endsWith('.html')),...fs.readdirSync(path.join(root,'products')).filter(f=>f.endsWith('.html')).map(f=>`products/${f}`)];
 for(const file of files){
  const target=path.join(root,file); let html=fs.readFileSync(target,'utf8');

@@ -37,6 +37,17 @@ const image = (p, lazy = true) => {
   const srcset=width>thumbWidth?`${p.source.thumbnailPath} ${thumbWidth}w, ${p.source.imagePath} ${width}w`:`${p.source.imagePath} ${width}w`;
   return `<img src="${p.source.imagePath}" srcset="${srcset}" sizes="(max-width: 760px) 100vw, (max-width: 1060px) 50vw, 33vw" alt="${esc(p.name)} with example custom printed artwork" width="${width}" height="${Math.round(width*p.source.height/p.source.width)}" decoding="async" ${lazy ? 'loading="lazy"' : 'fetchpriority="high"'}>`;
 };
+const withReferences=(body,p)=>{
+  if(!p.views)return body;
+  const views=p.views.map(view=>{
+    const source=sourceById.get(view.sourceId);
+    if(!source)throw Error('Missing reference image '+view.sourceId);
+    return {...view,image:source.imagePath,thumbnail:source.thumbnailPath,width:Math.min(960,source.width),height:Math.round(Math.min(960,source.width)*source.height/source.width)};
+  });
+  const section=`<div class="product-references"><h2>Reference configurations</h2><div class="product-reference-options" role="group" aria-label="Pyramid packaging reference views">${views.map((view,index)=>`<button class="product-reference-option" type="button" data-reference-id="${view.id}" aria-pressed="${index===0}"><img src="${view.thumbnail}" alt="${esc(view.label)}" width="120" height="120" loading="lazy"><span>${esc(view.label)}</span></button>`).join('')}</div><p class="product-reference-note" data-reference-note aria-live="polite">${esc(views[0].note)}</p><script type="application/json" data-reference-data>${json(views)}</script></div>`;
+  const media=`<div class="detail-hero-media supplier-product-media">${image(p,false)}</div>`;
+  return body.replace(media,`<div class="product-reference-gallery">${media.replace('<img ','<img data-gallery-main ')}${section}</div>`);
+};
 const rootify = html => html.replace(/\b(href|src)="([^"#][^"]*)"/g, (match, attr, value) =>
   /^(?:\/|https?:|mailto:|tel:|data:)/.test(value) ? match : `${attr}="/${value}"`);
 let catalog = fs.readFileSync(path.join(root, 'products.html'), 'utf8');
@@ -77,7 +88,8 @@ for (const p of products) {
   const schemas = [organization, {'@type':'CollectionPage',name:p.name,description:p.intro,url:`${base}${url(p)}`,image:`${base}${p.source.imagePath}`,about:{'@type':'Thing',name:p.keyword},isPartOf:{'@type':'CollectionPage',name:'MXPACKPRO packaging catalog',url:`${base}/products`}},
     {'@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Home',item:`${base}/`},{'@type':'ListItem',position:2,name:'Products',item:`${base}/products`},{'@type':'ListItem',position:3,name:p.name,item:`${base}${url(p)}`}]},
     {'@type':'FAQPage',mainEntity:faq.map(([q,a])=>({'@type':'Question',name:q,acceptedAnswer:{'@type':'Answer',text:a}}))}];
-  const html = `<!doctype html>\n<html lang="en"><head>${pageHead}\n${extraCss}\n${schemas.map(schema).join('\n')}</head><body class="product-detail-page" data-product-id="${p.slug}"><a class="skip-link" href="#main">Skip to content</a>${header}${compactProductMarkup(body,p)}${footer}`;
+  const productFooter=p.views?footer.replace('</body>','<script src="/assets/js/product-reference-gallery.js?v=20261021-1"></script></body>'):footer;
+  const html = `<!doctype html>\n<html lang="en"><head>${pageHead}\n${extraCss}\n${schemas.map(schema).join('\n')}</head><body class="product-detail-page" data-product-id="${p.slug}"><a class="skip-link" href="#main">Skip to content</a>${header}${compactProductMarkup(withReferences(body,p),p)}${productFooter}`;
   fs.writeFileSync(path.join(root,'products',`${p.slug}.html`), html
     .replace('"@type":"CollectionPage","name":', '"@type":"WebPage","name":')
     .replaceAll('The supplier catalog lists a starting order of', 'This format has a starting order of')

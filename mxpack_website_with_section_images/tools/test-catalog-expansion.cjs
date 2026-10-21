@@ -12,10 +12,10 @@ const output='D:/mxpack-audits/2026-10-21/catalog-expansion';
  const additions=require('../seo-system/data/catalog-expansion-20261021.json');
  const sources=require('../seo-system/data/catalog-provenance.json').products;
  const original=JSON.parse(execFileSync('git',['show','d984b54:mxpack_website_with_section_images/seo-system/data/catalog-products.json'],{encoding:'utf8',cwd:root}));
- assert.equal(original.length,20);assert.equal(additions.length,20);assert.equal(catalog.length,40);
+ assert.equal(original.length,20);assert.equal(additions.length,20);assert(catalog.length>=40);
  for(const old of original)assert.deepEqual(catalog.find(p=>p.slug===old.slug),old,'Existing product changed '+old.slug);
- assert.equal(new Set(catalog.map(p=>p.sourceId)).size,40);
- assert.equal(new Set(catalog.map(p=>p.keyword)).size,40);
+ assert.equal(new Set(catalog.map(p=>p.sourceId)).size,catalog.length);
+ assert.equal(new Set(catalog.map(p=>p.keyword)).size,catalog.length);
  const hashes=[];
  for(const product of catalog){
   const source=sources.find(s=>s.id===product.sourceId);assert(source);
@@ -52,6 +52,6 @@ const output='D:/mxpack-audits/2026-10-21/catalog-expansion';
  }finally{await browser.close();}
  const csv=rows=>rows.map(row=>row.map(value=>'"'+String(value).replaceAll('"','""')+'"').join(',')).join('\n')+'\n';
  fs.writeFileSync(path.join(output,'new-20-products.csv'),csv([['name','url','source_id','starting_moq','difference_from_existing'],...additions.map(p=>[p.name,`https://mxpackpro.com/products/${p.slug}`,p.sourceId,sources.find(s=>s.id===p.sourceId).minimumOrder,p.distinct])]));
- fs.writeFileSync(path.join(output,'verification.json'),JSON.stringify({base,originalRetained:20,newProducts:20,totalProducts:40,uniqueSourceIds:40,uniqueImageChecks:40,manualStructureReview:additions.map(p=>({slug:p.slug,distinction:p.distinct})),guideUrlPreserved:'/resources',gscSubmitted:false,messagesSent:false,luxopackPublished:false},null,2));
+ fs.writeFileSync(path.join(output,'verification.json'),JSON.stringify({base,originalRetained:20,newProducts:20,totalProducts:catalog.length,uniqueSourceIds:catalog.length,uniqueImageChecks:hashes.length,manualStructureReview:additions.map(p=>({slug:p.slug,distinction:p.distinct})),guideUrlPreserved:'/resources',gscSubmitted:false,messagesSent:false,luxopackPublished:false},null,2));
  console.log('PASS: 20 original records unchanged, 20 unique additions, BBQ filter, three mobile/desktop widths, product inquiry context and Guides labels. No messages or GSC submissions.');
 })().catch(error=>{console.error(error);process.exit(1)});

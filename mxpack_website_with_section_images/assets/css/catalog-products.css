@@ -14,6 +14,15 @@
 .catalog-empty[hidden] { display: none; }
 .product-breadcrumb { display: flex; flex-wrap: wrap; gap: 8px; padding-block: 20px; font-size: 12px; line-height: 1.5; color: var(--muted); }
 .product-breadcrumb a { color: var(--forest-800); }
+.product-reference-gallery { min-width: 0; background: white; }
+.product-references { padding: 20px 24px; }
+.product-references h2 { margin: 0 0 12px; font-family: var(--font-body, sans-serif); font-size: 16px; }
+.product-reference-options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.product-reference-option { display: flex; flex-direction: column; align-items: center; gap: 8px; min-width: 0; padding: 8px; border: 1px solid var(--line); border-radius: 4px; background: white; color: var(--forest-900); font: inherit; cursor: pointer; }
+.product-reference-option[aria-pressed="true"] { border: 2px solid var(--forest-700); padding: 7px; background: #f1f7f3; }
+.product-reference-option img { width: 100%; max-width: 120px; height: auto; aspect-ratio: 1; object-fit: contain; }
+.product-reference-option span { min-height: 36px; display: grid; align-items: center; font-size: 12px; line-height: 1.5; font-weight: 700; text-align: center; }
+.product-reference-note { min-height: 64px; margin: 12px 0 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
 .product-detail-page .detail-hero-media { aspect-ratio: 1; min-height: 0; }
 .product-detail-page .detail-hero-media img { padding: 0; }
 .product-detail-page .detail-hero-copy { padding-block: 48px; }
@@ -46,6 +55,11 @@
 [data-supplier-formats] .product-grid { align-items: stretch; }
 [data-supplier-formats] .product-card-media { aspect-ratio: 1; }
 .product-detail-page .catalog-note { margin-top: 14px; color: var(--muted); font-size: 12px; line-height: 1.6; }
+@media (min-width: 1061px) {
+  .product-reference-gallery .detail-hero-media { aspect-ratio: auto; height: 500px; }
+  .product-reference-gallery + .detail-hero-copy { justify-content: flex-start; padding-top: 64px; }
+  .product-reference-option img { max-width: 96px; }
+}
 @media (max-width: 1060px) {
   .product-detail-page .detail-hero-copy .display-title { font-size: 44px; }
   .catalog-page .catalog-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }

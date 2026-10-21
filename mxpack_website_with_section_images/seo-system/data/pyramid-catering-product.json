@@ -1,0 +1,18 @@
+{
+ "sourceId":"1601668849644","slug":"custom-pyramid-catering-box","name":"Pyramid Catering Box with Tiered Trays","category":"catering","family":"takeaway-food-boxes","keyword":"custom pyramid catering boxes",
+ "material":"Printed board outer with separate serving trays; board grade, liners and food-contact suitability confirmed for the menu",
+ "structure":"Pointed pyramid outer cover with separate graduated serving trays",
+ "intro":"Present a catering assortment in a pointed pyramid pack with removable serving trays. Compare the mixed-food, bakery and three-tier reference views below, then specify the tray layout and printing for your own menu.",
+ "uses":["Afternoon tea assortments","Sandwich and pastry catering","Layered event food presentation"],
+ "measure":"Usable tray length and width at each level, food height, number of levels, overall closed height and packed weight",
+ "checks":["The reference image labels three trays at 15, 20 and 25 cm. These are pictured reference dimensions, not confirmed usable internal sizes.","Check each tier with the actual sandwiches, pastries and containers; leave clearance below the sloping cover.","Confirm how the layers are supported and packed, the carrying arrangement and the liners needed for each food type."],
+ "question":"Are the three reference pictures three different box constructions?",
+ "answer":"They are grouped as one pyramid catering-box series rather than three duplicate products. Two references show food and artwork arrangements; the third shows graduated trays labeled 15, 20 and 25 cm. Final tier count, usable dimensions and closure are confirmed on the approved sample.",
+ "distinct":"Pointed pyramid outer with graduated serving trays, unlike the existing shallow triangular portion trays and rectangular catering cartons. The three supplier listings are consolidated as reference views, not separate SEO pages.",
+ "dedupGroup":"pointed-pyramid-graduated-catering-trays",
+ "views":[
+  {"id":"mixed-catering","label":"Mixed catering","sourceId":"1601668849644","note":"Sandwich and pastry presentation reference. Artwork and food are examples, not included contents."},
+  {"id":"bakery-presentation","label":"Bakery presentation","sourceId":"1601668837597","note":"Bakery assortment and printed cover reference. Confirm tray fit for your actual menu."},
+  {"id":"three-tier-reference","label":"Three-tier reference","sourceId":"1601665383347","note":"Pictured tray labels: 15 / 20 / 25 cm. Usable internal dimensions, depth and closed height require confirmation."}
+ ]
+}
