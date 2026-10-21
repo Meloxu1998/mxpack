@@ -25,8 +25,10 @@ fs.mkdirSync(output, {recursive:true});
       await page.evaluate(async()=>{document.querySelectorAll('img').forEach(img=>img.loading='eager');await document.fonts.ready;await Promise.all([...document.images].map(img=>img.decode().catch(()=>{})));});
       const preserved=await page.evaluate(source=>{
         const old=new DOMParser().parseFromString(source,'text/html');
+        const current=document.querySelector('main').cloneNode(true);
+        current.querySelector('.quality-marks')?.remove();
         const normalize=element=>element.textContent.replace(/\s+/g,' ').trim();
-        return {text:normalize(old.querySelector('main'))===normalize(document.querySelector('main')),images:[...old.querySelectorAll('main img')].map(el=>el.getAttribute('src')).join('|')===[...document.querySelectorAll('main img')].map(el=>el.getAttribute('src')).join('|')};
+        return {text:normalize(old.querySelector('main'))===normalize(current),images:[...old.querySelectorAll('main img')].map(el=>el.getAttribute('src')).join('|')===[...current.querySelectorAll('img')].map(el=>el.getAttribute('src')).join('|')};
       },previous);
       assert(preserved.text,`Visible content changed at ${width}`);
       assert(preserved.images,`Images changed at ${width}`);
@@ -37,6 +39,9 @@ fs.mkdirSync(output, {recursive:true});
       assert(!metrics.overflow,`${width} horizontal overflow`);
       assert.equal(metrics.missing,0);
       assert.equal(metrics.brokenPrinciples,0);
+      const marks=await page.locator('.quality-marks img').evaluateAll(items=>items.map(img=>({width:img.clientWidth,height:img.clientHeight,loaded:img.naturalWidth>0})));
+      assert.equal(marks.length,4);
+      assert(marks.every(mark=>mark.loaded&&mark.width===mark.height&&mark.width===marks[0].width));
       if(width>1060){assert(metrics.hero.height<=680);assert(metrics.quality.width<=1240);}
       for(const [selector,name] of [['.about-hero','hero'],['#quality','quality'],['.sustainability-band','sustainability']]) {
         const screenshot=await page.locator(selector).screenshot({path:`${output}/${name}-${width}.png`,style:'.site-header,.floating-contact,.mobile-contact-bar,.skip-link { visibility:hidden!important }'});

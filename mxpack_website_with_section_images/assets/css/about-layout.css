@@ -29,6 +29,9 @@
 .about-page .about-sustainability-inner { display: grid; grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr); gap: 72px; align-items: center; }
 .about-page .sustainability-band .check-list { font-size: 15px; line-height: 1.65; gap: 14px; margin: 24px 0; }
 .about-page .sustainability-band .check-list li::before { margin-top: 2px; }
+.about-page #quality { row-gap: 32px; }
+.about-page .quality-marks { grid-column: 1 / -1; display: flex; align-items: center; justify-content: center; gap: 48px; padding-top: 24px; border-top: 1px solid var(--line); }
+.about-page .quality-marks img { flex: none; width: 80px; height: 80px; object-fit: contain; }
 @media (min-width: 1800px) {
   .about-page .about-hero, .about-page .about-copy { min-height: 620px; }
 }
@@ -62,4 +65,8 @@
   .about-page #process .section-title { font-size: 32px; }
   .about-page .sustainability-band { padding: 48px 0; }
   .about-page .about-sustainability-inner { width: calc(100% - 40px); grid-template-columns: 1fr; gap: 30px; }
+}
+@media (max-width: 600px) {
+  .about-page .quality-marks { gap: 16px; }
+  .about-page .quality-marks img { width: 60px; height: 60px; }
 }
