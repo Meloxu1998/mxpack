@@ -3,10 +3,10 @@
 MXPACKPRO is the international website of Foshan Xumelo Technology Co., Ltd., a custom food packaging supplier based in Foshan, China.
 
 ## Core pages
-- [Products](https://mxpackpro.com/products): 20 distinct custom packaging formats with product photos, starting quantities, fit checks and quotation links
+- [Products](https://mxpackpro.com/products): 51 custom packaging formats with product-specific fit checks and quotation links; original gift-box design visualizations are identified separately from product photographs
 - [Custom packaging](https://mxpackpro.com/custom-packaging): custom structure, printing and sampling process
 - [Solutions](https://mxpackpro.com/solutions): packaging by food business type
-- [Resources](https://mxpackpro.com/resources): packaging buying guides
+- [Guides](https://mxpackpro.com/resources): packaging buying guides
 - [About MXPACKPRO](https://mxpackpro.com/about-us): company and project support
 - [FAQ](https://mxpackpro.com/faq): MOQ, artwork, materials, samples and production answers
 - [Request a quote](https://mxpackpro.com/get-a-quote): contact and quotation request
@@ -22,3 +22,16 @@ MXPACKPRO is the international website of Foshan Xumelo Technology Co., Ltd., a 
 - [Materials and food safety](https://mxpackpro.com/materials-food-safety): conditions and documentation to verify before ordering
 - Product photos show example artwork. Final material, size, print, compliance documentation, pricing and delivery are confirmed in the project quotation.
 - This file is a navigation aid, not an indexing requirement or a guarantee of AI search inclusion.
+
+## Custom gift-box design formats
+These ten formats are made-to-brief design options, not stocked products or proof of completed production. Images are original design visualizations. MOQ, material, inserts, sample availability and schedule require project review; no fixed price, certification or transit rating is asserted.
+- [Pyramid favor gift box](https://mxpackpro.com/products/custom-pyramid-favor-gift-box): small apex-closure favor format, not the tiered catering box
+- [Cylinder paper tube gift box](https://mxpackpro.com/products/custom-cylinder-paper-tube-gift-box): round body and cap
+- [Heart-shaped rigid gift box](https://mxpackpro.com/products/custom-heart-shaped-rigid-gift-box): curved rigid base and lift-off lid
+- [Hexagonal rigid gift box](https://mxpackpro.com/products/custom-hexagonal-rigid-gift-box): rigid shell, not the folding snack carton
+- [Double-door drawer advent calendar box](https://mxpackpro.com/products/custom-double-door-drawer-advent-calendar-box): rigid drawer cabinet, not a perforated folding carton
+- [Wine bottle gift box with insert](https://mxpackpro.com/products/custom-wine-bottle-gift-box-with-insert): bottle-specific fit and retention review
+- [Medal and coin presentation box](https://mxpackpro.com/products/custom-medal-coin-presentation-box): recessed presentation insert; contents not included
+- [Window-lid rigid gift box](https://mxpackpro.com/products/custom-window-lid-rigid-gift-box): framed transparent panel and rigid shell
+- [Lid-and-base rigid gift box](https://mxpackpro.com/products/custom-lid-and-base-rigid-gift-box): separate two-piece lift-off construction
+- [Shoulder-and-neck rigid gift box](https://mxpackpro.com/products/custom-shoulder-neck-rigid-gift-box): three-component raised-neck construction

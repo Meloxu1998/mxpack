@@ -13,7 +13,10 @@
   const update = () => {
     const terms = (input?.value || '').toLowerCase().trim().split(/\s+/).filter(Boolean);
     const ordered = [...cards];
-    if (sort?.value === 'moq') ordered.sort((a,b) => Number(a.dataset.productMoq)-Number(b.dataset.productMoq));
+    if (sort?.value === 'moq') {
+      const minimum = card => Number(card.dataset.productMoq) > 0 ? Number(card.dataset.productMoq) : Infinity;
+      ordered.sort((a,b) => minimum(a)-minimum(b));
+    }
     if (sort?.value === 'name') ordered.sort((a,b) => a.querySelector('h2').textContent.localeCompare(b.querySelector('h2').textContent));
     let visible = 0;
     ordered.forEach(card => {

@@ -3,6 +3,7 @@ const fs=require('node:fs');
 const path=require('node:path');
 const assert=require('node:assert/strict');
 const product=require('../seo-system/data/pyramid-catering-product.json');
+const catalog=require('../seo-system/data/catalog-products.json');
 const base=process.env.QA_BASE||'http://127.0.0.1:4187';
 const output='D:/mxpack-audits/2026-10-21/pyramid-catering';
 (async()=>{
@@ -39,7 +40,7 @@ const output='D:/mxpack-audits/2026-10-21/pyramid-catering';
   assert.equal(await page.locator('input[name="Packaging reference view"]').count(),0);
   await page.goto(base+'/products');
   assert.equal(await page.locator(`.catalog-card[data-product-id="${product.slug}"]`).count(),1);
-  assert.equal(await page.locator('.catalog-card').count(),41);
+  assert.equal(await page.locator('.catalog-card').count(),catalog.length);
   const canonical=await page.locator('link[rel="canonical"]').getAttribute('href');assert.equal(canonical,'https://mxpackpro.com/products');
   assert.deepEqual(errors,[]);
   console.log('PASS: 3 original reference images, one deduplicated product, 4 widths, view-specific quote/WhatsApp context, unknown view rejected. No messages sent.');
