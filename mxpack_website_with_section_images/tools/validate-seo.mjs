@@ -25,7 +25,7 @@ for (const url of urls) {
 
   if (h1Count !== 1) errors.push(`${url}: expected one H1, found ${h1Count}`);
   if (!robots.includes('index') || robots.startsWith('noindex')) errors.push(`${url}: robots is "${robots}"`);
-  if (!canonical) errors.push(`${url}: canonical missing`);
+  if (canonical !== url) errors.push(`${url}: canonical must equal the sitemap URL, found "${canonical}"`);
   if (placeholders.length) errors.push(`${url}: ${placeholders.length} placeholder phrases`);
 
   for (const match of html.matchAll(/<script[^>]*type=['"]application\/ld\+json['"][^>]*>(.*?)<\/script>/gs)) {

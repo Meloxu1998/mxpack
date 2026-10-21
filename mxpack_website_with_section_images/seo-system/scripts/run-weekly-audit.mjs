@@ -20,7 +20,9 @@ function stripHtml(html) {
 }
 
 function matchContent(html, pattern) {
-  return html.match(pattern)?.[1]?.trim() ?? '';
+  return (html.match(pattern)?.[1]?.trim() ?? '')
+    .replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'")
+    .replace(/&lt;/g, '<').replace(/&gt;/g, '>');
 }
 
 async function fetchText(url) {
