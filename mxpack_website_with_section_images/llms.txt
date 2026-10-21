@@ -3,7 +3,7 @@
 MXPACKPRO is the international website of Foshan Xumelo Technology Co., Ltd., a custom food packaging supplier based in Foshan, China.
 
 ## Core pages
-- [Products](https://mxpackpro.com/products): food packaging product categories
+- [Products](https://mxpackpro.com/products): 20 distinct custom packaging formats with product photos, starting quantities, fit checks and quotation links
 - [Custom packaging](https://mxpackpro.com/custom-packaging): custom structure, printing and sampling process
 - [Solutions](https://mxpackpro.com/solutions): packaging by food business type
 - [Resources](https://mxpackpro.com/resources): packaging buying guides
@@ -14,5 +14,11 @@ MXPACKPRO is the international website of Foshan Xumelo Technology Co., Ltd., a 
 ## Verified contact
 - Email: sales@mxpackpro.com
 - Phone: +86 155 2116 3050
-- WhatsApp: +44 7704 644465
 - Location: Foshan, China
+
+## Purchasing information
+- [Buying guide](https://mxpackpro.com/packaging-buying-guide): product fit, sampling and delivery planning
+- [MOQ and pricing](https://mxpackpro.com/moq-pricing-guide): specification-dependent minimums and quotation scope
+- [Materials and food safety](https://mxpackpro.com/materials-food-safety): conditions and documentation to verify before ordering
+- Product photos show example artwork. Final material, size, print, compliance documentation, pricing and delivery are confirmed in the project quotation.
+- This file is a navigation aid, not an indexing requirement or a guarantee of AI search inclusion.

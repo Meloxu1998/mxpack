@@ -14,24 +14,6 @@ if (menuButton && mobileMenu) {
   });
 }
 
-document.querySelectorAll('[data-quote-form]').forEach((form) => {
-  let started = false;
-  form.addEventListener('focusin', () => {
-    if (started) return;
-    started = true;
-    window.gtag?.('event', 'form_start', { form_name: 'quote_request' });
-  });
-  form.addEventListener('submit', () => {
-    const countryCode = form.querySelector('#country-code');
-    const phone = form.querySelector('#phone');
-    if (countryCode && phone) {
-      phone.value = `${countryCode.value} ${phone.value.trim()}`;
-      countryCode.disabled = true;
-    }
-    window.gtag?.('event', 'form_submit', { form_name: 'quote_request' });
-  });
-});
-
 document.querySelectorAll('.nav-group').forEach((group) => {
   const trigger = group.querySelector('.nav-trigger');
   const menu = group.querySelector('.mega-menu');
@@ -50,16 +32,6 @@ document.addEventListener('keydown', (event) => {
   if (event.key !== 'Escape') return;
   document.querySelectorAll('.nav-trigger').forEach((trigger) => trigger.setAttribute('aria-expanded', 'false'));
   if (mobileMenu?.classList.contains('open')) menuButton?.click();
-});
-
-if (location.pathname.endsWith('/thank-you') || location.pathname.endsWith('/thank-you.html')) {
-  window.gtag?.('event', 'generate_lead', { form_name: 'quote_request' });
-}
-
-document.addEventListener('click', (event) => {
-  const link = event.target.closest('[data-track]');
-  if (!link || !window.gtag) return;
-  window.gtag('event', link.dataset.track, { link_url: link.href });
 });
 
 const contactConfig = {
@@ -104,7 +76,8 @@ if (contactPromptAllowed) {
 
   const prompt = document.querySelector('[data-contact-prompt]');
   const closeButton = prompt?.querySelector('[data-contact-prompt-close]');
-  const dismissedAt = Number(localStorage.getItem('mxpackContactPromptDismissedAt') || 0);
+  let dismissedAt = 0;
+  try { dismissedAt = Number(localStorage.getItem('mxpackContactPromptDismissedAt') || 0); } catch {}
   const dismissalExpired = Date.now() - dismissedAt > 7 * 24 * 60 * 60 * 1000;
   let promptShown = false;
 
@@ -119,7 +92,7 @@ if (contactPromptAllowed) {
   const dismissContactPrompt = () => {
     if (!prompt) return;
     prompt.classList.remove('is-visible');
-    localStorage.setItem('mxpackContactPromptDismissedAt', String(Date.now()));
+    try { localStorage.setItem('mxpackContactPromptDismissedAt', String(Date.now())); } catch {}
     window.setTimeout(() => { prompt.hidden = true; }, 220);
     window.gtag?.('event', 'contact_prompt_dismiss');
   };
