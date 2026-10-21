@@ -9,7 +9,7 @@ const base=process.env.QA_BASE||'http://127.0.0.1:4187';
   const context=await browser.newContext();
   await context.route(/googletagmanager\.com|google-analytics\.com/,r=>r.fulfill({status:200,body:''}));
   let external=0;
-  await context.route('https://wa.me/**',async r=>{external++;await r.fulfill({status:200,body:'WhatsApp navigation intercepted. No message sent.'});});
+  await context.route(/https:\/\/(?:wa\.me|web\.whatsapp\.com)\//,async r=>{external++;await r.fulfill({status:200,body:'WhatsApp navigation intercepted. No message sent.'});});
   const page=await context.newPage();
   const output='D:/mxpack-audits/2026-10-21/whatsapp';fs.mkdirSync(output,{recursive:true});
   for(const width of [1440,390,360]){
@@ -18,7 +18,7 @@ const base=process.env.QA_BASE||'http://127.0.0.1:4187';
     await page.goto(base+route);await page.locator('[data-whatsapp]').first().waitFor({state:'attached'});
     assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
     for(const link of await page.locator('[data-whatsapp]').all()){
-     const url=new URL(await link.getAttribute('href'));assert.equal(url.hostname,'wa.me');assert.equal(url.pathname,'/8615918968149');
+     const url=new URL(await link.getAttribute('href'));assert.equal(url.hostname,'web.whatsapp.com');assert.equal(url.searchParams.get('phone'),'8615918968149');
      assert(url.searchParams.get('text').includes('https://mxpackpro.com'+route));
      if(route.includes('/products/'))assert(url.searchParams.get('text').includes(await page.locator('h1').innerText()));
      assert.equal(await link.getAttribute('data-track'),'whatsapp_click');
@@ -35,6 +35,13 @@ const base=process.env.QA_BASE||'http://127.0.0.1:4187';
   assert.equal(external,1);await popup.close();
   const events=await page.evaluate(()=>window.dataLayer.filter(a=>a[0]==='event').map(a=>a[1]));
   assert(events.includes('whatsapp_click'));assert(!events.includes('generate_lead'));
+  for(const userAgent of ['Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 Version/18.0 Mobile/15E148 Safari/604.1','Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 Chrome/130.0.0.0 Mobile Safari/537.36']){
+   const mobile=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,userAgent});
+   const phone=await mobile.newPage();await phone.goto(base+'/products/custom-burger-clamshell-box');
+   const url=new URL(await phone.locator('.mobile-contact-whatsapp').getAttribute('href'));
+   assert.equal(url.hostname,'wa.me');assert.equal(url.pathname,'/8615918968149');assert(url.searchParams.get('text').includes('Burger'));
+   await mobile.close();
+  }
   console.log('PASS: 4 routes, 3 viewports, correct WhatsApp number and product context, isolated click tracking, intercepted navigation. No message sent.');
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1)});

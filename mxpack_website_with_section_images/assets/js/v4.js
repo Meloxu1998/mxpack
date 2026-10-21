@@ -159,7 +159,9 @@ if (contactPromptAllowed) {
 document.querySelectorAll('[data-whatsapp]').forEach(link => {
   const productName = document.body.dataset.productId ? document.querySelector('h1')?.textContent.trim() : '';
   const message = productName ? `Hi MXPACKPRO, I am interested in ${productName}.` : 'Hi MXPACKPRO, I am interested in custom packaging.';
-  link.href = 'https://wa.me/8615918968149?text=' + encodeURIComponent(`${message}\nPage: https://mxpackpro.com${location.pathname}`);
+  const mobileDevice = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const chatEntry = mobileDevice ? 'https://wa.me/8615918968149?text=' : 'https://web.whatsapp.com/send/?phone=8615918968149&text=';
+  link.href = chatEntry + encodeURIComponent(`${message}\nPage: https://mxpackpro.com${location.pathname}`);
 });
 
 if (window.lucide) window.lucide.createIcons();

@@ -65,7 +65,7 @@ html=html.replace(/<title>[\s\S]*?<\/title>/,`<title>${esc(title)}</title>`)
  .replace(/(<meta property="og:title" content=")[^"]*/,`$1${esc(title)}`)
  .replace(/(<meta property="og:description" content=")[^"]*/,`$1${esc(description)}`)
  .replace(/(<meta property="og:image" content=")[^"]*/,`$1${base}/assets/img/home/packaging-family-desktop-1860.webp`)
- .replace(/v4\.js\?v=[^"]+/,'v4.js?v=20261021-7')
+ .replace(/v4\.js\?v=[^"]+/,'v4.js?v=20261021-8')
  .replace(/inquiry-analytics\.js\?v=[^"]+/,'inquiry-analytics.js?v=20261021-3');
 html=html.replace(/\s*<script type="application\/ld\+json">[\s\S]*?<\/script>/g,'');
 const graph=[
