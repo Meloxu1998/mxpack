@@ -12,7 +12,7 @@ const oldHtml = urls.map((url) => new URL(url).pathname).map((slug) => slug === 
 const targets = [...new Set([...urls, ...[...legacy, ...redirects, ...oldHtml].map((slug) => `https://mxpackpro.com${slug}`),
   'https://mxpackpro.com/robots.txt', 'https://mxpackpro.com/sitemap.xml',
   'https://mxpackpro.com/thank-you', 'https://mxpackpro.com/seo-audit-missing-page',
-  'http://mxpackpro.com/', 'https://www.mxpackpro.com/'])];
+  'http://mxpackpro.com/', 'http://www.mxpackpro.com/', 'https://www.mxpackpro.com/'])];
 const rows = [];
 let cursor = 0;
 await Promise.all(Array.from({ length: 4 }, async () => {
@@ -40,7 +40,9 @@ rows.sort((a, b) => targets.indexOf(a.url) - targets.indexOf(b.url));
 const report = { checkedAt: new Date().toISOString(), checked: rows.length,
   failures: rows.filter((row) => row.error).length, rows };
 if (process.argv.includes('--write')) {
-  const reportPath = path.join(root, 'seo-system', 'reports', `${report.checkedAt.slice(0, 10)}-live-urls.json`);
+  const outputRoot = path.resolve(root, '..', '..', 'mxpack-audits', report.checkedAt.slice(0, 10));
+  fs.mkdirSync(outputRoot, { recursive: true });
+  const reportPath = path.join(outputRoot, 'live-urls.json');
   fs.writeFileSync(reportPath, `${JSON.stringify(report, null, 2)}\n`);
 }
 console.log(JSON.stringify(process.argv.includes('--summary')
