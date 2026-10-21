@@ -73,6 +73,7 @@ catalog = catalog.replace(/<p class="catalog-note">[\s\S]*?<\/p>/, '<p class="ca
 catalog = catalog.replace('Compare six practical packaging families for takeaway, delivery, drinks, bakery and retail.','Compare 20 packaging formats for takeaway, catering, drinks, bakery and retail.');
 catalog = catalog.replace('Six core product families','20 selected packaging formats').replace('Selected formats from 200 pcs','MOQ shown by product').replace('MOQ confirmed by structure and print method','Starting quantities from verified supplier listings');
 catalog = catalog.replaceAll('Selected custom formats can start from 200 pieces. The applicable MOQ depends on structure, material, size and printing method.', 'The listed formats start from 250 or 300 pieces, depending on the product. The applicable MOQ is confirmed for your structure, material, size and printing method.')
+  .replaceAll('Custom Food Packaging Products | MOQ from 200 | MXPACKPRO', 'Custom Food Packaging Products | MXPACKPRO')
   .replaceAll('Starting MOQ is taken from the selected supplier listing.', 'Starting MOQ applies to the pictured format and is subject to your final specification.')
   .replaceAll('Starting quantities from verified supplier listings', 'Confirm the minimum for your exact specification');
 catalog = catalog.replace('Compare six core food packaging families with custom printing, selected low-MOQ formats, samples and export support.','Compare 20 distinct packaging formats, starting quantities and buyer specifications with custom print and sample support.');
