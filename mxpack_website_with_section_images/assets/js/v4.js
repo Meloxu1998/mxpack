@@ -22,6 +22,12 @@ document.querySelectorAll('[data-quote-form]').forEach((form) => {
     window.gtag?.('event', 'form_start', { form_name: 'quote_request' });
   });
   form.addEventListener('submit', () => {
+    const countryCode = form.querySelector('#country-code');
+    const phone = form.querySelector('#phone');
+    if (countryCode && phone) {
+      phone.value = `${countryCode.value} ${phone.value.trim()}`;
+      countryCode.disabled = true;
+    }
     window.gtag?.('event', 'form_submit', { form_name: 'quote_request' });
   });
 });
