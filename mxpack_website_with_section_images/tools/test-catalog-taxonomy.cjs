@@ -10,7 +10,8 @@ const products=JSON.parse(fs.readFileSync('seo-system/data/catalog-products.json
 fs.mkdirSync(output,{recursive:true});
 (async()=>{
  const baseline=JSON.parse(execFileSync('git',['show','bde6cdd:mxpack_website_with_section_images/seo-system/data/catalog-products.json'],{encoding:'utf8'}));
- assert.deepEqual(products,baseline,'Existing product records must not change');
+ const withdrawn=JSON.parse(fs.readFileSync('seo-system/data/withdrawn-products.json','utf8'));
+ assert.deepEqual(products,baseline.filter(p=>!withdrawn.some(w=>w.slug===p.slug)),'Remaining product records must not change');
  const browser=await chromium.launch({channel:'chrome',headless:true});
  try{
   const page=await browser.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
@@ -30,7 +31,7 @@ fs.mkdirSync(output,{recursive:true});
     assert((await sharp(image).stats()).channels.some(c=>c.stdev>25));
    }
    await page.goto(base+'/products');
-   assert.equal(await page.locator('.catalog-card').count(),54);
+   assert.equal(await page.locator('.catalog-card').count(),products.length);
    assert.deepEqual(await page.locator('[data-catalog-filter]').evaluateAll(nodes=>nodes.slice(1).map(n=>n.dataset.catalogFilter)),categories.map(c=>c.id));
    for(const c of categories){
     if(width<=760)await page.locator('[data-catalog-select]').selectOption(c.id);
@@ -63,7 +64,7 @@ fs.mkdirSync(output,{recursive:true});
   const names=await page.locator('.catalog-card:not([hidden]) h2').allTextContents();
   assert.deepEqual(names,[...names].sort((a,b)=>a.localeCompare(b)));
   assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'),'https://mxpackpro.com/products');
-  await page.goto(base+'/christmas-packaging');assert.equal(await page.locator('.catalog-card:not([hidden])').count(),10);
+  await page.goto(base+'/christmas-packaging');assert.equal(await page.locator('.catalog-card:not([hidden])').count(),categories.find(c=>c.id==='christmas-boxes').members.length);
   for(const width of [390,1440]){
    await page.setViewportSize({width,height:960});await page.goto(base+'/products?category=bbq');
    if(width===1440){
@@ -77,7 +78,7 @@ fs.mkdirSync(output,{recursive:true});
     await page.locator('.mobile-menu a[href="/products?category=christmas-boxes"]').click();
    }
    await page.waitForURL('**/products?category=christmas-boxes');
-   assert.equal(await page.locator('.catalog-card:not([hidden])').count(),10);
+   assert.equal(await page.locator('.catalog-card:not([hidden])').count(),categories.find(c=>c.id==='christmas-boxes').members.length);
    await page.goto(base+'/products/bbq-meal-tray-carry-box');
    assert((await page.locator('.floating-contact [data-whatsapp]').getAttribute('href')).includes('8615918968149'));
    assert.equal(await page.locator('.floating-contact a[href^="mailto:sales@mxpackpro.com"]').count(),1);
@@ -90,8 +91,9 @@ fs.mkdirSync(output,{recursive:true});
   await page.locator('.taxonomy-layout').scrollIntoViewIfNeeded();
   assert(await page.locator('.taxonomy-sidebar').evaluate(n=>n.clientHeight<=480));
   await page.locator('[data-catalog-filter="christmas-boxes"]').click();
-  assert.equal(await page.locator('.catalog-card:not([hidden])').count(),10);
-  fs.writeFileSync(`${output}/${base.startsWith('https')?'live':'local'}-verification.json`,JSON.stringify({base,passed:true,results,products:54,categories:16,recordsUnchanged:true,noMessagesSent:true},null,2));
-  console.log('PASS: 16 categories, 54 unchanged products, 6 viewport sizes, all filter memberships, legacy links, search, sort and history. No messages sent.');
+  assert.equal(await page.locator('.catalog-card:not([hidden])').count(),categories.find(c=>c.id==='christmas-boxes').members.length);
+  const removed=await page.goto(base+'/products/custom-christmas-cracker-favor-box');assert.equal(removed.status(),404);
+  fs.writeFileSync(`${output}/${base.startsWith('https')?'live':'local'}-verification.json`,JSON.stringify({base,passed:true,results,products:products.length,categories:16,recordsUnchanged:true,withdrawnProductStatus:404,noMessagesSent:true},null,2));
+  console.log(`PASS: 16 categories, ${products.length} preserved products, 6 viewport sizes, filters, search, sort, history and withdrawn product 404. No messages sent.`);
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1)});

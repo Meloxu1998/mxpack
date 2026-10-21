@@ -44,7 +44,7 @@ home=home.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g,(
 });
 write('index.html',home);
 
-let catalog=read('products.html');
+let catalog=read('products.html').replace(/Compare \d+ packaging formats/g,`Compare ${products.length} packaging formats`);
 const oldSection=catalog.match(/<section class="catalog-section(?: catalog-taxonomy)?" id="catalog">[\s\S]*?<\/section>/)?.[0];
 if(!oldSection)throw new Error('Catalog section missing');
 const productCards=[...oldSection.matchAll(/<article\b[^>]*class="catalog-card"[\s\S]*?<\/article>/g)].map(m=>{

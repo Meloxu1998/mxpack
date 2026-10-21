@@ -5,6 +5,8 @@ import {fileURLToPath} from 'node:url';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const base = 'https://mxpackpro.com';
 const content = JSON.parse(fs.readFileSync(path.join(root, 'seo-system/data/catalog-products.json'), 'utf8'));
+const withdrawn = JSON.parse(fs.readFileSync(path.join(root, 'seo-system/data/withdrawn-products.json'), 'utf8'));
+if(content.some(p=>withdrawn.some(w=>w.slug===p.slug)))throw Error('Withdrawn product cannot be published without owner approval.');
 const provenance = JSON.parse(fs.readFileSync(path.join(root, 'seo-system/data/catalog-provenance.json'), 'utf8'));
 const sourceById = new Map(provenance.products.map(p => [p.id, p]));
 const products = content.map(p => ({...p, ...{source: sourceById.get(p.sourceId)}}))

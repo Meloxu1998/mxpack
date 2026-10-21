@@ -144,7 +144,6 @@
         "custom-window-lid-rigid-gift-box",
         "custom-lid-and-base-rigid-gift-box",
         "custom-shoulder-neck-rigid-gift-box",
-        "custom-christmas-cracker-favor-box",
         "custom-ornament-gift-box-with-paper-insert",
         "custom-cookie-assortment-drawer-box",
         "custom-printed-corrugated-mailer",
@@ -201,10 +200,9 @@
     {
       "id": "christmas-boxes",
       "label": "Christmas Boxes",
-      "image": "custom-christmas-cracker-favor-box",
+      "image": "custom-ornament-gift-box-with-paper-insert",
       "description": "Festive gifting, advent calendars and party packs.",
       "members": [
-        "custom-christmas-cracker-favor-box",
         "custom-ornament-gift-box-with-paper-insert",
         "custom-cookie-assortment-drawer-box",
         "custom-pyramid-favor-gift-box",

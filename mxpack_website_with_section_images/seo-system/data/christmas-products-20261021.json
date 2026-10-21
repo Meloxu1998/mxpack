@@ -1,47 +1,86 @@
 [
   {
-    "sourceId":"mxp-design-christmas-cracker","slug":"custom-christmas-cracker-favor-box","name":"Christmas Cracker Favor Box","category":"gifts","family":"products","keyword":"custom Christmas cracker favor boxes",
-    "material":"Folding printed paperboard with ribbon ties; board build and closure reviewed against the packed favor",
-    "structure":"Faceted central favor chamber with pinched necks and flared folded ends; empty packaging without a snap mechanism",
-    "intro":"Package a small Christmas table favor in a cracker-shaped carton. Review the central usable chamber separately from the decorative ends and ribbon ties.",
-    "uses":["Christmas table favors","Hotel and restaurant gifting","Wrapped small promotional gifts"],
-    "measure":"Usable central chamber length and width, total end-to-end length, neck opening, favor dimensions and packed weight",
-    "checks":["Confirm the gift fits inside the central chamber and can pass through the filling opening; the decorative ends are not storage space.","Review the folding sequence, ribbon attachment and opening method on a prototype.","This is empty favor packaging, without a bang, snap strip, toy or gift. Edible contents need a separately confirmed direct-contact layer."],
-    "question":"Does this Christmas cracker box make a bang or include gifts?",
-    "answer":"No. This listing is an empty decorative favor-box design. It does not include a snap mechanism, explosive component, toy, joke, food or gift. State your contents and opening requirements when requesting a quotation.",
-    "additionalFaq":[["Can this be delivered for this year's Christmas event?","Send the required arrival date, delivery country and postal code, quantity and artwork status. Structure approval, sampling, production, packing and transport must all fit the schedule. Availability and arrival are not guaranteed until reviewed in the quotation."]],
-    "distinct":"Pinched-neck and flared-end faceted favor chamber; distinct from a rigid cylinder tube, pillow carton or small pyramid favor box.","dedupGroup":"faceted-cracker-favor-with-pinched-ends",
-    "relatedSlugs":["custom-pyramid-favor-gift-box","custom-pillow-gift-box","envelope-flap-gift-box"],
-    "assetKey":"xmas-cracker","generatedFile":"exec-14d1dd34-3240-4c59-8447-ace5ba77cdae.png","approval":"User requested Christmas product selection and publication on 2026-10-21. Design option only; no fixed MOQ or delivery commitment verified."
+    "sourceId": "mxp-design-ornament-insert",
+    "slug": "custom-ornament-gift-box-with-paper-insert",
+    "name": "Ornament Gift Box with Paper Insert",
+    "category": "gifts",
+    "family": "products",
+    "keyword": "custom ornament gift boxes with inserts",
+    "material": "Folding paperboard carton with a separately fitted die-cut paper cradle; surface contact and insert retention reviewed with the actual ornament",
+    "structure": "Tuck-top folding carton with a removable paper cradle supporting one spherical ornament",
+    "intro": "Present a Christmas bauble in a folding carton with a fitted paper cradle. Size the support around the sphere, hanging cap and any attached ribbon before sampling.",
+    "uses": [
+      "Christmas ornament retail packs",
+      "Personalized bauble gifting",
+      "Corporate ornament presentation"
+    ],
+    "measure": "Sphere diameter, overall height including cap, cap width, ribbon allowance, ornament weight and internal carton clearance",
+    "checks": [
+      "Measure the hanging cap and ribbon as well as the sphere; the insert opening must not force fragile parts.",
+      "Test loading and removal with the actual ornament and review abrasion at paper contact points.",
+      "A gift carton is not a tested postal shipper. Review cushioning, an outer carton and transport testing separately; the pictured bauble is not included."
+    ],
+    "question": "Does the box include the bauble, and is it ready for courier shipping?",
+    "answer": "The bauble is shown only to explain the insert fit and is not included. No courier protection or drop-test rating is published. Review the filled carton, paper cradle, cushioning and shipping outer with the intended delivery route before approving the pack.",
+    "additionalFaq": [
+      [
+        "What do you need to size the ornament insert?",
+        "Send a drawing or sample showing the sphere diameter, hanging cap, full height and weight. Include surface sensitivity and filling method. The cradle aperture, contact points and box clearance are confirmed on a prototype, not from a decorative image alone."
+      ]
+    ],
+    "distinct": "Folding tuck-top ornament carton with a spherical paper cradle, not the rigid medal case with a flat circular recess or generic lift-off gift shell.",
+    "dedupGroup": "folding-bauble-carton-paper-cradle",
+    "relatedSlugs": [
+      "custom-medal-coin-presentation-box",
+      "custom-cylinder-paper-tube-gift-box",
+      "custom-window-lid-rigid-gift-box"
+    ],
+    "assetKey": "xmas-ornament",
+    "generatedFile": "exec-e726d90d-6d41-49fc-9af9-836335fb83dd.png",
+    "approval": "User requested Christmas product selection and publication on 2026-10-21. Design option only; no fixed MOQ or delivery commitment verified."
   },
   {
-    "sourceId":"mxp-design-ornament-insert","slug":"custom-ornament-gift-box-with-paper-insert","name":"Ornament Gift Box with Paper Insert","category":"gifts","family":"products","keyword":"custom ornament gift boxes with inserts",
-    "material":"Folding paperboard carton with a separately fitted die-cut paper cradle; surface contact and insert retention reviewed with the actual ornament",
-    "structure":"Tuck-top folding carton with a removable paper cradle supporting one spherical ornament",
-    "intro":"Present a Christmas bauble in a folding carton with a fitted paper cradle. Size the support around the sphere, hanging cap and any attached ribbon before sampling.",
-    "uses":["Christmas ornament retail packs","Personalized bauble gifting","Corporate ornament presentation"],
-    "measure":"Sphere diameter, overall height including cap, cap width, ribbon allowance, ornament weight and internal carton clearance",
-    "checks":["Measure the hanging cap and ribbon as well as the sphere; the insert opening must not force fragile parts.","Test loading and removal with the actual ornament and review abrasion at paper contact points.","A gift carton is not a tested postal shipper. Review cushioning, an outer carton and transport testing separately; the pictured bauble is not included."],
-    "question":"Does the box include the bauble, and is it ready for courier shipping?",
-    "answer":"The bauble is shown only to explain the insert fit and is not included. No courier protection or drop-test rating is published. Review the filled carton, paper cradle, cushioning and shipping outer with the intended delivery route before approving the pack.",
-    "additionalFaq":[["What do you need to size the ornament insert?","Send a drawing or sample showing the sphere diameter, hanging cap, full height and weight. Include surface sensitivity and filling method. The cradle aperture, contact points and box clearance are confirmed on a prototype, not from a decorative image alone."]],
-    "distinct":"Folding tuck-top ornament carton with a spherical paper cradle, not the rigid medal case with a flat circular recess or generic lift-off gift shell.","dedupGroup":"folding-bauble-carton-paper-cradle",
-    "relatedSlugs":["custom-medal-coin-presentation-box","custom-cylinder-paper-tube-gift-box","custom-window-lid-rigid-gift-box"],
-    "assetKey":"xmas-ornament","generatedFile":"exec-e726d90d-6d41-49fc-9af9-836335fb83dd.png","approval":"User requested Christmas product selection and publication on 2026-10-21. Design option only; no fixed MOQ or delivery commitment verified."
-  },
-  {
-    "sourceId":"mxp-design-cookie-drawer","slug":"custom-cookie-assortment-drawer-box","name":"Cookie Assortment Drawer Box","category":"gifts","family":"products","keyword":"custom cookie drawer gift boxes",
-    "material":"Paper-wrapped rigid sleeve and drawer with a paper divider grid; liners or individual food wraps selected and documented for the actual contents",
-    "structure":"Broad sliding drawer in a rigid sleeve with multiple separated assortment compartments",
-    "intro":"Arrange a Christmas cookie assortment in a divided pull-out drawer. Plan each portion and its liner before fixing the drawer footprint and sleeve clearance.",
-    "uses":["Christmas cookie gift assortments","Corporate bakery gifting","Wrapped confectionery selection packs"],
-    "measure":"Individual portion dimensions, compartment layout and depth, liner allowance, drawer travel and packed assortment weight",
-    "checks":["The six-compartment image is a layout example, not a fixed size or guaranteed piece count; check your actual portions and wrappers.","Confirm the direct-food-contact layer and any individual seals separately; decorative board alone is not evidence of food-contact suitability or shelf life.","Test divider retention, drawer travel, pull attachment and packed weight. Check sleeve fit with the final wraps and artwork finish."],
-    "question":"How is this different from a macaron sleeve or a window bakery carton?",
-    "answer":"This is a broad rigid sleeve-and-drawer construction with a grid for a mixed assortment. The macaron format is a narrow linear sleeve and tray, while window bakery cartons use other opening structures. Choose the format by the portion layout, packing method and sample checks rather than the seasonal artwork.",
-    "additionalFaq":[["Can unwrapped cookies be placed directly in the box?","Do not assume that the printed wrap, rigid board or illustrated liners are suitable for direct food contact. Specify the cookie type, fat content, storage conditions and destination market so the actual liners, wraps and supporting documentation can be confirmed."],["Can Christmas artwork be changed without creating a new box design?","Artwork can be discussed for the same approved structure. A new color or seasonal print is not a separate structural product. Dimensions, divider layout, print process, MOQ and schedule still require project confirmation."]],
-    "distinct":"Broad rigid assortment drawer with multi-row dividers, distinct from narrow folding macaron sleeve/tray, hinged pastry cartons and multi-drawer advent cabinets.","dedupGroup":"broad-rigid-cookie-assortment-drawer",
-    "relatedSlugs":["macaron-sleeve-box","window-grazing-box-with-dividers","custom-folding-pastry-carton"],
-    "assetKey":"xmas-cookie","generatedFile":"exec-5029d691-9c44-4253-a411-c3db2b3ceae7.png","approval":"User requested Christmas product selection and publication on 2026-10-21. Design option only; no fixed MOQ or delivery commitment verified."
+    "sourceId": "mxp-design-cookie-drawer",
+    "slug": "custom-cookie-assortment-drawer-box",
+    "name": "Cookie Assortment Drawer Box",
+    "category": "gifts",
+    "family": "products",
+    "keyword": "custom cookie drawer gift boxes",
+    "material": "Paper-wrapped rigid sleeve and drawer with a paper divider grid; liners or individual food wraps selected and documented for the actual contents",
+    "structure": "Broad sliding drawer in a rigid sleeve with multiple separated assortment compartments",
+    "intro": "Arrange a Christmas cookie assortment in a divided pull-out drawer. Plan each portion and its liner before fixing the drawer footprint and sleeve clearance.",
+    "uses": [
+      "Christmas cookie gift assortments",
+      "Corporate bakery gifting",
+      "Wrapped confectionery selection packs"
+    ],
+    "measure": "Individual portion dimensions, compartment layout and depth, liner allowance, drawer travel and packed assortment weight",
+    "checks": [
+      "The six-compartment image is a layout example, not a fixed size or guaranteed piece count; check your actual portions and wrappers.",
+      "Confirm the direct-food-contact layer and any individual seals separately; decorative board alone is not evidence of food-contact suitability or shelf life.",
+      "Test divider retention, drawer travel, pull attachment and packed weight. Check sleeve fit with the final wraps and artwork finish."
+    ],
+    "question": "How is this different from a macaron sleeve or a window bakery carton?",
+    "answer": "This is a broad rigid sleeve-and-drawer construction with a grid for a mixed assortment. The macaron format is a narrow linear sleeve and tray, while window bakery cartons use other opening structures. Choose the format by the portion layout, packing method and sample checks rather than the seasonal artwork.",
+    "additionalFaq": [
+      [
+        "Can unwrapped cookies be placed directly in the box?",
+        "Do not assume that the printed wrap, rigid board or illustrated liners are suitable for direct food contact. Specify the cookie type, fat content, storage conditions and destination market so the actual liners, wraps and supporting documentation can be confirmed."
+      ],
+      [
+        "Can Christmas artwork be changed without creating a new box design?",
+        "Artwork can be discussed for the same approved structure. A new color or seasonal print is not a separate structural product. Dimensions, divider layout, print process, MOQ and schedule still require project confirmation."
+      ]
+    ],
+    "distinct": "Broad rigid assortment drawer with multi-row dividers, distinct from narrow folding macaron sleeve/tray, hinged pastry cartons and multi-drawer advent cabinets.",
+    "dedupGroup": "broad-rigid-cookie-assortment-drawer",
+    "relatedSlugs": [
+      "macaron-sleeve-box",
+      "window-grazing-box-with-dividers",
+      "custom-folding-pastry-carton"
+    ],
+    "assetKey": "xmas-cookie",
+    "generatedFile": "exec-5029d691-9c44-4253-a411-c3db2b3ceae7.png",
+    "approval": "User requested Christmas product selection and publication on 2026-10-21. Design option only; no fixed MOQ or delivery commitment verified."
   }
 ]

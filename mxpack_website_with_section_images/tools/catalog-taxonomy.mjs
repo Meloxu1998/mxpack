@@ -25,7 +25,7 @@ export const taxonomy=[
  category('burger-boxes','Burger Boxes','custom-burger-clamshell-box','Hinged cartons for burgers and sliders.',['custom-burger-clamshell-box']),
  category('paper-bags','Paper Bags','custom-bakery-carrier-bag','Bakery, bread and retail carrier bags.',['custom-bakery-carrier-bag','printed-baguette-bread-bag','die-cut-handle-paper-bag']),
  category('paper-cups','Paper Cups','custom-printed-coffee-paper-cup','Printed paper cups and coordinated carriers.',raw('drinkware')),
- category('christmas-boxes','Christmas Boxes','custom-christmas-cracker-favor-box','Festive gifting, advent calendars and party packs.',christmas.products.map(p=>p.slug))
+ category('christmas-boxes','Christmas Boxes','custom-ornament-gift-box-with-paper-insert','Festive gifting, advent calendars and party packs.',christmas.products.map(p=>p.slug))
 ];
 export const aliases={'gifts':'gift-boxes','catering':'grazing-boxes','food-boxes':'takeaway-food-boxes','bakery':'cake-boxes','drinkware':'paper-cups','bags':'paper-bags','retail':'gift-boxes'};
 const slugs=new Set(products.map(p=>p.slug));

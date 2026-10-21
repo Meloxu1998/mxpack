@@ -12,10 +12,10 @@ const output='D:/mxpack-audits/2026-10-21/christmas-catalog';
 (async()=>{
  fs.mkdirSync(output,{recursive:true});
  const old=JSON.parse(execFileSync('git',['show','522cf11:mxpack_website_with_section_images/seo-system/data/catalog-products.json'],{cwd:root,encoding:'utf8'}));
- assert.equal(old.length,51);assert.equal(catalog.length,54);assert.equal(additions.length,3);
+ assert.equal(old.length,51);assert.equal(catalog.length,53);assert.equal(additions.length,2);
  for(const p of old)assert.deepEqual(catalog.find(q=>q.slug===p.slug),p,'Existing product changed '+p.slug);
- assert.equal(new Set(catalog.map(p=>p.keyword.toLowerCase())).size,54);
- assert.equal(new Set(catalog.map(p=>p.slug)).size,54);
+ assert.equal(new Set(catalog.map(p=>p.keyword.toLowerCase())).size,53);
+ assert.equal(new Set(catalog.map(p=>p.slug)).size,53);
  const browser=await chromium.launch({channel:'chrome',headless:true});const errors=[];
  try{
   for(const width of [1440,768,390,360]){
@@ -28,9 +28,9 @@ const output='D:/mxpack-audits/2026-10-21/christmas-catalog';
    await page.goto(base+'/christmas-packaging');await assertLayout();
    assert.equal(await page.locator('h1').innerText(),'Christmas Packaging');
    assert.equal(await page.locator('link[rel=canonical]').getAttribute('href'),'https://mxpackpro.com/christmas-packaging');
-   assert.equal(await page.locator('.catalog-card').count(),10);
+   assert.equal(await page.locator('.catalog-card').count(),selection.products.length);
    const schemas=await page.locator('script[type="application/ld+json"]').evaluateAll(nodes=>nodes.map(n=>JSON.parse(n.textContent)));
-   assert.equal(schemas.find(s=>s['@type']==='CollectionPage').mainEntity.numberOfItems,10);
+   assert.equal(schemas.find(s=>s['@type']==='CollectionPage').mainEntity.numberOfItems,selection.products.length);
    const faq=schemas.find(s=>s['@type']==='FAQPage').mainEntity;
    for(let i=0;i<faq.length;i++){
     assert.equal(await page.locator('.accordion summary').nth(i).innerText(),faq[i].name);
@@ -78,15 +78,15 @@ const output='D:/mxpack-audits/2026-10-21/christmas-catalog';
     await page.locator('main a[href*="get-a-quote?product="]').first().click();await page.waitForURL('**/get-a-quote*');
     assert((await page.locator('#message').inputValue()).includes(p.name));
    }
-   await page.goto(base+'/products');assert.equal(await page.locator('.catalog-card').count(),54);
+   await page.goto(base+'/products');assert.equal(await page.locator('.catalog-card').count(),catalog.length);
    if(width<=1060){await page.locator('[data-menu-toggle]').click();await page.locator('.mobile-menu details summary').first().click();await page.locator('.mobile-menu a[href="/products?category=christmas-boxes"]').click();}
    else{await page.locator('[aria-controls="nav-products"]').hover();await page.locator('.nav-links a[href="/products?category=christmas-boxes"]').click();}
    await page.waitForURL('**/products?category=christmas-boxes');await page.locator('.taxonomy-seasonal').click();
-   await page.waitForURL('**/christmas-packaging');assert.equal(await page.locator('.catalog-card').count(),10);
+   await page.waitForURL('**/christmas-packaging');assert.equal(await page.locator('.catalog-card').count(),selection.products.length);
    await context.close();
   }
   assert.deepEqual(errors,[]);
  }finally{await browser.close();}
- fs.writeFileSync(path.join(output,base.startsWith('https:')?'live-verification.json':'local-verification.json'),JSON.stringify({base,preservedProducts:51,newProducts:3,totalProducts:54,collectionProducts:10,widths:[1440,768,390,360],messagesSent:false,indexingSubmitted:false,pageErrors:errors,result:'PASS'},null,2));
- console.log('PASS: 51 original records preserved, 3 unique additions, 10-format Christmas collection, 4 widths, images, filters/search, FAQs, navigation, seasonal and product quote context, WhatsApp and email. No messages sent.');
+ fs.writeFileSync(path.join(output,base.startsWith('https:')?'live-verification.json':'local-verification.json'),JSON.stringify({base,preservedProducts:51,newProducts:additions.length,totalProducts:catalog.length,collectionProducts:selection.products.length,widths:[1440,768,390,360],messagesSent:false,indexingSubmitted:false,pageErrors:errors,result:'PASS'},null,2));
+ console.log(`PASS: 51 original records preserved, ${additions.length} seasonal additions, ${selection.products.length} Christmas formats, 4 widths, images, filters, FAQs and inquiry context. No messages sent.`);
 })().catch(e=>{console.error(e);process.exit(1)});

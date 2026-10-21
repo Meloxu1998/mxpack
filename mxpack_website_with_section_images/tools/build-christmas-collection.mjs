@@ -41,4 +41,4 @@ fs.writeFileSync(path.join(root,collection.slug+'.html'),page.replace(/[ \t]+$/g
 let sitemap=fs.readFileSync(path.join(root,'sitemap.xml'),'utf8');
 if(!sitemap.includes(`<loc>${canonical}</loc>`))sitemap=sitemap.replace('</urlset>',`  <url><loc>${canonical}</loc><lastmod>2026-10-21</lastmod></url>\n</urlset>`);
 fs.writeFileSync(path.join(root,'sitemap.xml'),sitemap);
-console.log(`Built Christmas collection: ${chosen.length} canonical formats, including 3 new structures.`);
+console.log(`Built Christmas collection: ${chosen.length} canonical formats.`);

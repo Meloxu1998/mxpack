@@ -4,6 +4,8 @@ const sharp = require('sharp');
 const root = path.resolve(__dirname, '..');
 const data = path.join(root, 'seo-system/data');
 const additions = JSON.parse(fs.readFileSync(process.argv[2] ? path.resolve(process.argv[2]) : path.join(data,'gift-catalog-20261021.json'),'utf8'));
+const withdrawn = JSON.parse(fs.readFileSync(path.join(data,'withdrawn-products.json'),'utf8'));
+if(additions.some(p=>withdrawn.some(w=>w.slug===p.slug)))throw Error('Owner withdrew this product; new approval is required before preparing it.');
 const generated = 'C:/Users/Administrator/.codex/generated_images/019f3b1e-70a2-7783-99c7-135bfac61fad';
 (async () => {
   const catalog = JSON.parse(fs.readFileSync(path.join(data, 'catalog-products.json'), 'utf8'));
