@@ -6,15 +6,17 @@ const {chromium}=require('playwright');
 const root=path.resolve(__dirname,'..');
 const additions=require('../seo-system/data/gift-catalog-20261021.json');
 const catalog=require('../seo-system/data/catalog-products.json');
+const seasonal=require('../seo-system/data/christmas-products-20261021.json');
 const provenance=require('../seo-system/data/catalog-provenance.json').products;
 const base=process.env.QA_BASE||'http://127.0.0.1:4187';
 const output='D:/mxpack-audits/2026-10-21/gift-catalog';
 (async()=>{
  const baseline=JSON.parse(execFileSync('git',['show','823e0ae:mxpack_website_with_section_images/seo-system/data/catalog-products.json'],{cwd:root,encoding:'utf8'}));
- assert.equal(baseline.length,41);assert.equal(catalog.length,51);assert.equal(additions.length,10);
+ const giftCount=additions.length+seasonal.length;
+ assert.equal(baseline.length,41);assert.equal(catalog.length,baseline.length+giftCount);assert.equal(additions.length,10);
  for(const old of baseline)assert.deepEqual(catalog.find(p=>p.slug===old.slug),old,'Existing record changed '+old.slug);
- assert.equal(new Set(catalog.map(p=>p.keyword)).size,51);
- assert.equal(new Set(catalog.map(p=>p.slug)).size,51);
+ assert.equal(new Set(catalog.map(p=>p.keyword)).size,catalog.length);
+ assert.equal(new Set(catalog.map(p=>p.slug)).size,catalog.length);
  for(const p of additions){
   const s=provenance.find(s=>s.id===p.sourceId);assert.equal(s.minimumOrder,null);assert.equal(s.kind,'design-concept');
   assert(fs.statSync(path.join(root,s.imagePath)).size<180000,'Unoptimized image '+p.slug);
@@ -51,7 +53,7 @@ const output='D:/mxpack-audits/2026-10-21/gift-catalog';
     assert(await page.locator('#phone').getAttribute('required')!==null);
    }
    await page.goto(base+'/products?category=gifts');
-   assert.equal(await page.locator('.catalog-card:not([hidden])').count(),10);
+   assert.equal(await page.locator('.catalog-card:not([hidden])').count(),giftCount);
    assert.equal(await page.locator('header a[href="/products?category=gifts"]').count(),2);
    if(width<=1060){
     await page.locator('[data-menu-toggle]').click();
@@ -62,11 +64,11 @@ const output='D:/mxpack-audits/2026-10-21/gift-catalog';
     await page.locator('.nav-links a[href="/products?category=gifts"]').click();
    }
    await page.waitForURL('**/products?category=gifts');
-   assert.equal(await page.locator('.catalog-card:not([hidden])').count(),10);
+   assert.equal(await page.locator('.catalog-card:not([hidden])').count(),giftCount);
    await page.locator('[data-catalog-sort]').selectOption('moq');
-   assert.equal(await page.locator('.catalog-card:not([hidden])').count(),10);
+   assert.equal(await page.locator('.catalog-card:not([hidden])').count(),giftCount);
    await page.locator('[data-catalog-filter="all"]').click();
-   assert.equal(await page.locator('.catalog-card:not([hidden])').count(),51);
+   assert.equal(await page.locator('.catalog-card:not([hidden])').count(),catalog.length);
    const order=await page.locator('.catalog-grid .catalog-card').evaluateAll(cards=>cards.map(c=>c.dataset.productMoq));
    assert(order.slice(0,41).every(n=>Number(n)>0));assert(order.slice(41).every(n=>!n));
    await page.locator('[data-catalog-filter="gifts"]').click();
@@ -79,6 +81,6 @@ const output='D:/mxpack-audits/2026-10-21/gift-catalog';
   }
   assert.deepEqual(pageErrors,[]);
  }finally{await browser.close();}
- fs.writeFileSync(path.join(output,base.startsWith('https:')?'live-verification.json':'local-verification.json'),JSON.stringify({base,totalProducts:51,newGiftFormats:10,unchangedExistingRecords:41,viewportWidths:[1440,768,390,360],pageErrors,messagesSent:false,indexingSubmitted:false,results:'PASS'},null,2));
+ fs.writeFileSync(path.join(output,base.startsWith('https:')?'live-verification.json':'local-verification.json'),JSON.stringify({base,totalProducts:catalog.length,newGiftFormats:10,unchangedExistingRecords:41,viewportWidths:[1440,768,390,360],pageErrors,messagesSent:false,indexingSubmitted:false,results:'PASS'},null,2));
  console.log('PASS: 10 gift formats, 41 preserved records, 4 widths, images, FAQs, canonical URLs, gift filter/search, unknown-MOQ sorting and product-context quote/WhatsApp links. No messages sent.');
 })().catch(e=>{console.error(e);process.exit(1)});

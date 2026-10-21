@@ -1,0 +1,28 @@
+{
+  "slug":"christmas-packaging",
+  "title":"Custom Christmas Packaging & Gift Boxes | MXPACKPRO",
+  "description":"Compare Christmas favor boxes, cookie gift packs, ornament cartons, advent calendars and catering formats. Review samples, MOQ and delivery timing for your project.",
+  "keyword":"custom Christmas packaging",
+  "selectionBasis":"Buyer use-case selection, not a claim of sales ranking or available seasonal inventory. New structures were checked against the existing 51 product records; artwork-only variants remain on their original canonical pages.",
+  "researchSources":["https://www.tinyboxcompany.co.uk/shop-by-collection/christmas-collection","https://packhelp.com/packaging/?i=1&use-case=christmas"],
+  "groups":{"favors":"Table favors","ornaments":"Ornaments","bakery":"Bakery gifts","calendars":"Advent calendars","bottles":"Bottle gifts","catering":"Party catering"},
+  "products":[
+    {"slug":"custom-christmas-cracker-favor-box","group":"favors","reason":"Small table favors; measure the central chamber, not the decorative ends."},
+    {"slug":"custom-ornament-gift-box-with-paper-insert","group":"ornaments","reason":"Bauble presentation; confirm sphere, cap and paper cradle fit."},
+    {"slug":"custom-cookie-assortment-drawer-box","group":"bakery","reason":"Mixed cookie gifts; plan portion layout and the direct-contact liner."},
+    {"slug":"custom-pyramid-favor-gift-box","group":"favors","reason":"Small event gifts; check clearance under the sloping walls."},
+    {"slug":"folding-advent-calendar-carton","group":"calendars","reason":"Folding countdown pack; review each access panel and filling plan."},
+    {"slug":"custom-double-door-drawer-advent-calendar-box","group":"calendars","reason":"Drawer-cabinet presentation; allow time for structure and assembly review."},
+    {"slug":"custom-wine-bottle-gift-box-with-insert","group":"bottles","reason":"Bottle gifting; start with the filled bottle drawing and weight."},
+    {"slug":"window-grazing-box-with-dividers","group":"catering","reason":"Party assortments; review portions, liners and holding conditions."},
+    {"slug":"tall-cake-box-with-handles","group":"bakery","reason":"Celebration cakes; allow for the cake board and decorations."},
+    {"slug":"custom-pyramid-catering-box","group":"catering","reason":"Afternoon-tea presentation; confirm usable tray dimensions at every tier."}
+  ],
+  "faq":[
+    ["Can I still order custom packaging for this Christmas?","Send the required arrival date, quantity, artwork status, delivery country and postal code first. Sampling, approval, production, packing and shipping must be reviewed together. An advent campaign may need its packaging before December begins. We do not publish a guaranteed Christmas arrival date; availability and timing are confirmed for the specific project."],
+    ["Can I add Christmas artwork to an existing packaging format?","Start with the format that fits your contents, then send the festive artwork for print and dieline review. Changing a color or illustration does not necessarily require a different construction. A new insert, closure or compartment layout requires a structural review, and the final print process, MOQ and timing remain project-specific."],
+    ["What is the minimum order for Christmas packaging?","There is no single seasonal MOQ. A starting quantity shown on an existing product applies only to that format and remains subject to specification. New design options have no fixed published MOQ; size, construction, insert, print and quantity must be reviewed in a project quotation."],
+    ["Are gifts, ornaments or food included?","No. These listings concern packaging formats. Any shown contents illustrate fit and are not included. Food-contact layers, filled-pack handling and shipping protection require separate confirmation for the actual contents and market."],
+    ["Are all of the product images photographs?","No. Cards marked Design visualization are original illustrative designs, not photographs of produced samples or proof of stock. Other cards show format references. Final artwork, size, construction and availability must be confirmed on the project brief and sample."]
+  ]
+}

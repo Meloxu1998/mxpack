@@ -76,6 +76,13 @@
       const message = form.querySelector('[name="Message"]');
       if (message && !message.value) message.value = `Packaging for ${solution}.\nFood / products to pack: \nQuantity: \nDelivery country: `;
     }
+    if(query.get('occasion')==='christmas'){
+      setHidden('Seasonal project','Christmas packaging; arrival date and availability require project review');
+      const message=form.querySelector('[name="Message"]');
+      if(message&&!message.value.startsWith('Christmas packaging project.')){
+        message.value=`Christmas packaging project.\n${message.value||'Product / contents: \nQuantity: \nSize: \n'}\nRequired arrival date: \nDelivery country / postal code: `;
+      }
+    }
     setHidden('Inquiry source', sourcePage);
     setHidden('Landing page', landing.path);
     for (const [key,value] of Object.entries(landing.campaign || {})) setHidden(key, value);

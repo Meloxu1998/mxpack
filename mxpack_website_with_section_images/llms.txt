@@ -3,7 +3,7 @@
 MXPACKPRO is the international website of Foshan Xumelo Technology Co., Ltd., a custom food packaging supplier based in Foshan, China.
 
 ## Core pages
-- [Products](https://mxpackpro.com/products): 51 custom packaging formats with product-specific fit checks and quotation links; original gift-box design visualizations are identified separately from product photographs
+- [Products](https://mxpackpro.com/products): 54 custom packaging formats with product-specific fit checks and quotation links; original gift-box design visualizations are identified separately from product photographs
 - [Custom packaging](https://mxpackpro.com/custom-packaging): custom structure, printing and sampling process
 - [Solutions](https://mxpackpro.com/solutions): packaging by food business type
 - [Guides](https://mxpackpro.com/resources): packaging buying guides
@@ -17,6 +17,7 @@ MXPACKPRO is the international website of Foshan Xumelo Technology Co., Ltd., a 
 - Location: Foshan, China
 
 ## Purchasing information
+- [Christmas packaging](https://mxpackpro.com/christmas-packaging): ten curated canonical formats for seasonal gifts, bakery, ornaments, advent campaigns and party catering. Three new structural designs, not duplicate holiday artwork pages. Arrival dates and availability require individual review; no seasonal delivery guarantee.
 - [Buying guide](https://mxpackpro.com/packaging-buying-guide): product fit, sampling and delivery planning
 - [MOQ and pricing](https://mxpackpro.com/moq-pricing-guide): specification-dependent minimums and quotation scope
 - [Materials and food safety](https://mxpackpro.com/materials-food-safety): conditions and documentation to verify before ordering
@@ -35,3 +36,6 @@ These ten formats are made-to-brief design options, not stocked products or proo
 - [Window-lid rigid gift box](https://mxpackpro.com/products/custom-window-lid-rigid-gift-box): framed transparent panel and rigid shell
 - [Lid-and-base rigid gift box](https://mxpackpro.com/products/custom-lid-and-base-rigid-gift-box): separate two-piece lift-off construction
 - [Shoulder-and-neck rigid gift box](https://mxpackpro.com/products/custom-shoulder-neck-rigid-gift-box): three-component raised-neck construction
+- [Christmas cracker favor box](https://mxpackpro.com/products/custom-christmas-cracker-favor-box): empty decorative favor carton without a snap or gift
+- [Ornament gift box with paper insert](https://mxpackpro.com/products/custom-ornament-gift-box-with-paper-insert): folding carton with a fitted spherical paper cradle; ornament not included; no courier protection rating
+- [Cookie assortment drawer box](https://mxpackpro.com/products/custom-cookie-assortment-drawer-box): broad rigid drawer and divider grid; food-contact layers require confirmation

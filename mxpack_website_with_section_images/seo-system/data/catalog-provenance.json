@@ -732,6 +732,48 @@
       "imagePath": "/assets/img/catalog/mxp-design-shoulder-neck-960.webp",
       "thumbnailPath": "/assets/img/catalog/mxp-design-shoulder-neck-480.webp",
       "minimumOrder": null
+    },
+    {
+      "id": "mxp-design-christmas-cracker",
+      "title": "Christmas Cracker Favor Box",
+      "kind": "design-concept",
+      "approval": "User requested Christmas product selection and publication on 2026-10-21. Design option only; no fixed MOQ or delivery commitment verified.",
+      "imageOrigin": "Original AI-generated design visualization; not competitor imagery or a produced sample photograph.",
+      "assetKey": "xmas-cracker",
+      "generatedFile": "exec-14d1dd34-3240-4c59-8447-ace5ba77cdae.png",
+      "width": 960,
+      "height": 960,
+      "imagePath": "/assets/img/catalog/mxp-design-christmas-cracker-960.webp",
+      "thumbnailPath": "/assets/img/catalog/mxp-design-christmas-cracker-480.webp",
+      "minimumOrder": null
+    },
+    {
+      "id": "mxp-design-ornament-insert",
+      "title": "Ornament Gift Box with Paper Insert",
+      "kind": "design-concept",
+      "approval": "User requested Christmas product selection and publication on 2026-10-21. Design option only; no fixed MOQ or delivery commitment verified.",
+      "imageOrigin": "Original AI-generated design visualization; not competitor imagery or a produced sample photograph.",
+      "assetKey": "xmas-ornament",
+      "generatedFile": "exec-e726d90d-6d41-49fc-9af9-836335fb83dd.png",
+      "width": 960,
+      "height": 960,
+      "imagePath": "/assets/img/catalog/mxp-design-ornament-insert-960.webp",
+      "thumbnailPath": "/assets/img/catalog/mxp-design-ornament-insert-480.webp",
+      "minimumOrder": null
+    },
+    {
+      "id": "mxp-design-cookie-drawer",
+      "title": "Cookie Assortment Drawer Box",
+      "kind": "design-concept",
+      "approval": "User requested Christmas product selection and publication on 2026-10-21. Design option only; no fixed MOQ or delivery commitment verified.",
+      "imageOrigin": "Original AI-generated design visualization; not competitor imagery or a produced sample photograph.",
+      "assetKey": "xmas-cookie",
+      "generatedFile": "exec-5029d691-9c44-4253-a411-c3db2b3ceae7.png",
+      "width": 960,
+      "height": 960,
+      "imagePath": "/assets/img/catalog/mxp-design-cookie-drawer-960.webp",
+      "thumbnailPath": "/assets/img/catalog/mxp-design-cookie-drawer-480.webp",
+      "minimumOrder": null
     }
   ]
 }

@@ -1,0 +1,25 @@
+.christmas-page .christmas-intro { padding-block: 0 30px; }
+.christmas-page .christmas-intro .display-title { margin-top: 14px; font-size: 52px; line-height: 1.1; }
+.christmas-page .christmas-lead { margin: 18px 0 26px; max-width: 720px; color: var(--muted); font-size: 18px; line-height: 1.6; }
+.christmas-order-note { display: grid; grid-template-columns: 24px minmax(0,1fr) auto; gap: 18px; align-items: center; padding: 20px 0; border-block: 1px solid var(--line); }
+.christmas-order-note .icon { width: 22px; height: 22px; color: var(--forest-700); }
+.christmas-order-note p { margin: 0; max-width: 790px; font-size: 14px; line-height: 1.7; }
+.christmas-order-note strong { display: block; }
+.christmas-page .christmas-products { padding-block: 0 64px; }
+.christmas-page .catalog-search-row { margin-block: 24px; }
+.christmas-page .catalog-filters { padding: 12px 0; }
+.christmas-page .christmas-fit { margin: 14px 0 0; color: var(--muted); font-size: 14px; line-height: 1.65; }
+.christmas-page .christmas-image-note { margin: 12px 0 0; font-size: 12px; color: var(--muted); }
+.christmas-page .catalog-note { margin-top: 24px; font-size: 12px; line-height: 1.7; color: var(--muted); }
+.christmas-page .buyer-check-list { margin: 22px 0 0; padding-left: 22px; line-height: 1.7; }
+.christmas-page .buyer-check-list li { margin-block: 14px; padding-left: 8px; }
+@media (max-width: 1060px) {
+  .christmas-order-note { grid-template-columns: 24px minmax(0,1fr); }
+  .christmas-order-note > .text-link { grid-column: 2; }
+}
+@media (max-width: 760px) {
+  .christmas-page .christmas-intro .display-title { font-size: 38px; overflow-wrap: anywhere; }
+  .christmas-page .christmas-lead { font-size: 16px; }
+  .christmas-order-note { gap: 12px; }
+  .christmas-page .section-title { font-size: 32px; }
+}
