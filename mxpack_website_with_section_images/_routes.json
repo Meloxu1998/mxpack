@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "include": [
+    "/products/custom-christmas-cracker-favor-box",
+    "/products/custom-christmas-cracker-favor-box/",
+    "/products/custom-christmas-cracker-favor-box.html"
+  ],
+  "exclude": []
+}
