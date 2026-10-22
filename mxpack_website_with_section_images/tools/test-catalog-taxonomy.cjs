@@ -92,8 +92,8 @@ fs.mkdirSync(output,{recursive:true});
   assert(await page.locator('.taxonomy-sidebar').evaluate(n=>n.clientHeight<=480));
   await page.locator('[data-catalog-filter="christmas-boxes"]').click();
   assert.equal(await page.locator('.catalog-card:not([hidden])').count(),categories.find(c=>c.id==='christmas-boxes').members.length);
-  const removed=await page.goto(base+'/products/custom-christmas-cracker-favor-box');assert.equal(removed.status(),404);
-  fs.writeFileSync(`${output}/${base.startsWith('https')?'live':'local'}-verification.json`,JSON.stringify({base,passed:true,results,products:products.length,categories:16,recordsUnchanged:true,withdrawnProductStatus:404,noMessagesSent:true},null,2));
-  console.log(`PASS: 16 categories, ${products.length} preserved products, 6 viewport sizes, filters, search, sort, history and withdrawn product 404. No messages sent.`);
+  const removed=await page.goto(base+'/products/custom-christmas-cracker-favor-box');assert.equal(removed.status(),base.startsWith('https')?410:404);
+  fs.writeFileSync(`${output}/${base.startsWith('https')?'live':'local'}-verification.json`,JSON.stringify({base,passed:true,results,products:products.length,categories:16,recordsUnchanged:true,withdrawnProductStatus:removed.status(),noMessagesSent:true},null,2));
+  console.log(`PASS: 16 categories, ${products.length} preserved products, 6 viewport sizes, filters, search, sort, history and withdrawn product ${removed.status()}. No messages sent.`);
  }finally{await browser.close();}
 })().catch(e=>{console.error(e);process.exit(1)});
