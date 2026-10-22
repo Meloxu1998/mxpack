@@ -8,8 +8,11 @@ const content = JSON.parse(fs.readFileSync(path.join(root, 'seo-system/data/cata
 const withdrawn = JSON.parse(fs.readFileSync(path.join(root, 'seo-system/data/withdrawn-products.json'), 'utf8'));
 if(content.some(p=>withdrawn.some(w=>w.slug===p.slug)))throw Error('Withdrawn product cannot be published without owner approval.');
 const provenance = JSON.parse(fs.readFileSync(path.join(root, 'seo-system/data/catalog-provenance.json'), 'utf8'));
+const enhancements = JSON.parse(fs.readFileSync(path.join(root, 'seo-system/data/catalog-buyer-enhancements.json'), 'utf8'));
+const selectedSlugs = new Set((process.argv.find(arg=>arg.startsWith('--products-only='))?.split('=')[1] || '').split(',').filter(Boolean));
+for (const slug of selectedSlugs) if (!content.some(p=>p.slug===slug)) throw Error(`Unknown selected product ${slug}`);
 const sourceById = new Map(provenance.products.map(p => [p.id, p]));
-const products = content.map(p => ({...p, ...{source: sourceById.get(p.sourceId)}}))
+const products = content.map(p => ({...p, ...enhancements[p.slug], additionalFaq:[...(p.additionalFaq||[]),...(enhancements[p.slug]?.additionalFaq||[])], source: sourceById.get(p.sourceId)}))
   .sort((a,b)=>Number(b.category==='bbq')-Number(a.category==='bbq'));
 if (!products.length || products.some(p => !p.source) || new Set(products.map(p => p.slug)).size !== products.length || new Set(products.map(p=>p.sourceId)).size!==products.length) {
   throw new Error('Catalog must contain unique slugs and unique documented product references.');
@@ -68,13 +71,14 @@ const footer = rootify(catalog.slice(catalog.indexOf('<footer class="site-footer
   .replace(/<script[^>]*src="[^"]*products-catalog-v2\.js[^>]*><\/script>/g,'');
 const head = rootify(catalog.match(/<head>([\s\S]*?)<\/head>/)?.[1] || '')
   .replace(/\s*<script type="application\/ld\+json">[\s\S]*?<\/script>/g,'')
-  .replace(/\s*<link rel="stylesheet" href="\/assets\/css\/(?:products-catalog-v2|catalog-products).css[^>]+>/g,'');
+  .replace(/\s*<link rel="stylesheet" href="\/assets\/css\/(?:products-catalog-v2|catalog-products|catalog-taxonomy).css[^>]+>/g,'');
 if (!header || !footer || !head) throw new Error('Approved page shell not found.');
 const extraCss = '<link rel="stylesheet" href="/assets/css/catalog-products.css?v=20261021-3">';
 const organization = { '@type':'Organization', name:'MXPACKPRO', url:base, email:'sales@mxpackpro.com', telephone:'+86 155 2116 3050'};
 fs.mkdirSync(path.join(root, 'products'), {recursive:true});
 
 for (const p of products) {
+  if (selectedSlugs.size && !selectedSlugs.has(p.slug)) continue;
   const title = `${p.keyword.replace(/^./, c => c.toUpperCase())} | MXPACKPRO`;
   const description = hasMoq(p) ? `Order ${p.keyword} from MXPACKPRO. MOQ from ${p.source.minimumOrder} pieces; sizes, materials, samples and delivery reviewed for your project.` : `Explore ${p.keyword} with MXPACKPRO. Compare construction, insert fit and sample checks. MOQ, materials and schedule confirmed for your brief.`;
   const pageHead = head.replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(title)}</title>`)
@@ -110,6 +114,11 @@ for (const p of products) {
     .replace('"@type":"CollectionPage","name":', '"@type":"WebPage","name":')
     .replaceAll('The supplier catalog lists a starting order of', 'This format has a starting order of')
     .replaceAll('Starting quantity is based on the selected supplier listing.', 'Starting quantity applies to the pictured format and is subject to your final specification.'));
+}
+
+if (selectedSlugs.size) {
+  console.log(`Rebuilt ${selectedSlugs.size} selected product pages without changing the catalog or other pages.`);
+  process.exit(0);
 }
 
 const cards = products.map(p=>`<article class="catalog-card" data-catalog-category="${p.category}" data-product-id="${p.slug}" data-product-moq="${hasMoq(p)?p.source.minimumOrder:''}" data-catalog-search="${esc([p.name,p.keyword,...p.uses].join(' ').toLowerCase())}"><a class="catalog-card-media supplier-product-media" href="${url(p)}" data-track="catalog_product_click" data-product-id="${p.slug}">${image(p)}</a><div class="catalog-card-body"><p class="catalog-card-kicker">${esc(categoryNames[p.category])}</p><h2><a href="${url(p)}" data-track="catalog_product_click" data-product-id="${p.slug}">${esc(p.name)}</a></h2><dl class="catalog-specs"><div><dt>Starting MOQ</dt><dd>${hasMoq(p)?`${p.source.minimumOrder} pieces*`:'On review'}</dd></div><div><dt>Best for</dt><dd>${esc(p.uses[0])}</dd></div></dl><div class="catalog-card-actions"><a class="text-link" href="${url(p)}" data-track="catalog_product_click" data-product-id="${p.slug}">View product</a><a class="button button-dark" href="/get-a-quote?product=${p.slug}&source=catalog" data-track="quote_product_click" data-product-id="${p.slug}">Get pricing</a></div></div></article>`).join('\n');

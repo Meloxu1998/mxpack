@@ -1,0 +1,34 @@
+{
+  "custom-folding-pastry-carton": {
+    "additionalFaq": [
+      ["How should I size a pastry box for a mixed bakery order?", "Arrange the actual assortment with its liners, cups and dividers first. Measure the occupied footprint and tallest decorated item, then check lid clearance and the side-flap folding area on a sample. A menu portion count alone does not specify a usable box size."],
+      ["When should I compare a folding pastry carton with a window cake box?", "Compare this flat-folding hinged carton for a bakery assortment assembled at the counter. Compare a window cake box with removable base when visibility and lifting out one decorated cake are central to the brief. The final structure, direct-contact layer, assembly time and finished dimensions must be confirmed separately."]
+    ],
+    "relatedSlugs": ["printed-donut-pastry-box", "window-cake-box-removable-base", "custom-bakery-carrier-bag"]
+  },
+  "custom-corrugated-pizza-box": {
+    "additionalFaq": [
+      ["What information is needed to compare pizza box board and ventilation?", "Send the finished pizza diameter and height, typical packed weight, number stacked, food condition at packing and expected delivery journey. Ask for a sample of the complete proposed board and liner construction. Check condensation, base condition and closure after your actual service trial instead of selecting a flute from a photograph."],
+      ["Does a printed pizza box replace an insulated delivery bag?", "No insulation or holding-time rating is published for this format. Review the carton together with your packing workflow and delivery equipment. A packaging quotation does not establish food holding time, microwave compatibility or a food-safety process."]
+    ],
+    "relatedSlugs": ["custom-burger-clamshell-box", "printed-gable-meal-box", "custom-food-wrapping-paper"]
+  },
+  "foldable-magnetic-gift-box": {
+    "additionalFaq": [
+      ["How is a collapsible magnetic gift box different from a corrugated mailer?", "This format assembles into a rigid presentation box with a magnetic closure. A corrugated mailer uses a different folded board construction and closure. Specify gift presentation and transit protection separately; neither the magnetic closure nor a product photograph establishes shipping protection."],
+      ["What should a magnetic gift-box prototype demonstrate?", "Use the complete gift set and proposed insert to review internal fit, corner assembly, lid alignment and repeated opening. Agree the delivery configuration, packed quantity and protective shipping outer. Confirm wrap, finish, insert material and artwork versions in the same specification before comparing prices."]
+    ],
+    "relatedSlugs": ["custom-printed-corrugated-mailer", "custom-lid-and-base-rigid-gift-box", "custom-shoulder-neck-rigid-gift-box"]
+  },
+  "custom-double-door-drawer-advent-calendar-box": {
+    "additionalFaq": [
+      ["Must every advent-calendar drawer have the same internal size?", "Do not assume equal drawers or a fixed drawer count from the illustrative image. List each gift, its dimensions, weight and removal clearance. Use that item schedule to review the drawer layout, cabinet dimensions and structural prototype. Feasibility, minimum quantity and sampling are confirmed for the proposed construction."],
+      ["What should I confirm before ordering a custom advent-calendar cabinet?", "Confirm the contents schedule, drawer extraction, door clearance, insert fit, artwork numbering and protection of the loaded cabinet. Work backwards from the required arrival date to sample approval, production and delivery, with each timing confirmed in the quotation. No Christmas arrival deadline or production lead time is guaranteed on this page."]
+    ],
+    "relatedSlugs": ["folding-advent-calendar-carton", "custom-cookie-assortment-drawer-box", "custom-lid-and-base-rigid-gift-box"]
+  },
+  "printed-donut-pastry-box": {"relatedSlugs": ["custom-folding-pastry-carton", "window-cake-box-removable-base", "macaron-sleeve-box"]},
+  "custom-burger-clamshell-box": {"relatedSlugs": ["custom-corrugated-pizza-box", "printed-gable-meal-box", "bbq-meal-tray-carry-box"]},
+  "custom-printed-corrugated-mailer": {"relatedSlugs": ["foldable-magnetic-gift-box", "custom-lid-and-base-rigid-gift-box", "custom-shoulder-neck-rigid-gift-box"]},
+  "folding-advent-calendar-carton": {"relatedSlugs": ["custom-double-door-drawer-advent-calendar-box", "custom-cookie-assortment-drawer-box", "custom-ornament-gift-box-with-paper-insert"]}
+}
