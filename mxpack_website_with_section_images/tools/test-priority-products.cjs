@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const base = process.env.QA_BASE || 'https://mxpackpro.com';
 const output = process.env.QA_OUTPUT || 'D:/mxpack-audits/2026-10-22/indexing-followup';
-const slugs = ['bbq-grill-kit-packaging-box', 'bbq-meal-tray-carry-box', 'custom-pyramid-catering-box'];
+const slugs = (process.env.QA_SLUGS || 'bbq-grill-kit-packaging-box,bbq-meal-tray-carry-box,custom-pyramid-catering-box').split(',');
 fs.mkdirSync(output, {recursive: true});
 (async () => {
   const browser = await chromium.launch({channel: 'chrome', headless: true});
@@ -49,7 +49,7 @@ fs.mkdirSync(output, {recursive: true});
     }
     assert.deepEqual(errors, []);
     fs.writeFileSync(`${output}/live-priority-qa.json`, JSON.stringify({checkedAt: new Date().toISOString(), base, passed: true, results, withdrawnStatus: 410, noMessagesSent: true}, null, 2));
-    console.log('PASS: 3 priority pages x desktop/mobile; SEO, images, quote context, contact links; withdrawn URL 410. No messages sent.');
+    console.log(`PASS: ${slugs.length} priority pages x desktop/mobile; SEO, images, quote context, contact links; withdrawn URL 410. No messages sent.`);
   } finally {
     await browser.close();
   }

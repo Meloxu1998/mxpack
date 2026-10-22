@@ -9,6 +9,8 @@ const withdrawn = JSON.parse(fs.readFileSync(path.join(root, 'seo-system/data/wi
 if(content.some(p=>withdrawn.some(w=>w.slug===p.slug)))throw Error('Withdrawn product cannot be published without owner approval.');
 const provenance = JSON.parse(fs.readFileSync(path.join(root, 'seo-system/data/catalog-provenance.json'), 'utf8'));
 const enhancements = JSON.parse(fs.readFileSync(path.join(root, 'seo-system/data/catalog-buyer-enhancements.json'), 'utf8'));
+const publishedGuides = JSON.parse(fs.readFileSync(path.join(root, 'seo-system/data/procurement-guides.json'), 'utf8'))
+  .filter(guide=>fs.existsSync(path.join(root, `${guide.slug}.html`)));
 const selectedSlugs = new Set((process.argv.find(arg=>arg.startsWith('--products-only='))?.split('=')[1] || '').split(',').filter(Boolean));
 for (const slug of selectedSlugs) if (!content.some(p=>p.slug===slug)) throw Error(`Unknown selected product ${slug}`);
 const sourceById = new Map(provenance.products.map(p => [p.id, p]));
@@ -113,7 +115,8 @@ for (const p of products) {
   fs.writeFileSync(path.join(root,'products',`${p.slug}.html`), (p.category==='gifts'?html.trimEnd()+'\n':html)
     .replace('"@type":"CollectionPage","name":', '"@type":"WebPage","name":')
     .replaceAll('The supplier catalog lists a starting order of', 'This format has a starting order of')
-    .replaceAll('Starting quantity is based on the selected supplier listing.', 'Starting quantity applies to the pictured format and is subject to your final specification.'));
+    .replaceAll('Starting quantity is based on the selected supplier listing.', 'Starting quantity applies to the pictured format and is subject to your final specification.')
+    .replace('</main>', `${publishedGuides.filter(guide=>guide.related.includes(p.slug)).map(guide=>`<section class="section section-white" data-procurement-guide="${guide.slug}"><div class="container"><p class="eyebrow">Before you order</p><h2 class="section-title">${esc(guide.title)}</h2><p class="section-copy">${esc(guide.description)}</p><p><a class="text-link" href="/${guide.slug}">Read the buying guide</a></p></div></section>`).join('')}</main>`));
 }
 
 if (selectedSlugs.size) {
