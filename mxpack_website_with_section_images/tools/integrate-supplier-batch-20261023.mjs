@@ -66,7 +66,7 @@ fs.writeFileSync('sitemap.xml',sitemap);
 const files=[...fs.readdirSync('.').filter(f=>f.endsWith('.html')),...fs.readdirSync('products').filter(f=>f.endsWith('.html')).map(f=>'products/'+f)];
 for(const file of files){
  let html=fs.readFileSync(file,'utf8');
- html=html.replace(/catalog-data\.js\?v=[^"\s]+/g,'catalog-data.js?v=20261023-7').replace(/\b53 (products|distinct formats|packaging formats|selected packaging formats)\b/g,`${products.length} $1`);
+ html=html.replace(/catalog-data\.js\?v=[^"\s]+/g,'catalog-data.js?v=20261023-batch1').replace(/\b53 (products|distinct formats|packaging formats|selected packaging formats)\b/g,`${products.length} $1`);
  for(const p of additions)html=html.replace(new RegExp(p.sourceId+'-(480|960)\\.webp(?:\\?v=[a-zA-Z0-9-]+)?','g'),`${p.sourceId}-$1.webp?v=20261023-batch1`);
  fs.writeFileSync(file,html);
 }
