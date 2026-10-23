@@ -2,7 +2,13 @@ import fs from 'node:fs';
 import {taxonomy,aliases} from './catalog-taxonomy.mjs';
 const additions=JSON.parse(fs.readFileSync('seo-system/data/catalog-expansion-20261023.json','utf8'));
 const products=JSON.parse(fs.readFileSync('seo-system/data/catalog-products.json','utf8'));
-const sources=JSON.parse(fs.readFileSync('seo-system/data/catalog-provenance.json','utf8')).products;
+const provenance=JSON.parse(fs.readFileSync('seo-system/data/catalog-provenance.json','utf8'));
+const sources=provenance.products;
+for(const p of additions){
+ const source=sources.find(s=>s.id===p.sourceId);
+ for(const key of ['imagePath','thumbnailPath'])source[key]=source[key].split('?')[0]+'?v=20261023-batch1';
+}
+fs.writeFileSync('seo-system/data/catalog-provenance.json',JSON.stringify(provenance,null,2)+'\n');
 const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;');
 const labels={cosmetics:'Cosmetic cartons','beverage-packaging':'Beverage outer packaging',bags:'Bags & wraps',retail:'Mailers & gifts'};
 let catalog=fs.readFileSync('products.html','utf8');
@@ -61,6 +67,7 @@ const files=[...fs.readdirSync('.').filter(f=>f.endsWith('.html')),...fs.readdir
 for(const file of files){
  let html=fs.readFileSync(file,'utf8');
  html=html.replace(/catalog-data\.js\?v=[^"\s]+/g,'catalog-data.js?v=20261023-7').replace(/\b53 (products|distinct formats|packaging formats|selected packaging formats)\b/g,`${products.length} $1`);
+ for(const p of additions)html=html.replace(new RegExp(p.sourceId+'-(480|960)\\.webp(?:\\?v=[a-zA-Z0-9-]+)?','g'),`${p.sourceId}-$1.webp?v=20261023-batch1`);
  fs.writeFileSync(file,html);
 }
 console.log(`Integrated ${additions.length} distinct products, ${products.length} catalog cards, group filters, existing-page backlinks and sitemap. Existing product bodies and approved homepage layout preserved.`);

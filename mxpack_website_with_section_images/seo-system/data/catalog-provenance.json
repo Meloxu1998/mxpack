@@ -773,8 +773,8 @@
       "verifiedAt": "2026-10-23",
       "width": 504,
       "height": 504,
-      "imagePath": "/assets/img/catalog/1601581402884-960.webp",
-      "thumbnailPath": "/assets/img/catalog/1601581402884-480.webp",
+      "imagePath": "/assets/img/catalog/1601581402884-960.webp?v=20261023-batch1",
+      "thumbnailPath": "/assets/img/catalog/1601581402884-480.webp?v=20261023-batch1",
       "minimumOrder": 250
     },
     {
@@ -789,8 +789,8 @@
       "verifiedAt": "2026-10-23",
       "width": 800,
       "height": 800,
-      "imagePath": "/assets/img/catalog/1601588291874-960.webp",
-      "thumbnailPath": "/assets/img/catalog/1601588291874-480.webp",
+      "imagePath": "/assets/img/catalog/1601588291874-960.webp?v=20261023-batch1",
+      "thumbnailPath": "/assets/img/catalog/1601588291874-480.webp?v=20261023-batch1",
       "minimumOrder": 250
     },
     {
@@ -805,8 +805,8 @@
       "verifiedAt": "2026-10-23",
       "width": 1500,
       "height": 1500,
-      "imagePath": "/assets/img/catalog/1601645106085-960.webp",
-      "thumbnailPath": "/assets/img/catalog/1601645106085-480.webp",
+      "imagePath": "/assets/img/catalog/1601645106085-960.webp?v=20261023-batch1",
+      "thumbnailPath": "/assets/img/catalog/1601645106085-480.webp?v=20261023-batch1",
       "minimumOrder": 250
     },
     {
@@ -821,8 +821,8 @@
       "verifiedAt": "2026-10-23",
       "width": 1100,
       "height": 1100,
-      "imagePath": "/assets/img/catalog/1601584447385-960.webp",
-      "thumbnailPath": "/assets/img/catalog/1601584447385-480.webp",
+      "imagePath": "/assets/img/catalog/1601584447385-960.webp?v=20261023-batch1",
+      "thumbnailPath": "/assets/img/catalog/1601584447385-480.webp?v=20261023-batch1",
       "minimumOrder": 250
     }
   ]
