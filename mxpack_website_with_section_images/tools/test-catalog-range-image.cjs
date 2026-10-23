@@ -58,6 +58,11 @@ const server=http.createServer((req,res)=>{
    await page.locator('.home-stage a[href="/get-a-quote"]').click();
    await page.waitForURL('**/get-a-quote');
    assert.equal(await page.locator('form[action*="formsubmit.co"]').getAttribute('action'),'https://formsubmit.co/sales@mxpackpro.com');
+   assert.equal(await page.locator('a[href^="tel:"]').count(),0,'Retired public telephone link remains');
+   assert(!/155\s*2116\s*3050/.test(await page.content()),'Retired number remains in markup or structured data');
+   assert(await page.locator('.contact-methods a[href^="mailto:"]').isVisible());
+   assert(await page.locator('.contact-methods a[data-whatsapp]').isVisible());
+   await page.locator('.contact-methods').screenshot({path:path.join(out,`${process.env.QA_BASE?'live':'local'}-contact-methods-${width}.png`)});
    await page.goto(base+'/',{waitUntil:'networkidle'});
    await page.locator('.home-custom').scrollIntoViewIfNeeded();
    assert.equal(await page.locator('.home-custom-products a').count(),6);
