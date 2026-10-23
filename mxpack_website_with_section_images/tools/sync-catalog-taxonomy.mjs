@@ -17,7 +17,7 @@ for(const file of files){
  html=html.replace(/(<div class="mega-menu mega-menu-products" id="nav-products">[\s\S]*?<div class="mega-menu-grid">)[\s\S]*?(<\/div><\/div>)/,`$1${links}$2`)
   .replace(/(<details><summary>Products<\/summary><a href="\/products"[^>]*>All products<\/a>)[\s\S]*?<\/details>/,`$1${links}</details>`)
   .replace(/products-catalog-v2\.js\?v=[^"\s]+/g,'products-catalog-v2.js?v=20261021-3');
- html=html.replace(/inquiry-analytics\.js\?v=[^"\s]+/g,'inquiry-analytics.js?v=20261021-6');
+ html=html.replace(/inquiry-analytics\.js\?v=[^"\s]+/g,'inquiry-analytics.js?v=20261023-modal-1');
  write(file,html);
 }
 const navigation=JSON.parse(read('seo-system/data/site-navigation.json'));

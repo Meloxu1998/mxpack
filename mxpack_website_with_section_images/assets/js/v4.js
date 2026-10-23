@@ -94,7 +94,7 @@ if (floatingContact) {
 }
 
 const excludedContactPromptPaths = ['/get-a-quote', '/get-a-quote.html', '/thank-you', '/thank-you.html'];
-const contactPromptAllowed = !document.querySelector('[data-quote-form]') && !excludedContactPromptPaths.some((path) => location.pathname.endsWith(path));
+const contactPromptAllowed = !document.querySelector('[data-quote-form]:not([data-email-inquiry])') && !excludedContactPromptPaths.some((path) => location.pathname.endsWith(path));
 
 if (contactPromptAllowed) {
   document.body.classList.add('has-mobile-contact-bar');
@@ -117,7 +117,7 @@ if (contactPromptAllowed) {
     <nav class="mobile-contact-bar" aria-label="Quick contact">
       <a class="mobile-contact-whatsapp" href="${contactConfig.whatsapp}" target="_blank" rel="noopener noreferrer" data-whatsapp data-track="whatsapp_click"><img class="icon" src="/assets/img/brand/whatsapp.svg" alt="" width="20" height="20"> WhatsApp</a>
       <a class="mobile-contact-quote" href="${contactConfig.quote}" data-track="quote_mobile_click"><i class="icon" data-lucide="file-text" aria-hidden="true"></i> Get a quote</a>
-      <a class="mobile-contact-email" href="${contactConfig.email}" data-track="email_mobile_click"><i class="icon" data-lucide="mail" aria-hidden="true"></i> Email</a>
+      <a class="mobile-contact-email" href="${contactConfig.email}" data-track="email_modal_open" aria-haspopup="dialog" aria-label="Open email inquiry form"><i class="icon" data-lucide="mail" aria-hidden="true"></i> Email</a>
     </nav>
   `);
 
@@ -129,7 +129,7 @@ if (contactPromptAllowed) {
   let promptShown = false;
 
   const showContactPrompt = (source) => {
-    if (!prompt || promptShown || !dismissalExpired || window.innerWidth < 760 || document.body.dataset.contactPromptMode === 'off') return;
+    if (!prompt || promptShown || !dismissalExpired || window.innerWidth < 760 || document.body.dataset.contactPromptMode !== 'on') return;
     promptShown = true;
     prompt.hidden = false;
     requestAnimationFrame(() => prompt.classList.add('is-visible'));

@@ -28,6 +28,72 @@
   }
   if (document.querySelector('.catalog-grid')) window.mxpackTrack('view_item_list', { item_list_id: 'packaging_catalog' });
 
+  const modalStyle = document.createElement('link');
+  modalStyle.rel = 'stylesheet';
+  modalStyle.href = '/assets/css/email-inquiry.css?v=20261023-1';
+  document.head.append(modalStyle);
+  const dialog = document.createElement('dialog');
+  dialog.className = 'email-inquiry-dialog';
+  dialog.setAttribute('aria-labelledby', 'email-inquiry-title');
+  dialog.innerHTML = `
+    <div class="email-inquiry-heading"><div><p class="email-inquiry-eyebrow">MXPACKPRO</p><h2 id="email-inquiry-title">Tell us about your packaging.</h2></div><button type="button" data-email-inquiry-close aria-label="Close inquiry form" title="Close inquiry form"><i class="icon" data-lucide="x" aria-hidden="true"></i></button></div>
+    <form action="https://formsubmit.co/sales@mxpackpro.com" method="POST" data-quote-form data-email-inquiry>
+      <input type="hidden" name="_subject" value="New MXPACKPRO website inquiry">
+      <input type="hidden" name="_template" value="basic"><input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://mxpackpro.com/thank-you">
+      <input type="text" name="_honey" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="email-inquiry-fields"><div><label for="email-inquiry-name">Full name <span aria-hidden="true">*</span></label><input id="email-inquiry-name" name="Name" required autocomplete="name" maxlength="160"></div><div><label for="email-inquiry-email">Email <span aria-hidden="true">*</span></label><input id="email-inquiry-email" name="email" type="email" required autocomplete="email" maxlength="254"></div></div>
+      <div class="email-inquiry-field"><label for="email-inquiry-company">Company</label><input id="email-inquiry-company" name="Company Name" autocomplete="organization" maxlength="200"></div>
+      <div class="email-inquiry-field"><label for="email-inquiry-message">Packaging requirements <span aria-hidden="true">*</span></label><textarea id="email-inquiry-message" name="Message" rows="5" required maxlength="10000" placeholder="Packaging type, size, quantity and delivery country"></textarea></div>
+      <button class="button email-inquiry-submit" type="submit">Send inquiry <i class="icon" data-lucide="arrow-right" aria-hidden="true"></i></button>
+      <p class="email-inquiry-privacy">Your details are used to respond to this inquiry. <a href="/privacy-policy">Privacy policy</a></p>
+    </form>
+    <div class="email-inquiry-alternatives"><a data-direct-inquiry-email data-track="email_direct_modal_click">Email directly <i class="icon" data-lucide="mail" aria-hidden="true"></i></a><a href="https://wa.me/8615918968149" data-whatsapp data-track="whatsapp_modal_click"><img src="/assets/img/brand/whatsapp.svg" alt="" width="18" height="18"> WhatsApp</a></div>`;
+  document.body.append(dialog);
+  document.querySelectorAll('.floating-contact .mail').forEach(link => {
+    link.setAttribute('aria-haspopup', 'dialog');
+    link.setAttribute('aria-label', 'Open email inquiry form');
+    link.setAttribute('title', 'Send an inquiry');
+  });
+  let opener;
+  const modalProduct = products[pageProduct || productId];
+  const directEmail = dialog.querySelector('[data-direct-inquiry-email]');
+  directEmail.href = `mailto:sales@mxpackpro.com?subject=${encodeURIComponent(modalProduct ? `Packaging RFQ - ${modalProduct.name}` : 'Custom packaging inquiry')}&body=${encodeURIComponent(`Page: https://mxpackpro.com${location.pathname}`)}`;
+  document.addEventListener('click', event => {
+    const trigger = event.target.closest('.floating-contact .mail, .mobile-contact-email, [data-email-inquiry-open]');
+    if (!trigger) return;
+    trigger.dataset.track = 'email_modal_open';
+    trigger.setAttribute('aria-haspopup', 'dialog');
+    if (typeof dialog.showModal !== 'function') return;
+    event.preventDefault();
+    if (dialog.open) return;
+    opener = trigger;
+    if (!dialog.isConnected) document.body.append(dialog);
+    document.querySelector('[data-contact-prompt]')?.setAttribute('hidden', '');
+    document.querySelector('[data-whatsapp-help]')?.setAttribute('hidden', '');
+    dialog.showModal();
+    document.body.classList.add('email-inquiry-open');
+    dialog.querySelector('#email-inquiry-name').focus({preventScroll:true});
+  }, true);
+  dialog.querySelector('[data-email-inquiry-close]').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('keydown', event => {
+    if (event.key !== 'Tab') return;
+    const fields = Array.from(dialog.querySelectorAll('button, input, textarea, select, a[href]')).filter(item => !item.disabled && item.tabIndex >= 0 && item.getClientRects().length);
+    const first = fields[0], last = fields[fields.length - 1];
+    if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+    else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+  });
+  dialog.addEventListener('click', event => {
+    const bounds = dialog.getBoundingClientRect();
+    if (event.target === dialog && (event.clientX < bounds.left || event.clientX > bounds.right || event.clientY < bounds.top || event.clientY > bounds.bottom)) dialog.close();
+  });
+  dialog.querySelector('[data-whatsapp]').addEventListener('click', () => dialog.close());
+  dialog.addEventListener('close', () => {
+    document.body.classList.remove('email-inquiry-open');
+    dialog.remove();
+    opener?.focus({preventScroll:true});
+  });
+
   document.addEventListener('click', event => {
     const link = event.target.closest('a[href], [data-track]');
     if (!link) return;
@@ -57,16 +123,19 @@
       if (!input) { input = document.createElement('input'); input.type = 'hidden'; input.name = name; form.append(input); }
       input.value = value;
     };
-    const product = products[productId];
+    const isEmailInquiry = form.hasAttribute('data-email-inquiry');
+    const formProductId = isEmailInquiry ? pageProduct || productId : productId;
+    const product = products[formProductId];
     const entry = storage.get('mxpackQuoteEntry');
     const freshEntry = entry && Date.now() - entry.at < 30 * 60 * 1000 ? entry : null;
-    const sourcePage = freshEntry?.source_page || cleanPath(document.referrer) || '/get-a-quote';
-    const entryPoint = freshEntry?.entry_point || (['catalog','product-detail'].includes(query.get('source')) ? query.get('source') : 'direct_quote');
+    const sourcePage = isEmailInquiry ? location.pathname : freshEntry?.source_page || cleanPath(document.referrer) || '/get-a-quote';
+    const entryPoint = isEmailInquiry ? 'email_modal' : freshEntry?.entry_point || (['catalog','product-detail'].includes(query.get('source')) ? query.get('source') : 'direct_quote');
+    if (isEmailInquiry) setHidden('_url', `https://mxpackpro.com${location.pathname}`);
     if (product) {
       const referenceView=Object.hasOwn(product.views||{},query.get('view'))?product.views[query.get('view')]:'';
       if(referenceView)setHidden('Packaging reference view',referenceView);
       setHidden('Product', product.name);
-      setHidden('Product page', `https://mxpackpro.com/products/${productId}`);
+      setHidden('Product page', `https://mxpackpro.com/products/${formProductId}`);
       setHidden('_subject', `Packaging RFQ - ${product.name} - MXPACKPRO`);
       const message = form.querySelector('[name="Message"]');
       if (message && !message.value) message.value = `I am interested in ${product.name}.${referenceView?`\nReference view: ${referenceView}`:''}\nQuantity: \nSize / packed product: \nDelivery country: \nTarget date: `;
@@ -88,13 +157,14 @@
     for (const [key,value] of Object.entries(landing.campaign || {})) setHidden(key, value);
     let started = false;
     let submitting = false;
-    const eventContext = { product_id: productId || 'general', source_page: sourcePage, entry_point: entryPoint, form_name: 'quote_request' };
+    const eventContext = { product_id: formProductId || 'general', source_page: sourcePage, entry_point: entryPoint, form_name: isEmailInquiry ? 'email_inquiry' : 'quote_request' };
     form.addEventListener('focusin', () => {
       if (started) return;
       started = true;
       window.mxpackTrack('form_start', eventContext);
     });
     form.addEventListener('formdata', event => {
+      if (!form.querySelector('#phone')) return;
       const phone = form.querySelector('#phone')?.value.trim() || '';
       const code = form.querySelector('#country-code')?.value || '';
       event.formData.set('Phone', phone.startsWith('+') ? phone : `${code} ${phone}`.trim());
@@ -126,6 +196,9 @@
       if (button) button.disabled = false;
     });
   });
+
+  // Keep the initialized dialog out of page form integrations until it is opened.
+  document.addEventListener('DOMContentLoaded', () => { if (!dialog.open) dialog.remove(); }, {once:true});
 
   if (/\/thank-you(?:\.html)?\/?$/.test(location.pathname)) {
     const pending = storage.get('mxpackPendingInquiry');
