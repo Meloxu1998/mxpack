@@ -5,6 +5,7 @@
     remove(key) { try { sessionStorage.removeItem(key); } catch {} }
   };
   const cleanPath = value => {
+    if (typeof value !== 'string' || !value) return '';
     try { const url = new URL(value, location.origin); return url.origin === location.origin ? url.pathname : ''; } catch { return ''; }
   };
   const products = window.mxpackProducts || {};
@@ -128,7 +129,7 @@
     const product = products[formProductId];
     const entry = storage.get('mxpackQuoteEntry');
     const freshEntry = entry && Date.now() - entry.at < 30 * 60 * 1000 ? entry : null;
-    const sourcePage = isEmailInquiry ? location.pathname : freshEntry?.source_page || cleanPath(document.referrer) || '/get-a-quote';
+    const sourcePage = isEmailInquiry ? location.pathname : freshEntry?.source_page || cleanPath(document.referrer) || location.pathname;
     const entryPoint = isEmailInquiry ? 'email_modal' : freshEntry?.entry_point || (['catalog','product-detail'].includes(query.get('source')) ? query.get('source') : 'direct_quote');
     if (isEmailInquiry) setHidden('_url', `https://mxpackpro.com${location.pathname}`);
     if (product) {
