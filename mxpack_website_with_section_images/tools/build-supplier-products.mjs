@@ -38,7 +38,7 @@ const compactProductMarkup = (body, p) => {
     .replace(`<ul class="check-list">${p.checks.map(check=>`<li>${esc(check)}</li>`).join('')}</ul>`,`<ol class="buyer-check-list">${p.checks.map(check=>`<li>${esc(check)}</li>`).join('')}</ol>`)
     .replace('<p class="section-copy">Food-contact suitability',`${rest?`<p class="section-copy">${esc(rest)}</p>`:''}<p class="section-copy">Food-contact suitability`);
 };
-const categoryNames = {bbq:'BBQ packaging','food-boxes':'Food boxes',bakery:'Bakery',catering:'Catering',drinkware:'Cups & carriers',bags:'Bags & wraps',retail:'Mailers & gifts',gifts:'Custom gift boxes'};
+const categoryNames = {bbq:'BBQ packaging','food-boxes':'Food boxes',bakery:'Bakery',catering:'Catering',drinkware:'Cups & carriers',bags:'Bags & wraps',retail:'Mailers & gifts',gifts:'Custom gift boxes',cosmetics:'Cosmetic cartons','beverage-packaging':'Beverage outer packaging'};
 const hasMoq = p => Number.isFinite(p.source.minimumOrder) && p.source.minimumOrder > 0;
 const moqLabel = p => hasMoq(p) ? `From ${p.source.minimumOrder} pieces` : 'MOQ on review';
 const moqDetail = p => hasMoq(p) ? `${p.source.minimumOrder} pieces; final minimum confirmed in your quotation` : 'Confirmed after size, construction, finish and quantity review';

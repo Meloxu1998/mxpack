@@ -1,0 +1,54 @@
+[
+  {
+    "sourceId":"1601581402884","slug":"custom-folding-cosmetic-carton","name":"Printed Folding Cosmetic Carton","category":"cosmetics","family":"products","keyword":"custom folding cosmetic cartons",
+    "material":"Printed folding paperboard; caliper and finish confirmed against the packed product",
+    "structure":"Upright rectangular folding carton; closure and optional insert reviewed on the approved dieline",
+    "intro":"A printed folding outer carton for a skincare bottle or a small cosmetic pack. Unlike a rigid presentation box, this format starts with an individual paperboard carton sized around the primary container. The supplier image shows example printed cartons, not the final artwork or contents supplied with your order.",
+    "uses":["Skincare bottle outer cartons","Individual cosmetic packs","Retail product carton ranges"],
+    "measure":"Primary container length, width and height, including cap or pump and any proposed insert",
+    "checks":["Measure the complete capped bottle and decide whether an insert is needed to limit movement.","Confirm the opening direction, tuck closure and board caliper with a structural sample.","Keep the ingredient panel, barcode and mandatory market-specific text on the approved artwork; do not treat the carton as a liquid container."],
+    "question":"How is a folding cosmetic carton different from a rigid gift box?",
+    "answer":"A folding cosmetic carton uses a scored paperboard structure around an individual primary pack. A rigid gift box is a different presentation construction. Confirm the assembly, insert and closure on a sample; do not transfer a rigid-box specification or MOQ to this carton.",
+    "distinct":"Individual upright folding cosmetic carton, distinct from the existing rigid gift boxes and flat chocolate-bar carton.","dedupGroup":"upright-individual-cosmetic-folding-carton",
+    "relatedSlugs":["custom-window-lid-rigid-gift-box","custom-printed-corrugated-mailer","custom-ribbon-handle-paper-gift-bag"]
+  },
+  {
+    "sourceId":"1601588291874","slug":"custom-bag-in-box-outer-carton","name":"Handled Bag-in-Box Outer Carton","category":"beverage-packaging","family":"products","keyword":"custom bag in box outer cartons",
+    "material":"Printed paperboard or corrugated construction; grade and handle reinforcement confirmed for the filled system",
+    "structure":"Upright beverage outer carton with a carry handle and a dispensing access opening",
+    "intro":"A handled outer carton planned around a beverage bag and dispensing fitment. This format is different from a wine-bottle gift box: the carton supports a separate liquid bag rather than holding a glass bottle. Confirm whether the quotation covers the carton only or a coordinated bag-and-fitment supply.",
+    "uses":["Wine bag-in-box outer packaging","Beverage bag dispensing packs","Project-specific liquid bag outer cartons"],
+    "measure":"Filled bag envelope, fitment dimensions and position, filled mass and proposed carton footprint",
+    "checks":["Provide the actual bag and tap or valve dimensions before placing the dispensing opening.","Confirm carton-only versus bag, valve and carton supply in writing; no aseptic filling or shelf-life claim is assumed.","Review filled-load carrying, fitment access and the packing sequence using the intended beverage system."],
+    "question":"Does the bag-in-box carton include a liquid bag and tap?",
+    "answer":"Do not assume they are included. Specify whether you need the outer carton only or a coordinated bag and dispensing fitment. Bag compatibility, filling conditions, contents suitability and each supplied component must be confirmed in the quotation; the carton itself is not a liquid barrier.",
+    "distinct":"Handled outer carton for a dispensing liquid bag, not a fitted wine-bottle rigid gift box.","dedupGroup":"handled-liquid-bag-dispensing-outer-carton",
+    "relatedSlugs":["custom-wine-bottle-gift-box-with-insert","custom-printed-corrugated-mailer","custom-ribbon-handle-paper-gift-bag"]
+  },
+  {
+    "sourceId":"1601645106085","slug":"custom-ribbon-handle-paper-gift-bag","name":"Ribbon-Handle Paper Gift Bag","category":"bags","family":"custom-paper-bags","keyword":"custom ribbon handle paper gift bags",
+    "material":"Printed paper stock with ribbon-style handles; paper weight and handle attachment confirmed by project",
+    "structure":"Gusseted retail paper carrier with wide ribbon-style handles",
+    "intro":"A paper gift carrier with wide ribbon-style handles for boxed retail products and presentation packs. This construction complements the existing bakery carrier and die-cut handle bag without treating a different print color as another product. Example artwork and contents are not included.",
+    "uses":["Boxed retail gifts","Cosmetic gift-set handoff","Apparel and boutique presentation"],
+    "measure":"Packed gift length, width and height, required gusset and total carrying weight",
+    "checks":["Measure the gift box and allow room for the handles and any tissue without forcing the side gussets.","Confirm ribbon width, attachment method and top-edge reinforcement on a finished sample.","Test the actual packed load before making a weight-capacity claim; this is not a parcel shipping container."],
+    "question":"How do I choose a ribbon-handle gift bag size?",
+    "answer":"Measure the complete gift including its outer box and any tissue. Specify the required internal width, gusset depth and usable height, then check a sample with that exact load. Handle attachment and reinforcement are part of the review; a photo does not establish carrying capacity.",
+    "distinct":"Wide ribbon-style handle retail gift bag, distinct from the existing flat-handle bakery carrier and die-cut handle bag. Artwork-only references consolidated.","dedupGroup":"wide-ribbon-handle-gusseted-retail-bag",
+    "relatedSlugs":["custom-bakery-carrier-bag","die-cut-handle-paper-bag","custom-lid-and-base-rigid-gift-box"]
+  },
+  {
+    "sourceId":"1601584447385","slug":"custom-tear-open-corrugated-mailer","name":"Tear-Open Corrugated Mailer","category":"retail","family":"products","keyword":"custom tear open corrugated mailer boxes",
+    "material":"Printed corrugated board; flute, adhesive and opening feature confirmed on a production sample",
+    "structure":"Flat-format mailing carton specified with an adhesive closure and tear-open feature",
+    "intro":"A corrugated mailing format with a tear-open closure specified for the customer unboxing sequence. Unlike the existing standard tuck-closure mailer, this order brief needs to define the opening feature and adhesive application. The closed-carton image is a visual reference; verify the actual tear path on a sample.",
+    "uses":["Apparel mailing packs","Boxed retail dispatch","Branded direct-to-customer orders"],
+    "measure":"Packed item footprint, finished height and weight, cushioning allowance and closure layout",
+    "checks":["Mark the intended tear path and adhesive position on the dieline and inspect both on a sample.","State whether a second closing strip for returns is required; do not assume a return strip is included.","Check the complete packed carton for the planned shipping journey; a tear strip alone is not proof of tamper security or shipping protection."],
+    "question":"Does a tear-open mailer automatically include a return seal?",
+    "answer":"No. A tear-open feature and a second return-closing strip are separate requirements. Specify the number of adhesive strips, their positions and the opening sequence. Review a physical sample so the quotation and approved dieline cover the exact closure, rather than relying on the closed-carton image.",
+    "distinct":"Adhesive/tear-open mailing closure, distinct from the existing standard tuck-closure corrugated mailer and the small tear-strip snack carton.","dedupGroup":"adhesive-tear-open-corrugated-mailer",
+    "relatedSlugs":["custom-printed-corrugated-mailer","foldable-magnetic-gift-box","custom-folding-cosmetic-carton"]
+  }
+]

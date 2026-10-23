@@ -81,7 +81,8 @@
       "image": "custom-printed-corrugated-mailer",
       "description": "Corrugated mailers for branded deliveries.",
       "members": [
-        "custom-printed-corrugated-mailer"
+        "custom-printed-corrugated-mailer",
+        "custom-tear-open-corrugated-mailer"
       ]
     },
     {
@@ -100,8 +101,9 @@
       "id": "cosmetic-boxes",
       "label": "Cosmetic Boxes",
       "image": "custom-window-lid-rigid-gift-box",
-      "description": "Gift structures to size around your beauty products.",
+      "description": "Folding cartons and presentation structures for beauty products.",
       "members": [
+        "custom-folding-cosmetic-carton",
         "foldable-magnetic-gift-box",
         "custom-heart-shaped-rigid-gift-box",
         "custom-hexagonal-rigid-gift-box",
@@ -123,9 +125,10 @@
       "id": "wine-boxes",
       "label": "Wine Boxes",
       "image": "custom-wine-bottle-gift-box-with-insert",
-      "description": "Bottle presentation with a fitted insert.",
+      "description": "Bottle presentation and beverage bag outer cartons.",
       "members": [
-        "custom-wine-bottle-gift-box-with-insert"
+        "custom-wine-bottle-gift-box-with-insert",
+        "custom-bag-in-box-outer-carton"
       ]
     },
     {
@@ -150,7 +153,8 @@
         "foldable-magnetic-gift-box",
         "custom-pillow-gift-box",
         "folding-advent-calendar-carton",
-        "envelope-flap-gift-box"
+        "envelope-flap-gift-box",
+        "custom-tear-open-corrugated-mailer"
       ]
     },
     {
@@ -160,6 +164,7 @@
       "description": "Custom-sized mailer and presentation structures.",
       "members": [
         "custom-printed-corrugated-mailer",
+        "custom-tear-open-corrugated-mailer",
         "foldable-magnetic-gift-box",
         "envelope-flap-gift-box",
         "custom-lid-and-base-rigid-gift-box"
@@ -182,7 +187,8 @@
       "members": [
         "custom-bakery-carrier-bag",
         "printed-baguette-bread-bag",
-        "die-cut-handle-paper-bag"
+        "die-cut-handle-paper-bag",
+        "custom-ribbon-handle-paper-gift-bag"
       ]
     },
     {

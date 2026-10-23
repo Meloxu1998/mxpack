@@ -1,6 +1,4 @@
 product_id,primary_keyword,landing_page,category,starting_moq,source_id
-"bbq-grill-kit-packaging-box","custom BBQ grill kit packaging boxes","https://mxpackpro.com/products/bbq-grill-kit-packaging-box","bbq","300","1601657831655"
-"bbq-meal-tray-carry-box","custom BBQ meal packaging boxes","https://mxpackpro.com/products/bbq-meal-tray-carry-box","bbq","300","1601707435809"
 "custom-burger-clamshell-box","custom printed burger boxes","https://mxpackpro.com/products/custom-burger-clamshell-box","food-boxes","250","1601592802679"
 "custom-folding-pastry-carton","custom folding pastry boxes","https://mxpackpro.com/products/custom-folding-pastry-carton","bakery","250","1601581262988"
 "window-grazing-box-with-dividers","custom grazing boxes with dividers","https://mxpackpro.com/products/window-grazing-box-with-dividers","catering","250","1601714608342"
@@ -21,6 +19,8 @@ product_id,primary_keyword,landing_page,category,starting_moq,source_id
 "printed-baguette-bread-bag","custom printed baguette bags","https://mxpackpro.com/products/printed-baguette-bread-bag","bags","250","1601616166536"
 "custom-printed-corrugated-mailer","custom printed corrugated mailer boxes","https://mxpackpro.com/products/custom-printed-corrugated-mailer","retail","250","1601587149215"
 "foldable-magnetic-gift-box","custom foldable magnetic gift boxes","https://mxpackpro.com/products/foldable-magnetic-gift-box","retail","300","1601645125177"
+"bbq-grill-kit-packaging-box","custom BBQ grill kit packaging boxes","https://mxpackpro.com/products/bbq-grill-kit-packaging-box","bbq","300","1601657831655"
+"bbq-meal-tray-carry-box","custom BBQ meal packaging boxes","https://mxpackpro.com/products/bbq-meal-tray-carry-box","bbq","300","1601707435809"
 "radial-taco-sharing-platter","custom taco sharing platter boxes","https://mxpackpro.com/products/radial-taco-sharing-platter","catering","250","1601955892940"
 "triangular-portion-sharing-box","triangular portion sharing boxes","https://mxpackpro.com/products/triangular-portion-sharing-box","catering","250","1601951269353"
 "dessert-skewer-display-box","dessert skewer display packaging boxes","https://mxpackpro.com/products/dessert-skewer-display-box","bakery","250","1601955962285"
@@ -52,3 +52,7 @@ product_id,primary_keyword,landing_page,category,starting_moq,source_id
 "custom-shoulder-neck-rigid-gift-box","custom shoulder neck rigid gift boxes","https://mxpackpro.com/products/custom-shoulder-neck-rigid-gift-box","gifts","","mxp-design-shoulder-neck"
 "custom-ornament-gift-box-with-paper-insert","custom ornament gift boxes with inserts","https://mxpackpro.com/products/custom-ornament-gift-box-with-paper-insert","gifts","","mxp-design-ornament-insert"
 "custom-cookie-assortment-drawer-box","custom cookie drawer gift boxes","https://mxpackpro.com/products/custom-cookie-assortment-drawer-box","gifts","","mxp-design-cookie-drawer"
+"custom-folding-cosmetic-carton","custom folding cosmetic cartons","https://mxpackpro.com/products/custom-folding-cosmetic-carton","cosmetics","250","1601581402884"
+"custom-bag-in-box-outer-carton","custom bag in box outer cartons","https://mxpackpro.com/products/custom-bag-in-box-outer-carton","beverage-packaging","250","1601588291874"
+"custom-ribbon-handle-paper-gift-bag","custom ribbon handle paper gift bags","https://mxpackpro.com/products/custom-ribbon-handle-paper-gift-bag","bags","250","1601645106085"
+"custom-tear-open-corrugated-mailer","custom tear open corrugated mailer boxes","https://mxpackpro.com/products/custom-tear-open-corrugated-mailer","retail","250","1601584447385"

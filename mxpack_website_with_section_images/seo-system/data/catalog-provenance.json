@@ -1,6 +1,6 @@
 {
   "capturedAt": "2026-10-21T04:21:26.720Z",
-  "importedAt": "2026-10-21T08:21:36.500Z",
+  "importedAt": "2026-10-23T05:41:46.443Z",
   "store": "https://meloxu.en.alibaba.com/",
   "verification": "Public store category and product listing cards; detailed specifications require project confirmation.",
   "products": [
@@ -760,6 +760,70 @@
       "imagePath": "/assets/img/catalog/mxp-design-cookie-drawer-960.webp",
       "thumbnailPath": "/assets/img/catalog/mxp-design-cookie-drawer-480.webp",
       "minimumOrder": null
+    },
+    {
+      "id": "1601581402884",
+      "image": "https://s.alicdn.com/@sc04/kf/Hb69c4b76ef824e1588e26d724913f84eD/Custom-Luxury-Cosmetic-Packaging-Box-for-Face.jpg?hasNWGrade=1",
+      "moq": "Min. Order: 250 pieces",
+      "price": "$0.01-0.10",
+      "title": "Custom Luxury Cosmetic Packaging Box for Face Oil Serum Printed Paper Folding Carton OEM Manufacturer",
+      "url": "https://www.alibaba.com/product-detail/Custom-Luxury-Cosmetic-Packaging-Box-for_1601581402884.html",
+      "sourceGroup": "COSMETIC BOX",
+      "sourceGroupUrl": "https://meloxu.en.alibaba.com/productgrouplist-958680162/COSMETIC_BOX.html",
+      "verifiedAt": "2026-10-23",
+      "width": 504,
+      "height": 504,
+      "imagePath": "/assets/img/catalog/1601581402884-960.webp",
+      "thumbnailPath": "/assets/img/catalog/1601581402884-480.webp",
+      "minimumOrder": 250
+    },
+    {
+      "id": "1601588291874",
+      "image": "https://s.alicdn.com/@sc04/kf/H501a4b0330ef4758b3738caac1c43925l/New-Arrival-Liquid-Packaging-Bag-in-Box.jpg?hasNWGrade=1",
+      "moq": "Min. Order: 250 pieces",
+      "price": "$0.01-0.10",
+      "title": "New Arrival Liquid Packaging Bag in Box With Butterfly Valve Vitop 1L/2L/96oz/100oz with Handle Wine Box",
+      "url": "https://www.alibaba.com/product-detail/New-Arrival-Liquid-Packaging-Bag-in_1601588291874.html",
+      "sourceGroup": "WINE BOX",
+      "sourceGroupUrl": "https://meloxu.en.alibaba.com/productgrouplist-958680164/WINE_BOX.html",
+      "verifiedAt": "2026-10-23",
+      "width": 800,
+      "height": 800,
+      "imagePath": "/assets/img/catalog/1601588291874-960.webp",
+      "thumbnailPath": "/assets/img/catalog/1601588291874-480.webp",
+      "minimumOrder": 250
+    },
+    {
+      "id": "1601645106085",
+      "image": "https://s.alicdn.com/@sc04/kf/Hc3a8275dca6049c5a1ed138c9f3206b0T/Factory-Direct-Sales-Custom-Printed-logo-Design.png?hasNWGrade=1",
+      "moq": "Min. Order: 250 pieces",
+      "price": "$0.01-0.10",
+      "title": "Factory Direct Sales Custom Printed logo Design Paper Bags Promotional High-end Clothing Retail Gift Shopping Jewelry Gift Bags",
+      "url": "https://www.alibaba.com/product-detail/Factory-Direct-Sales-Custom-Printed-logo_1601645106085.html",
+      "sourceGroup": "PAPER BAG",
+      "sourceGroupUrl": "https://meloxu.en.alibaba.com/productgrouplist-959270734/PAPER_BAG.html",
+      "verifiedAt": "2026-10-23",
+      "width": 1500,
+      "height": 1500,
+      "imagePath": "/assets/img/catalog/1601645106085-960.webp",
+      "thumbnailPath": "/assets/img/catalog/1601645106085-480.webp",
+      "minimumOrder": 250
+    },
+    {
+      "id": "1601584447385",
+      "image": "https://s.alicdn.com/@sc04/kf/Hcc6b26a77cfc4234a9c5afb3b73019e7C/Custom-E-Flute-Printed-Mailer-Boxes-Commerce.jpg?hasNWGrade=1",
+      "moq": "Min. Order: 250 pieces",
+      "price": "$0.01-0.10",
+      "title": "Custom E Flute Printed Mailer Boxes Commerce Mailing Zipper Tear Open Postal Adhesive Strip Shipping Box With Zipper Closure",
+      "url": "https://www.alibaba.com/product-detail/Custom-E-Flute-Printed-Mailer-Boxes_1601584447385.html",
+      "sourceGroup": "MAILER BOX",
+      "sourceGroupUrl": "https://meloxu.en.alibaba.com/productgrouplist-959232345/MAILER_BOX.html",
+      "verifiedAt": "2026-10-23",
+      "width": 1100,
+      "height": 1100,
+      "imagePath": "/assets/img/catalog/1601584447385-960.webp",
+      "thumbnailPath": "/assets/img/catalog/1601584447385-480.webp",
+      "minimumOrder": 250
     }
   ]
 }
