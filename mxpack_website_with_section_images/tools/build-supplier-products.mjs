@@ -112,7 +112,7 @@ for (const p of products) {
     {'@type':'FAQPage',mainEntity:faq.map(([q,a])=>({'@type':'Question',name:q,acceptedAnswer:{'@type':'Answer',text:a}}))}];
   const productFooter=p.views?footer.replace('</body>','<script src="/assets/js/product-reference-gallery.js?v=20261021-1"></script></body>'):footer;
   const html = `<!doctype html>\n<html lang="en"><head>${pageHead}\n${extraCss}\n${schemas.map(schema).join('\n')}</head><body class="product-detail-page" data-product-id="${p.slug}"><a class="skip-link" href="#main">Skip to content</a>${header}${giftMarkup(compactProductMarkup(withReferences(body,p),p),p)}${productFooter}`;
-  fs.writeFileSync(path.join(root,'products',`${p.slug}.html`), (p.category==='gifts'?html.trimEnd()+'\n':html)
+  fs.writeFileSync(path.join(root,'products',`${p.slug}.html`), (html.trimEnd()+'\n')
     .replace('"@type":"CollectionPage","name":', '"@type":"WebPage","name":')
     .replaceAll('The supplier catalog lists a starting order of', 'This format has a starting order of')
     .replaceAll('Starting quantity is based on the selected supplier listing.', 'Starting quantity applies to the pictured format and is subject to your final specification.')

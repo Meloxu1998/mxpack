@@ -1,4 +1,6 @@
 import fs from 'node:fs';
+const runDate=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
+if(runDate!=='2026-10-23')throw Error('Historical October 23 review map: do not replay it on a later day. Continue from the saved ledger without overwriting subsequent reviews.');
 const dir='D:/mxpack-audits/2026-10-23/ordered-products';
 const file='seo-system/data/supplier-publication-ledger.json';
 const sources=JSON.parse(fs.readFileSync(dir+'/source-groups.json','utf8'));
