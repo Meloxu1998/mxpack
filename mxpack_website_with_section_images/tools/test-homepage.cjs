@@ -4,7 +4,7 @@ const path=require('node:path');
 const assert=require('node:assert/strict');
 const sharp=require('sharp');
 const base=process.env.QA_BASE||'http://127.0.0.1:4187';
-const output='D:/mxpack-audits/2026-10-21/homepage-rebuild';
+const output=process.env.QA_OUTPUT||'D:/mxpack-audits/2026-10-23/homepage-buyer-range';
 fs.mkdirSync(output,{recursive:true});
 (async()=>{
  const browser=await chromium.launch({channel:'chrome',headless:true});
@@ -20,12 +20,13 @@ fs.mkdirSync(output,{recursive:true});
    await page.evaluate(async()=>{await document.fonts.ready;await document.querySelector('.home-stage img').decode();});
    const metrics=await page.evaluate(()=>{
     const rect=selector=>{const r=document.querySelector(selector).getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height}};
-    return {overflow:document.documentElement.scrollWidth>innerWidth+1,h1:rect('h1'),stage:rect('.home-stage'),facts:rect('.home-facts'),hero:document.querySelector('.home-stage img').currentSrc,heroDownloads:performance.getEntriesByType('resource').filter(r=>/packaging-family-.*webp/.test(r.name)).map(r=>r.name),families:document.querySelectorAll('[data-home-family]').length,logos:document.querySelectorAll('.logo-group:not([aria-hidden]) img').length};
+    return {overflow:document.documentElement.scrollWidth>innerWidth+1,h1:rect('h1'),stage:rect('.home-stage'),facts:rect('.home-facts'),hero:document.querySelector('.home-stage img').currentSrc,heroDownloads:performance.getEntriesByType('resource').filter(r=>/diverse-packaging-range.*webp/.test(r.name)).map(r=>r.name),families:document.querySelectorAll('[data-home-family]').length,logos:document.querySelectorAll('.logo-group:not([aria-hidden]) img').length};
    });
    assert(!metrics.overflow,`Overflow ${width}`);assert.equal(metrics.families,16);assert.equal(metrics.logos,10);
    assert(metrics.facts.y< (width<600?844:1000)-20,`No next-section hint ${width}`);
    assert(metrics.h1.height<=220,`Headline too tall ${width}`);
-   assert(metrics.hero.includes(width<=1240?'mobile':'desktop'),`Wrong art direction ${width}`);
+   assert(metrics.hero.includes('diverse-packaging-range'),`Wrong hero ${width}`);
+   assert.equal(metrics.hero.includes('mobile'),width<=1240,`Wrong art direction ${width}`);
    assert.equal(metrics.heroDownloads.length,1,`Duplicate hero image download ${width}`);
    await page.screenshot({path:`${output}/first-fold-${width}.png`});
    await page.evaluate(async()=>{document.querySelectorAll('img').forEach(img=>img.loading='eager');await Promise.all([...document.images].map(img=>img.decode().catch(()=>{})));});

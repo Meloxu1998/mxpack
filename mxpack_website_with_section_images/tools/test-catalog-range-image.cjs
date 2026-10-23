@@ -19,8 +19,8 @@ const server=http.createServer((req,res)=>{
  const browser=await chromium.launch({channel:'chrome',headless:true});
  fs.mkdirSync(out,{recursive:true});const results=[];
  try{
-  for(const width of [1920,1440,390]){
-   const context=await browser.newContext({viewport:{width,height:1000},isMobile:width===390,hasTouch:width===390});
+  for(const width of [1920,1440,1024,390,360]){
+   const context=await browser.newContext({viewport:{width,height:1000},isMobile:width<=600,hasTouch:width<=600});
    await context.route(/googletagmanager\.com|google-analytics\.com/,route=>route.fulfill({status:200,body:''}));
    await context.route('https://formsubmit.co/**',route=>route.abort());
    const page=await context.newPage();
@@ -29,7 +29,7 @@ const server=http.createServer((req,res)=>{
    const image=page.locator('.catalog-hero-media img');
    await image.evaluate(img=>img.decode());
    const state=await image.evaluate(img=>({src:img.currentSrc,width:img.naturalWidth,height:img.naturalHeight}));
-   assert(state.src.includes(width===390?'packaging-workshop-range-20261023-':'packaging-workshop-panorama-20261023-'));
+   assert(state.src.includes(width<=760?'packaging-workshop-range-20261023-':'packaging-workshop-panorama-20261023-'));
    assert(state.width>0&&state.height>0);
    assert.equal(await page.locator('h1').count(),1);
    assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'),'https://mxpackpro.com/products');
@@ -37,7 +37,7 @@ const server=http.createServer((req,res)=>{
    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
    const copy=await page.locator('.catalog-hero-copy').boundingBox();
    if(width>=1081)assert(Math.abs(copy.x+copy.width-Math.max(524,width*.4))<=1,'Desktop hero copy does not end at the approved reference line');
-   if(width===390)assert(Math.abs(copy.x-15)<=1,'Mobile margin changed');
+   if(width<=600)assert(Math.abs(copy.x-15)<=1,'Mobile margin changed');
    await page.screenshot({path:path.join(out,`${process.env.QA_BASE?'live':'local'}-${width}.png`)});
    results.push({viewportWidth:width,status:response.status(),copyLeft:copy.x,image:state});
    await page.goto(base+'/',{waitUntil:'networkidle'});
@@ -47,17 +47,20 @@ const server=http.createServer((req,res)=>{
    await homeImage.evaluate(img=>img.decode());
    assert((await homeImage.getAttribute('alt')).includes('Design visualization'));
    assert.equal(await page.locator('.home-family').count(),16);
-   assert.equal(await page.locator('.home-feature-links a').count(),2);
+   assert.equal(await page.locator('.home-feature-links a').count(),3);
+   assert.equal(await page.locator('.home-facts-grid a').count(),4);
+   assert((await homeImage.evaluate(img=>img.currentSrc)).includes('diverse-packaging-range'));
+   assert.equal(await page.locator('.home-feature-links a[href*="bbq"], .home-feature-links a[href*="pyramid"]').count(),0);
    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
    const facts=await page.locator('.home-facts').boundingBox();
-   assert(facts.y<(width===390?844:1000),'No next-section content visible in the first viewport');
+   assert(facts.y<(width<=600?844:1000),'No next-section content visible in the first viewport');
    await page.screenshot({path:path.join(out,`${process.env.QA_BASE?'live':'local'}-home-${width}.png`)});
    await page.locator('.home-stage a[href="/get-a-quote"]').click();
    await page.waitForURL('**/get-a-quote');
    assert.equal(await page.locator('form[action*="formsubmit.co"]').getAttribute('action'),'https://formsubmit.co/sales@mxpackpro.com');
    await page.goto(base+'/',{waitUntil:'networkidle'});
    await page.locator('.home-custom').scrollIntoViewIfNeeded();
-   assert.equal(await page.locator('.home-custom-products a').count(),4);
+   assert.equal(await page.locator('.home-custom-products a').count(),6);
    for(const img of await page.locator('.home-custom-products img').all())await img.evaluate(img=>img.decode());
    assert.equal(await page.locator('.home-custom img[src*="custom-packaging-hero"]').count(),0);
    await page.locator('.home-custom').screenshot({path:path.join(out,`${process.env.QA_BASE?'live':'local'}-custom-${width}.png`)});
