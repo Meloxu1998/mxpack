@@ -73,7 +73,7 @@ const footer = rootify(catalog.slice(catalog.indexOf('<footer class="site-footer
   .replace(/<script[^>]*src="[^"]*products-catalog-v2\.js[^>]*><\/script>/g,'');
 const head = rootify(catalog.match(/<head>([\s\S]*?)<\/head>/)?.[1] || '')
   .replace(/\s*<script type="application\/ld\+json">[\s\S]*?<\/script>/g,'')
-  .replace(/\s*<link rel="stylesheet" href="\/assets\/css\/(?:products-catalog-v2|catalog-products|catalog-taxonomy).css[^>]+>/g,'');
+  .replace(/\s*<link rel="stylesheet" href="\/assets\/css\/(?:products-catalog-v2|catalog-products|catalog-taxonomy|catalog-range-image).css[^>]+>/g,'');
 if (!header || !footer || !head) throw new Error('Approved page shell not found.');
 const extraCss = '<link rel="stylesheet" href="/assets/css/catalog-products.css?v=20261021-3">';
 const organization = { '@type':'Organization', name:'MXPACKPRO', url:base, email:'sales@mxpackpro.com', telephone:'+86 155 2116 3050'};

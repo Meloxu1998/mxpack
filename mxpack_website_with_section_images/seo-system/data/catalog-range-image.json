@@ -1,0 +1,11 @@
+{
+  "createdAt": "2026-10-23",
+  "kind": "ai-generated-design-visualization",
+  "tool": "built-in image_gen",
+  "placement": "/products",
+  "caption": "Packaging range & workshop design visualization",
+  "promptSummary": "Original packaging range on a bright workshop sample table, with pyramid catering box, BBQ meal tray, gift boxes, mailer, bakery carrier, pizza carton, burger carton, bag and cups. Panoramic desktop composition with space for text; full product grouping on mobile. No logos, certifications, people or factory ownership claims.",
+  "limitations": "Illustrative structures and workshop setting; not a photograph of MXPACKPRO premises or evidence of exact product specifications.",
+  "desktop": "/assets/img/products/catalog-v2/packaging-workshop-panorama-20261023-2048.webp",
+  "mobile": "/assets/img/products/catalog-v2/packaging-workshop-range-20261023-640.webp"
+}
