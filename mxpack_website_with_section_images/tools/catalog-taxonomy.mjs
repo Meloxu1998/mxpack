@@ -28,6 +28,11 @@ export const taxonomy=[
  category('christmas-boxes','Christmas Boxes','custom-ornament-gift-box-with-paper-insert','Festive gifting, advent calendars and party packs.',christmas.products.map(p=>p.slug))
 ];
 export const aliases={'gifts':'gift-boxes','catering':'grazing-boxes','food-boxes':'takeaway-food-boxes','bakery':'cake-boxes','drinkware':'paper-cups','bags':'paper-bags','retail':'gift-boxes'};
+for(const p of products)for(const id of p.catalogGroups||[]){
+ const group=taxonomy.find(c=>c.id===id);
+ if(!group)throw Error(`Unknown product group: ${id}`);
+ if(!group.members.includes(p.slug))group.members.push(p.slug);
+}
 const slugs=new Set(products.map(p=>p.slug));
 for(const c of taxonomy){
  if(!c.members.length||!slugs.has(c.image)||c.members.some(s=>!slugs.has(s)))throw new Error(`Invalid category: ${c.id}`);

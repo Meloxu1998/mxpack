@@ -18,7 +18,7 @@ for(const file of files){
    if(!header.includes('href="/products?category=gifts"'))header=header.replace(/(<a\b[^>]*href="\/bakery-cake-boxes"[^>]*>Bakery &amp; Cake Boxes<\/a>|<a\b[^>]*href="\/bakery-cake-boxes"[^>]*>Bakery & Cake Boxes<\/a>)/g,'$1<a href="/products?category=gifts">Custom Gift Boxes</a>');
    if(seasonal&&!header.includes('href="/christmas-packaging"'))header=header.replaceAll('<a href="/products?category=gifts">Custom Gift Boxes</a>','<a href="/products?category=gifts">Custom Gift Boxes</a><a href="/christmas-packaging">Christmas Packaging</a>');
    return header.replace(/Browse all \d+ products/g,`Browse all ${products.length} products`);
- }).replace(/catalog-data\.js\?v=[^"\s]+/g,'catalog-data.js?v=20261023-batch1')
+ }).replace(/catalog-data\.js\?v=[^"\s]+/g,'catalog-data.js?v=20261023-ordered1')
  .replace(/inquiry-analytics\.js\?v=[^"\s]+/g,'inquiry-analytics.js?v=20261023-modal-3')
  .replace(/products-catalog-v2\.js\?v=[^"\s]+/g,'products-catalog-v2.js?v=20261021-2');
  fs.writeFileSync(target,html);

@@ -13,7 +13,9 @@
         "custom-burger-clamshell-box",
         "custom-corrugated-pizza-box",
         "custom-printed-corrugated-mailer",
-        "foldable-magnetic-gift-box"
+        "foldable-magnetic-gift-box",
+        "custom-sliding-hot-dog-box",
+        "custom-mini-burger-sharing-box"
       ]
     },
     {
@@ -30,6 +32,10 @@
         "triangular-portion-sharing-box",
         "double-door-catering-box",
         "custom-pyramid-catering-box",
+        "custom-mini-burger-sharing-box",
+        "custom-multi-tray-catering-carrier-box",
+        "custom-meal-and-drink-catering-box",
+        "custom-upright-sandwich-catering-box",
         "dessert-skewer-display-box"
       ]
     },
@@ -40,7 +46,8 @@
       "description": "Meal carriers and BBQ kit packaging.",
       "members": [
         "bbq-grill-kit-packaging-box",
-        "bbq-meal-tray-carry-box"
+        "bbq-meal-tray-carry-box",
+        "custom-four-tray-bbq-packaging-carton"
       ]
     },
     {
@@ -58,7 +65,9 @@
         "printed-gable-meal-box",
         "petal-opening-snack-box",
         "tear-strip-snack-carton",
-        "custom-food-wrapping-paper"
+        "custom-sliding-hot-dog-box",
+        "custom-food-wrapping-paper",
+        "custom-meal-and-drink-catering-box"
       ]
     },
     {
@@ -176,7 +185,8 @@
       "image": "custom-burger-clamshell-box",
       "description": "Hinged cartons for burgers and sliders.",
       "members": [
-        "custom-burger-clamshell-box"
+        "custom-burger-clamshell-box",
+        "custom-mini-burger-sharing-box"
       ]
     },
     {
