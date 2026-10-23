@@ -19,7 +19,7 @@ const server=http.createServer((req,res)=>{
  const browser=await chromium.launch({channel:'chrome',headless:true});
  fs.mkdirSync(out,{recursive:true});const results=[];
  try{
-  for(const width of [1440,390]){
+  for(const width of [1920,1440,390]){
    const context=await browser.newContext({viewport:{width,height:1000},isMobile:width===390,hasTouch:width===390});
    await context.route(/googletagmanager\.com|google-analytics\.com/,route=>route.fulfill({status:200,body:''}));
    await context.route('https://formsubmit.co/**',route=>route.abort());
@@ -35,8 +35,11 @@ const server=http.createServer((req,res)=>{
    assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'),'https://mxpackpro.com/products');
    assert(await page.locator('.catalog-image-note').isVisible());
    assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+   const copy=await page.locator('.catalog-hero-copy').boundingBox();
+   if(width>=1081)assert(Math.abs(copy.x-Math.max(24,(width-1640)/2))<=1,'Desktop hero copy is not at the approved left starting point');
+   if(width===390)assert(Math.abs(copy.x-15)<=1,'Mobile margin changed');
    await page.screenshot({path:path.join(out,`${process.env.QA_BASE?'live':'local'}-${width}.png`)});
-   results.push({viewportWidth:width,status:response.status(),image:state});
+   results.push({viewportWidth:width,status:response.status(),copyLeft:copy.x,image:state});
    await context.close();
   }
   fs.writeFileSync(path.join(out,`${process.env.QA_BASE?'live':'local'}-results.json`),JSON.stringify(results,null,2));
