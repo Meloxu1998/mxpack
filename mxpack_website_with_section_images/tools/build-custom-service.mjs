@@ -49,7 +49,7 @@ html=html.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g,(
 });
 const schema={'@context':'https://schema.org','@graph':[{'@type':'Service',name:'Custom packaging specification, printing and sampling',url:base+'/custom-packaging',description,provider:{'@type':'Organization',name:'MXPACKPRO',url:base}}, {'@type':'FAQPage',mainEntity:faq.map(([name,text])=>({'@type':'Question',name,acceptedAnswer:{'@type':'Answer',text}}))}]};
 html=html.replace(/\s*<link rel="stylesheet" href="\/assets\/css\/custom-service.css[^>]+>/g,'').replace('</head>',`<link rel="stylesheet" href="/assets/css/custom-service.css?v=20261023-1">\n<script type="application/ld+json" data-custom-service-schema>${JSON.stringify(schema)}</script>\n</head>`).replace(/<body(?: class="[^"]*")?>/,'<body class="custom-service-page">');
-html=html.replace(/inquiry-analytics\.js\?v=[\w-]+/g,'inquiry-analytics.js?v=20261023-modal-2');
+html=html.replace(/inquiry-analytics\.js\?v=[\w-]+/g,'inquiry-analytics.js?v=20261023-modal-3');
 html=html.replace(/<script src="\/assets\/js\/custom-service.js[^>]+><\/script>/g,'').replace('</body>','<script src="/assets/js/custom-service.js?v=20261023-1"></script></body>');
 fs.writeFileSync(file,html);
 let sitemap=fs.readFileSync('sitemap.xml','utf8');

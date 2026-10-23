@@ -11,6 +11,13 @@
   const products = window.mxpackProducts || {};
   const query = new URLSearchParams(location.search);
   const productId = products[query.get('product')] ? query.get('product') : '';
+  const categoryNames = {
+    'bakery-cake-boxes':'Bakery & cake packaging', 'burger-boxes':'Burger boxes',
+    'custom-paper-bags':'Custom paper bags', 'paper-cups':'Paper cups',
+    'pizza-boxes':'Custom pizza boxes', 'takeaway-food-boxes':'Takeaway food boxes'
+  };
+  const requestedCategory = query.get('category') || query.get('product');
+  const categoryId = Object.hasOwn(categoryNames, requestedCategory) ? requestedCategory : '';
   const solutionNames = {
     restaurants: 'Restaurants & takeaway', catering: 'Catering & events',
     'food-brands': 'Food brands & retail', startups: 'Startups & new brands', enterprise: 'Enterprise projects'
@@ -126,6 +133,8 @@
     };
     const isEmailInquiry = form.hasAttribute('data-email-inquiry');
     const formProductId = isEmailInquiry ? pageProduct || productId : productId;
+    const pageCategory = location.pathname.replace(/^\/|\.html$|\/$/g, '');
+    const formCategoryId = isEmailInquiry && Object.hasOwn(categoryNames, pageCategory) ? pageCategory : categoryId;
     const product = products[formProductId];
     const entry = storage.get('mxpackQuoteEntry');
     const freshEntry = entry && Date.now() - entry.at < 30 * 60 * 1000 ? entry : null;
@@ -140,6 +149,12 @@
       setHidden('_subject', `Packaging RFQ - ${product.name} - MXPACKPRO`);
       const message = form.querySelector('[name="Message"]');
       if (message && !message.value) message.value = `I am interested in ${product.name}.${referenceView?`\nReference view: ${referenceView}`:''}\nQuantity: \nSize / packed product: \nDelivery country: \nTarget date: `;
+    } else if (formCategoryId) {
+      setHidden('Packaging category', categoryNames[formCategoryId]);
+      setHidden('Category page', `https://mxpackpro.com/${formCategoryId}`);
+      setHidden('_subject', `Packaging RFQ - ${categoryNames[formCategoryId]} - MXPACKPRO`);
+      const message = form.querySelector('[name="Message"]');
+      if (message && !message.value) message.value = `I am interested in ${categoryNames[formCategoryId]}.\nQuantity per size / design: \nInternal dimensions / packed product: \nDelivery country: \nTarget arrival date: `;
     } else if (solution) {
       setHidden('Business type', solution);
       setHidden('_subject', `Packaging RFQ - ${solution} - MXPACKPRO`);
@@ -158,7 +173,7 @@
     for (const [key,value] of Object.entries(landing.campaign || {})) setHidden(key, value);
     let started = false;
     let submitting = false;
-    const eventContext = { product_id: formProductId || 'general', source_page: sourcePage, entry_point: entryPoint, form_name: isEmailInquiry ? 'email_inquiry' : 'quote_request' };
+    const eventContext = { product_id: formProductId || 'general', category_id: formCategoryId || '', source_page: sourcePage, entry_point: entryPoint, form_name: isEmailInquiry ? 'email_inquiry' : 'quote_request' };
     form.addEventListener('focusin', () => {
       if (started) return;
       started = true;

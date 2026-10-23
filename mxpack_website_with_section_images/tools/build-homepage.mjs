@@ -66,7 +66,7 @@ html=html.replace(/<title>[\s\S]*?<\/title>/,`<title>${esc(title)}</title>`)
  .replace(/(<meta property="og:description" content=")[^"]*/,`$1${esc(description)}`)
  .replace(/(<meta property="og:image" content=")[^"]*/,`$1${base}/assets/img/home/packaging-family-desktop-1860.webp`)
  .replace(/v4\.js\?v=[^"]+/,'v4.js?v=20261023-modal-1')
- .replace(/inquiry-analytics\.js\?v=[^"]+/,'inquiry-analytics.js?v=20261023-modal-1');
+ .replace(/inquiry-analytics\.js\?v=[^"]+/,'inquiry-analytics.js?v=20261023-modal-3');
 html=html.replace(/\s*<script type="application\/ld\+json">[\s\S]*?<\/script>/g,'');
 const graph=[
  {'@type':'Organization','@id':`${base}/#organization`,name:'MXPACKPRO',legalName:'Foshan Xumelo Technology Co., Ltd.',url:base,email:'sales@mxpackpro.com',logo:{'@type':'ImageObject',url:`${base}/assets/img/brand/mxpack-logo.svg`},address:{'@type':'PostalAddress',addressLocality:'Foshan',addressRegion:'Guangdong',addressCountry:'CN'},contactPoint:[{'@type':'ContactPoint',email:'sales@mxpackpro.com',contactType:'sales',availableLanguage:['English','Chinese']}]},
