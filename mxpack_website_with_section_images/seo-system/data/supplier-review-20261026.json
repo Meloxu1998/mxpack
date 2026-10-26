@@ -1,0 +1,17 @@
+{
+  "reviewedDate":"2026-10-26",
+  "sourceFile":"D:/mxpack-audits/2026-10-26/ordered-products/source-groups.json",
+  "group":"TAKE AWAY FOOD BOX",
+  "pages":{
+    "1":["printed-gable-meal-box","custom-folding-pastry-carton","printed-donut-pastry-box","pastry-pocket-sleeve","hexagonal-snack-carton","hexagonal-snack-carton","petal-opening-snack-box","hexagonal-snack-carton","hexagonal-snack-carton","hexagonal-snack-carton","petal-opening-snack-box","hexagonal-snack-carton","tear-strip-snack-carton","compartment-catering-meal-tray","window-grazing-box-with-dividers","compartment-catering-meal-tray"],
+    "2":["compartment-catering-meal-tray","compartment-catering-meal-tray","custom-dessert-cup-insert-carrier-box","custom-folding-pastry-carton","custom-meal-and-drink-catering-box","taco-box-with-sauce-wells","printed-sushi-meal-box","printed-sushi-meal-box","printed-sushi-meal-box","printed-sushi-meal-box","printed-sushi-meal-box","printed-sushi-meal-box","custom-mini-burger-sharing-box","compartment-catering-meal-tray","custom-upright-sandwich-catering-box","compartment-catering-meal-tray"],
+    "3":["printed-gable-meal-box","printed-gable-meal-box","printed-gable-meal-box","printed-gable-meal-box","double-door-catering-box","catering-tray-with-cup-slots","catering-tray-with-cup-slots","catering-tray-with-cup-slots","double-door-catering-box","double-door-catering-box","catering-tray-with-cup-slots","catering-tray-with-cup-slots","catering-tray-with-cup-slots","custom-fold-top-noodle-takeout-box","custom-fold-top-noodle-takeout-box","custom-fold-top-noodle-takeout-box"],
+    "4":["custom-fold-top-noodle-takeout-box","custom-fold-top-noodle-takeout-box","custom-fold-top-noodle-takeout-box",null,"printed-donut-pastry-box","printed-donut-pastry-box","custom-fold-top-noodle-takeout-box","custom-fold-top-noodle-takeout-box","custom-fold-top-noodle-takeout-box","custom-fold-top-noodle-takeout-box","custom-fold-top-noodle-takeout-box","custom-fold-top-noodle-takeout-box","custom-strap-catering-tray-carrier","coffee-and-snack-combo-carrier","taco-box-with-sauce-wells","taco-box-with-sauce-wells"],
+    "5":["printed-gable-meal-box","custom-folding-pastry-carton",null,"handled-catering-tray","handled-catering-tray"]
+  },
+  "heldReasons":{
+    "1601925494498":"Food-box title conflicts with a tall windowed carrier image. Product contents and construction need detail verification before a separate listing.",
+    "1601932925677":"Composite image shows a bag and cartons rather than one clearly specified new structure. Hold pending exact product scope and opening details."
+  },
+  "nextCursor":{"nextGroup":"CAKE BOX","page":1,"nextPosition":1}
+}

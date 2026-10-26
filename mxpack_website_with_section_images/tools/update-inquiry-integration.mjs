@@ -11,7 +11,7 @@ for(const file of files){
  html=html.replace("gtag('config','G-9VZK4M6KDS');","gtag('config','G-9VZK4M6KDS',{page_location:location.origin+location.pathname,page_referrer:document.referrer.split('?')[0]});");
  html=html.replace("};['pointerdown','keydown','scroll']","};window.mxpackLoadAnalytics=load;['pointerdown','keydown','scroll']").replace('setTimeout(load,10000)','setTimeout(load,2000)');
  html=html.replace(/(<script src="[^"]*assets\/js\/v4.js)[^"]*("><\/script>)/,'$1?v=20261021-4$2');
- if(!html.includes('assets/js/inquiry-analytics.js'))html=html.replace(/<script src="[^"]*assets\/js\/v4.js[^>]*><\/script>/,'<script src="/assets/js/catalog-data.js?v=20261023-ordered1"></script>\n<script src="/assets/js/inquiry-analytics.js?v=20261023-modal-3"></script>\n$&');
+ if(!html.includes('assets/js/inquiry-analytics.js'))html=html.replace(/<script src="[^"]*assets\/js\/v4.js[^>]*><\/script>/,'<script src="/assets/js/catalog-data.js?v=20261026-ordered1"></script>\n<script src="/assets/js/inquiry-analytics.js?v=20261023-modal-3"></script>\n$&');
  if(file.startsWith('products/'))html=html.replace(/<script[^>]*src="[^"]*products-catalog-v2.js[^>]*><\/script>/g,'');
  fs.writeFileSync(target,html);
 }

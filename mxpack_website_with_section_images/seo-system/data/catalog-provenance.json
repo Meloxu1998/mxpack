@@ -1,6 +1,6 @@
 {
   "capturedAt": "2026-10-21T04:21:26.720Z",
-  "importedAt": "2026-10-23T06:09:59.864Z",
+  "importedAt": "2026-10-26T03:13:24.787Z",
   "store": "https://meloxu.en.alibaba.com/",
   "verification": "Public store category and product listing cards; detailed specifications require project confirmation.",
   "products": [
@@ -926,6 +926,54 @@
       "imagePath": "/assets/img/catalog/1601925448630-960.webp?v=20261023-ordered1",
       "thumbnailPath": "/assets/img/catalog/1601925448630-480.webp?v=20261023-ordered1",
       "minimumOrder": 50
+    },
+    {
+      "id": "1601608110655",
+      "title": "Custom Paper Box Food Packaging Box With LOGO for Fried Chicken Takeaway Use Greaseproof Packaging Box",
+      "url": "https://www.alibaba.com/product-detail/Custom-Paper-Box-Food-Packaging-Box_1601608110655.html",
+      "image": "https://s.alicdn.com/@sc04/kf/H805a93fa286f4fe4863b086e3836551fg/Custom-Paper-Box-Food-Packaging-Box-With.jpg?hasNWGrade=1",
+      "moq": "Min. Order: 250 pieces",
+      "sourceGroup": "TAKE AWAY FOOD BOX",
+      "sourcePage": 2,
+      "sourceGroupUrl": "https://meloxu.en.alibaba.com/productgrouplist-958972844-2/TAKE_AWAY_FOOD_BOX.html?filter=null&spm=a2700.shop_plgr.41413.dbtmnavgo",
+      "verifiedAt": "2026-10-26T03:13:23.738Z",
+      "width": 736,
+      "height": 736,
+      "imagePath": "/assets/img/catalog/1601608110655-960.webp?v=20261026-ordered1",
+      "thumbnailPath": "/assets/img/catalog/1601608110655-480.webp?v=20261026-ordered1",
+      "minimumOrder": 250
+    },
+    {
+      "id": "1601919257272",
+      "title": "8oz 16oz 26oz 32oz Paper Pasta Boxes Round Bottom Oil Proof Disposable Custom Print Kraft Noodle Togo Containers",
+      "url": "https://www.alibaba.com/product-detail/8oz-16oz-26oz-32oz-Paper-Pasta_1601919257272.html",
+      "image": "https://s.alicdn.com/@sc04/kf/H27bf9dd47e3c442abaa53e6c5e603ca4l/8oz-16oz-26oz-32oz-Paper-Pasta-Boxes.png?hasNWGrade=1",
+      "moq": "Min. Order: 250 pieces",
+      "sourceGroup": "TAKE AWAY FOOD BOX",
+      "sourcePage": 3,
+      "sourceGroupUrl": "https://meloxu.en.alibaba.com/productgrouplist-958972844-3/TAKE_AWAY_FOOD_BOX.html?filter=all&spm=a2700.shop_plgr.41413.dbtmnavgo",
+      "verifiedAt": "2026-10-26T03:13:23.738Z",
+      "width": 1000,
+      "height": 1000,
+      "imagePath": "/assets/img/catalog/1601919257272-960.webp?v=20261026-ordered1",
+      "thumbnailPath": "/assets/img/catalog/1601919257272-480.webp?v=20261026-ordered1",
+      "minimumOrder": 250
+    },
+    {
+      "id": "1601928545462",
+      "title": "Custom Paper Box Packaging for Fast Food Packaging Foldable Cardboard French Fries Chicken Burger Take Out Box with Printed Logo",
+      "url": "https://www.alibaba.com/product-detail/Custom-Paper-Box-Packaging-for-Fast_1601928545462.html",
+      "image": "https://s.alicdn.com/@sc04/kf/H3a30db91433c4b1ab97732de102d1cfen/Custom-Paper-Box-Packaging-for-Fast-Food.png?hasNWGrade=1",
+      "moq": "Min. Order: 250 pieces",
+      "sourceGroup": "TAKE AWAY FOOD BOX",
+      "sourcePage": 4,
+      "sourceGroupUrl": "https://meloxu.en.alibaba.com/productgrouplist-958972844-4/TAKE_AWAY_FOOD_BOX.html?filter=all&spm=a2700.shop_plgr.41413.dbtmnavgo",
+      "verifiedAt": "2026-10-26T03:13:23.738Z",
+      "width": 1000,
+      "height": 1000,
+      "imagePath": "/assets/img/catalog/1601928545462-960.webp?v=20261026-ordered1",
+      "thumbnailPath": "/assets/img/catalog/1601928545462-480.webp?v=20261026-ordered1",
+      "minimumOrder": 250
     }
   ]
 }

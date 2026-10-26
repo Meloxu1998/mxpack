@@ -27,7 +27,7 @@ for(const file of files){
  html=html.replace(/v4\.min\.css\?v=[^"\s]+/g,'v4.min.css?v=20261021-3').replace(/v4\.js\?v=[^"\s]+/g,file==='index.html'?'v4.js?v=20261023-modal-1':'v4.js?v=20261023-modal-1').replace(/catalog-products\.css\?v=[^"\s]+/g,'catalog-products.css?v=20261021-3');
  html=html.replace(/inquiry-analytics\.js\?v=[^"\s]+/g,'inquiry-analytics.js?v=20261023-modal-3');
  html=html.replaceAll('>Resources<','>Guides<').replaceAll('Resource center','Guide library').replaceAll('Resource Center','Guide library');
- html=html.replace(/catalog-data\.js\?v=[^"\s]+/g,'catalog-data.js?v=20261023-ordered1');
+ html=html.replace(/catalog-data\.js\?v=[^"\s]+/g,'catalog-data.js?v=20261026-ordered1');
  if(file==='resources.html')html=html.replaceAll('Food Packaging Guides &amp; Resources','Packaging Buying Guides').replaceAll('Food Packaging Guides & Resources','Packaging Buying Guides').replace('Better packaging decisions, made easier.','Packaging buying guides.');
  fs.writeFileSync(full,html);
 }
