@@ -45,7 +45,10 @@ const key=r=>`${r.group}|${r.page}|${r.sourceId}`;
 const priorRecords=new Map(ledger.reviews.map(r=>[key(r),r]));
 for(const r of records){const previous=priorRecords.get(key(r));if(previous?.status==='published-verified'&&r.status!=='published-verified')throw Error('Do not downgrade an already published review');priorRecords.set(key(r),r);}
 ledger.reviews=[...priorRecords.values()];
-ledger.cursor={...ledger.cursor,...review.nextCursor,completedGroupReviews:[...new Set([...ledger.cursor.completedGroupReviews,review.group])],heldSources:[...new Set([...ledger.cursor.heldSources,...records.filter(r=>r.status==='needs-detail-verification').map(r=>r.sourceId)])]};
+const currentGroup=ledger.classificationOrder.indexOf(ledger.cursor.nextGroup);
+const nextGroup=ledger.classificationOrder.indexOf(review.nextCursor.nextGroup);
+if(nextGroup<0)throw Error('Unknown next category');
+ledger.cursor={...ledger.cursor,...(nextGroup>=currentGroup?review.nextCursor:{}),completedGroupReviews:[...new Set([...ledger.cursor.completedGroupReviews,review.group])],heldSources:[...new Set([...ledger.cursor.heldSources,...records.filter(r=>r.status==='needs-detail-verification').map(r=>r.sourceId)])]};
 ledger.updatedAt=now;
 const count=ledger.publications.filter(p=>p.publishedDate===today&&p.status==='verified-live').length;
 if(count>ledger.dailyTarget)throw Error('Daily publication quota exceeded');
@@ -53,4 +56,4 @@ ledger.daily[today]={verifiedNewCount:count,remaining:Math.max(0,ledger.dailyTar
 fs.writeFileSync(file,JSON.stringify(ledger,null,2)+'\n');
 fs.mkdirSync(out,{recursive:true});
 fs.writeFileSync(out+'/review-'+review.group.replace(/[^a-z0-9]/gi,'-')+'.json',JSON.stringify({reviewedAt:now,group:review.group,reviewed:records.length,selected:records.filter(r=>additions.some(p=>p.sourceId===r.sourceId)).length,consolidated:records.filter(r=>r.status==='consolidated-existing').length,held:records.filter(r=>r.status==='needs-detail-verification').length,records},null,2));
-console.log(JSON.stringify({reviewed:records.length,selected:additions.length,verifiedToday:count,cursor:ledger.cursor.nextGroup}));
+console.log(JSON.stringify({reviewed:records.length,selected:records.filter(r=>additions.some(p=>p.sourceId===r.sourceId)).length,verifiedToday:count,cursor:ledger.cursor.nextGroup}));

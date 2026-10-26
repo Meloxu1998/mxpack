@@ -1,0 +1,18 @@
+{
+  "reviewedDate":"2026-10-26","sourceFile":"D:/mxpack-audits/2026-10-26/ordered-products/source-groups.json","group":"MACARON&CHOCOLATE",
+  "pages":{
+    "1":["macaron-sleeve-box","macaron-sleeve-box","tall-cake-box-with-handles","custom-folding-pastry-carton","custom-folding-pastry-carton","coffee-and-snack-combo-carrier",null,"custom-folding-pastry-carton","coffee-and-snack-combo-carrier",null,"custom-chocolate-bar-carton","custom-chocolate-bar-carton","custom-chocolate-bar-carton","custom-chocolate-bar-carton","custom-chocolate-bar-carton","custom-chocolate-bar-carton"],
+    "2":["custom-chocolate-bar-carton",null,null,null,null,"custom-cookie-assortment-drawer-box",null,"custom-cookie-assortment-drawer-box",null,"double-door-catering-box","double-door-catering-box","double-door-catering-box","double-door-catering-box"]
+  },
+  "heldReasons":{
+    "1601603750331":"Composite image mixes handled cartons, cups and other packs. One exact product and opening needs verification before a new URL.",
+    "1601603742500":"Multiple bakery packs pictured together do not establish a distinct new single construction.",
+    "1601606723307":"Assorted retail packaging set; unclear scope and internal construction. No separate mooncake page is inferred from the title.",
+    "1601606936552":"Multi-pack assortment image does not verify one distinct new closure or insert.",
+    "1601607023141":"Front-facing closed pack does not show the claimed drawer or mailer construction.",
+    "1601607044067":"Closed assortment variants do not establish the claimed six-compartment insert. Hold pending internal view.",
+    "1601606906927":"Composite assortment image does not verify the claimed window cake-box construction.",
+    "1601606961499":"Assorted printed packs with unclear exact supply scope; hold rather than create another artwork-only product."
+  },
+  "nextCursor":{"nextGroup":"COSMETIC BOX","page":1,"nextPosition":1}
+}
