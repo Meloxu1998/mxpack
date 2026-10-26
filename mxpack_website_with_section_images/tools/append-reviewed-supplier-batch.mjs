@@ -51,5 +51,6 @@ const count=ledger.publications.filter(p=>p.publishedDate===today&&p.status==='v
 if(count>ledger.dailyTarget)throw Error('Daily publication quota exceeded');
 ledger.daily[today]={verifiedNewCount:count,remaining:Math.max(0,ledger.dailyTarget-count)};
 fs.writeFileSync(file,JSON.stringify(ledger,null,2)+'\n');
-fs.writeFileSync(out+'/review-decision.json',JSON.stringify({reviewedAt:now,group:review.group,reviewed:records.length,selected:additions.length,consolidated:records.filter(r=>r.status==='consolidated-existing').length,held:records.filter(r=>r.status==='needs-detail-verification').length,records},null,2));
+fs.mkdirSync(out,{recursive:true});
+fs.writeFileSync(out+'/review-'+review.group.replace(/[^a-z0-9]/gi,'-')+'.json',JSON.stringify({reviewedAt:now,group:review.group,reviewed:records.length,selected:records.filter(r=>additions.some(p=>p.sourceId===r.sourceId)).length,consolidated:records.filter(r=>r.status==='consolidated-existing').length,held:records.filter(r=>r.status==='needs-detail-verification').length,records},null,2));
 console.log(JSON.stringify({reviewed:records.length,selected:additions.length,verifiedToday:count,cursor:ledger.cursor.nextGroup}));

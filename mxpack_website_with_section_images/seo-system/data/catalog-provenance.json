@@ -1,6 +1,6 @@
 {
   "capturedAt": "2026-10-21T04:21:26.720Z",
-  "importedAt": "2026-10-26T03:13:24.787Z",
+  "importedAt": "2026-10-26T03:31:16.800Z",
   "store": "https://meloxu.en.alibaba.com/",
   "verification": "Public store category and product listing cards; detailed specifications require project confirmation.",
   "products": [
@@ -973,6 +973,38 @@
       "height": 1000,
       "imagePath": "/assets/img/catalog/1601928545462-960.webp?v=20261026-ordered1",
       "thumbnailPath": "/assets/img/catalog/1601928545462-480.webp?v=20261026-ordered1",
+      "minimumOrder": 250
+    },
+    {
+      "id": "1601917782119",
+      "image": "https://s.alicdn.com/@sc04/kf/H8ca69334608b48ba9cafb4c13b852720l/Round-3-Layer-Food-Grade-Cake-Paper.png?hasNWGrade=1",
+      "moq": "Min. Order: 250 pieces",
+      "title": "Round 3-Layer Food Grade Cake Paper Display Stand, Minimalist Baking Packaging for Wedding Party, Custom Size Logo Wholesale",
+      "url": "https://www.alibaba.com/product-detail/Round-3-Layer-Food-Grade-Cake_1601917782119.html",
+      "sourceGroup": "CAKE BOX",
+      "sourcePage": 4,
+      "sourceGroupUrl": "https://meloxu.en.alibaba.com/productgrouplist-958733428-4/CAKE_BOX.html?filter=all&spm=a2700.shop_pl.41413.dbtmnavgo",
+      "verifiedAt": "2026-10-26T03:31:16.032Z",
+      "width": 1000,
+      "height": 1000,
+      "imagePath": "/assets/img/catalog/1601917782119-960.webp?v=20261026-ordered2",
+      "thumbnailPath": "/assets/img/catalog/1601917782119-480.webp?v=20261026-ordered2",
+      "minimumOrder": 250
+    },
+    {
+      "id": "1601587191072",
+      "image": "https://s.alicdn.com/@sc04/kf/H84b752ee457a4aa2b1d5e2e65ab19acel/Hot-Sale-Custom-Printed-Corrugated-Shipping-Boxes.jpg?hasNWGrade=1",
+      "moq": "Min. Order: 250 pieces",
+      "title": "Hot Sale Custom Printed Corrugated Shipping Boxes Cardboard Mailing Cartons for Delivery Moving Packaging",
+      "url": "https://www.alibaba.com/product-detail/Hot-Sale-Custom-Printed-Corrugated-Shipping_1601587191072.html",
+      "sourceGroup": "MAILER BOX",
+      "sourcePage": 1,
+      "sourceGroupUrl": "https://meloxu.en.alibaba.com/productgrouplist-959232345/MAILER_BOX.html",
+      "verifiedAt": "2026-10-26T03:31:16.032Z",
+      "width": 1000,
+      "height": 1000,
+      "imagePath": "/assets/img/catalog/1601587191072-960.webp?v=20261026-ordered2",
+      "thumbnailPath": "/assets/img/catalog/1601587191072-480.webp?v=20261026-ordered2",
       "minimumOrder": 250
     }
   ]

@@ -38,7 +38,8 @@
         "custom-upright-sandwich-catering-box",
         "custom-dessert-cup-insert-carrier-box",
         "custom-strap-catering-tray-carrier",
-        "dessert-skewer-display-box"
+        "dessert-skewer-display-box",
+        "custom-tiered-dessert-carrier-with-cover"
       ]
     },
     {
@@ -86,7 +87,8 @@
         "window-cake-box-removable-base",
         "custom-folding-pastry-carton",
         "printed-donut-pastry-box",
-        "pastry-pocket-sleeve"
+        "pastry-pocket-sleeve",
+        "custom-tiered-dessert-carrier-with-cover"
       ]
     },
     {
@@ -96,7 +98,8 @@
       "description": "Corrugated mailers for branded deliveries.",
       "members": [
         "custom-printed-corrugated-mailer",
-        "custom-tear-open-corrugated-mailer"
+        "custom-tear-open-corrugated-mailer",
+        "custom-corrugated-shipping-carton"
       ]
     },
     {
@@ -168,7 +171,8 @@
         "custom-pillow-gift-box",
         "folding-advent-calendar-carton",
         "envelope-flap-gift-box",
-        "custom-tear-open-corrugated-mailer"
+        "custom-tear-open-corrugated-mailer",
+        "custom-corrugated-shipping-carton"
       ]
     },
     {
@@ -181,7 +185,8 @@
         "custom-tear-open-corrugated-mailer",
         "foldable-magnetic-gift-box",
         "envelope-flap-gift-box",
-        "custom-lid-and-base-rigid-gift-box"
+        "custom-lid-and-base-rigid-gift-box",
+        "custom-corrugated-shipping-carton"
       ]
     },
     {

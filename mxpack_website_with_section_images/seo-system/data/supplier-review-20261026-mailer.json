@@ -1,0 +1,19 @@
+{
+  "reviewedDate":"2026-10-26","sourceFile":"D:/mxpack-audits/2026-10-26/ordered-products/source-groups.json","group":"MAILER BOX",
+  "pages":{
+    "1":["custom-printed-corrugated-mailer","custom-folding-pastry-carton","custom-folding-pastry-carton",null,null,"custom-printed-corrugated-mailer","custom-printed-corrugated-mailer","custom-tear-open-corrugated-mailer","custom-printed-corrugated-mailer",null,"custom-lid-and-base-rigid-gift-box",null,"custom-printed-corrugated-mailer","custom-printed-corrugated-mailer","custom-lid-and-base-rigid-gift-box","custom-corrugated-shipping-carton"],
+    "2":["custom-printed-corrugated-mailer","custom-printed-corrugated-mailer",null,null,null,"custom-printed-corrugated-mailer","custom-printed-corrugated-mailer","custom-printed-corrugated-mailer","custom-printed-corrugated-mailer","custom-corrugated-shipping-carton","custom-printed-corrugated-mailer","custom-folding-cosmetic-carton","custom-folding-cosmetic-carton","custom-folding-cosmetic-carton",null,"custom-printed-corrugated-mailer"],
+    "3":["custom-printed-corrugated-mailer","custom-printed-corrugated-mailer","custom-printed-corrugated-mailer","custom-printed-corrugated-mailer","custom-printed-corrugated-mailer"]
+  },
+  "heldReasons":{
+    "1601581594046":"Closed flat pack does not verify the mailer opening or board construction claimed in the title.",
+    "1601581564111":"Closed pack artwork variant; do not infer a separate folding-mailer construction from the title alone.",
+    "1601586264452":"Closed presentation box image does not show the claimed tear strip or resealable closure.",
+    "1601586303091":"Reference shows a round presentation box and another outer pack; the exact supply scope is not clear.",
+    "1601589914571":"Partially obscured presentation box does not confirm a distinct sleeve, lid or folding closure.",
+    "1601589845899":"Internal support grid is visible but the title claims jar shipping and a tear-strip closure not established by the reference.",
+    "1601589961276":"Closed variant of the unverified yellow/red presentation construction; no separate new page.",
+    "1601592930049":"Title claims insulated cold-chain packaging, but the image does not verify the stated liner, foam or thermal construction. No thermal performance claim or new product is published."
+  },
+  "nextCursor":{"nextGroup":"MACARON&CHOCOLATE","page":1,"nextPosition":1}
+}

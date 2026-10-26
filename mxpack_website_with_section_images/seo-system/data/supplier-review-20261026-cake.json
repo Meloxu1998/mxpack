@@ -1,0 +1,17 @@
+{
+  "reviewedDate":"2026-10-26","sourceFile":"D:/mxpack-audits/2026-10-26/ordered-products/source-groups.json","group":"CAKE BOX",
+  "pages":{
+    "1":["printed-donut-pastry-box","custom-folding-pastry-carton","window-cake-box-removable-base","window-cake-box-removable-base","custom-folding-pastry-carton","custom-folding-pastry-carton","custom-folding-pastry-carton","fold-open-cake-carrier-box","fold-open-cake-carrier-box","tall-cake-box-with-handles","fold-open-cake-carrier-box","custom-lid-and-base-rigid-gift-box","envelope-flap-gift-box","fold-open-cake-carrier-box","custom-folding-pastry-carton","fold-open-cake-carrier-box"],
+    "2":["fold-open-cake-carrier-box","custom-folding-pastry-carton","macaron-sleeve-box","fold-open-cake-carrier-box","fold-open-cake-carrier-box","fold-open-cake-carrier-box","fold-open-cake-carrier-box","foldable-magnetic-gift-box","fold-open-cake-carrier-box","fold-open-cake-carrier-box","fold-open-cake-carrier-box","custom-folding-pastry-carton","foldable-magnetic-gift-box","foldable-magnetic-gift-box","custom-folding-pastry-carton","custom-folding-pastry-carton"],
+    "3":["custom-folding-pastry-carton","custom-folding-pastry-carton","printed-gable-meal-box","envelope-flap-gift-box","envelope-flap-gift-box","envelope-flap-gift-box","envelope-flap-gift-box",null,"custom-folding-pastry-carton","envelope-flap-gift-box","envelope-flap-gift-box","custom-pyramid-catering-box","custom-pyramid-catering-box","custom-pyramid-catering-box","custom-pyramid-catering-box","custom-pyramid-catering-box"],
+    "4":["custom-pyramid-catering-box","custom-pyramid-catering-box","custom-pyramid-catering-box","custom-pyramid-catering-box","printed-gable-meal-box","printed-gable-meal-box","printed-gable-meal-box",null,null,"custom-tiered-dessert-carrier-with-cover","custom-tiered-dessert-carrier-with-cover","custom-tiered-dessert-carrier-with-cover","custom-tiered-dessert-carrier-with-cover","custom-tiered-dessert-carrier-with-cover","custom-tiered-dessert-carrier-with-cover","custom-tiered-dessert-carrier-with-cover"],
+    "5":["custom-tiered-dessert-carrier-with-cover","custom-tiered-dessert-carrier-with-cover","custom-tiered-dessert-carrier-with-cover","custom-tiered-dessert-carrier-with-cover","printed-gable-meal-box","printed-gable-meal-box","printed-gable-meal-box","printed-gable-meal-box","printed-gable-meal-box","printed-gable-meal-box","corn-dog-paper-sleeve","corn-dog-paper-sleeve","custom-pillow-gift-box","custom-pillow-gift-box","custom-pillow-gift-box","custom-pillow-gift-box"],
+    "6":["custom-pillow-gift-box","custom-pillow-gift-box","triangular-portion-sharing-box","triangular-portion-sharing-box","triangular-portion-sharing-box","triangular-portion-sharing-box","triangular-portion-sharing-box","triangular-portion-sharing-box","triangular-portion-sharing-box","triangular-portion-sharing-box","triangular-portion-sharing-box","triangular-portion-sharing-box"]
+  },
+  "heldReasons":{
+    "1601616147963":"Composite closed packaging reference does not verify one specific opening and handle construction. Hold instead of creating another generic bakery page.",
+    "1601669892234":"Triangular carry-pack image conflicts with the cake-box title. Side and opening details are needed to distinguish a prism pack from the existing pyramid families.",
+    "1601669909124":"Artwork variant of the same unverified triangular carry pack; hold with source 1601669892234 rather than invent a second product."
+  },
+  "nextCursor":{"nextGroup":"MAILER BOX","page":1,"nextPosition":1}
+}
