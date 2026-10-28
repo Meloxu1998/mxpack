@@ -14,7 +14,9 @@
     document.querySelector('[data-reference-note]').textContent=view.note;
     buttons.forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.referenceId===id)));
     document.querySelectorAll('main a[href*="get-a-quote"]').forEach(link=>{
-      const target=new URL(link.href);target.searchParams.set('view',id);link.href=target.href;
+      const target=window.mxpackUrlState?window.mxpackUrlState.write(link.href,{view:id}):new URL(link.href);
+      if(!window.mxpackUrlState)target.searchParams.set('view',id);
+      link.href=target.href;
     });
     document.querySelectorAll('[data-whatsapp]').forEach(link=>{
       const target=new URL(link.href);

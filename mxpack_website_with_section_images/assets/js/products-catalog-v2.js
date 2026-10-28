@@ -16,6 +16,7 @@
     return filters.some(filter => filter.dataset.catalogFilter === normalized) ? normalized : 'all';
   };
   let category = 'all';
+  const readCategory = () => (window.mxpackUrlState?.read(location.href) || new URLSearchParams(location.search)).get('category');
   let searchTimer;
   const update = () => {
     const terms = (input?.value || '').toLowerCase().trim().split(/\s+/).filter(Boolean);
@@ -50,24 +51,30 @@
   const choose = value => {
     category = resolve(value);
     update();
-    const url = new URL(location.href);
-    if (category === 'all') url.searchParams.delete('category');
-    else url.searchParams.set('category', category);
-    history.pushState(null, '', url);
+    const url = window.mxpackUrlState
+      ? window.mxpackUrlState.write(location.href, {category:category === 'all' ? null : category})
+      : new URL(location.href);
+    if (!window.mxpackUrlState) {
+      if (category === 'all') url.searchParams.delete('category');
+      else url.searchParams.set('category', category);
+    }
+    if (url.href !== location.href) history.pushState(null, '', url);
     window.mxpackTrack?.('catalog_filter', {filter_name:category});
   };
   filters.forEach(filter => filter.addEventListener('click', () => choose(filter.dataset.catalogFilter)));
   select?.addEventListener('change', () => choose(select.value));
-  window.addEventListener('popstate', () => {
-    category = resolve(new URLSearchParams(location.search).get('category'));
+  const restore = () => {
+    category = resolve(readCategory());
     update();
-  });
+  };
+  window.addEventListener('popstate', restore);
+  window.addEventListener('hashchange', restore);
   input?.addEventListener('input', () => {
     clearTimeout(searchTimer);
     searchTimer = setTimeout(update, 120);
   });
   sort?.addEventListener('change', update);
-  const requestedCategory = new URLSearchParams(location.search).get('category');
+  const requestedCategory = readCategory();
   category = resolve(requestedCategory);
   update();
 })();

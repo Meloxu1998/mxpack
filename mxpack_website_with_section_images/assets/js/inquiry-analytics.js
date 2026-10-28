@@ -9,8 +9,16 @@
     try { const url = new URL(value, location.origin); return url.origin === location.origin ? url.pathname : ''; } catch { return ''; }
   };
   const products = window.mxpackProducts || {};
-  const query = new URLSearchParams(location.search);
-  const productId = products[query.get('product')] ? query.get('product') : '';
+  const query = window.mxpackUrlState?.read(location.href) || new URLSearchParams(location.search);
+  if (window.mxpackUrlState && /^\/get-a-quote(?:\.html)?\/?$/.test(location.pathname)) {
+    const formState = value => window.mxpackUrlState.keysFor(location.pathname).map(key => [key, window.mxpackUrlState.read(value).get(key)]);
+    const initialState = JSON.stringify(formState(location.href));
+    // A different quote brief is a navigation, as it was with legacy query links.
+    window.addEventListener('hashchange', () => {
+      if (JSON.stringify(formState(location.href)) !== initialState) location.reload();
+    });
+  }
+  const productId = Object.hasOwn(products, query.get('product')) ? query.get('product') : '';
   const categoryNames = {
     'bakery-cake-boxes':'Bakery & cake packaging', 'burger-boxes':'Burger boxes',
     'custom-paper-bags':'Custom paper bags', 'paper-cups':'Paper cups',
@@ -22,7 +30,7 @@
     restaurants: 'Restaurants & takeaway', catering: 'Catering & events',
     'food-brands': 'Food brands & retail', startups: 'Startups & new brands', enterprise: 'Enterprise projects'
   };
-  const solution = solutionNames[query.get('solution')] || '';
+  const solution = Object.hasOwn(solutionNames, query.get('solution')) ? solutionNames[query.get('solution')] : '';
   const pageProduct = document.body.dataset.productId || '';
   const context = { product_id: pageProduct || productId || 'general', source_page: location.pathname };
   const landing = storage.get('mxpackLanding') || { path: location.pathname, campaign: Object.fromEntries(['utm_source','utm_medium','utm_campaign'].filter(key => query.has(key)).map(key => [key, query.get(key).slice(0,120)])) };
@@ -116,9 +124,11 @@
     }
     if (eventName.startsWith('quote_')) {
       storage.set('mxpackQuoteEntry', { ...params, source_page: location.pathname, at: Date.now() });
-      if (id && destination === '/get-a-quote') {
-        const target = new URL(link.href);
-        target.searchParams.set('product', id);
+      if (destination === '/get-a-quote') {
+        const target = window.mxpackUrlState
+          ? window.mxpackUrlState.write(link.href, { ...(id ? {product:id} : {}), from:location.pathname })
+          : new URL(link.href);
+        if (!window.mxpackUrlState && id) target.searchParams.set('product', id);
         link.href = target.href;
       }
     }
@@ -138,7 +148,7 @@
     const product = products[formProductId];
     const entry = storage.get('mxpackQuoteEntry');
     const freshEntry = entry && Date.now() - entry.at < 30 * 60 * 1000 ? entry : null;
-    const sourcePage = isEmailInquiry ? location.pathname : freshEntry?.source_page || cleanPath(document.referrer) || location.pathname;
+    const sourcePage = isEmailInquiry ? location.pathname : cleanPath(query.get('from')) || freshEntry?.source_page || cleanPath(document.referrer) || location.pathname;
     const entryPoint = isEmailInquiry ? 'email_modal' : freshEntry?.entry_point || (['catalog','product-detail'].includes(query.get('source')) ? query.get('source') : 'direct_quote');
     if (isEmailInquiry) setHidden('_url', `https://mxpackpro.com${location.pathname}`);
     if (product) {
