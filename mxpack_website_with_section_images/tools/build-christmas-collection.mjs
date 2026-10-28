@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import {compactInteractionHtml} from './url-state-html.mjs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
@@ -37,7 +38,7 @@ const main=`<main id="main" data-seasonal-collection="christmas"><section class=
 page=page.replace(/<main\b[^>]*>[\s\S]*?<\/main>/,main);
 const schemas=[{'@type':'CollectionPage',name:'Christmas Packaging',description:collection.description,url:canonical,dateModified:'2026-10-21',mainEntity:{'@type':'ItemList',numberOfItems:chosen.length,itemListElement:chosen.map((p,i)=>({'@type':'ListItem',position:i+1,name:p.name,url:`https://mxpackpro.com/products/${p.slug}`}))}}, {'@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Home',item:'https://mxpackpro.com/'},{'@type':'ListItem',position:2,name:'Products',item:'https://mxpackpro.com/products'},{'@type':'ListItem',position:3,name:'Christmas Packaging',item:canonical}]},{'@type':'FAQPage',mainEntity:collection.faq.map(([q,a])=>({'@type':'Question',name:q,acceptedAnswer:{'@type':'Answer',text:a}}))}];
 page=page.replace('</head>',`<link rel="stylesheet" href="/assets/css/christmas-collection.css?v=20261021-1">\n${schemas.map(schema).join('\n')}</head>`);
-fs.writeFileSync(path.join(root,collection.slug+'.html'),page.replace(/[ \t]+$/gm,'').trimEnd()+'\n');
+fs.writeFileSync(path.join(root,collection.slug+'.html'),compactInteractionHtml(page.replace(/[ \t]+$/gm,'').trimEnd()+'\n', '/' + collection.slug));
 let sitemap=fs.readFileSync(path.join(root,'sitemap.xml'),'utf8');
 if(!sitemap.includes(`<loc>${canonical}</loc>`))sitemap=sitemap.replace('</urlset>',`  <url><loc>${canonical}</loc><lastmod>2026-10-21</lastmod></url>\n</urlset>`);
 fs.writeFileSync(path.join(root,'sitemap.xml'),sitemap);

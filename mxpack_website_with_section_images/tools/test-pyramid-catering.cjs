@@ -31,7 +31,7 @@ const output='D:/mxpack-audits/2026-10-21/pyramid-catering';
      await page.evaluate(()=>scrollTo(0,0));
      await page.screenshot({path:path.join(output,`${view.id}-${width}.png`),fullPage:width===390});
     }
-    await page.locator('main a[href*="get-a-quote?product="]').first().click();await page.waitForURL('**/get-a-quote*');
+    await page.locator('main a[href*="get-a-quote"][href*="product="]').first().click();await page.waitForURL('**/get-a-quote*');
     assert((await page.locator('#message').inputValue()).includes('Reference view: '+view.label));
     assert.equal(await page.locator('input[name="Packaging reference view"]').inputValue(),view.label);
    }

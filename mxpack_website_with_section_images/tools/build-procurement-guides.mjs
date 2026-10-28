@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import {compactInteractionHtml} from './url-state-html.mjs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 
@@ -61,6 +62,7 @@ for (const guide of guides.filter(guide=>!publish || guide.slug===publish)) {
     {'@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Home',item:`${base}/`},{'@type':'ListItem',position:2,name:'Guides',item:`${base}/resources`},{'@type':'ListItem',position:3,name:guide.title,item:`${base}/${guide.slug}`}]},
     {'@type':'FAQPage',mainEntity:guide.faq.map(([q,a])=>({'@type':'Question',name:q,acceptedAnswer:{'@type':'Answer',text:a}}))}];
   page = page.replace('</head>', `${schemas.map(schema).join('\n')}</head>`);
+  page = compactInteractionHtml(page, '/' + guide.slug);
   if (!publish) {
     fs.mkdirSync(preview,{recursive:true});
     fs.writeFileSync(path.join(preview,`${guide.slug}.html`),page);

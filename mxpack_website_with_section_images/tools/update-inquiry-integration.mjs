@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import {compactInteractionHtml} from './url-state-html.mjs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
@@ -13,6 +14,6 @@ for(const file of files){
  html=html.replace(/(<script src="[^"]*assets\/js\/v4.js)[^"]*("><\/script>)/,'$1?v=20261021-4$2');
  if(!html.includes('assets/js/inquiry-analytics.js'))html=html.replace(/<script src="[^"]*assets\/js\/v4.js[^>]*><\/script>/,'<script src="/assets/js/catalog-data.js?v=20261026-ordered2"></script>\n<script src="/assets/js/inquiry-analytics.js?v=20261023-modal-3"></script>\n$&');
  if(file.startsWith('products/'))html=html.replace(/<script[^>]*src="[^"]*products-catalog-v2.js[^>]*><\/script>/g,'');
- fs.writeFileSync(target,html);
+ fs.writeFileSync(target,compactInteractionHtml(html, file === 'index.html' ? '/' : '/' + file.replace(/\.html$/, '')));
 }
 console.log(`Integrated inquiry attribution and privacy-safe analytics across ${files.length} pages.`);

@@ -3,7 +3,8 @@ const fs=require('node:fs');
 const path=require('node:path');
 const http=require('node:http');
 const assert=require('node:assert/strict');
-const root=process.cwd(),out='D:/mxpack-audits/2026-10-23/redirect-root-cause';
+const root=process.cwd(),out=process.env.QA_OUTPUT||'D:/mxpack-audits/2026-10-23/redirect-root-cause';
+const state=require('../assets/js/url-state.js');
 const families={'bakery-cake-boxes':'Bakery & cake packaging','burger-boxes':'Burger boxes','custom-paper-bags':'Custom paper bags','paper-cups':'Paper cups','pizza-boxes':'Custom pizza boxes','takeaway-food-boxes':'Takeaway food boxes'};
 const server=http.createServer((req,res)=>{
  let file=path.resolve(root,'.'+new URL(req.url,'http://localhost').pathname);
@@ -39,8 +40,8 @@ const server=http.createServer((req,res)=>{
     assert.equal(await modal.locator('[name="Category page"]').inputValue(),'https://mxpackpro.com/'+slug);
     assert.equal(await modal.locator('[name="Inquiry source"]').inputValue(),'/'+slug);
     await page.keyboard.press('Escape');
-    await page.locator('.detail-hero a[href*="get-a-quote?category="]').click();
-    assert.equal(new URL(page.url()).searchParams.get('category'),slug);
+    await page.locator('.detail-hero a[href*="get-a-quote"][href*="category="]').click();
+    assert.equal(state.read(page.url()).get('category'),slug);
     const form=page.locator('#quote-form');
     await form.locator('[name="Packaging category"]').waitFor({state:'attached'});
     assert.equal(await form.locator('[name="Packaging category"]').inputValue(),label);

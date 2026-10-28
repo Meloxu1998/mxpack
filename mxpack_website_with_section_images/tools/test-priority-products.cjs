@@ -33,7 +33,7 @@ fs.mkdirSync(output, {recursive: true});
         assert(await page.locator('main img').first().evaluate(async img => {await img.decode(); return img.naturalWidth > 0;}));
         assert((await page.locator('[data-whatsapp]').first().getAttribute('href')).includes('8615918968149'));
         await page.screenshot({path: `${output}/${slug}-${width}.png`});
-        await page.locator('main a[href*="get-a-quote?product="]').first().click();
+        await page.locator('main a[href*="get-a-quote"][href*="product="]').first().click();
         await page.waitForURL('**/get-a-quote*');
         assert((await page.locator('#message').inputValue()).trim().length > 0);
         results.push({slug, width, httpStatus: 200, canonical: true, imageLoaded: true, quotePrefilled: true});

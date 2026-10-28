@@ -1,10 +1,11 @@
 import fs from 'node:fs';
+import {compactInteractionHtml} from './url-state-html.mjs';
 const families=['bakery-cake-boxes','burger-boxes','custom-paper-bags','paper-cups','pizza-boxes','takeaway-food-boxes'];
 for(const slug of families){
  const file=slug+'.html';let html=fs.readFileSync(file,'utf8');
  html=html.replaceAll(`get-a-quote?product=${slug}`,`/get-a-quote?category=${slug}`);
  html=html.replace(/(<section class="cta-band">[\s\S]*?<\/section>)/g,section=>section.replace('href="get-a-quote"',`href="/get-a-quote?category=${slug}"`));
- fs.writeFileSync(file,html);
+ fs.writeFileSync(file,compactInteractionHtml(html, '/' + slug));
 }
 const file='pizza-boxes.html';let html=fs.readFileSync(file,'utf8');
 const title='Custom Pizza Boxes | Sizes, Print & Order Planning | MXPACKPRO';
@@ -38,7 +39,7 @@ html=html.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g,(
  if(data['@type']==='CollectionPage'){data.name='Custom Pizza Boxes: Category Buying Checklist';data.description=description;data.mainEntity={'@type':'ItemList',numberOfItems:1,itemListElement:[{'@type':'ListItem',position:1,name:'Printed Corrugated Pizza Box',url:'https://mxpackpro.com/products/custom-corrugated-pizza-box'}]};}
  return `<script type="application/ld+json">${JSON.stringify(data)}</script>`;
 });
-fs.writeFileSync(file,html);
+fs.writeFileSync(file,compactInteractionHtml(html, '/pizza-boxes'));
 const today=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
 fs.writeFileSync('sitemap.xml',fs.readFileSync('sitemap.xml','utf8').replace(/(<loc>https:\/\/mxpackpro.com\/pizza-boxes<\/loc><lastmod>)[^<]+/,`$1${today}`));
 console.log('Repaired six category inquiry links and differentiated the pizza category buying page.');

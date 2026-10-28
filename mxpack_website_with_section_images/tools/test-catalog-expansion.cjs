@@ -35,7 +35,7 @@ const output='D:/mxpack-audits/2026-10-21/catalog-expansion';
     assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
     await page.waitForFunction(()=>document.querySelector('.detail-hero-media img')?.naturalWidth>0);
     if(width!==360)await page.screenshot({path:path.join(output,`${slug}-${width}.png`),fullPage:false});
-    await page.locator('main a[href*="get-a-quote?product="]').first().click();await page.waitForURL('**/get-a-quote*');
+    await page.locator('main a[href*="get-a-quote"][href*="product="]').first().click();await page.waitForURL('**/get-a-quote*');
     assert((await page.locator('#message').inputValue()).includes(catalog.find(p=>p.slug===slug).name));
    }
    await page.goto(base+'/products?category=bbq');

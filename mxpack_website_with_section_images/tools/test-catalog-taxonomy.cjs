@@ -38,7 +38,7 @@ fs.mkdirSync(output,{recursive:true});
     else await page.locator(`[data-catalog-filter="${c.id}"]`).click();
     const visible=await page.locator('.catalog-card:not([hidden])').evaluateAll(nodes=>nodes.map(n=>n.dataset.productId).sort());
     assert.deepEqual(visible,[...c.members].sort(),`${width}: ${c.id}`);
-    assert(new URL(page.url()).searchParams.get('category')===c.id);
+    assert(await page.evaluate(id=>window.mxpackUrlState.read(location.href).get('category')===id,c.id));
     assert(!await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1));
    }
    await page.goto(base+'/products?category=cosmetic-boxes');
@@ -71,18 +71,18 @@ fs.mkdirSync(output,{recursive:true});
     await page.locator('[aria-controls="nav-products"]').hover();
     await page.locator('#nav-products').waitFor({state:'visible'});
     assert.equal(await page.locator('#nav-products .mega-menu-grid a:visible').count(),16);
-    await page.locator('#nav-products a[href="/products?category=christmas-boxes"]').click();
+    await page.locator('#nav-products a[href="/products#category=christmas-boxes"]').click();
    }else{
     await page.locator('[data-menu-toggle]').click();
     await page.locator('.mobile-menu details').first().locator('summary').click();
-    await page.locator('.mobile-menu a[href="/products?category=christmas-boxes"]').click();
+    await page.locator('.mobile-menu a[href="/products#category=christmas-boxes"]').click();
    }
-   await page.waitForURL('**/products?category=christmas-boxes');
+   await page.waitForURL('**/products#category=christmas-boxes');
    assert.equal(await page.locator('.catalog-card:not([hidden])').count(),categories.find(c=>c.id==='christmas-boxes').members.length);
    await page.goto(base+'/products/bbq-meal-tray-carry-box');
    assert((await page.locator('.floating-contact [data-whatsapp]').getAttribute('href')).includes('8615918968149'));
    assert.equal(await page.locator('.floating-contact a[href^="mailto:sales@mxpackpro.com"]').count(),1);
-   await page.locator('main a[href*="get-a-quote?product="]').first().click();await page.waitForURL('**/get-a-quote*');
+   await page.locator('main a[href*="get-a-quote"][href*="product="]').first().click();await page.waitForURL('**/get-a-quote*');
    assert((await page.locator('#message').inputValue()).includes('BBQ'));
    assert(await page.locator('#phone').evaluate(n=>n.required));
   }

@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {compactInteractionHtml} from './url-state-html.mjs';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const base = 'https://mxpackpro.com';
@@ -112,11 +113,11 @@ for (const p of products) {
     {'@type':'FAQPage',mainEntity:faq.map(([q,a])=>({'@type':'Question',name:q,acceptedAnswer:{'@type':'Answer',text:a}}))}];
   const productFooter=p.views?footer.replace('</body>','<script src="/assets/js/product-reference-gallery.js?v=20261021-1"></script></body>'):footer;
   const html = `<!doctype html>\n<html lang="en"><head>${pageHead}\n${extraCss}\n${schemas.map(schema).join('\n')}</head><body class="product-detail-page" data-product-id="${p.slug}"><a class="skip-link" href="#main">Skip to content</a>${header}${giftMarkup(compactProductMarkup(withReferences(body,p),p),p)}${productFooter}`;
-  fs.writeFileSync(path.join(root,'products',`${p.slug}.html`), (html.trimEnd()+'\n')
+  fs.writeFileSync(path.join(root,'products',`${p.slug}.html`), compactInteractionHtml((html.trimEnd()+'\n')
     .replace('"@type":"CollectionPage","name":', '"@type":"WebPage","name":')
     .replaceAll('The supplier catalog lists a starting order of', 'This format has a starting order of')
     .replaceAll('Starting quantity is based on the selected supplier listing.', 'Starting quantity applies to the pictured format and is subject to your final specification.')
-    .replace('</main>', `${publishedGuides.filter(guide=>guide.related.includes(p.slug)).map(guide=>`<section class="section section-white" data-procurement-guide="${guide.slug}"><div class="container"><p class="eyebrow">Before you order</p><h2 class="section-title">${esc(guide.title)}</h2><p class="section-copy">${esc(guide.description)}</p><p><a class="text-link" href="/${guide.slug}">Read the buying guide</a></p></div></section>`).join('')}</main>`));
+    .replace('</main>', `${publishedGuides.filter(guide=>guide.related.includes(p.slug)).map(guide=>`<section class="section section-white" data-procurement-guide="${guide.slug}"><div class="container"><p class="eyebrow">Before you order</p><h2 class="section-title">${esc(guide.title)}</h2><p class="section-copy">${esc(guide.description)}</p><p><a class="text-link" href="/${guide.slug}">Read the buying guide</a></p></div></section>`).join('')}</main>`), url(p)));
 }
 
 if (selectedSlugs.size) {
@@ -155,7 +156,7 @@ catalog=catalog.replaceAll('Custom Food Packaging Products','Custom Packaging Pr
  .replace('Color and artwork variants of the same structure are grouped together.','Color and artwork variants of the same structure are grouped together. Gift-box design visualizations are illustrative, not photographs of produced samples; MOQ is confirmed after construction review.')
  .replaceAll('catalog-data.js?v=20261021-3','catalog-data.js?v=20261021-4')
  .replaceAll('products-catalog-v2.js?v=20261021-1','products-catalog-v2.js?v=20261021-2');
-fs.writeFileSync(path.join(root,'products.html'),catalog);
+fs.writeFileSync(path.join(root,'products.html'),compactInteractionHtml(catalog, '/products'));
 
 for (const family of ['burger-boxes','takeaway-food-boxes','pizza-boxes','paper-cups','custom-paper-bags','bakery-cake-boxes']) {
   const file=path.join(root,`${family}.html`);
@@ -164,7 +165,7 @@ for (const family of ['burger-boxes','takeaway-food-boxes','pizza-boxes','paper-
   const section=`<section class="section section-white" data-supplier-formats><div class="container"><div class="section-head"><div><p class="eyebrow">Available formats</p><h2 class="section-title">Compare product-specific specifications.</h2></div><a class="text-link" href="/products">Full product catalog</a></div><div class="product-grid">${familyProducts.map(p=>`<a class="product-card" href="${url(p)}" data-track="catalog_product_click" data-product-id="${p.slug}"><div class="product-card-media supplier-product-media">${image(p)}</div><div class="product-card-body"><h3>${esc(p.name)}</h3><p>${esc(moqLabel(p))}. ${esc(p.structure)}.</p><span class="text-link">View specifications</span></div></a>`).join('')}</div></div></section>`;
   html=html.replace('<section class="cta-band">',`${section}<section class="cta-band">`);
   if (!html.includes('/assets/css/catalog-products.css')) html=html.replace('</head>',`  ${extraCss}\n</head>`);
-  fs.writeFileSync(file,html);
+  fs.writeFileSync(file,compactInteractionHtml(html, '/' + family));
 }
 
 const sitemapPath=path.join(root,'sitemap.xml');

@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import {compactInteractionHtml} from './url-state-html.mjs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {execFileSync} from 'node:child_process';
@@ -29,7 +30,7 @@ for(const file of files){
  html=html.replaceAll('>Resources<','>Guides<').replaceAll('Resource center','Guide library').replaceAll('Resource Center','Guide library');
  html=html.replace(/catalog-data\.js\?v=[^"\s]+/g,'catalog-data.js?v=20261026-ordered2');
  if(file==='resources.html')html=html.replaceAll('Food Packaging Guides &amp; Resources','Packaging Buying Guides').replaceAll('Food Packaging Guides & Resources','Packaging Buying Guides').replace('Better packaging decisions, made easier.','Packaging buying guides.');
- fs.writeFileSync(full,html);
+ fs.writeFileSync(full,compactInteractionHtml(html, file === 'index.html' ? '/' : '/' + file.replace(/\.html$/, '')));
 }
 
 const quote=fs.readFileSync(path.join(root,'get-a-quote.html'),'utf8');
@@ -39,7 +40,7 @@ canonicalForm=canonicalForm.replace('id="quote-form"','id="custom-quote-form"').
 let custom=fs.readFileSync(path.join(root,'custom-packaging.html'),'utf8');
 const formSection=`<section class="section quote-contact-section" id="quote-form"><div class="container contact-layout"><div class="contact-panel"><p class="eyebrow">Start your project</p><h2 class="section-title">Tell us what you need.</h2><p class="contact-lead">Send your product, quantity and delivery country. We will help with the format, sample and quotation.</p><div class="contact-methods"><a class="contact-method" href="mailto:sales@mxpackpro.com" data-track="email_click"><span class="contact-icon"><i class="icon" data-lucide="mail" aria-hidden="true"></i></span><span><small>Email</small><strong>sales@mxpackpro.com</strong></span></a></div></div>${canonicalForm}</div></section>`;
 custom=custom.replace(/<section class="section (?:section-white|quote-contact-section)" id="quote-form">[\s\S]*?<\/section>/,formSection);
-fs.writeFileSync(path.join(root,'custom-packaging.html'),custom);
+fs.writeFileSync(path.join(root,'custom-packaging.html'),compactInteractionHtml(custom, '/custom-packaging'));
 
 let faq=fs.readFileSync(path.join(root,'faq.html'),'utf8');
 const categories=[['all','All questions'],['ordering','Ordering & MOQ'],['printing','Custom printing'],['materials','Materials'],['shipping','Shipping & supply']];
@@ -47,6 +48,6 @@ faq=faq.replace(/<div class="faq-categories"[^>]*>[\s\S]*?<\/div>/,`<div class="
 const groups=['ordering','ordering','printing','shipping','printing','ordering','materials','shipping','ordering','ordering','materials','shipping','ordering','printing'];
 let q=0;faq=faq.replace(/(<div class="faq-layout"><div class="accordion">)([\s\S]*?)(<\/div><aside)/,(_,start,questions,end)=>start+questions.replace(/<details(?:\s+[^>]*)?>/g,()=>`<details data-faq-category="${groups[q++]}"${q===1?' open':''}>`)+end);
 if(q!==14)throw new Error('Expected all 14 purchasing questions.');
-fs.writeFileSync(path.join(root,'faq.html'),faq);
+fs.writeFileSync(path.join(root,'faq.html'),compactInteractionHtml(faq, '/faq'));
 console.log(`Updated navigation and shared assets on ${files.length} pages; unified both inquiry forms and in-page FAQ filters.`);
 execFileSync(process.execPath,[path.join(root,'tools/update-whatsapp.mjs')],{stdio:'inherit'});

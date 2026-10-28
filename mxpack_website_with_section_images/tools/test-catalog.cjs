@@ -33,7 +33,7 @@ const output='D:/mxpack-audits/2026-10-21';
   await page.waitForFunction(()=>document.querySelector('.detail-hero-media img')?.naturalWidth>0);
   assert.equal(await media.evaluate(img=>getComputedStyle(img).objectFit),'contain');
   assert.equal(await page.locator('main .accordion details').count(),4);
-  assert(await page.locator('main a[href*="get-a-quote?product="]').count()>0);
+  assert(await page.locator('main a[href*="get-a-quote"][href*="product="]').count()>0);
  }
  await page.goto(`${base}/products/${products[0].slug}`);await page.screenshot({path:path.join(output,'product-desktop.png')});
  for(const width of [768,390,360]){
@@ -54,7 +54,7 @@ const output='D:/mxpack-audits/2026-10-21';
  const whatsapp=new URL(await page.locator('.floating-contact .wa').getAttribute('href'));
  assert.equal(whatsapp.hostname,'web.whatsapp.com');assert.equal(whatsapp.searchParams.get('phone'),'8615918968149');
  assert(whatsapp.searchParams.get('text').includes(products[0].name));
- await page.locator('main a[href*="get-a-quote?product="]').first().click();await page.waitForURL('**/get-a-quote*');
+ await page.locator('main a[href*="get-a-quote"][href*="product="]').first().click();await page.waitForURL('**/get-a-quote*');
  assert((await page.locator('#message').inputValue()).includes(products[0].name));
  await page.locator('[type="submit"]').click();
  assert.equal(await page.locator('#name').evaluate(input=>input.validity.valueMissing),true);

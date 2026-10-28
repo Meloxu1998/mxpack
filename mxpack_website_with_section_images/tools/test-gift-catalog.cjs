@@ -48,23 +48,23 @@ const output='D:/mxpack-audits/2026-10-21/gift-catalog';
     assert.equal(new URL(wa).searchParams.get('phone'),'8615918968149');assert(new URL(wa).searchParams.get('text').includes(p.name));
     assert.equal(await page.locator('.floating-contact a[href^="mailto:sales@mxpackpro.com"]').count(),1);
     if([1440,390].includes(width)&&[additions[0].slug,additions[4].slug].includes(p.slug))await page.screenshot({path:path.join(output,`${p.slug}-${width}.png`),fullPage:false});
-    await page.locator('main a[href*="get-a-quote?product="]').first().click();await page.waitForURL('**/get-a-quote*');
+    await page.locator('main a[href*="get-a-quote"][href*="product="]').first().click();await page.waitForURL('**/get-a-quote*');
     assert((await page.locator('#message').inputValue()).includes(p.name));
     assert.equal(await page.locator('input[name="Product"]').inputValue(),p.name);
     assert(await page.locator('#phone').getAttribute('required')!==null);
    }
    await page.goto(base+'/products?category=gifts');
    assert.equal(await page.locator('.catalog-card:not([hidden])').count(),giftCategoryCount);
-   assert.equal(await page.locator('header a[href="/products?category=gift-boxes"]').count(),2);
+   assert.equal(await page.locator('header a[href="/products#category=gift-boxes"]').count(),2);
    if(width<=1060){
     await page.locator('[data-menu-toggle]').click();
     await page.locator('.mobile-menu details').first().locator('summary').click();
-    await page.locator('.mobile-menu a[href="/products?category=gift-boxes"]').click();
+    await page.locator('.mobile-menu a[href="/products#category=gift-boxes"]').click();
    }else{
     await page.locator('[aria-controls="nav-products"]').hover();
-    await page.locator('.nav-links a[href="/products?category=gift-boxes"]').click();
+    await page.locator('.nav-links a[href="/products#category=gift-boxes"]').click();
    }
-   await page.waitForURL('**/products?category=gift-boxes');
+   await page.waitForURL('**/products#category=gift-boxes');
    assert.equal(await page.locator('.catalog-card:not([hidden])').count(),giftCategoryCount);
    await page.locator('[data-catalog-sort]').selectOption('moq');
    assert.equal(await page.locator('.catalog-card:not([hidden])').count(),giftCategoryCount);

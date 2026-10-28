@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import {compactInteractionHtml} from './url-state-html.mjs';
 import {taxonomy,aliases} from './catalog-taxonomy.mjs';
 const additions=JSON.parse(fs.readFileSync(process.argv[2]||'seo-system/data/catalog-expansion-20261023.json','utf8'));
 const assetVersion=process.argv[3]||'20261023-batch1';
@@ -44,7 +45,7 @@ catalog=catalog.replace(/(<p data-catalog-result-count[^>]*>)\d+ products/,`$1${
  .replace(/<script type="application\/json" data-catalog-taxonomy>[\s\S]*?<\/script>/,`<script type="application/json" data-catalog-taxonomy>${JSON.stringify({categories:taxonomy.map(({id,label,description})=>({id,label,description})),aliases})}</script>`)
  .replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g,(all,raw)=>{const s=JSON.parse(raw);if(s['@type']==='CollectionPage'&&s.mainEntity?.['@type']==='ItemList'){s.dateModified=today;s.mainEntity={...s.mainEntity,numberOfItems:products.length,itemListElement:products.map((p,i)=>({'@type':'ListItem',position:i+1,name:p.name,url:'https://mxpackpro.com/products/'+p.slug}))};return `<script type="application/ld+json">${JSON.stringify(s)}</script>`}return all});
 if((catalog.match(/class="catalog-card"/g)||[]).length!==products.length)throw Error('Catalog card mismatch');
-fs.writeFileSync('products.html',catalog);
+fs.writeFileSync('products.html',compactInteractionHtml(catalog, '/products'));
 fs.writeFileSync('seo-system/data/catalog-taxonomy.json',JSON.stringify({categories:taxonomy,aliases},null,2)+'\n');
 const data=Object.fromEntries(products.map(p=>[p.slug,{name:p.name,category:p.category,...(p.views?{views:Object.fromEntries(p.views.map(v=>[v.id,v.label]))}:{})}]));
 fs.writeFileSync('assets/js/catalog-data.js','window.mxpackProducts='+JSON.stringify(data)+';\n');
@@ -60,14 +61,14 @@ for(const [old,slugs] of Object.entries(backlinks)){
  html=html.replace(new RegExp('<section[^>]*data-supplier-batch="'+assetVersion+'"[\\s\\S]*?<\\/section>','g'),'');
  const links=slugs.map(slug=>{const p=products.find(p=>p.slug===slug);return `<p><a class="text-link" href="/products/${slug}">${esc(p.name)}</a></p><p class="section-copy">${esc(p.distinct)}</p>`}).join('');
  html=html.replace('</main>',`<section class="section section-white" data-supplier-batch="${assetVersion}"><div class="container"><p class="eyebrow">Compare another construction</p><h2 class="section-title">A different format for your brief.</h2>${links}</div></section></main>`);
- fs.writeFileSync(file,html);
+ fs.writeFileSync(file,compactInteractionHtml(html, '/' + file.replace(/\.html$/, '')));
 }
 for(const family of new Set(additions.filter(p=>p.family!=='products').map(p=>p.family))){
  const file=family+'.html';let html=fs.readFileSync(file,'utf8');
  html=html.replace(new RegExp('<section[^>]*data-family-batch="'+assetVersion+'"[\\s\\S]*?<\\/section>','g'),'');
  const links=additions.filter(p=>p.family===family).map(p=>`<p><a class="text-link" href="/products/${p.slug}">${esc(p.name)}</a></p><p class="section-copy">${esc(p.structure)}</p>`).join('');
  html=html.replace('<section class="cta-band">',`<section class="section section-white" data-family-batch="${assetVersion}"><div class="container"><p class="eyebrow">Compare constructions</p><h2 class="section-title">More formats for your brief.</h2>${links}</div></section><section class="cta-band">`);
- fs.writeFileSync(file,html);
+ fs.writeFileSync(file,compactInteractionHtml(html, '/' + file.replace(/\.html$/, '')));
 }
 let sitemap=fs.readFileSync('sitemap.xml','utf8');
 for(const p of additions)if(!sitemap.includes(`<loc>https://mxpackpro.com/products/${p.slug}</loc>`))sitemap=sitemap.replace('</urlset>',`  <url><loc>https://mxpackpro.com/products/${p.slug}</loc><lastmod>${today}</lastmod></url>\n</urlset>`);
@@ -88,7 +89,7 @@ for(const file of files){
  }
  html=html.replace(/catalog-data\.js\?v=[^"\s]+/g,'catalog-data.js?v='+assetVersion).replace(countPattern,`${products.length} $1`);
  for(const p of additions)html=html.replace(new RegExp(p.sourceId+'-(480|960)\\.webp(?:\\?v=[a-zA-Z0-9-]+)?','g'),`${p.sourceId}-$1.webp?v=${assetVersion}`);
- fs.writeFileSync(file,html);
+ fs.writeFileSync(file,compactInteractionHtml(html, file === 'index.html' ? '/' : '/' + file.replace(/\.html$/, '')));
 }
 fs.writeFileSync('sitemap.xml',sitemap);
 for(const file of ['tools/update-procurement-faq.mjs','tools/update-buyer-journey.mjs'])fs.writeFileSync(file,currentMoqCopy(fs.readFileSync(file,'utf8')));

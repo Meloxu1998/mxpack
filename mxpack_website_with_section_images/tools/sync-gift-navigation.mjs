@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import {compactInteractionHtml} from './url-state-html.mjs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
@@ -6,7 +7,7 @@ const data=path.join(root,'seo-system/data');
 const products=JSON.parse(fs.readFileSync(path.join(data,'catalog-products.json'),'utf8'));
 const navigation=JSON.parse(fs.readFileSync(path.join(data,'site-navigation.json'),'utf8'));
 const section=navigation.find(n=>n.id==='products');
-if(!section.children.some(n=>n.url==='/products?category=gifts'))section.children.push({label:'Custom Gift Boxes',url:'/products?category=gifts'});
+if(!section.children.some(n=>n.url==='/products#category=gifts'||n.url==='/products#category=gift-boxes'))section.children.push({label:'Custom Gift Boxes',url:'/products#category=gifts'});
 const seasonal=fs.existsSync(path.join(root,'christmas-packaging.html'));
 if(seasonal&&!section.children.some(n=>n.url==='/christmas-packaging'))section.children.push({label:'Christmas Packaging',url:'/christmas-packaging'});
 fs.writeFileSync(path.join(data,'site-navigation.json'),'[\n  '+navigation.map(n=>JSON.stringify(n)).join(',\n  ')+'\n]\n');
@@ -21,7 +22,7 @@ for(const file of files){
  }).replace(/catalog-data\.js\?v=[^"\s]+/g,'catalog-data.js?v=20261026-ordered2')
  .replace(/inquiry-analytics\.js\?v=[^"\s]+/g,'inquiry-analytics.js?v=20261023-modal-3')
  .replace(/products-catalog-v2\.js\?v=[^"\s]+/g,'products-catalog-v2.js?v=20261021-2');
- fs.writeFileSync(target,html);
+ fs.writeFileSync(target,compactInteractionHtml(html, file === 'index.html' ? '/' : '/' + file.replace(/\.html$/, '')));
 }
 console.log(`Synchronized gift navigation and product inquiry context across ${files.length} documents.`);
 await import('./sync-catalog-taxonomy.mjs');

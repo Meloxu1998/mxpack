@@ -1,6 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import {createRequire} from 'node:module';
+const urlState = createRequire(import.meta.url)('../assets/js/url-state.js');
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const sitemap = fs.readFileSync(path.join(root, 'sitemap.xml'), 'utf8');
@@ -72,7 +74,9 @@ for (const [url, html] of documents) {
     if (documents.has(canonical)) {
       destinations.push(canonical);
       const id = decodeURIComponent(target.hash.slice(1));
-      if (id && !documents.get(canonical).includes(`id="${id}"`) && !documents.get(canonical).includes(`id='${id}'`)) {
+      const interactionState = urlState.keysFor(target.pathname).length && id.includes('=')
+        && [...new URLSearchParams(target.hash.slice(1)).keys()].every(key => urlState.keysFor(target.pathname).includes(key));
+      if (id && !interactionState && !documents.get(canonical).includes(`id="${id}"`) && !documents.get(canonical).includes(`id='${id}'`)) {
         errors.push(`${url}: missing anchor ${target.href}`);
       }
     } else if (!target.pathname.startsWith('/assets/') && !target.pathname.endsWith('.xml')) {

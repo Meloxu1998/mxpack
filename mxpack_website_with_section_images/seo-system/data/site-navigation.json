@@ -6,67 +6,67 @@
     "children": [
       {
         "label": "Hot Selling",
-        "url": "/products?category=hot-selling"
+        "url": "/products#category=hot-selling"
       },
       {
         "label": "Grazing Boxes",
-        "url": "/products?category=grazing-boxes"
+        "url": "/products#category=grazing-boxes"
       },
       {
         "label": "BBQ Boxes",
-        "url": "/products?category=bbq"
+        "url": "/products#category=bbq"
       },
       {
         "label": "Take Away Food Boxes",
-        "url": "/products?category=takeaway-food-boxes"
+        "url": "/products#category=takeaway-food-boxes"
       },
       {
         "label": "Cake Boxes",
-        "url": "/products?category=cake-boxes"
+        "url": "/products#category=cake-boxes"
       },
       {
         "label": "Mailer Boxes",
-        "url": "/products?category=mailer-boxes"
+        "url": "/products#category=mailer-boxes"
       },
       {
         "label": "Macaron & Chocolate Boxes",
-        "url": "/products?category=macaron-chocolate"
+        "url": "/products#category=macaron-chocolate"
       },
       {
         "label": "Cosmetic Boxes",
-        "url": "/products?category=cosmetic-boxes"
+        "url": "/products#category=cosmetic-boxes"
       },
       {
         "label": "Pizza Boxes",
-        "url": "/products?category=pizza-boxes"
+        "url": "/products#category=pizza-boxes"
       },
       {
         "label": "Wine Boxes",
-        "url": "/products?category=wine-boxes"
+        "url": "/products#category=wine-boxes"
       },
       {
         "label": "Gift Boxes",
-        "url": "/products?category=gift-boxes"
+        "url": "/products#category=gift-boxes"
       },
       {
         "label": "Shoes & Clothing Boxes",
-        "url": "/products?category=apparel-boxes"
+        "url": "/products#category=apparel-boxes"
       },
       {
         "label": "Burger Boxes",
-        "url": "/products?category=burger-boxes"
+        "url": "/products#category=burger-boxes"
       },
       {
         "label": "Paper Bags",
-        "url": "/products?category=paper-bags"
+        "url": "/products#category=paper-bags"
       },
       {
         "label": "Paper Cups",
-        "url": "/products?category=paper-cups"
+        "url": "/products#category=paper-cups"
       },
       {
         "label": "Christmas Boxes",
-        "url": "/products?category=christmas-boxes"
+        "url": "/products#category=christmas-boxes"
       }
     ]
   },

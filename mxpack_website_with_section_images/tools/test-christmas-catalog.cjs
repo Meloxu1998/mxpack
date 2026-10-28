@@ -75,13 +75,13 @@ const output='D:/mxpack-audits/2026-10-21/christmas-catalog';
     assert.equal(await page.locator('.floating-contact a[href^="mailto:sales@mxpackpro.com"]').count(),1);
     assert((await page.locator('main').innerText()).includes('Design visualization'));
     if([1440,390].includes(width))await page.screenshot({path:path.join(output,`${p.slug}-${width}.png`),fullPage:false});
-    await page.locator('main a[href*="get-a-quote?product="]').first().click();await page.waitForURL('**/get-a-quote*');
+    await page.locator('main a[href*="get-a-quote"][href*="product="]').first().click();await page.waitForURL('**/get-a-quote*');
     assert((await page.locator('#message').inputValue()).includes(p.name));
    }
    await page.goto(base+'/products');assert.equal(await page.locator('.catalog-card').count(),catalog.length);
-   if(width<=1060){await page.locator('[data-menu-toggle]').click();await page.locator('.mobile-menu details summary').first().click();await page.locator('.mobile-menu a[href="/products?category=christmas-boxes"]').click();}
-   else{await page.locator('[aria-controls="nav-products"]').hover();await page.locator('.nav-links a[href="/products?category=christmas-boxes"]').click();}
-   await page.waitForURL('**/products?category=christmas-boxes');await page.locator('.taxonomy-seasonal').click();
+   if(width<=1060){await page.locator('[data-menu-toggle]').click();await page.locator('.mobile-menu details summary').first().click();await page.locator('.mobile-menu a[href="/products#category=christmas-boxes"]').click();}
+   else{await page.locator('[aria-controls="nav-products"]').hover();await page.locator('.nav-links a[href="/products#category=christmas-boxes"]').click();}
+   await page.waitForURL('**/products#category=christmas-boxes');await page.locator('.taxonomy-seasonal').click();
    await page.waitForURL('**/christmas-packaging');assert.equal(await page.locator('.catalog-card').count(),selection.products.length);
    await context.close();
   }

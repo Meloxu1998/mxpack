@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises';
+import {compactInteractionHtml} from './url-state-html.mjs';
 import path from 'node:path';
 
 const root = process.cwd();
@@ -25,7 +26,7 @@ if (!guideOnly) {
 let html = await fs.readFile(path.join(root, 'solutions.html'), 'utf8');
 const rows = solutions.map(([id, label, title, intro, checks, slugs], index) => `<article class="solution-row" id="${id}"><div class="solution-row-index">0${index + 1}</div><div class="solution-row-copy"><p class="eyebrow">${esc(label)}</p><h2 class="section-title">${esc(title)}</h2><p class="section-copy">${esc(intro)}</p><ul class="check-list">${checks.map(text => `<li>${esc(text)}</li>`).join('')}</ul><a class="button button-dark" href="/get-a-quote?solution=${id}">Plan this packaging <i class="icon" data-lucide="arrow-right" aria-hidden="true"></i></a></div><div class="solution-products">${slugs.map(productLink).join('')}</div></article>`).join('');
 html = html.replace(/(<div class="container solution-rows">)[\s\S]*?(<\/div><\/section><section class="cta-band">)/, `$1${rows}$2`);
-await fs.writeFile(path.join(root, 'solutions.html'), html);
+await fs.writeFile(path.join(root, 'solutions.html'), compactInteractionHtml(html, '/solutions'));
 }
 
 const table = (headings, rows) => `<div class="buyer-table-wrap" role="region" aria-label="Packaging comparison" tabindex="0"><table class="buyer-table"><thead><tr>${headings.map(text => `<th scope="col">${text}</th>`).join('')}</tr></thead><tbody>${rows.map(row => `<tr>${row.map((cell, index) => index ? `<td>${cell}</td>` : `<th scope="row">${cell}</th>`).join('')}</tr>`).join('')}</tbody></table></div>`;
@@ -119,7 +120,7 @@ for (const [slug, data] of Object.entries(guideData)) {
     const schema = {'@context':'https://schema.org', '@type':'FAQPage', mainEntity:data.faqs.map(([name, text]) => ({'@type':'Question', name, acceptedAnswer:{'@type':'Answer', text}}))};
     page = page.replace('</head>', `<script type="application/ld+json">${JSON.stringify(schema)}</script></head>`);
   }
-  await fs.writeFile(filename, page);
+  await fs.writeFile(filename, compactInteractionHtml(page, '/' + slug));
 }
 if (guideOnly && !guideData[guideOnly]) throw new Error(`Unknown guide: ${guideOnly}`);
 if (!guideOnly || guideOnly === 'materials-food-safety') {

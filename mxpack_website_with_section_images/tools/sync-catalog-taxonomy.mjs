@@ -1,15 +1,16 @@
 import fs from 'node:fs';
+import {compactInteractionHtml} from './url-state-html.mjs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {taxonomy,aliases} from './catalog-taxonomy.mjs';
 
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const read=file=>fs.readFileSync(path.join(root,file),'utf8');
-const write=(file,text)=>fs.writeFileSync(path.join(root,file),text);
+const write=(file,text)=>fs.writeFileSync(path.join(root,file),file.endsWith('.html') ? compactInteractionHtml(text, file === 'index.html' ? '/' : '/' + file.replace(/\.html$/, '')) : text);
 const products=JSON.parse(read('seo-system/data/catalog-products.json'));
 const sources=JSON.parse(read('seo-system/data/catalog-provenance.json')).products;
 const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('"','&quot;').replaceAll('<','&lt;');
-const href=c=>`/products?category=${c.id}`;
+const href=c=>`/products#category=${c.id}`;
 const links=taxonomy.map(c=>`<a href="${href(c)}">${esc(c.label)}</a>`).join('');
 const files=[...fs.readdirSync(root).filter(f=>f.endsWith('.html')),...fs.readdirSync(path.join(root,'products')).filter(f=>f.endsWith('.html')).map(f=>`products/${f}`)];
 for(const file of files){
