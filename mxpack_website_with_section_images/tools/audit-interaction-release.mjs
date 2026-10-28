@@ -10,6 +10,15 @@ const out = process.env.QA_OUTPUT;
 assert(out, 'Set QA_OUTPUT to a private evidence directory.');
 const base = process.env.QA_BASE || 'https://mxpackpro.com';
 const normalize = text => text.replace(/\r\n/g, '\n');
+const decodeEmail = value => {
+  const bytes = Buffer.from(value, 'hex');
+  return Buffer.from([...bytes.subarray(1)].map(byte => byte ^ bytes[0])).toString('utf8');
+};
+const normalizeEdgeHtml = text => normalize(text)
+  .replace(/<a href="\/cdn-cgi\/l\/email-protection" class="__cf_email__" data-cfemail="([a-f0-9]+)">[^<]*<\/a>/g, (_, encoded) => decodeEmail(encoded))
+  .replace(/href="\/cdn-cgi\/l\/email-protection#([a-f0-9]+)"/g, (_, encoded) => `href="mailto:${decodeEmail(encoded)}"`)
+  .replace(/<span class="__cf_email__" data-cfemail="([a-f0-9]+)">[^<]*<\/span>/g, (_, encoded) => decodeEmail(encoded))
+  .replace(/<script data-cfasync="false" src="\/cdn-cgi\/scripts\/[a-f0-9]+\/cloudflare-static\/email-decode\.min\.js"><\/script>/g, '');
 const assets = [];
 for (const name of ['url-state', 'inquiry-analytics', 'products-catalog-v2', 'product-reference-gallery']) {
   const response = await fetch(`${base}/assets/js/${name}.js?v=${interactionVersion}`);
@@ -31,7 +40,13 @@ if (!process.argv.includes('--assets-only')) {
       const html = await response.text();
       const page = new URL(url).pathname;
       const file = (page === '/' ? '/index' : page) + '.html';
-      assert.equal(normalize(html), normalize(fs.readFileSync(path.join(root, '.' + file), 'utf8')), `Live HTML differs ${url}`);
+      const expected = normalize(fs.readFileSync(path.join(root, '.' + file), 'utf8'));
+      if (normalizeEdgeHtml(html) !== expected) {
+        fs.mkdirSync(out, {recursive:true});
+        fs.writeFileSync(path.join(out, 'mismatch-' + file.replaceAll('/', '_')), html);
+        let i = 0; while (normalizeEdgeHtml(html)[i] === expected[i] && i < expected.length) i++;
+        throw new Error(`Live HTML differs ${url} at ${i}: served=${JSON.stringify(normalizeEdgeHtml(html).slice(i-80,i+300))}; expected=${JSON.stringify(expected.slice(i-80,i+300))}`);
+      }
       assert.equal(html.match(/rel=['"]canonical['"] href=['"]([^'"]+)/)?.[1], url);
       assert.equal((html.match(/<h1(?:\s|>)/g) || []).length, 1);
       assert(!/noindex/i.test(html.match(/<meta name=['"]robots['"] content=['"]([^'"]+)/)?.[1] || ''));

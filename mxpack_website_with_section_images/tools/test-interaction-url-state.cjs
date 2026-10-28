@@ -21,7 +21,10 @@ const server = http.createServer((req, res) => {
   const types = {'.html':'text/html', '.js':'text/javascript', '.css':'text/css', '.webp':'image/webp', '.png':'image/png', '.svg':'image/svg+xml', '.woff2':'font/woff2'};
   res.writeHead(200, {'Content-Type':types[path.extname(file)] || 'application/octet-stream'}).end(fs.readFileSync(file));
 });
-const formData = locator => locator.evaluate(form => Object.fromEntries([...form.elements].filter(e => e.name).map(e => [e.name, e.value])));
+const formData = async locator => {
+  await locator.locator('[name="Inquiry source"]').waitFor({state:'attached'});
+  return locator.evaluate(form => Object.fromEntries([...form.elements].filter(e => e.name).map(e => [e.name, e.value])));
+};
 (async () => {
   const {compactInteractionHtml} = await import('./url-state-html.mjs');
   const unit = state.write('https://mxpackpro.com/get-a-quote?product=old&utm_source=buyer&source=catalog#view=lid', {product:'new', from:'/products/new'});
@@ -55,6 +58,7 @@ const formData = locator => locator.evaluate(form => Object.fromEntries([...form
   const base = process.env.QA_BASE || `http://127.0.0.1:${server.address().port}`;
   const browser = await chromium.launch({channel:'chrome', headless:true});
   const results = [];
+  const assetCache = new Map();
   let transmissions = 0;
   try {
     for (const width of [1440, 390]) {
@@ -62,6 +66,17 @@ const formData = locator => locator.evaluate(form => Object.fromEntries([...form
       const context = await browser.newContext({viewport:{width, height:1000}, isMobile:width === 390, hasTouch:width === 390});
       await context.route(/googletagmanager\.com|google-analytics\.com/, route => route.fulfill({status:200, body:''}));
       await context.route(/formsubmit\.co|wa\.me|api\.whatsapp\.com/, route => {transmissions++; return route.abort();});
+      // Playwright routing disables browser caching; reuse only assets fetched from this deployment.
+      await context.route(base + '/assets/**', async route => {
+        const url = route.request().url();
+        if (!assetCache.has(url)) {
+          assetCache.set(url, (async () => {
+            const response = await route.fetch();
+            return {status:response.status(), headers:response.headers(), body:await response.body()};
+          })());
+        }
+        await route.fulfill(await assetCache.get(url));
+      });
       const page = await context.newPage();
       const errors = [];
       page.on('pageerror', e => errors.push(e.message));
