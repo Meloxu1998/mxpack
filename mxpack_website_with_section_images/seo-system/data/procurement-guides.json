@@ -51,5 +51,108 @@
       ["What should I send for a useful pyramid-box quotation?", "Send a per-tray menu layout, usable dimensions, food and cup heights, filled weights, liner requirements, quantity per design, artwork status, destination and required arrival date. MOQ and timing are confirmed for the final specification."]
     ],
     "sources": [{"title": "FDA: Food Types and Conditions of Use for Food Contact Substances", "url": "https://www.fda.gov/food/packaging-food-contact-substances-fcs/food-types-conditions-use-food-contact-substances", "note": "US food-contact reference; confirm the destination-market requirements for the final pack."}]
+  },
+  {
+    "slug": "christmas-packaging-order-checklist",
+    "plannedPublishOn": "2026-10-30",
+    "title": "Christmas Packaging Order Checklist: Dates, Samples and Artwork",
+    "seoTitle": "Christmas Packaging Order Checklist | MXPACKPRO",
+    "description": "Plan Christmas packaging from the arrival date back. Compare artwork changes, inserts, sample approvals and quotation details without assumed lead times.",
+    "keyword": "Christmas packaging order checklist",
+    "relatedKeywords": ["Christmas gift box order planning", "holiday packaging sample checklist", "Christmas packaging arrival date"],
+    "intent": "Pre-order planning and specification checklist for a seasonal buyer; not the transactional custom Christmas packaging collection or a carrier delivery-deadline page.",
+    "researchedOn": "2026-10-30",
+    "product": "custom-cookie-assortment-drawer-box",
+    "related": ["custom-cookie-assortment-drawer-box", "custom-ornament-gift-box-with-paper-insert", "custom-pyramid-favor-gift-box"],
+    "hubs": ["christmas-packaging"],
+    "supportingLink": {"href": "/christmas-packaging", "label": "Compare Christmas packaging by what you need to pack"},
+    "ctaLabel": "Send your Christmas packaging brief",
+    "intro": "Before ordering Christmas packaging, confirm when empty packs must reach your filling location, freeze the contents and quantity per design, and approve a packed sample. Work backwards through filling, inbound delivery, production and approvals using dates confirmed for your project. A supplier's production estimate alone is not a Christmas arrival commitment. Start with this checklist before comparing quotations.",
+    "sections": [
+      {
+        "heading": "Start with the packaging-in-hand date, not December 25",
+        "paragraphs": [
+          "Write down the date empty packaging must be at the bakery, warehouse or packing partner. This can be earlier than the date a customer receives the gift: you still need to receive the cartons, check them, fill the packs and dispatch the finished orders. A countdown product also needs a different launch plan from a Christmas Day gift.",
+          "Use one location, postcode and time zone on the brief. Ask who is responsible for each stage and whether an estimate is in working days or calendar days. Record closure dates, approval cutoffs and a buffer you have agreed with the relevant partner. Unknown stages stay marked unconfirmed; do not substitute another supplier's published lead time."
+        ],
+        "table": {
+          "headings": ["Work backwards from", "Confirm before accepting a date", "Who supplies the input"],
+          "rows": [
+            ["Customer dispatch or collection", "Your campaign launch and the time needed to fill and check the gifts", "Your operations or fulfillment team"],
+            ["Empty packaging received at the filling site", "Receiving address, postcode, unloading and incoming checks", "Your receiving team"],
+            ["Factory release", "Chosen freight route, customs responsibilities, receiving time and agreed buffer", "Supplier and logistics partner"],
+            ["Production start", "Confirmed capacity, final specification, inspection and export packing scope", "Supplier, for the approved project"],
+            ["Final approval", "Which drawing, physical sample and artwork version must be signed off", "Buyer and supplier"],
+            ["Brief freeze and sample request", "Prototype preparation, sample delivery, review and any revision loop", "Buyer, supplier and sample carrier"]
+          ]
+        }
+      },
+      {
+        "heading": "Separate a festive artwork change from a new structure",
+        "paragraphs": [
+          "A familiar box with a new illustration is a different development task from a new insert, opening or compartment layout. Tell the supplier which parts are already approved. Even when the structure stays the same, print, materials, quantity and available production capacity still need confirmation.",
+          "Request a written list of inclusions: outer box, insert, liner, individual wrap, ribbon, labels, shipping outer and assembly. Product photographs do not establish what is supplied. Do not assume an existing format is in stock or that a simpler design automatically meets your date."
+        ],
+        "table": {
+          "headings": ["Proposed route", "Keep fixed or confirm", "Main approval question"],
+          "rows": [
+            ["Existing approved structure, festive artwork", "Internal size, packed weight, material and print process", "Does the new artwork fit the agreed dieline and approval schedule?"],
+            ["Existing outer with a revised insert", "Insert contact points, clearance and loading method", "Can the actual contents be packed and removed without forcing the fit?"],
+            ["New construction or opening method", "Usable dimensions, closure, assembly and shipping configuration", "Has a physical structural sample been approved before the print version?"]
+          ]
+        }
+      },
+      {
+        "heading": "Fit the contents before choosing the seasonal print",
+        "paragraphs": [
+          "Send measurements in a stated unit and distinguish usable internal space from the external box size. Include wrappers, caps, decorations and the filled weight. Review a representative loaded sample, not just an empty shell or a rendered image. The formats below are design options to review, not a claim of ready stock or tested shipping performance."
+        ],
+        "table": {
+          "headings": ["Christmas format", "Measurements to send", "What to check on the sample"],
+          "rows": [
+            ["Cookie assortment drawer", "Each portion and wrapper, compartment depth, total layout and filled weight", "Divider retention, liner allowance, drawer travel and clearance inside the sleeve; an illustrated compartment count is not a fixed capacity"],
+            ["Ornament carton with paper cradle", "Sphere diameter, cap and hanging loop, complete height, weight and sensitive surfaces", "Cradle contact points, cap clearance, loading, removal and the separate transport pack"],
+            ["Small pyramid favor box", "Gift dimensions at its full height, base footprint, weight and closure needs", "Clearance under the sloping faces and room to secure the apex; this is not the tiered catering format"]
+          ]
+        }
+      },
+      {
+        "heading": "Keep food contact and shipping protection separate",
+        "paragraphs": [
+          "For cookie gifts, identify the layer that actually touches the food. State the food type and intended packing, storage and contact conditions. FDA's US reference distinguishes food types and conditions of use for food-contact substances; the European Commission provides a separate framework for food-contact materials in the EU. Use the appropriate destination-market requirements to request documentation for the final components, not a generic 'food-safe' promise.",
+          "Decorative board, a printed image or a general certificate is not proof that every illustrated liner or wrap suits your recipe. This guide does not establish shelf life, allergen separation or certification of an MXPACKPRO product. Have the relevant food and packaging requirements reviewed for the actual application.",
+          "A presentation box and a parcel shipping pack are also separate specifications. Ask which cushioning, shipping outer and packed-sample review are needed for your contents and delivery route. A paper ornament cradle, drawer grid or small favor closure is not a published courier-protection rating."
+        ]
+      },
+      {
+        "heading": "Send a quotation brief that does not leave the hard parts out",
+        "steps": [
+          ["Contents and layout", "List the items in each pack, their dimensions and filled weight. Attach a drawing or sample where the cap, wrapper, coating or shape affects fit."],
+          ["Quantity per version", "Separate quantities by size, artwork and language. Ask for the applicable MOQ for each specification; do not apply one product's starting quantity to another."],
+          ["Exact supply scope", "Identify the box, insert, food-facing components, accessories and shipping outer you need supplied. State who will assemble and fill them."],
+          ["Artwork and approval", "State whether the dieline, print file and color references are ready. Ask which structural and printed samples are proposed and what approval each one covers."],
+          ["Destination and receiving date", "Give the filling location, delivery postcode and required packaging-in-hand date. Keep customer dispatch and final gift-delivery dates separate."],
+          ["Comparable commercial terms", "Ask the quotation to identify sample charges, tooling or setup, packaging, freight and relevant delivery responsibilities. Confirm scope and schedule in writing before treating different quotes as equivalent."]
+        ]
+      },
+      {
+        "heading": "If the proposed schedule does not fit, simplify before you commit",
+        "paragraphs": [
+          "Ask which changes can be reviewed without changing the approved fit: fewer artwork versions, a different finish, or a simpler opening may be worth comparing. If you consider a locally available temporary pack, confirm its availability, decoration and intended use independently. These are alternatives to investigate, not services or delivery dates promised by MXPACKPRO.",
+          "Do not recover time by skipping the checks that define the pack. Reconfirm the sample, included components, arrival assumptions and approved version after any change. Keep a dated approval record so the seasonal artwork is not confused with a different structure on a repeat order."
+        ]
+      }
+    ],
+    "faq": [
+      ["What is the last order date for custom Christmas packaging?", "There is no single date that applies to every product or destination. Send the required empty-pack arrival date, postcode, quantity, artwork status and sample needs. Sampling, approval, production and delivery must be confirmed for that exact project before an order date can be proposed."],
+      ["Is changing Christmas artwork always faster than making a new box?", "Not automatically. Reusing an approved structure can remove some structural decisions, but print approvals, materials, quantity and production capacity still need review. Ask which stages remain and obtain a project-specific schedule."],
+      ["Can a divided drawer box keep different cookies fresh or allergen-free?", "A divider organizes the layout; it does not establish freshness, shelf life or allergen separation. Specify the actual food-facing liners or individual wraps and have the packed food application reviewed. No such performance is established by the design illustration."],
+      ["Is an ornament gift carton ready to send by courier?", "Do not assume so. Confirm the ornament's sphere, cap, complete height, weight and surface sensitivity, then review the cradle, cushioning and shipping outer on a packed sample. No courier-protection rating is published for the illustrated design."],
+      ["Are the pictured Christmas boxes in stock, and do they have one MOQ?", "The illustrated formats are design options, not evidence of inventory. There is no single MOQ across them. Availability, minimum quantity, materials, sample route and timing require confirmation for the chosen specification."]
+    ],
+    "sources": [
+      {"title": "FDA: Food Types and Conditions of Use for Food Contact Substances", "url": "https://www.fda.gov/food/packaging-food-contact-substances-fcs/food-types-conditions-use-food-contact-substances", "note": "US food-contact reference for defining the intended application; not certification or approval of the illustrated packaging.", "checkedOn": "2026-10-30"},
+      {"title": "European Commission: Food Contact Materials", "url": "https://food.ec.europa.eu/food-safety/chemical-safety/food-contact-materials_en", "note": "EU food-contact overview. Documentation and applicable requirements must be reviewed for the final components and use.", "checkedOn": "2026-10-30"}
+    ]
   }
 ]

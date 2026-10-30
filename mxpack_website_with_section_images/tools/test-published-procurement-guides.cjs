@@ -36,6 +36,8 @@ const server=http.createServer((req,res)=>{
     assert.equal((await page.request.get(page.url())).status(),200);
     assert.equal(await page.locator('h1').count(),1);
     assert.equal(await page.locator('h1').innerText(),guide.title);
+    assert.equal(await page.title(),guide.seoTitle||`${guide.title} | MXPACKPRO`);
+    assert.equal(await page.locator('meta[name="description"]').getAttribute('content'),guide.description);
     assert.equal(await page.locator('link[rel="canonical"]').getAttribute('href'),`https://mxpackpro.com/${guide.slug}`);
     assert(!/noindex/.test(await page.locator('meta[name="robots"]').getAttribute('content')));
     const structured=await page.locator('script[type="application/ld+json"]').evaluateAll(nodes=>nodes.map(node=>JSON.parse(node.textContent)));
@@ -47,13 +49,23 @@ const server=http.createServer((req,res)=>{
     assert.equal(await page.locator('.accordion details').count(),guide.faq.length);
     await page.evaluate(async()=>{document.querySelectorAll('main img').forEach(img=>img.loading='eager');await Promise.all([...document.querySelectorAll('main img')].map(img=>img.decode()))});
     assert(!await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1));
+    for(const table of await page.locator('.buyer-table-wrap').all()){
+     const reachable=await table.evaluate(element=>{
+      const max=element.scrollWidth-element.clientWidth;
+      element.scrollLeft=max;
+      const endReached=max<=1||element.scrollLeft>=max-1;
+      element.scrollLeft=0;
+      return endReached;
+     });
+     assert(reachable,'Comparison table must scroll to its final column');
+    }
     const wa=await page.locator('[data-whatsapp]').first().getAttribute('href');
     assert(wa.startsWith(mobile?'whatsapp://':'https://web.whatsapp.com/'));
     assert(wa.includes('8615918968149'));
     assert(new URL(wa).searchParams.get('text').includes(`https://mxpackpro.com/${guide.slug}`));
     assert(await page.locator('a[href="mailto:sales@mxpackpro.com"]').count());
     await page.screenshot({path:`${output}/${guide.slug}-${mobile?'mobile':'desktop'}.png`});
-    await page.locator('.buyer-table-wrap').scrollIntoViewIfNeeded();
+    await page.locator('.buyer-table-wrap').first().scrollIntoViewIfNeeded();
     await page.screenshot({path:`${output}/${guide.slug}-table-${mobile?'mobile':'desktop'}.png`});
     await page.locator('.accordion details').first().locator('summary').click();
     await page.locator('.accordion').scrollIntoViewIfNeeded();
@@ -65,6 +77,10 @@ const server=http.createServer((req,res)=>{
     assert.equal(await page.locator('[data-quote-form]').getAttribute('action'),'https://formsubmit.co/sales@mxpackpro.com');
     for(const slug of guide.related){
      await page.goto(`${base}/products/${slug}`);
+     assert(await page.locator(`main a[href="/${guide.slug}"]`).count());
+    }
+    for(const slug of guide.hubs||[]){
+     await page.goto(`${base}/${slug}`);
      assert(await page.locator(`main a[href="/${guide.slug}"]`).count());
     }
     const sitemap=await(await page.request.get(`${base}/sitemap.xml`)).text();
