@@ -42,6 +42,12 @@ const server = http.createServer((req, res) => {
         assert.equal(faq.length, 6);
         assert.deepEqual(faq, schema.mainEntity.map(question => ({q:question.name,a:question.acceptedAnswer.text})));
         assert.equal(await page.locator(selector + ' tbody tr').count(), product ? 4 : 3);
+        if (product?.slug === 'custom-folding-cosmetic-carton') {
+          const specifications = await page.locator('#specifications').innerText();
+          assert(specifications.includes('secondary outer packaging'));
+          assert(!specifications.includes('Food-contact suitability'));
+          assert.equal(await page.locator('#specifications a[href="/custom-packaging"]').count(), 1);
+        }
         assert(await page.locator('.detail-hero img').first().evaluate(node => node.complete && node.naturalWidth > 0));
         assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
         const local = fs.readFileSync(path.join(root, '.' + item.path + '.html'), 'utf8');

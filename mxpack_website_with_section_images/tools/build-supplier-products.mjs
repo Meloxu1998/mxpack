@@ -122,7 +122,10 @@ for (const p of products) {
   const productBody = (p.quoteBrief ? body.replace('Send your measurements, estimated quantity, artwork status and delivery country. Include the sample checks above and your target date. Pricing is based on the complete specification, not the example image alone.', esc(p.quoteBrief)) : body)
     .replace('<section class="section section-white"><div class="container"><div class="section-head"><div><p class="eyebrow">Purchasing questions</p>', `${selectionMarkup}<section class="section section-white"><div class="container"><div class="section-head"><div><p class="eyebrow">Purchasing questions</p>`);
   const html = `<!doctype html>\n<html lang="en"><head>${pageHead}\n${extraCss}\n${schemas.map(schema).join('\n')}</head><body class="product-detail-page" data-product-id="${p.slug}"><a class="skip-link" href="#main">Skip to content</a>${header}${giftMarkup(compactProductMarkup(withReferences(productBody,p),p),p)}${productFooter}`;
-  fs.writeFileSync(path.join(root,'products',`${p.slug}.html`), compactInteractionHtml((html.trimEnd()+'\n')
+  const scopedHtml = p.category === 'cosmetics' ? html
+    .replace('Food-contact suitability, coatings, load capacity and any market-specific requirements are confirmed for the final specification. Send your product details before making performance or compliance assumptions.', 'This is secondary outer packaging, not a liquid container or a product-compliance approval. Confirm the primary container, carton fit and required artwork for the destination market; the printed example does not verify labeling or certification.')
+    .replace('<a class="text-link" href="/materials-food-safety">Compare materials and food-contact considerations</a>', '<a class="text-link" href="/custom-packaging">Review the custom packaging process</a>') : html;
+  fs.writeFileSync(path.join(root,'products',`${p.slug}.html`), compactInteractionHtml((scopedHtml.trimEnd()+'\n')
     .replace('"@type":"CollectionPage","name":', '"@type":"WebPage","name":')
     .replaceAll('The supplier catalog lists a starting order of', 'This format has a starting order of')
     .replaceAll('Starting quantity is based on the selected supplier listing.', 'Starting quantity applies to the pictured format and is subject to your final specification.')

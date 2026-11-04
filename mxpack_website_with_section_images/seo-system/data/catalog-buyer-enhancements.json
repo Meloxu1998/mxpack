@@ -112,6 +112,27 @@
     ],
     "relatedSlugs": ["catering-tray-with-cup-slots", "custom-multi-tray-catering-carrier-box", "custom-meal-and-drink-catering-box"]
   },
+  "custom-folding-cosmetic-carton": {
+    "seoTitle": "Custom Cosmetic Folding Cartons | Printed | MXPACKPRO",
+    "seoDescription": "Specify printed cosmetic folding cartons for skincare bottles by capped size, insert fit and artwork panels. Prepare a size-specific sample and quotation brief.",
+    "intro": "Custom cosmetic folding cartons are printed paperboard outer packs for individual skincare bottles and small cosmetic containers. Specify the complete capped container, opening direction and artwork panels before choosing a board or finish. This page covers the folding retail carton, not the bottle, a rigid presentation set or a shipping mailer.",
+    "quoteBrief": "Send a drawing or measured sample of the capped bottle, including the pump or dropper, the required quantity per size and artwork, and the delivery country. Identify any insert, label or barcode panels and the requested print finish. Ask the quotation to separate the structural sample, printed proof, carton and insert scope. Confirm schedule after the dieline and artwork review; no stock size or production deadline is assumed.",
+    "selectionGuide": {
+      "title": "Prepare a cosmetic-carton print brief.",
+      "intro": "The bottle size, carton opening and artwork must describe the same proposed pack. Use a structural sample for fit and a size-specific proof for the printed panels.",
+      "rows": [
+        ["Primary container", "Measure the bottle or jar with the actual cap, pump or dropper fitted. Include any label projection and explain how the container is inserted and removed."],
+        ["Closure and insert", "Confirm the proposed opening direction, tuck flaps and any internal support on the dieline. Check that the insert does not obstruct closure or cover the product label."],
+        ["Print and finish", "Provide vector artwork, color references and finish locations. Review small text, fold lines and the barcode area on the proposed board and size-specific proof; a reference photo is not a print approval."],
+        ["Order breakdown", "List the pieces for every carton size and artwork version, plus destination and target date. Confirm the applicable MOQ, sample route and packing configuration in the written quotation."]
+      ]
+    },
+    "additionalFaq": [
+      ["What should I prepare before asking a cosmetic folding-carton printer for a quote?", "Provide the complete capped-container dimensions or a sample, quantities per size and design, intended opening, insert requirements and delivery country. Add artwork files, color references and the desired finish areas. A general size or the word luxury alone does not define the board, construction or print scope."],
+      ["Does a structural sample also approve the printed finish?", "A structural sample is used to review fit, insertion, removal and closure. Confirm separately what the printed proof or production sample represents for color, finish and text. Approve the agreed dieline and artwork version before production; the available sample process, charges and timing are confirmed for the project."]
+    ],
+    "relatedSlugs": ["custom-window-lid-rigid-gift-box", "custom-printed-corrugated-mailer", "custom-ribbon-handle-paper-gift-bag"]
+  },
   "custom-printed-corrugated-mailer": {"relatedSlugs": ["foldable-magnetic-gift-box", "custom-lid-and-base-rigid-gift-box", "custom-shoulder-neck-rigid-gift-box"]},
   "folding-advent-calendar-carton": {"relatedSlugs": ["custom-double-door-drawer-advent-calendar-box", "custom-cookie-assortment-drawer-box", "custom-ornament-gift-box-with-paper-insert"]}
 }
