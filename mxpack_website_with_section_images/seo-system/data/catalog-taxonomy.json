@@ -172,7 +172,9 @@
         "folding-advent-calendar-carton",
         "envelope-flap-gift-box",
         "custom-tear-open-corrugated-mailer",
-        "custom-corrugated-shipping-carton"
+        "custom-corrugated-shipping-carton",
+        "custom-magnetic-gift-box-with-handle",
+        "custom-house-shaped-gift-box"
       ]
     },
     {
@@ -237,7 +239,9 @@
         "custom-wine-bottle-gift-box-with-insert",
         "window-grazing-box-with-dividers",
         "tall-cake-box-with-handles",
-        "custom-pyramid-catering-box"
+        "custom-pyramid-catering-box",
+        "custom-magnetic-gift-box-with-handle",
+        "custom-house-shaped-gift-box"
       ]
     }
   ],

@@ -1,6 +1,6 @@
 {
   "capturedAt": "2026-10-21T04:21:26.720Z",
-  "importedAt": "2026-10-26T03:31:16.800Z",
+  "importedAt": "2026-11-04T08:11:23.936Z",
   "store": "https://meloxu.en.alibaba.com/",
   "verification": "Public store category and product listing cards; detailed specifications require project confirmation.",
   "products": [
@@ -1005,6 +1005,38 @@
       "height": 1000,
       "imagePath": "/assets/img/catalog/1601587191072-960.webp?v=20261026-ordered2",
       "thumbnailPath": "/assets/img/catalog/1601587191072-480.webp?v=20261026-ordered2",
+      "minimumOrder": 250
+    },
+    {
+      "id": "1601586790533",
+      "title": "Best-selling Christmas Gift Packaging Boxes - Foldable Paper Boxes Can Be Customized - Magnetic Foldable Flip-top Boxes",
+      "url": "https://www.alibaba.com/product-detail/Best-selling-Christmas-Gift-Packaging-Boxes_1601586790533.html",
+      "image": "https://s.alicdn.com/@sc04/kf/Ha9fcc33c2a4742008fc2f2648d5b5a64D/Best-selling-Christmas-Gift-Packaging-Boxes-Foldable.jpg?hasNWGrade=1",
+      "moq": "Min. Order: 250 pieces",
+      "sourceGroup": "CHRISTMAS BOX",
+      "sourcePage": 1,
+      "sourceGroupUrl": "https://meloxu.en.alibaba.com/productgrouplist-958718926/CHRISTMAS_BOX.html",
+      "verifiedAt": "2026-11-04T08:10:39.488Z",
+      "width": 2000,
+      "height": 2000,
+      "imagePath": "/assets/img/catalog/1601586790533-960.webp?v=20261104-manual1",
+      "thumbnailPath": "/assets/img/catalog/1601586790533-480.webp?v=20261104-manual1",
+      "minimumOrder": 250
+    },
+    {
+      "id": "1601623676390",
+      "title": "Ready to Ship Lovely Valentine's Day Wedding Gift Box Small Lid and Base Cardboard Box with PU Leather Handle",
+      "url": "https://www.alibaba.com/product-detail/Ready-to-Ship-Lovely-Valentine-s_1601623676390.html",
+      "image": "https://s.alicdn.com/@sc04/kf/H05a0333d52d34ba3b8032d86b5efbad9s/Ready-to-Ship-Lovely-Valentine-s-Day.png?hasNWGrade=1",
+      "moq": "Min. Order: 250 pieces",
+      "sourceGroup": "CHRISTMAS BOX",
+      "sourcePage": 3,
+      "sourceGroupUrl": "https://meloxu.en.alibaba.com/productgrouplist-958718926-3/CHRISTMAS_BOX.html?filter=all&spm=a2700.shop_plgr.41413.dbtmnavgo",
+      "verifiedAt": "2026-11-04T08:10:39.489Z",
+      "width": 1500,
+      "height": 1500,
+      "imagePath": "/assets/img/catalog/1601623676390-960.webp?v=20261104-manual1",
+      "thumbnailPath": "/assets/img/catalog/1601623676390-480.webp?v=20261104-manual1",
       "minimumOrder": 250
     }
   ]

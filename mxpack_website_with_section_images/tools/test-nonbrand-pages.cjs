@@ -53,7 +53,8 @@ const server = http.createServer((req, res) => {
         const local = fs.readFileSync(path.join(root, '.' + item.path + '.html'), 'utf8');
         const previous = execFileSync('git', ['show', `6ae94ce:mxpack_website_with_section_images${item.path}.html`], {cwd:path.resolve(root,'..'),encoding:'utf8'});
         for (const tag of ['header', 'footer']) {
-          const section = text => text.match(new RegExp(`<${tag} class="site-${tag}">[\\s\\S]*?<\\/${tag}>`))?.[0];
+          const section = text => text.match(new RegExp(`<${tag} class="site-${tag}">[\\s\\S]*?<\\/${tag}>`))?.[0]?.replace(/Browse all \d+ products/g, 'Browse all [catalog count] products');
+          if (tag === 'header') assert(local.includes(`Browse all ${source.length} products`));
           assert.equal(section(local), section(previous), `${item.path} changed the ${tag}`);
         }
         for (const oldSection of previous.matchAll(/<section\b(?=[^>]*\bdata-supplier-batch=)[^>]*>[\s\S]*?<\/section>/g)) assert(local.includes(oldSection[0]), 'Existing supplier backlink lost');
