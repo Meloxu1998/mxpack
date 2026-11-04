@@ -1,0 +1,18 @@
+{
+  "seoTitle": "Custom Burger Clamshell Boxes | Compare Formats | MXPACKPRO",
+  "description": "Compare custom burger clamshell boxes by finished burger size, wrapping, closure and artwork. Review formats and prepare a quotation brief with MXPACKPRO.",
+  "intro": "Compare custom burger clamshell boxes around the finished burger, its wrapping and the complete takeaway order. Start with the hinged single-burger format, then compare a sharing carton or meal carton if the order needs a different layout. Dimensions, materials and any barrier are confirmed for the proposed specification.",
+  "formats": [
+    {"name":"Printed single-burger clamshell", "slug":"custom-burger-clamshell-box", "brief":"For one finished burger: measure the widest point, full topping height and wrapping. Check the tuck closure on the packed sample."},
+    {"name":"Mini burger sharing carton", "slug":"custom-mini-burger-sharing-box", "brief":"For repeated portions in a sharing layout: arrange the actual mini burgers and confirm the insert positions and covered height."},
+    {"name":"Gable-top meal carton", "slug":"printed-gable-meal-box", "brief":"For a broader meal brief: list every item in the order and identify any separate wrapping or container positions that need review."}
+  ],
+  "faq": [
+    ["What is the minimum order quantity for burger boxes?", "The minimum is confirmed for the selected structure, finished size, artwork and packing arrangement. The individual product page shows the starting quantity for that format where verified; do not apply one product's minimum to every burger-box design."],
+    ["Which burger dimensions should I send?", "Measure the widest point and full height of the assembled burger, including toppings and the wrapping that stays inside. Ask whether the proposed dimensions are internal or external, and check lid clearance on a structural sample."],
+    ["Should I order one box for a burger, fries and a drink?", "List the complete order before choosing a format. Compare a single-burger clamshell for the burger and a separate meal or container layout when additional items need positions. Do not assume a single-burger carton includes compartments or drink support."],
+    ["Can I print my own logo and artwork?", "Provide the logo file, print colors and quantity for each artwork version. Review the design on the agreed size-specific dieline and confirm the proposed print process and finish in the quotation."],
+    ["How should I check a sample before production?", "Ask which sample route is available for the proposed construction. Use the actual finished burger and wrapping to review clearance, closure and your packing workflow. Sample scope, charges, shipping and timing are confirmed for the project."],
+    ["How are materials and delivery timing confirmed?", "Describe the recipe, packing temperature, contact time and destination market for material and documentation review. Provide the required arrival date and artwork status. The quotation confirms the proposed sampling, production and transport plan; this page does not guarantee a holding time or delivery date."]
+  ]
+}

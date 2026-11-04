@@ -1,0 +1,12 @@
+{
+  "updated": "2026-11-04",
+  "searchVolume": null,
+  "searchVolumeNote": "No reliable keyword search-volume dataset has been obtained. Priorities use observed query relevance and buyer intent, not estimated search volume.",
+  "pages": [
+    {"path":"/burger-boxes", "primaryKeyword":"custom burger clamshell boxes", "intent":"Compare burger-packaging formats and prepare a category quotation", "pageType":"category", "boundary":"Broader format selection; link to the individual hinged carton rather than repeating its detailed construction brief."},
+    {"path":"/products/custom-burger-clamshell-box", "primaryKeyword":"printed burger clamshell box", "intent":"Specify the individual hinged carton, finished burger fit and artwork", "pageType":"product", "boundary":"One documented hinged construction; do not create additional pages for print variants."},
+    {"path":"/products/corn-dog-paper-sleeve", "primaryKeyword":"custom corn dog paper sleeves", "intent":"Specify sleeve opening, coated snack dimensions and coverage for a quotation", "pageType":"product", "boundary":"Open snack sleeve, not a closed hot-dog carton or long bread bag."},
+    {"path":"/products/custom-food-wrapping-paper", "primaryKeyword":"custom printed food wrapping paper", "intent":"Specify cut-sheet wrapping or tray-lining dimensions and artwork", "pageType":"product", "boundary":"Loose cut sheets; roll supply and use-specific material suitability require separate confirmation."},
+    {"path":"/products/custom-strap-catering-tray-carrier", "primaryKeyword":"catering tray carrier with strap", "intent":"Specify grouped lidded-container layout, strap arrangement and a loaded sample", "pageType":"product", "boundary":"Open food-service tray platform; not an industrial tray, enclosed catering carton or a rated lifting device."}
+  ]
+}

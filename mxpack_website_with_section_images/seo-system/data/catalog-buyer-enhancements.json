@@ -28,7 +28,90 @@
     "relatedSlugs": ["folding-advent-calendar-carton", "custom-cookie-assortment-drawer-box", "custom-lid-and-base-rigid-gift-box"]
   },
   "printed-donut-pastry-box": {"relatedSlugs": ["custom-folding-pastry-carton", "window-cake-box-removable-base", "macaron-sleeve-box"]},
-  "custom-burger-clamshell-box": {"relatedSlugs": ["custom-corrugated-pizza-box", "printed-gable-meal-box", "bbq-meal-tray-carry-box"]},
+  "custom-burger-clamshell-box": {
+    "seoTitle": "Printed Burger Clamshell Box | Custom Fit | MXPACKPRO",
+    "seoDescription": "Compare hinged burger boxes by finished burger fit, lid clearance and custom artwork. Send your size, quantity and delivery country for a project quotation.",
+    "intro": "This printed burger clamshell is a hinged carton with a tuck closure, specified around one finished burger and its wrapping. Compare the internal footprint, topping clearance and artwork layout on this construction; a bun diameter alone is not a box specification.",
+    "quoteBrief": "For a burger-box quotation, send the finished burger diameter and height, wrapping dimensions, quantity per size or artwork, and delivery country. Add a photo of the assembled order and explain whether fries travel separately. Ask us to confirm internal dimensions, closure and sample scope in the same quotation.",
+    "selectionGuide": {
+      "title": "Build your burger-box specification.",
+      "intro": "Start with the order as the customer receives it. Use the same packed burger to compare proposed box dimensions and a structural sample.",
+      "rows": [
+        ["Footprint", "Measure the finished burger at its widest point, including any wrap that remains inside the carton. Request internal, not just external, box dimensions."],
+        ["Lid clearance", "Include toppings and the highest point of the bun. Check that the proposed closed lid does not press the food during your packing trial."],
+        ["Order format", "Identify whether this carton holds one burger or needs to form part of a larger meal order. Compare a separate meal carton when fries or drinks need their own positions."],
+        ["Artwork versions", "State the pieces required for each size and design. Review artwork against the agreed dieline rather than transferring it from a differently sized lid."]
+      ]
+    },
+    "additionalFaq": [
+      ["Can one clamshell size cover burgers with different topping heights?", "Provide the smallest and largest finished burgers, with their normal wrapping. Review clearance and movement on a structural sample for both orders. A single size may be worth comparing, but fit is not established by bun diameter or a picture of the box."],
+      ["Should a burger clamshell hold the fries as well?", "Specify the complete meal layout before requesting a price. This page concerns the hinged burger carton; a meal carton or separate fries pack is a different layout. Confirm which components are included and test the assembled order before approving dimensions."]
+    ],
+    "relatedSlugs": ["custom-corrugated-pizza-box", "printed-gable-meal-box", "bbq-meal-tray-carry-box"]
+  },
+  "corn-dog-paper-sleeve": {
+    "seoTitle": "Custom Corn Dog Sleeves | Size & Print | MXPACKPRO",
+    "seoDescription": "Plan custom corn dog paper sleeves around coated snack diameter, covered length and stick clearance. Compare size, artwork and sample checks for your order.",
+    "intro": "Custom corn dog paper sleeves are open-ended snack packs sized around the finished coating and stick. Measure the thickest coated section and the length you want covered, then review the opening, grip area and printed layout on a sample of the packed snack.",
+    "quoteBrief": "Send the finished coated diameter, snack length, exposed stick length and desired sleeve coverage. Include the recipe and packing temperature for a material review, the quantity per design, delivery country and artwork status. Confirm the agreed opening and sample route before comparing quotations.",
+    "selectionGuide": {
+      "title": "Measure the snack, not only the stick.",
+      "intro": "Use a finished item from the menu for the size brief. Different coatings and toppings can change the space needed at the sleeve opening.",
+      "rows": [
+        ["Opening", "Measure the thickest part of the coating, including any topping that enters the sleeve. Confirm the finished opening on the proposed construction."],
+        ["Covered length", "Mark where the packaging should end on the snack and how much stick should remain exposed for serving. Do not substitute the overall stick length for the covered food length."],
+        ["Packing conditions", "Describe the food condition at packing, expected contact time and grease exposure. Material and any barrier require review for this specific use."],
+        ["Print position", "Show the intended front, opening and hand-grip area on the dieline. Confirm that key artwork remains visible after the sleeve is filled."]
+      ]
+    },
+    "additionalFaq": [
+      ["Which measurements are needed to quote a custom corn dog sleeve?", "Send the coated snack's maximum diameter and length, stick length, desired covered length and a photo of the finished serving. State quantity per printed design and destination. The agreed construction and physical sample establish the final sleeve dimensions."],
+      ["Is an open corn dog sleeve the same as a closed takeaway box?", "No. This format leaves part of the serving open and is specified around snack presentation and handling. If the order needs a closed outer pack, describe that requirement separately; a sleeve image does not establish delivery protection or holding time."]
+    ],
+    "relatedSlugs": ["custom-sliding-hot-dog-box", "pastry-pocket-sleeve", "printed-gable-meal-box"]
+  },
+  "custom-food-wrapping-paper": {
+    "seoTitle": "Custom Printed Food Wrapping Paper | Sheets | MXPACKPRO",
+    "seoDescription": "Specify printed food wrapping paper sheets by wrap overlap, tray fit, artwork repeat and intended use. Prepare dimensions and quantities for a custom quotation.",
+    "intro": "Custom printed food wrapping paper is supplied to a project brief for loose wrapping sheets or tray liners. Choose the sheet dimensions around the finished wrap or tray, then review print layout and the proposed paper, ink and coating for the intended food-contact conditions.",
+    "quoteBrief": "For cut-sheet pricing, send the finished sheet width and length, whether it wraps food or lines a tray, quantity per artwork and packing quantity requirements. Include food type, contact time, packing temperature and delivery market for a material review. A reference print does not confirm the final contact specification.",
+    "selectionGuide": {
+      "title": "Choose the sheet around the packing task.",
+      "intro": "A wrapping sheet and a tray liner can use the same artwork but need different finished dimensions. State the task before requesting a unit price.",
+      "rows": [
+        ["Food wrap", "Measure the finished food and the overlap needed for the intended folds. Share a photo or mock-up of the wrapped order, not only the unwrapped food dimensions."],
+        ["Tray liner", "Provide the tray's internal base dimensions and the required side coverage. Check how the cut sheet sits in the actual tray."],
+        ["Artwork repeat", "Provide the logo file, print colors and preferred repeat direction. Review how the design lands at the sheet edges and folds on a size-specific proof."],
+        ["Menu and market", "Identify each intended food use and destination market. Do not assume one paper or coating specification covers every recipe and contact condition."]
+      ]
+    },
+    "additionalFaq": [
+      ["Is this quotation for wrapping sheets or paper rolls?", "This page describes loose cut sheets for wrapping or tray lining. Send the required finished sheet dimensions and packing quantity. A roll format, dispenser arrangement or another delivery format needs a separate project review rather than an assumption from the sheet photograph."],
+      ["Can one printed sheet specification cover burgers and bakery products?", "Artwork can be discussed as a coordinated design, but the proposed paper, ink and any coating must be reviewed for each intended use. Describe the food, packing temperature, contact time and destination market. Do not treat matching print as evidence of matching food-contact suitability."]
+    ],
+    "relatedSlugs": ["custom-burger-clamshell-box", "printed-baguette-bread-bag", "custom-folding-pastry-carton"]
+  },
+  "custom-strap-catering-tray-carrier": {
+    "seoTitle": "Catering Tray Carriers with Straps | Custom | MXPACKPRO",
+    "seoDescription": "Compare catering tray carriers with straps by lidded-container fit, filled mass and handoff layout. Prepare a custom carrier brief and loaded-sample checks.",
+    "intro": "A catering tray carrier with a carry strap groups specified containers on an open tray platform. Start with the actual lidded containers and complete filled mass, then review tray positions, strap attachment and the intended handoff on a loaded sample; no carrying-weight rating is inferred from the picture.",
+    "quoteBrief": "Send the outside dimensions of every container with its lid, a layout photo, total filled mass and how the order will be lifted and handed over. State whether you need the carrier alone or a coordinated container supply, quantity per design and destination. Confirm strap, reinforcement and sample scope as separate quotation items.",
+    "selectionGuide": {
+      "title": "Specify the complete filled tray.",
+      "intro": "Container capacity alone does not describe the space or handling needed by a catering carrier. Compare the actual lids, layout and lifting method together.",
+      "rows": [
+        ["Container fit", "List outside length, width and height with lids fitted. Identify which items need positions, cutouts or other project-specific support."],
+        ["Strap arrangement", "Provide the complete filled mass and intended grip position. Review the proposed attachment and reinforcement with a loaded sample, without assuming a published weight limit."],
+        ["Handoff workflow", "Explain where the pack is lifted, carried and set down, and how containers are removed. Check balance and access during your actual handling trial."],
+        ["Supply scope", "Ask the quotation to identify carrier, strap, inserts and containers separately. Food and containers shown in an example image are not evidence of included supply."]
+      ]
+    },
+    "additionalFaq": [
+      ["Are the containers included with the catering tray carrier?", "Do not infer included supply from the picture. State whether you need the carrier only, existing containers fitted to it or a coordinated container proposal. Confirm every component and quantity in the written quotation."],
+      ["When should I compare a strap tray with an enclosed catering carrier box?", "Compare this open platform when grouped container access and the strap arrangement suit the intended handoff. Compare an enclosed multi-tray carton when an outer enclosure is part of the brief. Review container fit, filled mass and handling on the proposed sample; neither format is assigned a transit or carrying rating by its photograph."]
+    ],
+    "relatedSlugs": ["catering-tray-with-cup-slots", "custom-multi-tray-catering-carrier-box", "custom-meal-and-drink-catering-box"]
+  },
   "custom-printed-corrugated-mailer": {"relatedSlugs": ["foldable-magnetic-gift-box", "custom-lid-and-base-rigid-gift-box", "custom-shoulder-neck-rigid-gift-box"]},
   "folding-advent-calendar-carton": {"relatedSlugs": ["custom-double-door-drawer-advent-calendar-box", "custom-cookie-assortment-drawer-box", "custom-ornament-gift-box-with-paper-insert"]}
 }

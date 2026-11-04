@@ -82,8 +82,15 @@ fs.mkdirSync(path.join(root, 'products'), {recursive:true});
 
 for (const p of products) {
   if (selectedSlugs.size && !selectedSlugs.has(p.slug)) continue;
-  const title = `${p.keyword.replace(/^./, c => c.toUpperCase())} | MXPACKPRO`;
-  const description = hasMoq(p) ? `Order ${p.keyword} from MXPACKPRO. MOQ from ${p.source.minimumOrder} pieces; sizes, materials, samples and delivery reviewed for your project.` : `Explore ${p.keyword} with MXPACKPRO. Compare construction, insert fit and sample checks. MOQ, materials and schedule confirmed for your brief.`;
+  const existingPath = path.join(root, 'products', `${p.slug}.html`);
+  const existingHtml = fs.existsSync(existingPath) ? fs.readFileSync(existingPath, 'utf8') : '';
+  // Supplier-batch backlinks belong to the publication workflow, not this renderer.
+  const supplierBacklinks = [...existingHtml.matchAll(/<section\b(?=[^>]*\bdata-supplier-batch=)[^>]*>[\s\S]*?<\/section>/g)].map(match=>match[0]);
+  const title = p.seoTitle || `${p.keyword.replace(/^./, c => c.toUpperCase())} | MXPACKPRO`;
+  const description = p.seoDescription || (hasMoq(p) ? `Order ${p.keyword} from MXPACKPRO. MOQ from ${p.source.minimumOrder} pieces; sizes, materials, samples and delivery reviewed for your project.` : `Explore ${p.keyword} with MXPACKPRO. Compare construction, insert fit and sample checks. MOQ, materials and schedule confirmed for your brief.`);
+  const selection = p.selectionGuide;
+  if (selection && (!selection.title || !selection.intro || !selection.rows?.length || selection.rows.some(row => row.length !== 2))) throw Error(`Invalid buyer selection guide: ${p.slug}`);
+  const selectionMarkup = selection ? `<section class="section section-white" data-buyer-selection><div class="container"><p class="eyebrow">Your specification brief</p><h2 class="section-title">${esc(selection.title)}</h2><p class="section-copy">${esc(selection.intro)}</p><table class="spec-table"><thead><tr><th>Project detail</th><th>Include in your brief</th></tr></thead><tbody>${selection.rows.map(row=>`<tr><th scope="row">${esc(row[0])}</th><td>${esc(row[1])}</td></tr>`).join('')}</tbody></table></div></section>` : '';
   const pageHead = head.replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(title)}</title>`)
     .replace(/(<meta name="description" content=")[^"]*/, `$1${esc(description)}`)
     .replace(/(<link rel="canonical" href=")[^"]*/, `$1${base}${url(p)}`)
@@ -112,12 +119,14 @@ for (const p of products) {
     {'@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Home',item:`${base}/`},{'@type':'ListItem',position:2,name:'Products',item:`${base}/products`},{'@type':'ListItem',position:3,name:p.name,item:`${base}${url(p)}`}]},
     {'@type':'FAQPage',mainEntity:faq.map(([q,a])=>({'@type':'Question',name:q,acceptedAnswer:{'@type':'Answer',text:a}}))}];
   const productFooter=p.views?footer.replace('</body>','<script src="/assets/js/product-reference-gallery.js?v=20261021-1"></script></body>'):footer;
-  const html = `<!doctype html>\n<html lang="en"><head>${pageHead}\n${extraCss}\n${schemas.map(schema).join('\n')}</head><body class="product-detail-page" data-product-id="${p.slug}"><a class="skip-link" href="#main">Skip to content</a>${header}${giftMarkup(compactProductMarkup(withReferences(body,p),p),p)}${productFooter}`;
+  const productBody = (p.quoteBrief ? body.replace('Send your measurements, estimated quantity, artwork status and delivery country. Include the sample checks above and your target date. Pricing is based on the complete specification, not the example image alone.', esc(p.quoteBrief)) : body)
+    .replace('<section class="section section-white"><div class="container"><div class="section-head"><div><p class="eyebrow">Purchasing questions</p>', `${selectionMarkup}<section class="section section-white"><div class="container"><div class="section-head"><div><p class="eyebrow">Purchasing questions</p>`);
+  const html = `<!doctype html>\n<html lang="en"><head>${pageHead}\n${extraCss}\n${schemas.map(schema).join('\n')}</head><body class="product-detail-page" data-product-id="${p.slug}"><a class="skip-link" href="#main">Skip to content</a>${header}${giftMarkup(compactProductMarkup(withReferences(productBody,p),p),p)}${productFooter}`;
   fs.writeFileSync(path.join(root,'products',`${p.slug}.html`), compactInteractionHtml((html.trimEnd()+'\n')
     .replace('"@type":"CollectionPage","name":', '"@type":"WebPage","name":')
     .replaceAll('The supplier catalog lists a starting order of', 'This format has a starting order of')
     .replaceAll('Starting quantity is based on the selected supplier listing.', 'Starting quantity applies to the pictured format and is subject to your final specification.')
-    .replace('</main>', `${publishedGuides.filter(guide=>guide.related.includes(p.slug)).map(guide=>`<section class="section section-white" data-procurement-guide="${guide.slug}"><div class="container"><p class="eyebrow">Before you order</p><h2 class="section-title">${esc(guide.title)}</h2><p class="section-copy">${esc(guide.description)}</p><p><a class="text-link" href="/${guide.slug}">Read the buying guide</a></p></div></section>`).join('')}</main>`), url(p)));
+    .replace('</main>', `${publishedGuides.filter(guide=>guide.related.includes(p.slug)).map(guide=>`<section class="section section-white" data-procurement-guide="${guide.slug}"><div class="container"><p class="eyebrow">Before you order</p><h2 class="section-title">${esc(guide.title)}</h2><p class="section-copy">${esc(guide.description)}</p><p><a class="text-link" href="/${guide.slug}">Read the buying guide</a></p></div></section>`).join('')}${supplierBacklinks.join('')}</main>`), url(p)));
 }
 
 if (selectedSlugs.size) {
