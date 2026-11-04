@@ -44,13 +44,14 @@ const server=http.createServer((req,res)=>{
     assert.equal(await form.locator('[name="Product"]').inputValue(),p.name);
     assert.equal(await form.locator('[name="Product page"]').inputValue(),'https://mxpackpro.com/products/'+p.slug);
     const wa=await page.locator('.email-inquiry-dialog[open] [data-whatsapp]').getAttribute('href');assert(wa.includes('8615918968149'));
+    const message=new URL(wa).searchParams.get('text');assert(message.includes(p.name));assert(message.includes('https://mxpackpro.com/products/'+p.slug));
     await page.keyboard.press('Escape');
     await page.locator('.detail-hero a[data-track="quote_product_click"]').click();
     await page.locator('#quote-form [name="Product"]').waitFor({state:'attached'});
     assert.equal(await page.locator('#quote-form [name="Product"]').inputValue(),p.name);
     assert.equal(await page.locator('#quote-form [name="Inquiry source"]').inputValue(),'/products/'+p.slug);
     assert.equal(await page.locator('#quote-form').getAttribute('action'),'/api/inquiry');
-    results.push({width,slug:p.slug,canonical:true,image:true,faqSchema:true,quoteAttribution:true});
+    results.push({width,slug:p.slug,canonical:true,image:true,faqSchema:true,quoteAttribution:true,whatsappContext:true});
    }
    assert.deepEqual(errors,[]);await context.close();
   }
