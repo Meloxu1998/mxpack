@@ -22,7 +22,7 @@ const server=http.createServer((req,res)=>{
   for(const width of [1920,1440,1024,390,360]){
    const context=await browser.newContext({viewport:{width,height:1000},isMobile:width<=600,hasTouch:width<=600});
    await context.route(/googletagmanager\.com|google-analytics\.com/,route=>route.fulfill({status:200,body:''}));
-   await context.route('https://formsubmit.co/**',route=>route.abort());
+   await context.route(/\/api\/inquiry(?:\?|$)|^https:\/\/formsubmit\.co\//,route=>route.abort());
    const page=await context.newPage();
    const response=await page.goto(base+'/products',{waitUntil:'networkidle'});
    assert.equal(response.status(),200);
@@ -57,7 +57,7 @@ const server=http.createServer((req,res)=>{
    await page.screenshot({path:path.join(out,`${process.env.QA_BASE?'live':'local'}-home-${width}.png`)});
    await page.locator('.home-stage a[href="/get-a-quote"]').click();
    await page.waitForURL('**/get-a-quote');
-   assert.equal(await page.locator('form[action*="formsubmit.co"]').getAttribute('action'),'https://formsubmit.co/sales@mxpackpro.com');
+   assert.equal(await page.locator('form[action="/api/inquiry"]').getAttribute('action'),'/api/inquiry');
    assert.equal(await page.locator('a[href^="tel:"]').count(),0,'Retired public telephone link remains');
    assert(!/155\s*2116\s*3050/.test(await page.content()),'Retired number remains in markup or structured data');
    assert(await page.locator('.contact-methods a[href^="mailto:"]').isVisible());

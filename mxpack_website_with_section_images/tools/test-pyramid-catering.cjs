@@ -12,7 +12,7 @@ const output='D:/mxpack-audits/2026-10-21/pyramid-catering';
  try{
   const context=await browser.newContext();
   await context.route(/googletagmanager\.com|google-analytics\.com/,r=>r.fulfill({status:200,body:''}));
-  await context.route('https://formsubmit.co/**',r=>r.abort());
+  await context.route(/\/api\/inquiry(?:\?|$)|^https:\/\/formsubmit\.co\//,r=>r.abort());
   const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
   for(const width of [1440,768,390,360]){
    await page.setViewportSize({width,height:900});

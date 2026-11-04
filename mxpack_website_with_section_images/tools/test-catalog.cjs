@@ -65,20 +65,20 @@ const output='D:/mxpack-audits/2026-10-21';
  await page.locator('#name').fill('QA Buyer');await page.locator('#company').fill('QA Company');await page.locator('#city').fill('Canada');
  await page.locator('#email').fill('qa-buyer@example.test');await page.locator('#phone').fill('5550100123');
  await page.locator('#country-code').selectOption('+1');
- let payload='';
- await context.route('https://formsubmit.co/**',async route=>{
-  payload=route.request().postData();const values=new URLSearchParams(payload);const next=new URL(values.get('_next'));
-  await route.fulfill({status:302,headers:{location:base+next.pathname+next.search},body:''});
+ let submitted;
+ await context.route(/\/api\/inquiry(?:\?|$)|^https:\/\/formsubmit\.co\//,async route=>{
+  const incoming=route.request();submitted=await new Request(incoming.url(),{method:'POST',headers:incoming.headers(),body:incoming.postDataBuffer()}).formData();
+  await route.fulfill({status:201,contentType:'application/json',body:JSON.stringify({saved:true,reference:'MXP-20261104-0123456789ABCDEF0123'})});
  });
  await page.locator('[type="submit"]').click();await page.waitForURL('**/thank-you*');await page.waitForTimeout(100);
- const submitted=new URLSearchParams(payload);assert.equal(submitted.get('Phone'),'+1 5550100123');assert.equal(submitted.get('Product'),products[0].name);assert(submitted.get('Inquiry reference'));
+ assert.equal(submitted.get('Phone'),'+1 5550100123');assert.equal(submitted.get('Product'),products[0].name);assert(submitted.get('Inquiry reference'));
  const events=()=>page.evaluate(()=>window.dataLayer.filter(args=>args[0]==='event').map(args=>({name:args[1],params:args[2]})));
- const leads=(await events()).filter(e=>e.name==='generate_lead');assert.equal(leads.length,1);
+ const leads=(await events()).filter(e=>e.name==='inquiry_saved');assert.equal(leads.length,1);
  assert(!JSON.stringify(leads).includes('qa-buyer'));assert(!JSON.stringify(leads).includes('5550100123'));
  await page.reload();assert.equal((await events()).filter(e=>e.name==='generate_lead').length,0);
  await page.goto(base+'/thank-you');assert.equal((await events()).filter(e=>e.name==='generate_lead').length,0);
  assert.deepEqual(errors,[]);
- fs.writeFileSync(path.join(output,'catalog-qa.json'),JSON.stringify({products:products.length,viewports:[1440,768,390,360],checks:['filters','search','empty state','sort',`${products.length} unique details`,'all hero images','matching FAQs','quote context','required phone','E.164 phone payload','no real emails sent','provider return lead','refresh/direct no false lead','no PII in lead event'],passed:true},null,2));
+ fs.writeFileSync(path.join(output,'catalog-qa.json'),JSON.stringify({products:products.length,viewports:[1440,768,390,360],checks:['filters','search','empty state','sort',`${products.length} unique details`,'all hero images','matching FAQs','quote context','required phone','E.164 phone payload','no real emails sent','server-saved inquiry event','refresh/direct no false lead','no PII in lead event'],passed:true},null,2));
  console.log(`PASS: ${products.length} product pages, catalog controls, four viewports and intercepted inquiry lifecycle. No email was sent.`);
  await browser.close();
 })().catch(e=>{console.error(e);process.exit(1)});

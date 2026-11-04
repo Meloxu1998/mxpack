@@ -27,7 +27,7 @@ const server=http.createServer((req,res)=>{
   for(const mobile of [false,true]){
    const context=await browser.newContext(mobile?{viewport:{width:390,height:844},isMobile:true,hasTouch:true,userAgent:'Mozilla/5.0 (Linux; Android 13; Pixel 7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36'}:{viewport:{width:1440,height:1000}});
    await context.route(/googletagmanager\.com|google-analytics\.com/,route=>route.fulfill({status:200,body:''}));
-   await context.route('https://formsubmit.co/**',route=>{formPosts++;return route.abort()});
+   await context.route(/\/api\/inquiry(?:\?|$)|^https:\/\/formsubmit\.co\//,route=>{formPosts++;return route.abort()});
    const page=await context.newPage();const errors=[];page.on('pageerror',error=>errors.push(error.message));
    for(const guide of guides){
     await page.goto(`${base}/resources`);
@@ -74,7 +74,7 @@ const server=http.createServer((req,res)=>{
     assert.equal(await page.locator('input[name="Inquiry source"]').inputValue(),`/${guide.slug}`);
     assert.equal(await page.locator('input[name="Product page"]').inputValue(),`https://mxpackpro.com/products/${guide.product}`);
     assert((await page.locator('#message').inputValue()).trim().length>0);
-    assert.equal(await page.locator('[data-quote-form]').getAttribute('action'),'https://formsubmit.co/sales@mxpackpro.com');
+    assert.equal(await page.locator('[data-quote-form]').getAttribute('action'),'/api/inquiry');
     for(const slug of guide.related){
      await page.goto(`${base}/products/${slug}`);
      assert(await page.locator(`main a[href="/${guide.slug}"]`).count());

@@ -2,7 +2,7 @@ import {createRequire} from 'node:module';
 const require = createRequire(import.meta.url);
 const state = require('../assets/js/url-state.js');
 export const interactionVersion = '20261028-state1';
-export const inquiryVersion = '20261104-receipt1';
+export const inquiryVersion = '20261104-receipt2';
 
 export function compactInteractionLink(reference, page, htmlAttribute = false) {
   const raw = htmlAttribute ? reference.replaceAll('&amp;', '&') : reference;

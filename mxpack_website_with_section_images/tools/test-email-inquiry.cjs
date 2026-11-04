@@ -3,7 +3,7 @@ const fs=require('node:fs');
 const path=require('node:path');
 const http=require('node:http');
 const assert=require('node:assert/strict');
-const root=process.cwd(),out='D:/mxpack-audits/2026-10-23/email-inquiry';
+const root=process.cwd(),out=process.env.QA_OUTPUT||'D:/mxpack-audits/2026-10-23/email-inquiry';
 const server=http.createServer((req,res)=>{
  let file=path.resolve(root,'.'+(new URL(req.url,'http://localhost').pathname==='/'?'/index.html':new URL(req.url,'http://localhost').pathname));
  if(!path.extname(file))file+='.html';
@@ -20,7 +20,7 @@ const server=http.createServer((req,res)=>{
   for(const width of [1440,390]){
    const context=await browser.newContext({viewport:{width,height:width===390?844:1000},isMobile:width===390,hasTouch:width===390,userAgent:width===390?'Mozilla/5.0 (Linux; Android 13) AppleWebKit/537.36 Chrome/130.0.0.0 Mobile Safari/537.36':undefined});
    await context.route(/googletagmanager\.com|google-analytics\.com/,r=>r.fulfill({status:200,body:''}));
-   await context.route('https://formsubmit.co/**',r=>{formRequests++;return r.abort()});
+   await context.route(/\/api\/inquiry(?:\?|$)|^https:\/\/formsubmit\.co\//,r=>{formRequests++;return r.abort()});
    const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
    for(const pathname of ['/','/products/custom-printed-corrugated-mailer','/bbq-meal-packaging-buying-guide','/get-a-quote']){
     if(width===390&&pathname==='/get-a-quote')continue;
@@ -43,7 +43,7 @@ const server=http.createServer((req,res)=>{
     assert(await dialog.evaluate(e=>e.scrollWidth<=e.clientWidth+1));
     const form=dialog.locator('form');
     assert(await form.evaluate(f=>!f.checkValidity()),'Empty required fields should be invalid');
-    assert.equal(await form.getAttribute('action'),'https://formsubmit.co/sales@mxpackpro.com');
+    assert.equal(await form.getAttribute('action'),'/api/inquiry');
     assert.equal(await form.locator('[name="Inquiry source"]').inputValue(),pathname);
     if(pathname.startsWith('/products/')){
      assert.equal(await form.locator('[name="Product page"]').inputValue(),'https://mxpackpro.com'+pathname);
@@ -65,12 +65,12 @@ const server=http.createServer((req,res)=>{
     await form.locator('[name="email"]').fill('preview@example.com');
     await form.locator('[name="Company Name"]').fill('Preview only');
     await form.locator('[name="Message"]').fill('Local validation only; no message is sent.');
-    // Replace native transmission before exercising the submit handler. No network send occurs.
-    await page.evaluate(()=>{window.previewPayloads=[];HTMLFormElement.prototype.submit=function(){window.previewPayloads.push(Object.fromEntries(new FormData(this)));};});
+    // Replace fetch before exercising the handler; this promise never sends a request.
+    await page.evaluate(()=>{window.previewPayloads=[];window.fetch=async(url,options)=>{window.previewPayloads.push(Object.fromEntries(options.body));return new Promise(()=>{});};});
     await form.locator('[type="submit"]').click();
     await page.waitForFunction(()=>window.previewPayloads.length===1);
     const payload=await page.evaluate(()=>window.previewPayloads[0]);
-    assert(payload['Inquiry reference']);assert(payload._next.includes(encodeURIComponent(payload['Inquiry reference'])));
+    assert(payload['Inquiry reference']);assert(!payload._next);
     assert.equal(payload['Inquiry source'],pathname);assert(!Object.hasOwn(payload,'Phone'));
     assert.equal(await form.locator('[type="submit"]').isDisabled(),true);
     results.push({width,pathname,source:payload['Inquiry source'],product:payload.Product||null,referenceGenerated:true,transmission:'replaced with local spy'});

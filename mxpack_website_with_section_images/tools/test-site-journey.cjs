@@ -10,7 +10,7 @@ const files = [...fs.readdirSync('.').filter(f => f.endsWith('.html')), ...fs.re
     const context = await browser.newContext();
     await context.addInitScript(() => localStorage.setItem('mxpackContactPromptDismissedAt', Date.now()));
     await context.route(/googletagmanager\.com|google-analytics\.com/, r => r.fulfill({status:200, body:''}));
-    await context.route('https://formsubmit.co/**', r => r.abort());
+    await context.route(/\/api\/inquiry(?:\?|$)|^https:\/\/formsubmit\.co\//, r => r.abort());
     const page = await context.newPage();
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));

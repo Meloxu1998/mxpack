@@ -1,5 +1,5 @@
 const VERSION = '20261104-receipt1';
-const MAX_BODY = 24576;
+const MAX_BODY = 65536;
 const RETENTION_SECONDS = 30 * 86400;
 const RETRY_DELAYS = [60, 300, 900, 3600, 10800, 21600, 43200, 86400];
 const UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;

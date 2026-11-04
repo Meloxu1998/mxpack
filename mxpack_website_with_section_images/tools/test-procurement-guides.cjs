@@ -26,7 +26,7 @@ const server=http.createServer((req,res)=>{
  try{
   const page=await browser.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.route(/googletagmanager\.com|google-analytics\.com/,r=>r.fulfill({status:200,body:''}));
-  await page.route('https://formsubmit.co/**',r=>r.abort());
+  await page.route(/\/api\/inquiry(?:\?|$)|^https:\/\/formsubmit\.co\//,r=>r.abort());
   for(const guide of guides){
    assert(!fs.existsSync(`${guide.slug}.html`),'Draft must not be published before its schedule');
    for(const width of [390,1440]){

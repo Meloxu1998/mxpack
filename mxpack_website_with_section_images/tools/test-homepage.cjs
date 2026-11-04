@@ -11,7 +11,7 @@ fs.mkdirSync(output,{recursive:true});
  try{
   const context=await browser.newContext();
   await context.route(/googletagmanager\.com|google-analytics\.com/,r=>r.fulfill({status:200,body:''}));
-  await context.route('https://formsubmit.co/**',r=>r.abort());
+  await context.route(/\/api\/inquiry(?:\?|$)|^https:\/\/formsubmit\.co\//,r=>r.abort());
   const page=await context.newPage();const errors=[];page.on('pageerror',error=>errors.push(error.message));
   const results=[];
   for(const width of [360,390,768,1024,1101,1200,1280,1440,1920,2560]){

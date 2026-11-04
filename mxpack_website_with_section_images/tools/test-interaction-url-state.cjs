@@ -93,7 +93,7 @@ const formData = async locator => {
         assert.equal(data.Product, expected.name);
         assert.equal(data['Product page'], `https://mxpackpro.com/products/${expected.slug}`);
         if (source) assert.equal(data['Inquiry source'], source);
-        assert.equal(await page.locator('#quote-form').getAttribute('action'), 'https://formsubmit.co/sales@mxpackpro.com');
+        assert.equal(await page.locator('#quote-form').getAttribute('action'), '/api/inquiry');
         assert(!await page.evaluate(() => document.documentElement.scrollWidth > innerWidth + 1));
         return data;
       };
@@ -168,7 +168,7 @@ const formData = async locator => {
       const modalData = await formData(modal.locator('form'));
       assert.equal(modalData.Product, sample.name);
       assert.equal(modalData['Inquiry source'], '/products/' + sample.slug);
-      assert.equal(await modal.locator('form').getAttribute('action'), 'https://formsubmit.co/sales@mxpackpro.com');
+      assert.equal(await modal.locator('form').getAttribute('action'), '/api/inquiry');
       await page.screenshot({path:path.join(out, `${process.env.QA_BASE ? 'live' : 'local'}-email-${width}.png`)});
       await page.keyboard.press('Escape');
       await link.click();

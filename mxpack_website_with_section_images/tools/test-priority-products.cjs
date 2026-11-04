@@ -12,7 +12,7 @@ fs.mkdirSync(output, {recursive: true});
     const page = await browser.newPage();
     const errors = [];
     page.on('pageerror', error => errors.push(error.message));
-    await page.route('https://formsubmit.co/**', route => route.abort());
+    await page.route(/\/api\/inquiry(?:\?|$)|^https:\/\/formsubmit\.co\//, route => route.abort());
     await page.route(/googletagmanager\.com|google-analytics\.com/, route => route.fulfill({status:200, body:''}));
     const sitemap = await (await page.request.get(`${base}/sitemap.xml`)).text();
     const catalog = await (await page.request.get(`${base}/products`)).text();

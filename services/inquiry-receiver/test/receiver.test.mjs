@@ -65,7 +65,7 @@ for (const [req, status] of [
   [request({Message:''}), 400],
   [request({'Inquiry source':'https://evil.example/'}), 400],
   [request({'Inquiry reference':'not-a-uuid'}), 400],
-  [request({}, {body:'x'.repeat(24577), headers:{'Content-Type':'application/x-www-form-urlencoded'}}), 413],
+  [request({}, {body:'x'.repeat(65537), headers:{'Content-Type':'application/x-www-form-urlencoded'}}), 413],
   [request({}, {body:'{}', headers:{'Content-Type':'application/json'}}), 415]
 ]) assert.equal((await receive(req, f.env, f.ctx)).status, status);
 assert.equal(f.sqlite.prepare('SELECT COUNT(*) AS n FROM inquiries').get().n, 1);

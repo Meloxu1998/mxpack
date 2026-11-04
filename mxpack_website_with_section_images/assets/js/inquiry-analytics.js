@@ -230,9 +230,13 @@
           throw new Error(result.error || 'unconfirmed');
         }
         storage.remove('mxpackPendingInquiry');
-        storage.set('mxpackSavedInquiry', {reference:result.reference, at:Date.now()});
-        window.mxpackTrack('inquiry_saved', {...eventContext, lead_confirmation:'server_saved'});
-        location.assign(`/thank-you#request=${encodeURIComponent(result.reference)}`);
+        storage.set('mxpackSavedInquiry', {reference:result.reference, at:Date.now(), context:eventContext});
+        if (storage.get('mxpackSavedInquiry')?.reference === result.reference) {
+          location.assign(`/thank-you#request=${encodeURIComponent(result.reference)}`);
+        } else {
+          status.textContent = `Your inquiry has been saved. Reference: ${result.reference}. Email notification is handled separately.`;
+          form.removeAttribute('aria-busy');
+        }
       } catch (error) {
         submitting = false;
         if (button) button.disabled = false;
@@ -262,6 +266,10 @@
       if (heading) heading.textContent = 'Thank you. Your packaging brief has been saved.';
       const receipt = document.querySelector('[data-inquiry-receipt]');
       if (receipt) { receipt.hidden = false; receipt.textContent = `Your reference: ${saved.reference}. Email notification is handled separately.`; }
+      if (!saved.tracked) {
+        window.mxpackTrack('inquiry_saved', {...saved.context, lead_confirmation:'server_saved'});
+        storage.set('mxpackSavedInquiry', {...saved, tracked:true});
+      }
     }
     if (token) history.replaceState(null, '', location.pathname);
   }

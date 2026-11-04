@@ -26,7 +26,7 @@ const server = http.createServer((req, res) => {
     for (const width of [1440, 390]) {
       const context = await browser.newContext({viewport:{width, height:1000}, isMobile:width === 390, hasTouch:width === 390});
       await context.route(/googletagmanager\.com|google-analytics\.com/, route => route.fulfill({status:200, body:''}));
-      await context.route('https://formsubmit.co/**', route => {transmissions++; return route.abort();});
+      await context.route(/\/api\/inquiry(?:\?|$)|^https:\/\/formsubmit\.co\//, route => {transmissions++; return route.abort();});
       const page = await context.newPage();
       page.setDefaultTimeout(20000);
       page.setDefaultNavigationTimeout(30000);
@@ -72,14 +72,14 @@ const server = http.createServer((req, res) => {
       const modal = page.locator('.email-inquiry-dialog[open] form');
       await modal.waitFor({state:'visible'});
       assert.equal(await modal.locator('[name="Inquiry source"]').inputValue(), '/materials-food-safety');
-      assert.equal(await modal.getAttribute('action'), 'https://formsubmit.co/sales@mxpackpro.com');
+      assert.equal(await modal.getAttribute('action'), '/api/inquiry');
       const whatsapp = await page.locator('.email-inquiry-dialog[open] [data-whatsapp]').getAttribute('href');
       assert(whatsapp.includes('8615918968149'));
       await page.keyboard.press('Escape');
       await page.locator('main a[href="get-a-quote"]').first().click();
       await page.locator('#quote-form [name="Inquiry source"]').waitFor({state:'attached'});
       assert.equal(await page.locator('#quote-form [name="Inquiry source"]').inputValue(), '/materials-food-safety');
-      assert.equal(await page.locator('#quote-form').getAttribute('action'), 'https://formsubmit.co/sales@mxpackpro.com');
+      assert.equal(await page.locator('#quote-form').getAttribute('action'), '/api/inquiry');
       assert.deepEqual(errors, []);
       results.push({width, canonical:true, images:true, faqSchema:true, references:true, modalSource:true, quoteSource:true});
       await context.close();

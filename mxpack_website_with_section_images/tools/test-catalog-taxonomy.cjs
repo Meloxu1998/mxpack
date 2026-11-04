@@ -16,7 +16,7 @@ fs.mkdirSync(output,{recursive:true});
  try{
   const page=await browser.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
   await page.route(/googletagmanager\.com|google-analytics\.com/,r=>r.fulfill({status:200,body:''}));
-  await page.route('https://formsubmit.co/**',r=>r.abort());
+  await page.route(/\/api\/inquiry(?:\?|$)|^https:\/\/formsubmit\.co\//,r=>r.abort());
   const results=[];
   for(const width of [360,390,768,1024,1440,1920]){
    await page.setViewportSize({width,height:1000});await page.goto(base+'/');

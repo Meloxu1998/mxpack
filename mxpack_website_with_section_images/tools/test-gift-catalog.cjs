@@ -29,7 +29,7 @@ const output='D:/mxpack-audits/2026-10-21/gift-catalog';
    const mobile=width<500;
    const context=await browser.newContext({viewport:{width,height:960},isMobile:mobile,hasTouch:mobile,userAgent:mobile?'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 Version/17.0 Mobile/15E148 Safari/604.1':undefined});
    await context.route(/googletagmanager\.com|google-analytics\.com/,r=>r.fulfill({status:200,body:''}));
-   await context.route('https://formsubmit.co/**',r=>r.abort());
+   await context.route(/\/api\/inquiry(?:\?|$)|^https:\/\/formsubmit\.co\//,r=>r.abort());
    const page=await context.newPage();page.on('pageerror',e=>pageErrors.push(e.message));
    for(const p of additions){
     const response=await page.goto(`${base}/products/${p.slug}`);assert.equal(response.status(),200);

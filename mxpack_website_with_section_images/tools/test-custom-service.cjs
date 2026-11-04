@@ -15,7 +15,7 @@ const server=http.createServer((req,res)=>{
   for(const width of [1920,1440,1024,768,390,360]){
    const c=await browser.newContext({viewport:{width,height:width<=600?844:1000},isMobile:width<=600,hasTouch:width<=600});
    await c.route(/googletagmanager\.com|google-analytics\.com/,r=>r.fulfill({status:200,body:''}));
-   await c.route('https://formsubmit.co/**',r=>{sent++;return r.abort()});
+   await c.route(/\/api\/inquiry(?:\?|$)|^https:\/\/formsubmit\.co\//,r=>{sent++;return r.abort()});
    const p=await c.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));
    const response=await p.goto(base+'/custom-packaging',{waitUntil:'networkidle'});assert.equal(response.status(),200);
    assert.equal(await p.locator('h1').count(),1);assert.equal(await p.locator('h1').innerText(),'Custom packaging.');
@@ -48,7 +48,7 @@ const server=http.createServer((req,res)=>{
    if([1440,390].includes(width))await p.locator('#capabilities').screenshot({path:`${out}/${process.env.QA_BASE?'live':'local'}-capabilities-${width}.png`});
    await p.locator('.service-hero a[href="#quote-form"]').click();
    const f=p.locator('#custom-quote-form');await f.scrollIntoViewIfNeeded();
-   assert.equal(await f.getAttribute('action'),'https://formsubmit.co/sales@mxpackpro.com');
+   assert.equal(await f.getAttribute('action'),'/api/inquiry');
    assert.equal(await f.locator('[name="Inquiry source"]').inputValue(),'/custom-packaging');
    assert(await p.locator('.contact-methods a[data-whatsapp]').isVisible());
    assert(await p.locator('.contact-methods a[href^="mailto:"]').isVisible());

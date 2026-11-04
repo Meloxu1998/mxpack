@@ -22,7 +22,7 @@ const server=http.createServer((req,res)=>{
   for(const width of [1440,390]){
    const context=await browser.newContext({viewport:{width,height:1000},isMobile:width===390,hasTouch:width===390});
    await context.route(/googletagmanager\.com|google-analytics\.com/,r=>r.fulfill({status:200,body:''}));
-   await context.route('https://formsubmit.co/**',r=>{outbound++;return r.abort()});
+   await context.route(/\/api\/inquiry(?:\?|$)|^https:\/\/formsubmit\.co\//,r=>{outbound++;return r.abort()});
    const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
    for(const [slug,label] of Object.entries(families)){
     await page.goto(base+'/'+slug,{waitUntil:'networkidle'});
@@ -49,7 +49,7 @@ const server=http.createServer((req,res)=>{
     assert.equal(await form.locator('[name="Product"]').count(),0);
     assert((await form.locator('[name="Message"]').inputValue()).includes(label));
     assert((await form.locator('[name="_subject"]').inputValue()).includes(label));
-    assert.equal(await form.getAttribute('action'),'https://formsubmit.co/sales@mxpackpro.com');
+    assert.equal(await form.getAttribute('action'),'/api/inquiry');
     results.push({width,slug,categoryPrefill:true,sourcePreserved:true});
    }
    await page.goto(base+'/get-a-quote?product=pizza-boxes',{waitUntil:'networkidle'});

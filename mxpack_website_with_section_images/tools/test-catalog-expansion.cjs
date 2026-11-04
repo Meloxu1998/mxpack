@@ -26,7 +26,7 @@ const output='D:/mxpack-audits/2026-10-21/catalog-expansion';
  try{
   const context=await browser.newContext();
   await context.route(/googletagmanager\.com|google-analytics\.com/,r=>r.fulfill({status:200,body:''}));
-  await context.route('https://formsubmit.co/**',r=>r.abort());
+  await context.route(/\/api\/inquiry(?:\?|$)|^https:\/\/formsubmit\.co\//,r=>r.abort());
   const page=await context.newPage();
   for(const width of [1440,390,360]){
    await page.setViewportSize({width,height:900});

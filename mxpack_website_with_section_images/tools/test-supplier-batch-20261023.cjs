@@ -22,7 +22,7 @@ const server=http.createServer((req,res)=>{
   for(const width of [1440,390]){
    const context=await browser.newContext({viewport:{width,height:1000},isMobile:width===390,hasTouch:width===390});
    await context.route(/googletagmanager\.com|google-analytics\.com/,r=>r.fulfill({status:200,body:''}));
-   await context.route('https://formsubmit.co/**',r=>{outgoing++;return r.abort()});
+   await context.route(/\/api\/inquiry(?:\?|$)|^https:\/\/formsubmit\.co\//,r=>{outgoing++;return r.abort()});
    const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
    await page.goto(base+'/products',{waitUntil:'networkidle'});
    assert.equal(await page.locator('.catalog-card').count(),products.length);
@@ -49,7 +49,7 @@ const server=http.createServer((req,res)=>{
     await page.locator('#quote-form [name="Product"]').waitFor({state:'attached'});
     assert.equal(await page.locator('#quote-form [name="Product"]').inputValue(),p.name);
     assert.equal(await page.locator('#quote-form [name="Inquiry source"]').inputValue(),'/products/'+p.slug);
-    assert.equal(await page.locator('#quote-form').getAttribute('action'),'https://formsubmit.co/sales@mxpackpro.com');
+    assert.equal(await page.locator('#quote-form').getAttribute('action'),'/api/inquiry');
     results.push({width,slug:p.slug,canonical:true,image:true,faqSchema:true,quoteAttribution:true});
    }
    assert.deepEqual(errors,[]);await context.close();
