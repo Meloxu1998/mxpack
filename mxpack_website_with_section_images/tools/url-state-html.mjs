@@ -2,6 +2,7 @@ import {createRequire} from 'node:module';
 const require = createRequire(import.meta.url);
 const state = require('../assets/js/url-state.js');
 export const interactionVersion = '20261028-state1';
+export const inquiryVersion = '20261104-receipt1';
 
 export function compactInteractionLink(reference, page, htmlAttribute = false) {
   const raw = htmlAttribute ? reference.replaceAll('&amp;', '&') : reference;
@@ -34,7 +35,8 @@ export function compactInteractionHtml(html, page) {
     return changed ? start + JSON.stringify(data).replaceAll('<', '\\u003c') + end : match;
   });
   html = html.replace(/(<script\b[^>]*src=['"])([^'"]*assets\/js\/(?:inquiry-analytics|products-catalog-v2|product-reference-gallery|url-state)\.js)(?:\?[^'"]*)?(['"][^>]*><\/script>)/g,
-    (match, start, src, end) => `${start}${src}?v=${interactionVersion}${end}`);
+    (match, start, src, end) => `${start}${src}?v=${src.endsWith('/inquiry-analytics.js') ? inquiryVersion : interactionVersion}${end}`);
+  html = html.replaceAll('action="https://formsubmit.co/sales@mxpackpro.com"', 'action="/api/inquiry"');
   if (!/src=['"][^'"]*assets\/js\/url-state\.js/.test(html)) {
     html = html.replace(/<script\b[^>]*src=['"][^'"]*assets\/js\/inquiry-analytics\.js[^>]*><\/script>/,
       match => `<script src="/assets/js/url-state.js?v=${interactionVersion}"></script>\n` + match);

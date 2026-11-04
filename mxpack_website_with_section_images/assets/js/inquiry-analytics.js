@@ -46,17 +46,15 @@
 
   const modalStyle = document.createElement('link');
   modalStyle.rel = 'stylesheet';
-  modalStyle.href = '/assets/css/email-inquiry.css?v=20261023-1';
+  modalStyle.href = '/assets/css/email-inquiry.css?v=20261104-receipt1';
   document.head.append(modalStyle);
   const dialog = document.createElement('dialog');
   dialog.className = 'email-inquiry-dialog';
   dialog.setAttribute('aria-labelledby', 'email-inquiry-title');
   dialog.innerHTML = `
     <div class="email-inquiry-heading"><div><p class="email-inquiry-eyebrow">MXPACKPRO</p><h2 id="email-inquiry-title">Tell us about your packaging.</h2></div><button type="button" data-email-inquiry-close aria-label="Close inquiry form" title="Close inquiry form"><i class="icon" data-lucide="x" aria-hidden="true"></i></button></div>
-    <form action="https://formsubmit.co/sales@mxpackpro.com" method="POST" data-quote-form data-email-inquiry>
+    <form action="/api/inquiry" method="POST" data-quote-form data-email-inquiry>
       <input type="hidden" name="_subject" value="New MXPACKPRO website inquiry">
-      <input type="hidden" name="_template" value="basic"><input type="hidden" name="_captcha" value="false">
-      <input type="hidden" name="_next" value="https://mxpackpro.com/thank-you">
       <input type="text" name="_honey" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="email-inquiry-fields"><div><label for="email-inquiry-name">Full name <span aria-hidden="true">*</span></label><input id="email-inquiry-name" name="Name" required autocomplete="name" maxlength="160"></div><div><label for="email-inquiry-email">Email <span aria-hidden="true">*</span></label><input id="email-inquiry-email" name="email" type="email" required autocomplete="email" maxlength="254"></div></div>
       <div class="email-inquiry-field"><label for="email-inquiry-company">Company</label><input id="email-inquiry-company" name="Company Name" autocomplete="organization" maxlength="200"></div>
@@ -183,6 +181,14 @@
     for (const [key,value] of Object.entries(landing.campaign || {})) setHidden(key, value);
     let started = false;
     let submitting = false;
+    let submissionToken = '';
+    let previousBrief = '';
+    const status = document.createElement('p');
+    status.className = 'inquiry-status';
+    status.setAttribute('role', 'status');
+    status.setAttribute('aria-live', 'polite');
+    status.hidden = true;
+    form.append(status);
     const eventContext = { product_id: formProductId || 'general', category_id: formCategoryId || '', source_page: sourcePage, entry_point: entryPoint, form_name: isEmailInquiry ? 'email_inquiry' : 'quote_request' };
     form.addEventListener('focusin', () => {
       if (started) return;
@@ -196,25 +202,47 @@
       event.formData.set('Phone', phone.startsWith('+') ? phone : `${code} ${phone}`.trim());
       event.formData.delete('Country Code');
     });
-    form.addEventListener('submit', event => {
+    form.addEventListener('submit', async event => {
       if (!form.checkValidity()) return;
       event.preventDefault();
       if (submitting) return;
       submitting = true;
-      const token = crypto.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
-      setHidden('Inquiry reference', token);
-      setHidden('_next', `https://mxpackpro.com/thank-you?request=${encodeURIComponent(token)}`);
-      storage.set('mxpackPendingInquiry', { token, at: Date.now(), context: eventContext });
+      const brief = JSON.stringify(Array.from(new FormData(form)).filter(([key]) => key !== 'Inquiry reference' && key !== '_next'));
+      if (!submissionToken || previousBrief !== brief) {
+        submissionToken = crypto.randomUUID();
+        previousBrief = brief;
+      }
+      setHidden('Inquiry reference', submissionToken);
       const button = form.querySelector('[type="submit"]');
       if (button) button.disabled = true;
-      let sent = false;
-      const send = () => {
-        if (sent) return;
-        sent = true;
-        HTMLFormElement.prototype.submit.call(form);
-      };
-      window.mxpackTrack('form_submit', { ...eventContext, event_callback: send, event_timeout: 700 });
-      setTimeout(send, 800);
+      form.setAttribute('aria-busy', 'true');
+      status.hidden = false;
+      status.textContent = 'Saving your inquiry...';
+      status.removeAttribute('data-error');
+      window.mxpackTrack('form_submit', {...eventContext, submission_stage:'attempt'});
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 15000);
+      try {
+        const response = await fetch('/api/inquiry', {method:'POST', body:new FormData(form),
+          headers:{Accept:'application/json'}, credentials:'same-origin', signal:controller.signal});
+        const result = await response.json();
+        if (!response.ok || !result.saved || !/^MXP-\d{8}-[A-F0-9]{20}$/.test(result.reference)) {
+          throw new Error(result.error || 'unconfirmed');
+        }
+        storage.remove('mxpackPendingInquiry');
+        storage.set('mxpackSavedInquiry', {reference:result.reference, at:Date.now()});
+        window.mxpackTrack('inquiry_saved', {...eventContext, lead_confirmation:'server_saved'});
+        location.assign(`/thank-you#request=${encodeURIComponent(result.reference)}`);
+      } catch (error) {
+        submitting = false;
+        if (button) button.disabled = false;
+        form.removeAttribute('aria-busy');
+        status.dataset.error = 'true';
+        status.textContent = error.message === 'please_contact_directly'
+          ? 'We could not accept another request right now. Your details remain here. Please email sales@mxpackpro.com or use WhatsApp.'
+          : 'We could not confirm receipt. Your details remain here. Please retry, or email sales@mxpackpro.com. Retrying the same brief will not create a second inquiry.';
+        window.mxpackTrack('inquiry_error', {...eventContext, submission_stage:'unconfirmed'});
+      } finally { clearTimeout(timeout); }
     });
     window.addEventListener('pageshow', () => {
       submitting = false;
@@ -227,12 +255,13 @@
   document.addEventListener('DOMContentLoaded', () => { if (!dialog.open) dialog.remove(); }, {once:true});
 
   if (/\/thank-you(?:\.html)?\/?$/.test(location.pathname)) {
-    const pending = storage.get('mxpackPendingInquiry');
-    const token = query.get('request');
-    // A provider return with the matching pending submission is not proof of mailbox delivery.
-    if (pending && token === pending.token && Date.now() - pending.at < 2 * 60 * 60 * 1000) {
-      storage.remove('mxpackPendingInquiry');
-      window.mxpackTrack('generate_lead', { ...pending.context, lead_confirmation: 'provider_return' });
+    const saved = storage.get('mxpackSavedInquiry');
+    const token = new URLSearchParams(location.hash.slice(1)).get('request') || query.get('request');
+    if (saved && token === saved.reference && Date.now() - saved.at < 2 * 60 * 60 * 1000) {
+      const heading = document.querySelector('[data-inquiry-result-title]');
+      if (heading) heading.textContent = 'Thank you. Your packaging brief has been saved.';
+      const receipt = document.querySelector('[data-inquiry-receipt]');
+      if (receipt) { receipt.hidden = false; receipt.textContent = `Your reference: ${saved.reference}. Email notification is handled separately.`; }
     }
     if (token) history.replaceState(null, '', location.pathname);
   }

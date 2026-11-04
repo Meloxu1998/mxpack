@@ -3,7 +3,7 @@ import path from 'node:path';
 import assert from 'node:assert/strict';
 import {createRequire} from 'node:module';
 import {fileURLToPath} from 'node:url';
-import {interactionVersion} from './url-state-html.mjs';
+import {interactionVersion, inquiryVersion} from './url-state-html.mjs';
 const state = createRequire(import.meta.url)('../assets/js/url-state.js');
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const out = process.env.QA_OUTPUT;
@@ -21,7 +21,8 @@ const normalizeEdgeHtml = text => normalize(text)
   .replace(/<script data-cfasync="false" src="\/cdn-cgi\/scripts\/[a-f0-9]+\/cloudflare-static\/email-decode\.min\.js"><\/script>/g, '');
 const assets = [];
 for (const name of ['url-state', 'inquiry-analytics', 'products-catalog-v2', 'product-reference-gallery']) {
-  const response = await fetch(`${base}/assets/js/${name}.js?v=${interactionVersion}`);
+  const version = name === 'inquiry-analytics' ? inquiryVersion : interactionVersion;
+  const response = await fetch(`${base}/assets/js/${name}.js?v=${version}`);
   assert.equal(response.status, 200, name);
   assert.equal(normalize(await response.text()), normalize(fs.readFileSync(path.join(root, `assets/js/${name}.js`), 'utf8')), `Wrong asset body ${name}`);
   assets.push({name, status:200, currentBody:true});

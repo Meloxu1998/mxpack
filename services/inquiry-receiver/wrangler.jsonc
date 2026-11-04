@@ -1,0 +1,17 @@
+{
+  "name": "mxpack-inquiry-receiver",
+  "main": "src/index.mjs",
+  "account_id": "e46afce0136fd0982f9b003bd5d73523",
+  "compatibility_date": "2026-11-04",
+  "workers_dev": false,
+  "preview_urls": false,
+  "send_email": [{ "name": "NOTIFICATIONS" }],
+  "d1_databases": [{
+    "binding": "DB",
+    "database_name": "mxpack-inquiries",
+    "database_id": "f761df6b-9c28-4aaf-8e31-33cd53e48529"
+  }],
+  "triggers": { "crons": ["*/5 * * * *"] },
+  "observability": { "enabled": false },
+  "vars": { "ALLOWED_ORIGIN": "https://mxpackpro.com" }
+}

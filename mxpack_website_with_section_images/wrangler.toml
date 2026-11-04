@@ -1,0 +1,8 @@
+name = "mxpack"
+pages_build_output_dir = "."
+compatibility_date = "2026-07-06"
+
+[env.production]
+[[env.production.services]]
+binding = "INQUIRIES"
+service = "mxpack-inquiry-receiver"

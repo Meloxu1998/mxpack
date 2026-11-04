@@ -3,6 +3,12 @@ const withdrawnPath = '/products/custom-christmas-cracker-favor-box';
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if (url.pathname === '/api/inquiry') {
+      if (!env.INQUIRIES) {
+        return Response.json({error:'temporarily_unavailable'}, {status:503, headers:{'Cache-Control':'no-store', 'X-Robots-Tag':'noindex'}});
+      }
+      return env.INQUIRIES.fetch(request);
+    }
     if (![withdrawnPath, `${withdrawnPath}/`, `${withdrawnPath}.html`].includes(url.pathname)) {
       return env.ASSETS.fetch(request);
     }

@@ -3,7 +3,8 @@
   "include": [
     "/products/custom-christmas-cracker-favor-box",
     "/products/custom-christmas-cracker-favor-box/",
-    "/products/custom-christmas-cracker-favor-box.html"
+    "/products/custom-christmas-cracker-favor-box.html",
+    "/api/inquiry"
   ],
   "exclude": []
 }
