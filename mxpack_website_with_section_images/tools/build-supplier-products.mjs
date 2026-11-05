@@ -91,6 +91,9 @@ for (const p of products) {
   const selection = p.selectionGuide;
   if (selection && (!selection.title || !selection.intro || !selection.rows?.length || selection.rows.some(row => row.length !== 2))) throw Error(`Invalid buyer selection guide: ${p.slug}`);
   const selectionMarkup = selection ? `<section class="section section-white" data-buyer-selection><div class="container"><p class="eyebrow">Your specification brief</p><h2 class="section-title">${esc(selection.title)}</h2><p class="section-copy">${esc(selection.intro)}</p><table class="spec-table"><thead><tr><th>Project detail</th><th>Include in your brief</th></tr></thead><tbody>${selection.rows.map(row=>`<tr><th scope="row">${esc(row[0])}</th><td>${esc(row[1])}</td></tr>`).join('')}</tbody></table></div></section>` : '';
+  const exportBrief = p.exportBrief;
+  if (exportBrief && (!exportBrief.title || !exportBrief.intro || !exportBrief.checks?.length)) throw Error(`Invalid export brief: ${p.slug}`);
+  const exportMarkup = exportBrief ? `<section class="section section-white" data-export-brief><div class="container"><p class="eyebrow">Destination and pack-out</p><h2 class="section-title">${esc(exportBrief.title)}</h2><p class="section-copy">${esc(exportBrief.intro)}</p><ul class="check-list">${exportBrief.checks.map(check=>`<li>${esc(check)}</li>`).join('')}</ul></div></section>` : '';
   const pageHead = head.replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(title)}</title>`)
     .replace(/(<meta name="description" content=")[^"]*/, `$1${esc(description)}`)
     .replace(/(<link rel="canonical" href=")[^"]*/, `$1${base}${url(p)}`)
@@ -120,7 +123,7 @@ for (const p of products) {
     {'@type':'FAQPage',mainEntity:faq.map(([q,a])=>({'@type':'Question',name:q,acceptedAnswer:{'@type':'Answer',text:a}}))}];
   const productFooter=p.views?footer.replace('</body>','<script src="/assets/js/product-reference-gallery.js?v=20261021-1"></script></body>'):footer;
   const productBody = (p.quoteBrief ? body.replace('Send your measurements, estimated quantity, artwork status and delivery country. Include the sample checks above and your target date. Pricing is based on the complete specification, not the example image alone.', esc(p.quoteBrief)) : body)
-    .replace('<section class="section section-white"><div class="container"><div class="section-head"><div><p class="eyebrow">Purchasing questions</p>', `${selectionMarkup}<section class="section section-white"><div class="container"><div class="section-head"><div><p class="eyebrow">Purchasing questions</p>`);
+    .replace('<section class="section section-white"><div class="container"><div class="section-head"><div><p class="eyebrow">Purchasing questions</p>', `${selectionMarkup}${exportMarkup}<section class="section section-white"><div class="container"><div class="section-head"><div><p class="eyebrow">Purchasing questions</p>`);
   const html = `<!doctype html>\n<html lang="en"><head>${pageHead}\n${extraCss}\n${schemas.map(schema).join('\n')}</head><body class="product-detail-page" data-product-id="${p.slug}"><a class="skip-link" href="#main">Skip to content</a>${header}${giftMarkup(compactProductMarkup(withReferences(productBody,p),p),p)}${productFooter}`;
   const scopedHtml = p.category === 'cosmetics' ? html
     .replace('Food-contact suitability, coatings, load capacity and any market-specific requirements are confirmed for the final specification. Send your product details before making performance or compliance assumptions.', 'This is secondary outer packaging, not a liquid container or a product-compliance approval. Confirm the primary container, carton fit and required artwork for the destination market; the printed example does not verify labeling or certification.')

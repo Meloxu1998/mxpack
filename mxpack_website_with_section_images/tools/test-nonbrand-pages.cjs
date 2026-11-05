@@ -42,6 +42,19 @@ const server = http.createServer((req, res) => {
         assert.equal(faq.length, 6);
         assert.deepEqual(faq, schema.mainEntity.map(question => ({q:question.name,a:question.acceptedAnswer.text})));
         assert.equal(await page.locator(selector + ' tbody tr').count(), product ? 4 : 3);
+        if (!product || ['custom-burger-clamshell-box', 'corn-dog-paper-sleeve'].includes(product.slug)) {
+          const brief = page.locator('[data-export-brief]');
+          assert.equal(await brief.count(), 1);
+          assert.equal(await brief.locator('li').count(), 3);
+          const text = await brief.innerText();
+          assert(/North America|North American|United States/.test(text));
+          assert(/Middle East|Middle Eastern/.test(text));
+          assert(/millimetres|inches|stated unit/.test(text));
+          assert.equal(await brief.locator('form').count(), 0);
+          await brief.scrollIntoViewIfNeeded();
+          assert(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
+          await brief.screenshot({path:path.join(out, `${process.env.QA_BASE ? 'live' : 'local'}-${width}-${item.path.split('/').pop()}-destination.png`)});
+        }
         if (product?.slug === 'custom-folding-cosmetic-carton') {
           const specifications = await page.locator('#specifications').innerText();
           assert(specifications.includes('secondary outer packaging'));

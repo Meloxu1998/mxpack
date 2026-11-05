@@ -4,6 +4,7 @@ import {fileURLToPath} from 'node:url';
 import {compactInteractionHtml} from './url-state-html.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const data = JSON.parse(fs.readFileSync(path.join(root, 'seo-system/data/burger-category-buying-brief.json'), 'utf8'));
+if (!/^\d{4}-\d{2}-\d{2}$/.test(data.updatedOn)) throw Error('A verified content revision date is required');
 const target = path.join(root, 'burger-boxes.html');
 let html = fs.readFileSync(target, 'utf8');
 const esc = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'}[char]));
@@ -22,13 +23,18 @@ const brief = `<section class="section section-cream" data-burger-buying-brief><
 const briefPattern = /<section\b[^>]*data-burger-buying-brief[^>]*>[\s\S]*?<\/section>|<section class="section section-cream"><div class="container"><div class="section-head"><div><p class="eyebrow">Make it yours<\/p>[\s\S]*?<\/section>/;
 if (!briefPattern.test(html)) throw Error('Expected burger category brief section not found');
 html = html.replace(briefPattern, brief);
+const exportBrief = data.exportBrief;
+if (!exportBrief?.title || !exportBrief.intro || !exportBrief.checks?.length) throw Error('Missing destination quotation brief');
+const exportMarkup = `<section class="section section-white" data-export-brief><div class="container"><p class="eyebrow">Destination and pack-out</p><h2 class="section-title">${esc(exportBrief.title)}</h2><p class="section-copy">${esc(exportBrief.intro)}</p><ul class="check-list">${exportBrief.checks.map(check=>`<li>${esc(check)}</li>`).join('')}</ul></div></section>`;
+if (/\bdata-export-brief\b/.test(html)) html = html.replace(/<section\b[^>]*data-export-brief[^>]*>[\s\S]*?<\/section>/, exportMarkup);
+else html = html.replace(brief, brief + exportMarkup);
 const faq = `<section class="section section-white"><div class="container"><div class="section-head"><div><p class="eyebrow">Frequently asked questions</p><h2 class="section-title">Ordering burger boxes.</h2></div></div><div class="accordion">${data.faq.map(([q,a], i)=>`<details${i === 0 ? ' open' : ''}><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}</div></div></section>`;
 const faqPattern = /<section class="section section-white"><div class="container"><div class="section-head"><div><p class="eyebrow">Frequently asked questions<\/p>[\s\S]*?<\/section>/;
 if (!faqPattern.test(html)) throw Error('Expected burger category FAQ section not found');
 html = html.replace(faqPattern, faq);
 html = html.replace(/(<script type="application\/ld\+json">)([\s\S]*?)(<\/script>)/g, (whole, start, source, end) => {
   const schema = JSON.parse(source);
-  if (schema['@type'] === 'CollectionPage') { schema.description = data.intro; schema.dateModified = '2026-11-04'; }
+  if (schema['@type'] === 'CollectionPage') { schema.description = data.intro; schema.dateModified = data.updatedOn; }
   else if (schema['@type'] === 'FAQPage') schema.mainEntity = data.faq.map(([q,a])=>({'@type':'Question',name:q,acceptedAnswer:{'@type':'Answer',text:a}}));
   else return whole;
   return start + JSON.stringify(schema).replaceAll('<', '\\u003c') + end;

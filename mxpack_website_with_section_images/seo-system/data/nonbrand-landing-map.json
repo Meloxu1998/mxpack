@@ -1,5 +1,6 @@
 {
-  "updated": "2026-11-04",
+  "updated": "2026-11-05",
+  "marketFocus": {"regions":["North America", "Middle East"],"note":"Owner-selected commercial priorities, not evidence of existing traffic, local stock, delivery guarantees or regulatory approval."},
   "searchVolume": null,
   "searchVolumeNote": "No reliable keyword search-volume dataset has been obtained. Priorities use observed query relevance and buyer intent, not estimated search volume.",
   "pages": [

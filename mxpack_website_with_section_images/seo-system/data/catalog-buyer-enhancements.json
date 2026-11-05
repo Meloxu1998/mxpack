@@ -33,6 +33,15 @@
     "seoDescription": "Compare hinged burger boxes by finished burger fit, lid clearance and custom artwork. Send your size, quantity and delivery country for a project quotation.",
     "intro": "This printed burger clamshell is a hinged carton with a tuck closure, specified around one finished burger and its wrapping. Compare the internal footprint, topping clearance and artwork layout on this construction; a bun diameter alone is not a box specification.",
     "quoteBrief": "For a burger-box quotation, send the finished burger diameter and height, wrapping dimensions, quantity per size or artwork, and delivery country. Add a photo of the assembled order and explain whether fries travel separately. Ask us to confirm internal dimensions, closure and sample scope in the same quotation.",
+    "exportBrief": {
+      "title": "Confirm the burger-box pack-out.",
+      "intro": "For a North American or Middle Eastern restaurant enquiry, compare the complete delivered scope as well as the printed carton. Use one approved size and artwork breakdown throughout the brief.",
+      "checks": [
+        "Label the internal length, width and closed height in millimetres or inches. If you supply both units, identify the primary measurement and the conversion. Approve the matching dieline and packed-burger sample rather than assuming a regional standard size.",
+        "List pieces for each box size and artwork version. Confirm how the cartons are supplied for assembly, pieces per export carton and the proposed outer-carton dimensions and weight. Do not infer a shipping configuration from an assembled product photo.",
+        "Give the destination country, city and postcode where used, plus the required arrival date. Ask which freight, clearance and destination charges are included, and request separate sample, production and transit estimates. The written quotation confirms the scope; no delivery date or market approval is implied."
+      ]
+    },
     "selectionGuide": {
       "title": "Build your burger-box specification.",
       "intro": "Start with the order as the customer receives it. Use the same packed burger to compare proposed box dimensions and a structural sample.",
@@ -54,6 +63,15 @@
     "seoDescription": "Plan custom corn dog paper sleeves around coated snack diameter, covered length and stick clearance. Compare size, artwork and sample checks for your order.",
     "intro": "Custom corn dog paper sleeves are open-ended snack packs sized around the finished coating and stick. Measure the thickest coated section and the length you want covered, then review the opening, grip area and printed layout on a sample of the packed snack.",
     "quoteBrief": "Send the finished coated diameter, snack length, exposed stick length and desired sleeve coverage. Include the recipe and packing temperature for a material review, the quantity per design, delivery country and artwork status. Confirm the agreed opening and sample route before comparing quotations.",
+    "exportBrief": {
+      "title": "Approve the serving and export pack together.",
+      "intro": "For a North American or Middle Eastern enquiry, identify the exact destination and the serving you want packed. Sleeve fit, printed quantity and export packing are separate parts of a comparable quotation.",
+      "checks": [
+        "Put millimetres or inches beside the finished opening and covered-length measurements. Check the thickest coated serving on the prototype, including toppings that enter the sleeve. State which dimension is primary if you send a converted second unit.",
+        "Request quantities per printed design and confirm sleeves per bundle, whether they are supplied flat or formed, and the proposed export-carton count, dimensions and weight. These details require quotation confirmation; the reference image is not a stock packing specification.",
+        "Send country, city and postcode where used, required arrival date, food recipe and packing/contact conditions. Identify the material documentation your buyer needs for that destination. Ask the quotation to separate sample, sleeve and transport scope rather than treating a general food-safe claim as evidence for every market."
+      ]
+    },
     "selectionGuide": {
       "title": "Measure the snack, not only the stick.",
       "intro": "Use a finished item from the menu for the size brief. Different coatings and toppings can change the space needed at the sleeve opening.",
@@ -65,7 +83,7 @@
       ]
     },
     "additionalFaq": [
-      ["Which measurements are needed to quote a custom corn dog sleeve?", "Send the coated snack's maximum diameter and length, stick length, desired covered length and a photo of the finished serving. State quantity per printed design and destination. The agreed construction and physical sample establish the final sleeve dimensions."],
+      ["Can one sleeve fit both plain and heavily topped corn dogs?", "Do not assume so. Measure the widest finished coating and any topping that enters the sleeve, along with the covered length and exposed stick. Compare the smallest and largest servings on the proposed sample. Keep an alternative size in the quotation if the same opening does not fit both without forcing the food."],
       ["Is an open corn dog sleeve the same as a closed takeaway box?", "No. This format leaves part of the serving open and is specified around snack presentation and handling. If the order needs a closed outer pack, describe that requirement separately; a sleeve image does not establish delivery protection or holding time."]
     ],
     "relatedSlugs": ["custom-sliding-hot-dog-box", "pastry-pocket-sleeve", "printed-gable-meal-box"]
