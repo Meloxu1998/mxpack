@@ -47,6 +47,13 @@ const server=http.createServer((req,res)=>{
     assert.equal(article.mainEntityOfPage,`https://mxpackpro.com/${guide.slug}`);
     assert.deepEqual(structured.find(item=>item['@type']==='FAQPage').mainEntity.map(q=>[q.name,q.acceptedAnswer.text]),guide.faq);
     assert.equal(await page.locator('.accordion details').count(),guide.faq.length);
+    for(const section of guide.sections){
+     for(const reference of section.references||[]){
+      assert(guide.sources.some(source=>source.url===reference.url),'Inline reference must match a checked source');
+      const sectionElement=page.getByRole('heading',{name:section.heading,exact:true}).locator('..');
+      assert.equal((await sectionElement.locator(`a[href="${reference.url}"]`).textContent()).trim(),reference.title);
+     }
+    }
     await page.evaluate(async()=>{document.querySelectorAll('main img').forEach(img=>img.loading='eager');await Promise.all([...document.querySelectorAll('main img')].map(img=>img.decode()))});
     assert(!await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth+1));
     for(const table of await page.locator('.buyer-table-wrap').all()){

@@ -156,5 +156,103 @@
       {"title": "FDA: Food Types and Conditions of Use for Food Contact Substances", "url": "https://www.fda.gov/food/packaging-food-contact-substances-fcs/food-types-conditions-use-food-contact-substances", "note": "US food-contact reference for defining the intended application; not certification or approval of the illustrated packaging.", "checkedOn": "2026-10-30"},
       {"title": "European Commission: Food Contact Materials", "url": "https://food.ec.europa.eu/food-safety/chemical-safety/food-contact-materials_en", "note": "EU food-contact overview. Documentation and applicable requirements must be reviewed for the final components and use.", "checkedOn": "2026-10-30"}
     ]
+  },
+  {
+    "slug": "grease-resistant-food-packaging-checklist",
+    "plannedPublishOn": "2026-11-05",
+    "researchedOn": "2026-11-05",
+    "title": "Grease-Resistant Food Packaging: A Buyer Checklist",
+    "seoTitle": "Grease-Resistant Food Packaging Checklist | MXPACKPRO",
+    "description": "Compare wraps, burger boxes and snack sleeves. Check grease claims, sample results and destination documents before ordering for the US, Canada or UAE.",
+    "keyword": "grease resistant food packaging checklist",
+    "relatedKeywords": ["grease resistant burger packaging", "food wrapping paper sample checklist", "PFAS food packaging documentation", "corn dog sleeve grease test"],
+    "intent": "Pre-purchase comparison and acceptance criteria for oily-food packs; not a general materials overview, a product listing or a promise of regulatory approval.",
+    "product": "custom-food-wrapping-paper",
+    "related": ["custom-food-wrapping-paper", "custom-burger-clamshell-box", "corn-dog-paper-sleeve"],
+    "supportingLink": {"href": "/materials-food-safety", "label": "Review the broader material and food-contact specification"},
+    "ctaLabel": "Send your food-packaging brief",
+    "intro": "Choose grease-resistant food packaging by reviewing two separate things: how the complete pack performs with your food, and which documents cover its exact food-contact construction and destination. A clean-looking sample does not establish chemical suitability, and a material declaration does not prove that a burger box or snack sleeve will handle your delivery journey. Start with the recipe, packing conditions and a written acceptance checklist before comparing prices.",
+    "sections": [
+      {
+        "heading": "Separate the grease barrier from the packaging format",
+        "paragraphs": [
+          "For a burger restaurant, bakery, corn-dog outlet or takeaway brand, the first question is where the oily food actually touches the pack. Draw the layers: food, wrap or liner, sleeve or box, and outer delivery bag. Tell the supplier which components you want supplied. Do not assume the outer board is also the intended direct-contact barrier.",
+          "The formats below are existing MXPACKPRO references, not evidence of a tested barrier, PFAS status or destination approval. Paper, printing, coating, fit and included components require confirmation for the chosen project. A sleeve is not a closed delivery container, and a clamshell is not automatically liquid-tight."
+        ],
+        "table": {
+          "headings": ["Format", "Specify before a quotation", "Check on the packed sample"],
+          "rows": [
+            ["Loose wrapping or tray-lining sheet", "Finished sheet size, overlap or tray coverage, food-facing side and print position", "Folding, handling, outside staining and the fit inside the final outer pack"],
+            ["Burger clamshell with any separate liner", "Finished burger diameter and height, toppings, liner and lid clearance", "Closure without compression, liner position, external marks and handling after the intended journey"],
+            ["Corn-dog or stick-snack sleeve", "Thickest coated diameter, coverage length, exposed stick and open-end arrangement", "Loading without catching the coating, grip position and staining where the customer holds it"]
+          ]
+        }
+      },
+      {
+        "heading": "Replace a vague greaseproof claim with an acceptance sheet",
+        "paragraphs": [
+          "Write down what a usable pack must do in your operation. Keep appearance, handling and food-contact evidence as separate acceptance lines. Agree the observation points with the supplier rather than asking for an undefined '100% greaseproof' pack. Do not invent a pass time or load rating from a product photograph.",
+          "Use a sample record with the version of the paper, coating, print, liner and outer pack. Record the actual food and portion, packing temperature, contact duration, journey and any stacking. If you change the recipe, layer combination or service route, review whether the earlier sample remains representative."
+        ],
+        "steps": [
+          ["Set up a representative pack", "Use the proposed construction, actual portion dimensions and normal filling method. Label the sample version and document which side touches food. Do not substitute an unprinted sheet when the finished print is part of the review."],
+          ["Observe the intended handoff", "Follow the proposed packing, carrying and opening sequence. Record visible oil transfer, wet areas, fold damage, closure and grip. Include the liner and delivery outer if they form part of the final order."],
+          ["Record limits, not a universal promise", "Keep dated photographs and the observed conditions. A physical pack-out check is not a migration test, a chemical analysis, a shelf-life study or food-safety holding guidance. Have those separate questions reviewed where required."],
+          ["Approve the documented version", "Agree which observations require a revision and which component will change. Retain the approved specification and sample identification so the production order refers to the same construction."]
+        ]
+      },
+      {
+        "heading": "Ask what a PFAS claim actually covers",
+        "paragraphs": [
+          "The FDA reports that manufacturers stopped selling PFAS-containing grease-proofing substances for US food-contact paper and paperboard use in 2024. In January 2025 it determined that 35 related food contact notifications were no longer effective because those uses had been abandoned. This concerns those substances and uses; it is not approval of a particular printed wrapper, sleeve or box.",
+          "If a supplier offers a PFAS-related statement, request its scope in writing: the identified material and coating, the claim definition and the evidence used. Do not treat 'no intentionally added PFAS' and 'not detected under a specified test' as the same statement. For a test report, ask which sample was tested, the method and analytes or measurement used, reporting limits, date and link to the proposed material version. Have the applicable requirements and evidence assessed for the destination rather than adopting one universal threshold.",
+          "Ask whether the supporting information covers the finished printed construction or only an upstream base paper. A sample image, trade-show certificate photograph or grease-resistance demonstration cannot supply that missing connection. MXPACKPRO's reference images do not establish PFAS status; any requested claim needs project-specific evidence before it is accepted."
+        ],
+        "references": [{"title": "FDA: Authorized Uses of PFAS in Food Contact Applications", "url": "https://www.fda.gov/food/process-contaminants-food/authorized-uses-pfas-food-contact-applications"}]
+      },
+      {
+        "heading": "Name the delivery market, not just North America or the Middle East",
+        "paragraphs": [
+          "US projects: identify the destination state as well as the food-contact application and requested claims. The FDA's food-contact reference distinguishes food types and conditions of use. Specify your actual recipe, temperature and contact duration; do not transfer a general document to every application. Confirm any additional destination-specific requirements with the responsible importer or adviser.",
+          "Canadian projects: Health Canada explains that packaging must meet the safety provisions of B.23.001. Its Letters of No Objection concern specified applications and are not legal approvals. If such a letter is offered, match its material and intended use to the proposed pack rather than describing it as approval of every product.",
+          "Dubai projects: Article 5 of Executive Council Resolution No. 124 of 2023 lists single-use plastic food containers among the products prohibited from 1 January 2026. Check the exact product classification, material composition and any applicable exemptions with the importer or competent authority. A paper appearance or a 'plastic-free' label alone does not settle that review. Do not apply Dubai's rules to every emirate or Middle Eastern country.",
+          "For a different destination, provide the actual country and city before asking for a compliance statement or delivered quote. The examples here are purchasing checks, not a complete regional legal checklist or certification of an MXPACKPRO product."
+        ],
+        "references": [
+          {"title": "FDA: Food Types and Conditions of Use", "url": "https://www.fda.gov/food/packaging-food-contact-substances-fcs/food-types-conditions-use-food-contact-substances"},
+          {"title": "Health Canada: Packaging Materials", "url": "https://www.canada.ca/en/health-canada/services/food-nutrition/food-safety/packaging-materials.html"},
+          {"title": "Dubai legislation: Resolution No. 124 of 2023, Article 5", "url": "https://dlp.dubai.gov.ae/Legislation%20Reference/2023/Executive%20Council%20Resolution%20No.%20%28124%29%20of%202023%20Regulating%20the%20Use%20of%20Single-use%20Products.html"}
+        ]
+      },
+      {
+        "heading": "Compare the complete order, not the cheapest sheet",
+        "paragraphs": [
+          "Request prices against the same written scope: wrapping sheet or sleeve, outer box, any separate liner, printing, packing quantity and destination. Identify who supplies and assembles each part. A low sheet price is not a comparable complete-pack quote if another option includes the liner or outer carton.",
+          "Separate sample preparation, print or tooling setup, production packaging and shipping responsibilities. Ask for the MOQ and schedule for each final size and artwork version. No common minimum quantity, stock availability, test result or arrival date is established by this guide. Confirm those items for the project before approval."
+        ]
+      },
+      {
+        "heading": "Send a brief a supplier can evaluate",
+        "steps": [
+          ["Menu and pack-out", "Name the food, recipe features relevant to oil or moisture, portion dimensions and food-facing layers. Attach a drawing or photograph showing the intended wrap, sleeve or box arrangement."],
+          ["Use and acceptance", "State packing temperature, contact duration, delivery handling, whether reheating is intended and the observations you want reviewed on a sample. Keep unresolved details marked unconfirmed."],
+          ["Evidence and commercial scope", "List the requested material or PFAS statements and the destination country, state or emirate. Add finished dimensions, quantity per artwork, print coverage, included components, export packing and the required packaging-in-hand date."],
+          ["Destination and approval", "Give the delivery city and postcode where used, artwork status and sample needs. Ask for the proposed evidence and sample route before treating a preliminary quote as a confirmed specification."]
+        ]
+      }
+    ],
+    "faq": [
+      ["Does grease-resistant mean PFAS-free?", "No. Grease resistance describes a performance requirement; a PFAS-related statement needs its own defined scope and evidence for the proposed construction. Ask what the statement covers and how it is supported. Neither a photograph nor a simple oil demonstration establishes PFAS status."],
+      ["Can a sample grease check prove food-contact suitability?", "No. A pack-out check records physical observations under the tested conditions. Material and food-contact evidence must separately cover the construction, food, temperature, duration and destination. It does not replace chemical testing or other assessment where required."],
+      ["Is a paper food box automatically acceptable in Dubai?", "Do not assume that from its appearance. Confirm the actual composition, product classification and applicable requirements with the importer or competent authority. Dubai's rules should not be presented as one rule for every Middle Eastern destination."],
+      ["Can I use one US document for Canada and the UAE?", "Do not assume it is sufficient. Specify the actual destination and have the documents reviewed for that market and application. A reference to the FDA or a Canadian Letter of No Objection is not a universal product approval."],
+      ["What details help compare wrapping-paper and snack-sleeve quotes?", "Send the food and portion dimensions, finished sheet or sleeve size, packing temperature and duration, proposed layers, quantity per artwork and destination. List sample and documentation needs, included components and the required arrival date so suppliers price the same scope."]
+    ],
+    "sources": [
+      {"title": "FDA: Authorized Uses of PFAS in Food Contact Applications", "url": "https://www.fda.gov/food/process-contaminants-food/authorized-uses-pfas-food-contact-applications", "checkedOn": "2026-11-05", "note": "US context for the 2024 market phase-out and January 2025 determination concerning 35 FCNs. Not certification of any pictured product."},
+      {"title": "FDA: Food Types and Conditions of Use for Food Contact Substances", "url": "https://www.fda.gov/food/packaging-food-contact-substances-fcs/food-types-conditions-use-food-contact-substances", "checkedOn": "2026-11-05", "note": "US reference for describing the actual food and conditions of use; not a universal suitability claim."},
+      {"title": "Health Canada: Packaging Materials", "url": "https://www.canada.ca/en/health-canada/services/food-nutrition/food-safety/packaging-materials.html", "checkedOn": "2026-11-05", "note": "Canadian packaging safety and the limited meaning of Letters of No Objection; not a statement that MXPACKPRO holds such a letter."},
+      {"title": "Dubai: Executive Council Resolution No. 124 of 2023", "url": "https://dlp.dubai.gov.ae/Legislation%20Reference/2023/Executive%20Council%20Resolution%20No.%20%28124%29%20of%202023%20Regulating%20the%20Use%20of%20Single-use%20Products.html", "checkedOn": "2026-11-05", "note": "Article 5's Dubai-specific single-use product restrictions. Confirm classification, composition, exemptions and current application with the competent authority; do not extend this to the whole Middle East."}
+    ]
   }
 ]
