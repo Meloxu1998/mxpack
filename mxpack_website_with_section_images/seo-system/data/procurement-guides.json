@@ -359,5 +359,100 @@
       {"title": "GS1: 2D Barcodes at Retail POS Implementation Guideline", "url": "https://ref.gs1.org/guidelines/2d-in-retail/", "checkedOn": "2026-11-09", "note": "Technical print-quality and verification scope. Specialist review remains necessary for the final pack and application."},
       {"title": "GS1 Greece: Barcode Verification and Printed Samples", "url": "https://www.gs1greece.org/en/support/verification", "checkedOn": "2026-11-09", "note": "Explains original printed-sample verification and why a successful phone scan is not equivalent to a verification report. Does not establish MXPACKPRO certification or service capability."}
     ]
+  },
+  {
+    "slug": "street-food-packaging-buying-guide",
+    "plannedPublishOn": "2026-11-09",
+    "researchedOn": "2026-11-09",
+    "title": "Street-Food Packaging: Trays, Sleeves or Closed Boxes?",
+    "seoTitle": "Street-Food Packaging Buying Guide | MXPACKPRO",
+    "description": "Compare snack trays, stick sleeves and covered cartons. Measure portions, toppings and sauce cups before requesting custom street-food packaging.",
+    "keyword": "street food packaging buying guide",
+    "relatedKeywords": ["custom street food trays", "spiral potato packaging", "Lokma packaging specification", "snack tray and sleeve packaging"],
+    "intent": "Portion-layout and service-format selection for street-food buyers; not another grease-barrier guide, a stock Lokma-plate offer or a transactional corn-dog product page.",
+    "product": "custom-sliding-hot-dog-box",
+    "related": ["custom-sliding-hot-dog-box", "corn-dog-paper-sleeve", "taco-box-with-sauce-wells"],
+    "supportingLink": {"href": "/moq-pricing-guide", "label": "Compare quotations against the same supply scope"},
+    "ctaLabel": "Send your snack-pack layout",
+    "intro": "Choose street-food packaging around the complete served portion and how the customer will carry and eat it. An open tray, stick-snack sleeve and covered carton solve different handling problems; the food name or a reference photograph is not enough to choose one. Measure the finished portion, toppings, stick and sauce containers, then approve the proposed layout on a physical sample before confirming the artwork.",
+    "sections": [
+      {
+        "heading": "The buyer question behind this guide",
+        "paragraphs": [
+          "A buyer in Reddit's SmallBusinessUAE community asked where to source packaging for Lokma plates and spiral-potato plates. The useful procurement question is not simply who can reproduce the picture: what portion must the pack hold, where does the sauce go, and how will the customer use it? This guide turns that supplier-search question into a brief that can be evaluated.",
+          "The discussion supplies the buyer question, not a material specification or proof of market-wide demand. We have not copied its illustrated artwork. The MXPACKPRO references below show existing structures for comparison; they do not establish that a photographed carton fits the requested Lokma or spiral-potato portion. A different tray or insert may need project review."
+        ],
+        "references": [{"title": "Reddit buyer question: Looking for a food-packaging plate supplier", "url": "https://www.reddit.com/r/SmallBusinessUAE/comments/1x9f05z/looking_for_food_packaging_plate_supplier/"}]
+      },
+      {
+        "heading": "Choose the serving arrangement before the print design",
+        "paragraphs": [
+          "Ask whether the pack is for eating immediately at the counter, carrying a stick snack, collecting a meal or a longer delivery journey. Include cutlery, napkins and separate sauce pots in the layout if they travel together. Compare the complete order, not just an empty tray viewed from above."
+        ],
+        "table": {
+          "headings": ["Format to review", "Layout question", "Approval check"],
+          "rows": [
+            ["Open serving tray or plate", "How much usable base area and wall height does the complete portion need?", "Place the actual portion and utensils, then review hand support and serving access"],
+            ["Open-ended stick-snack sleeve", "What coated diameter, covered length and exposed grip must it accommodate?", "Load the finished snack without catching its coating; check the intended holding position"],
+            ["Tray with a sliding sleeve or another closing carton", "Where must the lid or sleeve clear toppings, sticks and containers?", "Close and open the packed sample without scraping or forcing the contents"],
+            ["Tray or carton with sauce-cup positions", "Which complete cup and lid will occupy each position?", "Check the closed cup's fit and location; a locating well is not a leakproof seal"]
+          ]
+        }
+      },
+      {
+        "heading": "Measure portions instead of ordering by menu name",
+        "paragraphs": [
+          "For a Lokma-style portion, list the piece count and actual dimensions, the proposed arrangement and the height of any toppings. State whether syrup or another sauce is applied to the food or supplied in a separate closed pot. Do not request one universal 'Lokma size' without the portion layout.",
+          "For a spiral potato or another stick snack, measure the finished outer diameter and the complete length, including the stick. Mark the part the customer will hold and the length that should remain exposed. A sleeve sized for one corn-dog recipe does not establish fit for a spiral potato or a different coating.",
+          "For a filled hot dog or sandwich, measure the full topping height and any liner as well as the roll. The sliding tray reference has a separate outer sleeve, while the corn-dog reference is an open-ended snack sleeve. Similar menu names do not make those constructions interchangeable."
+        ],
+        "table": {
+          "headings": ["Record on the layout", "Specify clearly", "Avoid assuming"],
+          "rows": [
+            ["Food footprint and height", "Maximum finished dimensions with coatings, toppings and liners", "That the raw ingredient or empty bun defines the packed size"],
+            ["Usable tray interior", "Internal base length and width, wall height and closure clearance", "That external dimensions describe all usable space"],
+            ["Stick and grip", "Complete stick length, covered portion and intended holding area", "That a protruding stick can pass through an unmodified closing panel"],
+            ["Sauce container", "Rim diameter, lid overhang, complete height and number of pots", "That two cups with the same capacity have the same outside dimensions"]
+          ]
+        }
+      },
+      {
+        "heading": "Specify the sauce container and the paper structure separately",
+        "paragraphs": [
+          "A sauce well locates a container; it does not make that container, lid or the surrounding carton leakproof. Use the actual closed cup when reviewing a well or insert. State whether you supply the cups or want them included in the quotation, and check that the lid can be accessed and removed as intended.",
+          "Where syrup, oil or another food will touch the pack directly, identify the actual contact layer and intended conditions. The FDA's US reference distinguishes food types and conditions of use, including foods with oil or fat and different packing and storage conditions. Use the proposed recipe, temperature and contact duration to request the appropriate review, not a decorative photograph as evidence of suitability.",
+          "The FDA reference is US context, not certification of these products or a substitute for the destination market's requirements. Ask the responsible buyer or importer to identify the applicable requirements for the final pack. No leak rating, holding time, heating suitability or food-contact approval is established by the pictured structures."
+        ],
+        "references": [{"title": "FDA: Food Types and Conditions of Use for Food Contact Substances", "url": "https://www.fda.gov/food/packaging-food-contact-substances-fcs/food-types-conditions-use-food-contact-substances"}]
+      },
+      {
+        "heading": "Walk through one complete handoff on a sample",
+        "steps": [
+          ["Load the actual portion", "Use the proposed liner, food arrangement and closed sauce pots. Record the sample version, portion measurements and any components that are not yet confirmed."],
+          ["Try the serving sequence", "Close or slide the pack as designed, carry it using the intended arrangement and open it as a customer would. Check whether the stick, topping, cup or utensil obstructs that sequence."],
+          ["Check the full collection order", "If a drink or another snack shares the outer carry pack, review the whole combination rather than balancing the empty snack tray alone. Record any layout change needed before artwork approval."],
+          ["Keep observations within their scope", "Record what was checked and under which conditions. A handoff sample is not a chemical test, food-safety assessment or universal transport rating. Recheck the relevant layout when the portion or included components change."]
+        ]
+      },
+      {
+        "heading": "Ask for the right supply scope, not an assumed complete kit",
+        "paragraphs": [
+          "Separate the paper structure, liners, inserts, cups, lids, cutlery and outer carry pack in the brief. Confirm which items the supplier would provide and which you already use. Ask whether the proposed pack is supplied flat or assembled and how it will be packed for delivery. Reference contents and artwork are not assumed to be included.",
+          "Send your own approved brand files and identify any artwork still awaiting approval. Treat a reference picture as a way to explain a structure, not a ready-to-print design. Ask for the appropriate dieline and sample route for the final portion rather than committing to print before fit is agreed.",
+          "For a North American or Middle Eastern order, name the actual country and delivery city rather than asking for one regional shipping price. Include the state, province or emirate and postcode where used, quantity per artwork and required packaging-in-hand date. MOQ, price, availability, delivery scope and timing require confirmation for that project; no universal size or minimum is promised here."
+        ]
+      }
+    ],
+    "faq": [
+      ["Can I use the same paper sleeve for corn dogs and spiral potatoes?", "Do not assume so. Compare the actual coated diameter, covered length, complete stick and grip arrangement. A packed sample must establish whether the proposed sleeve fits the specific snack without catching or compressing it."],
+      ["What size tray should I request for a Lokma portion?", "Send the piece count, finished dimensions, arrangement and topping height. State whether sauce is on the food or in a separate closed pot. Ask for usable internal tray dimensions and a sample rather than relying on a menu name or photograph."],
+      ["Will a sauce-cup well prevent the sauce from spilling?", "A well locates the cup but does not create a leakproof seal. Confirm the exact cup and lid, fit and retention, then review the packed handling sequence. No spill rating is established by a photograph."],
+      ["Does a closing carton guarantee delivery protection?", "No. Closure, food clearance, included containers and the outer carry arrangement all need review for the actual journey. A sleeve or lid alone does not establish a tested transport rating, holding time or temperature performance."],
+      ["Are the pictured boxes, liners and sauce cups sold as one kit?", "Do not assume a complete kit. List each component in the quotation request and confirm who supplies it. Dimensions, material, artwork, minimum quantity, sample scope and schedule are confirmed for the final specification."]
+    ],
+    "sources": [
+      {"title": "Reddit buyer question: Looking for a food-packaging plate supplier", "url": "https://www.reddit.com/r/SmallBusinessUAE/comments/1x9f05z/looking_for_food_packaging_plate_supplier/", "checkedOn": "2026-11-09", "note": "Source of the Lokma and spiral-potato procurement question only. Not technical evidence, proof of a completed supply project or market-wide trend statistics. No Reddit reference artwork has been copied."},
+      {"title": "FDA: Food Types and Conditions of Use for Food Contact Substances", "url": "https://www.fda.gov/food/packaging-food-contact-substances-fcs/food-types-conditions-use-food-contact-substances", "checkedOn": "2026-11-09", "note": "US reference for describing the actual application; not certification of MXPACKPRO products or automatic compliance in other markets."}
+    ]
   }
 ]
