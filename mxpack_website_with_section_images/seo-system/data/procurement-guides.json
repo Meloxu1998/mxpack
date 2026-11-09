@@ -254,5 +254,110 @@
       {"title": "Health Canada: Packaging Materials", "url": "https://www.canada.ca/en/health-canada/services/food-nutrition/food-safety/packaging-materials.html", "checkedOn": "2026-11-05", "note": "Canadian packaging safety and the limited meaning of Letters of No Objection; not a statement that MXPACKPRO holds such a letter."},
       {"title": "Dubai: Executive Council Resolution No. 124 of 2023", "url": "https://dlp.dubai.gov.ae/Legislation%20Reference/2023/Executive%20Council%20Resolution%20No.%20%28124%29%20of%202023%20Regulating%20the%20Use%20of%20Single-use%20Products.html", "checkedOn": "2026-11-05", "note": "Article 5's Dubai-specific single-use product restrictions. Confirm classification, composition, exemptions and current application with the competent authority; do not extend this to the whole Middle East."}
     ]
+  },
+  {
+    "slug": "qr-code-food-packaging-print-checklist",
+    "plannedPublishOn": "2026-11-09",
+    "researchedOn": "2026-11-09",
+    "title": "QR Codes on Food Packaging: A 2027 Buyer Checklist",
+    "seoTitle": "QR Code Food Packaging: 2027 Print Checklist | MXPACKPRO",
+    "description": "Separate menu links from retail checkout codes. Plan QR placement, printed proofs and destination checks before ordering custom food boxes or cups.",
+    "keyword": "QR code food packaging checklist",
+    "relatedKeywords": ["QR code on takeaway packaging", "food packaging barcode artwork", "Sunrise 2027 packaging checklist", "QR code printing on paper cups"],
+    "intent": "Print-approval and supplier-brief preparation for food brands adding consumer QR links or retail 2D barcodes; not a barcode generator, general material guide or a claim that every takeaway pack must change in 2027.",
+    "product": "custom-burger-clamshell-box",
+    "related": ["custom-burger-clamshell-box", "custom-printed-coffee-paper-cup", "printed-gable-meal-box"],
+    "supportingLink": {"href": "/packaging-buying-guide", "label": "Choose the packaging structure before approving artwork"},
+    "ctaLabel": "Discuss your packaging artwork brief",
+    "intro": "Before adding a QR code to food packaging, decide whether it opens a menu or reorder page, identifies a product at retail checkout, or serves another business process. These are different approval jobs. Confirm the encoded information, reserve space on the actual packaging dieline, and review a printed sample and its destination before a production order. A successful phone scan alone is not a retail barcode verification report.",
+    "sections": [
+      {
+        "heading": "What 2027 means for a food-packaging buyer",
+        "paragraphs": [
+          "GS1 describes Ambition 2027 as an industry goal for retail point-of-sale systems to read and process specified GS1-standard 2D barcodes alongside existing linear barcodes by the end of 2027. It is not a blanket requirement to replace every restaurant takeaway box or menu QR code. Confirm your own sales channel before changing approved artwork.",
+          "GS1 US says UPC barcodes will continue to be accepted after the Sunrise 2027 milestone. GS1 UAE also describes coexistence between 1D, QR and DataMatrix codes. For a US, Canadian or Middle Eastern retail project, ask the receiving retailer and relevant GS1 organisation which identifiers, symbols and transition layout they require. A regional headline cannot establish one buyer's checkout readiness.",
+          "For a burger outlet or catering company using a code only to open a website, begin with the customer task rather than a retail-transition deadline. For packaged food sold through a grocery checkout, involve the brand's barcode/data owner and retail partner before the packaging printer finalises the panel."
+        ],
+        "references": [
+          {"title": "GS1: What is Ambition 2027 in Retail?", "url": "https://support.gs1.org/support/solutions/articles/43000743530-what-is-ambition-2027-in-retail-"},
+          {"title": "GS1 US: Digital Link for Retailers", "url": "https://www.gs1us.org/industries-and-insights/gs1-digital-link/for-retailers"},
+          {"title": "GS1 UAE: Global Migration to 2D Barcodes", "url": "https://www.gs1ae.org/paving-the-way-for-a-global-migration-to-2d-barcodes/"}
+        ]
+      },
+      {
+        "heading": "Write one job for each code",
+        "paragraphs": [
+          "Put the purpose and approval owner beside each code in your artwork brief. A designer should not have to infer whether a square pattern is for customer information or product identification. If a retailer requires both a linear and a 2D symbol, reserve the agreed layout instead of deleting the existing code to make more room for the logo."
+        ],
+        "table": {
+          "headings": ["Intended job", "Supply before print approval", "Who confirms the result"],
+          "rows": [
+            ["Open a menu, reorder page or product-information page", "Exact approved URL, destination content, language route and a clear scan instruction", "Brand or restaurant website owner checks the customer journey"],
+            ["Identify a retail food item at checkout", "Approved identifier and encoded data, barcode artwork and retailer requirements", "Brand barcode/data owner, verifier and receiving retail partner each review their scope"],
+            ["Identify an outer case or fulfilment unit", "The receiving partner's case-label specification and the required data for that unit", "Receiving or logistics partner; do not assume the menu code meets its requirements"]
+          ]
+        }
+      },
+      {
+        "heading": "Reserve the print panel on the assembled pack",
+        "paragraphs": [
+          "Ask for the proposed code position on the final dieline, including folds, seams, closures, handles and any overlap. On a burger carton, review the chosen panel with the lid closed. On a cup, review it on the assembled tapered wall rather than a flat artwork preview. On a gable meal box, show the handle and closing sequence so the proposed scan area can be checked in its normal handoff position.",
+          "DENSO WAVE specifies a four-module clear margin around a QR Code. A module is one small square unit of the symbol, not a fixed number of millimetres. Keep that border free of surrounding graphics. Let the barcode and print specialists confirm the complete symbol size for the encoded data, substrate, print process and intended scanning conditions; there is no universal physical size to copy from another pack.",
+          "GS1's implementation guidance identifies size, contrast, reflectance and print uniformity as barcode-quality considerations. Agree how the selected board or cup surface and finish will be reviewed. Do not distort the supplied code, place decorative graphics over it or treat an attractive screen mockup as evidence that the finished pack will scan."
+        ],
+        "references": [
+          {"title": "DENSO WAVE: QR Code Area and Quiet Zone", "url": "https://www.qrcode.com/en/howto/code.html"},
+          {"title": "GS1: 2D Barcodes at Retail POS Implementation Guideline", "url": "https://ref.gs1.org/guidelines/2d-in-retail/"}
+        ]
+      },
+      {
+        "heading": "Keep print verification and the destination-page test separate",
+        "paragraphs": [
+          "GS1 Greece's verification guidance distinguishes scanning a code with a phone from assessing the quality of the original printed symbol. It calls for original printed samples, not a design file or a substitute print made on different equipment. For a retail project, agree the required verification scope and acceptance criteria with the responsible partner before ordering.",
+          "A barcode-quality report and a working web destination answer different questions. GS1's retail implementation guidance explicitly notes that barcode verification does not validate the web experience. Assign the following checks separately and keep a dated record of the approved artwork and sample version."
+        ],
+        "steps": [
+          ["Identify the physical sample", "Record the artwork version, substrate, finish, code location and printing route. Ask whether the proof represents the proposed production conditions; mark any difference rather than treating every sample as equivalent."],
+          ["Review the intended scan situation", "For a customer link, try the assembled box or cup in its normal handling position with the intended devices. Record which samples and conditions were checked. For retail use, arrange the agreed professional verification and partner testing rather than substituting a phone demonstration."],
+          ["Open the exact destination", "Check the final page, language options and intended action. Confirm that a menu link does not land on an expired promotion, a login wall or the wrong product. Include any redirect or QR-service subscription in the review."],
+          ["Approve the business data separately", "For checkout or receiving use, have the relevant partner confirm the identifier and processing behaviour. Reading a symbol is not the same as confirming that the correct item and business information are available in its system."]
+        ],
+        "references": [
+          {"title": "GS1 Greece: Barcode Verification and Printed Samples", "url": "https://www.gs1greece.org/en/support/verification"},
+          {"title": "GS1: 2D Barcodes at Retail POS Implementation Guideline", "url": "https://ref.gs1.org/guidelines/2d-in-retail/"}
+        ]
+      },
+      {
+        "heading": "Assign an owner for the link after packaging delivery",
+        "paragraphs": [
+          "Keep a record of who controls the printed URL, domain, destination page and any intermediate QR service. Check who can change routing, which account pays for renewals and what happens if a subscription ends. Put those responsibilities in the project file before a large artwork run, especially if more than one agency or distributor is involved.",
+          "For a US or Canadian project, specify the actual market and required destination content rather than assuming one page serves every customer. For a UAE or other Middle Eastern project, state the country, city and requested languages; review the English and Arabic paths where the buyer requests them. These are project choices, not a claim that one language or labelling rule applies throughout a region.",
+          "Treat scan counts and visits as engagement measures, not confirmed orders or customer enquiries. Agree which completed action matters to your business and how it will be checked. Do not promise sales growth just because a code is printed on a cup or carton."
+        ]
+      },
+      {
+        "heading": "Send a packaging brief without assuming barcode services are included",
+        "paragraphs": [
+          "Send the packaging format and usable dimensions, quantity per artwork, chosen material and finish, intended food or drink, destination and required arrival date. Add the code's purpose, approved data or URL, print position, supplied artwork, language requirements and the people responsible for verification and website content.",
+          "Ask the quotation to identify the print and sample scope, any specialist barcode work, proposed verification and export packing. Confirm MOQ, availability, costs and schedule for the final project. The reference products below show packaging structures and printing examples, not verified QR samples or evidence of scanner performance. MXPACKPRO does not claim a GS1 certification, barcode-verification service, variable-data capability or working code from these images.",
+          "Keep food-contact material review, cup/lid fit, carton strength and barcode review as separate approvals. Passing a scan check does not establish the food-contact suitability or carrying performance of the packaging."
+        ]
+      }
+    ],
+    "faq": [
+      ["Do all food packages need to replace UPC barcodes with QR codes in 2027?", "No. GS1 describes an industry goal for retail POS systems to support specified 2D barcodes alongside existing linear codes by the end of 2027. Existing UPC codes do not automatically stop working. Confirm the transition requirements with the actual retail partner; a restaurant menu link is a different use case."],
+      ["Can a menu QR code also identify a food item at retail checkout?", "Do not assume so. A menu URL and a retail product-identification code serve different jobs. Have the brand's barcode/data owner and retailer approve the identifier, encoded information, artwork and processing requirements before print approval."],
+      ["What size should a QR code be on a cup or takeaway box?", "There is no universal physical size for every code and print surface. DENSO WAVE specifies a four-module clear margin for a QR Code, but a module is not a fixed millimetre size. Have the barcode and print specialists confirm the symbol, border and position for the final data and intended use."],
+      ["Is a phone scan enough to approve a retail barcode?", "No. It is a useful observation of that scan, not a substitute for the agreed barcode-quality verification on original printed samples, retail partner testing or a separate check of the web destination."],
+      ["What should I include in a quotation for QR-ready food-packaging artwork?", "Include the box or cup format, dimensions, material and finish, quantity per artwork and destination. Supply the code's purpose and approved URL or barcode data, proposed print location, artwork status, language needs and required sample or verification scope. Confirm which services are included rather than assuming them from a reference image."]
+    ],
+    "sources": [
+      {"title": "GS1: What is Ambition 2027 in Retail?", "url": "https://support.gs1.org/support/solutions/articles/43000743530-what-is-ambition-2027-in-retail-", "checkedOn": "2026-11-09", "note": "The end-of-2027 retail POS capability goal; not a blanket legal deadline for restaurant packaging."},
+      {"title": "GS1 US: Digital Link for Retailers", "url": "https://www.gs1us.org/industries-and-insights/gs1-digital-link/for-retailers", "checkedOn": "2026-11-09", "note": "Retail migration context, dual marking and continued UPC acceptance; a buyer's retail partner must confirm its requirements."},
+      {"title": "GS1 UAE: Global Migration to 2D Barcodes", "url": "https://www.gs1ae.org/paving-the-way-for-a-global-migration-to-2d-barcodes/", "checkedOn": "2026-11-09", "note": "UAE member-organisation context for a global ambition and coexistence of barcode types; not a region-wide legal mandate."},
+      {"title": "DENSO WAVE: QR Code Area and Quiet Zone", "url": "https://www.qrcode.com/en/howto/code.html", "checkedOn": "2026-11-09", "note": "QR Code quiet-zone guidance. Its worked example is not a universal printed-code dimension."},
+      {"title": "GS1: 2D Barcodes at Retail POS Implementation Guideline", "url": "https://ref.gs1.org/guidelines/2d-in-retail/", "checkedOn": "2026-11-09", "note": "Technical print-quality and verification scope. Specialist review remains necessary for the final pack and application."},
+      {"title": "GS1 Greece: Barcode Verification and Printed Samples", "url": "https://www.gs1greece.org/en/support/verification", "checkedOn": "2026-11-09", "note": "Explains original printed-sample verification and why a successful phone scan is not equivalent to a verification report. Does not establish MXPACKPRO certification or service capability."}
+    ]
   }
 ]
