@@ -47,6 +47,18 @@ const server=http.createServer((req,res)=>{
     assert.equal(article.mainEntityOfPage,`https://mxpackpro.com/${guide.slug}`);
     assert.deepEqual(structured.find(item=>item['@type']==='FAQPage').mainEntity.map(q=>[q.name,q.acceptedAnswer.text]),guide.faq);
     assert.equal(await page.locator('.accordion details').count(),guide.faq.length);
+    assert.deepEqual(await page.locator('.accordion details').evaluateAll(nodes=>nodes.map(node=>[node.querySelector('summary').textContent.trim(),node.querySelector('p').textContent.trim()])),guide.faq);
+    if(guide.cover){
+     const cover=page.locator('article figure').first();
+     assert.equal(await cover.locator('img').getAttribute('src'),guide.cover.imagePath);
+     assert.equal(await cover.locator('img').getAttribute('alt'),guide.cover.alt);
+     assert((await cover.locator('img').getAttribute('srcset')).includes(guide.cover.mediumPath));
+     assert.equal(await cover.locator('figcaption').textContent(),guide.cover.caption);
+     assert.equal(await page.locator('meta[property="og:image"]').getAttribute('content'),`https://mxpackpro.com${guide.cover.imagePath}`);
+     assert.equal(article.image,`https://mxpackpro.com${guide.cover.imagePath}`);
+     assert.equal(await page.getByRole('heading',{name:guide.introHeading,exact:true}).count(),1);
+     assert.equal((await page.request.get(`${base}${guide.cover.imagePath}`)).status(),200);
+    }
     for(const section of guide.sections){
      for(const reference of section.references||[]){
       assert(guide.sources.some(source=>source.url===reference.url),'Inline reference must match a checked source');

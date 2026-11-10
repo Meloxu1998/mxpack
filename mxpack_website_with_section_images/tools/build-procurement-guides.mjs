@@ -18,6 +18,9 @@ if (process.argv.includes('--check-schedule')) {
 const preview = process.argv.find(arg => arg.startsWith('--preview-dir='))?.slice('--preview-dir='.length)
   || `D:/mxpack-audits/${today}/procurement-drafts`;
 const esc = value => String(value).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('"', '&quot;');
+const renderText = value => Array.isArray(value)
+  ? value.map(part => typeof part === 'string' ? esc(part) : `<a class="text-link" href="${esc(part.href)}">${esc(part.text)}</a>`).join('')
+  : esc(value);
 const schema = data => `<script type="application/ld+json">${JSON.stringify({'@context':'https://schema.org', ...data}).replaceAll('<', '\\u003c')}</script>`;
 const product = slug => {
   const item = products.find(item => item.slug === slug);
@@ -27,7 +30,7 @@ const product = slug => {
   return {...item, source};
 };
 const template = fs.readFileSync(path.join(root, 'packaging-buying-guide.html'), 'utf8');
-const renderSection = section => `<section class="buyer-guide-section"><h2 class="section-title">${esc(section.heading)}</h2>${(section.paragraphs||[]).map(text=>`<p>${esc(text)}</p>`).join('')}${(section.references||[]).map(reference=>`<p><a class="text-link" href="${esc(reference.url)}" target="_blank" rel="noopener noreferrer">${esc(reference.title)}</a></p>`).join('')}${section.table?`<div class="buyer-table-wrap" role="region" aria-label="${esc(section.heading)}" tabindex="0"><table class="buyer-table"><thead><tr>${section.table.headings.map(text=>`<th scope="col">${esc(text)}</th>`).join('')}</tr></thead><tbody>${section.table.rows.map(row=>`<tr>${row.map((text,index)=>index?`<td>${esc(text)}</td>`:`<th scope="row">${esc(text)}</th>`).join('')}</tr>`).join('')}</tbody></table></div>`:''}${section.steps?`<ol class="buyer-guide-checks">${section.steps.map(([title,text])=>`<li><strong>${esc(title)}</strong><p>${esc(text)}</p></li>`).join('')}</ol>`:''}</section>`;
+const renderSection = section => `<section class="buyer-guide-section"><h2 class="section-title">${esc(section.heading)}</h2>${(section.paragraphs||[]).map(text=>`<p>${renderText(text)}</p>`).join('')}${(section.references||[]).map(reference=>`<p><a class="text-link" href="${esc(reference.url)}" target="_blank" rel="noopener noreferrer">${esc(reference.title)}</a></p>`).join('')}${section.table?`<div class="buyer-table-wrap" role="region" aria-label="${esc(section.heading)}" tabindex="0"><table class="buyer-table"><thead><tr>${section.table.headings.map(text=>`<th scope="col">${esc(text)}</th>`).join('')}</tr></thead><tbody>${section.table.rows.map(row=>`<tr>${row.map((text,index)=>index?`<td>${esc(text)}</td>`:`<th scope="row">${esc(text)}</th>`).join('')}</tr>`).join('')}</tbody></table></div>`:''}${section.steps?`<ol class="buyer-guide-checks">${section.steps.map(([title,text])=>`<li><strong>${esc(title)}</strong><p>${esc(text)}</p></li>`).join('')}</ol>`:''}</section>`;
 
 for (const guide of guides.filter(guide=>!publish || guide.slug===publish)) {
   const destination = path.join(root, `${guide.slug}.html`);
@@ -35,8 +38,9 @@ for (const guide of guides.filter(guide=>!publish || guide.slug===publish)) {
   if (publish && fs.existsSync(destination)) throw Error('Guide already exists; review it before any update.');
   const date = publish ? today : guide.plannedPublishOn;
   const primary = product(guide.product);
+  const lead = guide.cover || {imagePath:primary.source.imagePath, thumbnailPath:primary.source.thumbnailPath, width:primary.source.width, height:primary.source.height, alt:`${primary.name} ${primary.source.kind === 'design-concept' ? 'design visualization' : 'product reference'}`, caption:`${primary.source.kind === 'design-concept' ? 'Design visualization; not a produced-sample photograph.' : 'Product reference.'} Final dimensions, components and printing require project confirmation.`};
+  const leadFigure = `<figure class="buyer-guide-section" style="max-width:${guide.cover ? 960 : 640}px;margin-inline:auto"><img src="${esc(lead.imagePath)}" srcset="${esc(lead.thumbnailPath)} 480w, ${esc(lead.mediumPath || lead.imagePath)} 960w${lead.mediumPath ? `, ${esc(lead.imagePath)} 1440w` : ''}" sizes="(max-width:1000px) calc(100vw - 48px), ${guide.cover ? 960 : 640}px" alt="${esc(lead.alt)}" width="${lead.width}" height="${lead.height}" loading="${guide.cover ? 'eager' : 'lazy'}" decoding="async" style="width:100%;height:auto"><figcaption>${esc(lead.caption)}</figcaption></figure>`;
   const pageTitle = guide.seoTitle || `${guide.title} | MXPACKPRO`;
-  const imageLabel = item => item.source.kind === 'design-concept' ? 'Design visualization; not a produced-sample photograph.' : 'Product reference.';
   const supporting = guide.supportingLink || {href:'/moq-pricing-guide',label:'Prepare a like-for-like quotation'};
   const reference = guide.sources.map(source => {
     const checkedOn = source.checkedOn || guide.researchedOn || '2026-10-22';
@@ -49,7 +53,7 @@ for (const guide of guides.filter(guide=>!publish || guide.slug===publish)) {
     const item = product(slug);
     return `<a class="solution-product" href="/products/${slug}"><img src="${item.source.thumbnailPath}" srcset="${item.source.thumbnailPath} 480w, ${item.source.imagePath} 960w" sizes="(max-width:600px) 43vw, 340px" alt="${esc(item.name)} ${item.source.kind === 'design-concept' ? 'design visualization' : 'format reference'}" width="480" height="480" loading="lazy"><span>${esc(item.name)}${item.source.kind === 'design-concept' ? '<br><small>Design visualization</small>' : ''}</span></a>`;
   }).join('');
-  const article = `<article class="section section-white buyer-guide"><div class="container"><p class="eyebrow">MXPACKPRO team &middot; ${publish?'Published':'Planned publication'} <time datetime="${date}">${date}</time></p><p class="section-copy buyer-guide-intro">${esc(guide.intro)}</p><figure class="buyer-guide-section" style="max-width:640px;margin-inline:auto"><img src="${primary.source.imagePath}" srcset="${primary.source.thumbnailPath} 480w, ${primary.source.imagePath} 960w" sizes="(max-width:700px) calc(100vw - 48px), 640px" alt="${esc(primary.name)} ${primary.source.kind === 'design-concept' ? 'design visualization' : 'product reference'}" width="${primary.source.width}" height="${primary.source.height}" loading="lazy" style="width:100%;height:auto"><figcaption>${imageLabel(primary)} Final dimensions, components and printing require project confirmation.</figcaption></figure>${guide.sections.map(renderSection).join('')}<section class="buyer-guide-section"><h2 class="section-title">Compare the formats</h2><div class="solution-products buyer-guide-products">${related}</div><p><a class="text-link" href="${esc(supporting.href)}">${esc(supporting.label)}</a></p></section><section class="buyer-guide-section"><h2 class="section-title">Purchasing questions</h2><div class="accordion">${guide.faq.map(([q,a])=>`<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}</div></section><section class="buyer-guide-section"><h2 class="section-title">Reference</h2>${reference}</section><section class="buyer-guide-section"><h2 class="section-title">Start with a complete brief</h2><p>Send your dimensions, quantity per artwork version, intended contents, destination and required arrival date. Include your sample questions and undecided details.</p><div class="hero-actions">${cta}<a class="text-link" href="mailto:sales@mxpackpro.com">Email your brief</a></div></section></div></article>`;
+  const article = `<article class="section section-white buyer-guide"><div class="container"><p class="eyebrow">MXPACKPRO team &middot; ${publish?'Published':'Planned publication'} <time datetime="${date}">${date}</time></p>${guide.introHeading ? `<h2 class="section-title">${esc(guide.introHeading)}</h2>` : ''}<p class="section-copy buyer-guide-intro">${esc(guide.intro)}</p>${leadFigure}${guide.sections.map(renderSection).join('')}<section class="buyer-guide-section"><h2 class="section-title">Compare the formats</h2><div class="solution-products buyer-guide-products">${related}</div><p><a class="text-link" href="${esc(supporting.href)}">${esc(supporting.label)}</a></p></section><section class="buyer-guide-section"><h2 class="section-title">Purchasing questions</h2><div class="accordion">${guide.faq.map(([q,a])=>`<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join('')}</div></section><section class="buyer-guide-section"><h2 class="section-title">Reference</h2>${reference}</section><section class="buyer-guide-section"><h2 class="section-title">Start with a complete brief</h2><p>Send your dimensions, quantity per artwork version, intended contents, destination and required arrival date. Include your sample questions and undecided details.</p><div class="hero-actions">${cta}<a class="text-link" href="mailto:sales@mxpackpro.com">Email your brief</a></div></section></div></article>`;
   let page = template.replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(pageTitle)}</title>`)
     .replace(/(<meta name="description" content=")[^"]*/, `$1${esc(guide.description)}`)
     .replace(/(<link rel="canonical" href=")[^"]*/, `$1${base}/${guide.slug}`)
@@ -57,7 +61,7 @@ for (const guide of guides.filter(guide=>!publish || guide.slug===publish)) {
     .replace(/(<meta property="og:title" content=")[^"]*/, `$1${esc(pageTitle)}`)
     .replace(/(<meta property="og:description" content=")[^"]*/, `$1${esc(guide.description)}`)
     .replace(/(<meta property="og:url" content=")[^"]*/, `$1${base}/${guide.slug}`)
-    .replace(/(<meta property="og:image" content=")[^"]*/, `$1${base}${primary.source.imagePath}`)
+    .replace(/(<meta property="og:image" content=")[^"]*/, `$1${base}${lead.imagePath}`)
     .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, '')
     .replace('<body>', `<body data-guide-id="${guide.slug}">`)
     .replace(/<section class="page-hero hero-image">[\s\S]*?<\/section>/, `<section class="resource-hero"><div class="container"><div class="resource-hero-copy"><p class="eyebrow">Buying guide</p><h1 class="display-title">${esc(guide.title)}</h1><p class="section-copy">${esc(guide.description)}</p></div></div></section>`)
@@ -66,10 +70,11 @@ for (const guide of guides.filter(guide=>!publish || guide.slug===publish)) {
     .replaceAll(' aria-current="page"', '');
   const organization = {'@type':'Organization', name:'MXPACKPRO', url:base, email:'sales@mxpackpro.com'};
   const schemas = [organization,
-    {'@type':'Article', headline:guide.title, description:guide.description, image:`${base}${primary.source.imagePath}`, datePublished:date, dateModified:date, mainEntityOfPage:`${base}/${guide.slug}`, author:organization, publisher:organization},
+    {'@type':'Article', headline:guide.title, description:guide.description, image:`${base}${lead.imagePath}`, datePublished:date, dateModified:date, mainEntityOfPage:`${base}/${guide.slug}`, author:organization, publisher:organization},
     {'@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Home',item:`${base}/`},{'@type':'ListItem',position:2,name:'Guides',item:`${base}/resources`},{'@type':'ListItem',position:3,name:guide.title,item:`${base}/${guide.slug}`}]},
     {'@type':'FAQPage',mainEntity:guide.faq.map(([q,a])=>({'@type':'Question',name:q,acceptedAnswer:{'@type':'Answer',text:a}}))}];
   page = page.replace('</head>', `${schemas.map(schema).join('\n')}</head>`);
+  if (guide.cover) page = page.replace('</head>', `<meta property="og:image:alt" content="${esc(lead.alt)}"><meta property="article:published_time" content="${date}">${(guide.tags || []).map(tag=>`<meta property="article:tag" content="${esc(tag)}">`).join('')}</head>`);
   page = compactInteractionHtml(page, '/' + guide.slug).replace(/[ \t]+$/gm, '');
   if (!publish) {
     fs.mkdirSync(preview,{recursive:true});
@@ -80,7 +85,7 @@ for (const guide of guides.filter(guide=>!publish || guide.slug===publish)) {
   fs.writeFileSync(destination,page);
   const resourcesFile=path.join(root,'resources.html');
   let resources=fs.readFileSync(resourcesFile,'utf8');
-  if (!resources.includes(`href="/${guide.slug}"`)) resources=resources.replace('<div class="article-grid">',`<div class="article-grid"><article class="article-card"><a href="/${guide.slug}"><div class="article-card-media"><img src="${primary.source.thumbnailPath}" alt="${esc(primary.name)} ${primary.source.kind === 'design-concept' ? 'design visualization' : 'format reference'}" width="480" height="480" loading="lazy"></div><div class="article-card-body"><p class="eyebrow">Buying guide${primary.source.kind === 'design-concept' ? ' &middot; Design visualization' : ''}</p><h2>${esc(guide.title)}</h2><p>${esc(guide.description)}</p><span class="text-link">Read guide</span></div></a></article>`);
+  if (!resources.includes(`href="/${guide.slug}"`)) resources=resources.replace('<div class="article-grid">',`<div class="article-grid"><article class="article-card"><a href="/${guide.slug}"><div class="article-card-media"><img src="${lead.thumbnailPath}" alt="${esc(guide.cover ? lead.alt : `${primary.name} ${primary.source.kind === 'design-concept' ? 'design visualization' : 'format reference'}`)}" width="480" height="${guide.cover ? 320 : 480}" loading="lazy"></div><div class="article-card-body"><p class="eyebrow">Buying guide${guide.cover || primary.source.kind === 'design-concept' ? ' &middot; Design visualization' : ''}</p><h2>${esc(guide.title)}</h2><p>${esc(guide.description)}</p><span class="text-link">Read guide</span></div></a></article>`);
   fs.writeFileSync(resourcesFile,resources);
   const updated=['resources'];
   for (const slug of guide.related) {

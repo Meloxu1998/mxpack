@@ -454,5 +454,132 @@
       {"title": "Reddit buyer question: Looking for a food-packaging plate supplier", "url": "https://www.reddit.com/r/SmallBusinessUAE/comments/1x9f05z/looking_for_food_packaging_plate_supplier/", "checkedOn": "2026-11-09", "note": "Source of the Lokma and spiral-potato procurement question only. Not technical evidence, proof of a completed supply project or market-wide trend statistics. No Reddit reference artwork has been copied."},
       {"title": "FDA: Food Types and Conditions of Use for Food Contact Substances", "url": "https://www.fda.gov/food/packaging-food-contact-substances-fcs/food-types-conditions-use-food-contact-substances", "checkedOn": "2026-11-09", "note": "US reference for describing the actual application; not certification of MXPACKPRO products or automatic compliance in other markets."}
     ]
+  },
+  {
+    "slug": "packaging-sleeves-vs-custom-boxes",
+    "plannedPublishOn": "2026-11-10",
+    "researchedOn": "2026-11-10",
+    "reviewedAt": "2026-11-10",
+    "technicalReviewer": null,
+    "title": "Packaging Sleeves vs Custom Boxes for Small-Batch Launches",
+    "seoTitle": "Packaging Sleeves vs Custom Boxes | MXPACKPRO",
+    "description": "Compare packaging sleeves, insert cards and custom-printed boxes for small-batch launches. Check fit, assembly, artwork versions and total project cost.",
+    "excerpt": "Changing your campaign does not always require changing the whole box. Compare sleeves, insert cards and full-box printing before approving your next packaging order.",
+    "keyword": "packaging sleeves vs custom boxes",
+    "relatedKeywords": ["small batch branded packaging", "seasonal packaging sleeves", "branded packaging inserts"],
+    "searchVolume": null,
+    "intent": "Compare permanent box branding with changeable sleeves and cards for small-batch campaigns; distinct from the general MOQ and pricing guide and from transactional product pages.",
+    "tags": ["Packaging Design", "Small Business Packaging", "Packaging Sleeves", "Custom Boxes"],
+    "product": "custom-printed-corrugated-mailer",
+    "related": ["custom-printed-corrugated-mailer", "macaron-sleeve-box"],
+    "supportingLink": {"href": "/moq-pricing-guide", "label": "Prepare the quantities and scope for a like-for-like quotation"},
+    "ctaLabel": "Request a packaging review",
+    "introHeading": "Quick Answer",
+    "intro": "Keep the box consistent when its size, protection and opening experience already suit the product. Consider a separate sleeve or insert card for messages that change between campaigns. Choose full-box printing when the artwork needs to cover the complete pack. Compare the assembled sample and total project cost: a sleeve is not automatically cheaper or more sustainable.",
+    "cover": {
+      "imagePath": "/assets/img/guides/packaging-sleeves-vs-custom-boxes-20261110-1440.webp",
+      "mediumPath": "/assets/img/guides/packaging-sleeves-vs-custom-boxes-20261110-960.webp",
+      "thumbnailPath": "/assets/img/guides/packaging-sleeves-vs-custom-boxes-20261110-480.webp",
+      "width": 1440,
+      "height": 960,
+      "alt": "Design illustration comparing a kraft mailer with a removable teal sleeve, a fully printed mailer and separate insert cards",
+      "caption": "AI-generated design illustration based on an existing mailer reference; not a produced-sample photograph or an offered complete kit. Final structure, components, artwork and availability require project confirmation.",
+      "kind": "design-concept"
+    },
+    "researchContext": {
+      "checkedOn": "2026-11-10",
+      "selection": "Buyer questions found in Reddit's past-week search; not a verified viral or market-wide trend.",
+      "redditDates": "Readable pages displayed 23h ago for the US question and 48m ago for the Dubai question. Absolute publication timestamps were not verified.",
+      "upvotes": null,
+      "totalComments": null,
+      "limitations": "Neither upvotes nor total comment counts were reliably exposed. The US question concerns apparel packaging, not food; the transferable issue is small-batch branding. No supplier recommendations, quantities, prices or delivery promises in the comments are adopted as MXPACKPRO facts."
+    },
+    "sections": [
+      {
+        "heading": "Start With What Actually Changes",
+        "paragraphs": [
+          "A Dubai business recently asked for a printed mailer with a sleeve or card that could change each month. A separate US buyer described the difficulty of finding branded packaging for small quantities. These are individual sourcing questions, not evidence of a market-wide trend, but they highlight a practical decision: must every campaign require a new box?",
+          "Separate permanent requirements from changing messages. Product fit, structural support and the opening sequence belong in the core specification. A seasonal illustration, launch story or promotional message may be suitable for a separate component. If the product itself changes, reassess the box rather than assuming new artwork is enough."
+        ],
+        "references": [
+          {"title": "Reddit: Dubai buyer seeking a consistent mailer with changeable sleeves or cards", "url": "https://www.reddit.com/r/SmallBusinessUAE/comments/1xrknk1/recommendations_for_a_custom_packagingbox/"},
+          {"title": "Reddit: US buyer asking about small-batch branded packaging", "url": "https://www.reddit.com/r/smallbusiness/comments/1xr4rq4/lowmoq_eco_packaging_vendors_in_the_us_100200/"}
+        ]
+      },
+      {
+        "heading": "Compare Three Branding Routes",
+        "table": {
+          "headings": ["Route", "Consider it when", "Check before ordering"],
+          "rows": [
+            ["Consistent box with a removable branding sleeve", "The product and box stay the same, but the campaign changes", "Sleeve fit, placement, assembly and whether it obstructs opening"],
+            ["Consistent box with an insert card", "The message is intended to be read after opening", "Card position, visibility and whether it interferes with the contents"],
+            ["Fully custom-printed box", "The complete exterior and opening experience carry the design", "Artwork versions, dieline, print approval and stock remaining after the campaign"]
+          ]
+        }
+      },
+      {
+        "heading": "Distinguish a Branding Band From a Structural Sleeve",
+        "paragraphs": [
+          "An insert card is not a structural insert. It communicates information; it should not be assumed to hold the product in place. Similarly, a removable branding band is different from a sleeve that forms part of a sleeve-and-tray box.",
+          ["The ", {"text": "Macaron Sleeve Box", "href": "/products/macaron-sleeve-box"}, ", for example, uses a sleeve-and-tray construction. Treat that sleeve as part of the packaging structure, not automatically as an interchangeable promotional band."]
+        ]
+      },
+      {
+        "heading": "Measure the Assembled Pack",
+        "paragraphs": [
+          "Size a proposed sleeve around the finished box, not just the flat artwork. Ask for the relevant drawing and a physical sample. Check whether the sleeve slides into position without crushing the corners, stays where intended and allows the customer to open the pack.",
+          "For an insert card, decide where it should sit before printing it. A card placed above the contents creates a different opening sequence from one underneath them. Confirm that it does not press on delicate products or become mixed with components it should remain separate from.",
+          ["For shipped orders, review the complete packed configuration. A decorative sleeve or card does not establish transit protection. The ", {"text": "Printed Corrugated Mailer", "href": "/products/custom-printed-corrugated-mailer"}, " provides a starting format; the board, internal packing and need for an additional shipping outer require project-specific review."]
+        ]
+      },
+      {
+        "heading": "Compare the Whole Order, Not One Printed Component",
+        "paragraphs": [
+          "Request separate quantities for the base box and each changing artwork version. A combined annual forecast is not the same as a confirmed order for each design.",
+          "Compare boxes, sleeves or cards, setup, samples, packing labour, freight and any stock that may become unusable after the campaign. Adding a component may create another packing step; printing everything on the box may leave more campaign-specific inventory. Ask for both routes against the same product and delivery brief.",
+          ["Use the ", {"text": "MOQ and pricing guide", "href": "/moq-pricing-guide"}, " for the quotation inputs. Do not transfer another supplier's minimum order, price or delivery promise to your project."]
+        ]
+      },
+      {
+        "heading": "Approve Structure and Artwork Together",
+        "paragraphs": [
+          "Keep a version record linking the box drawing, sleeve or card artwork and approved sample. Review folds, joins, opening points and text placement on the assembled pack, not only on a screen. Esko's packaging prepress guidance explains why artwork alignment with the structural dieline is part of production preparation."
+        ],
+        "references": [{"title": "Esko: A Complete Overview of Packaging Prepress", "url": "https://www.esko.com/en/blog/the-complete-overview-of-packaging-prepress"}]
+      },
+      {
+        "heading": "Identify the Food-Contact Application",
+        "paragraphs": [
+          "For food projects, identify which components may contact the food and describe the food, temperature and intended contact conditions. FDA's US reference distinguishes food types and conditions of use; it is not certification of a particular box, ink or sleeve, and it does not establish compliance in Canada or a Middle Eastern market."
+        ],
+        "references": [{"title": "FDA: Food Types and Conditions of Use for Food Contact Substances", "url": "https://www.fda.gov/food/packaging-food-contact-substances-fcs/food-types-conditions-use-food-contact-substances"}]
+      },
+      {
+        "heading": "Keep Environmental Claims Specific",
+        "paragraphs": [
+          "Do not describe the revised pack as automatically 'eco-friendly' because one component is paper or removable. For US marketing, FTC guidance cautions against broad environmental claims without clear qualification and substantiation."
+        ],
+        "references": [{"title": "FTC: Environmental Claims Summary of the Green Guides", "url": "https://www.ftc.gov/business-guidance/resources/environmental-claims-summary-green-guides"}]
+      },
+      {
+        "heading": "Prepare a Useful Packaging Brief",
+        "paragraphs": [
+          "Send the packed product dimensions and weight, current box photographs, proposed sleeve or card position, quantity per artwork version, destination country and delivery location. Identify what stays unchanged and what will change between campaigns. Include the required arrival date, with undecided specifications clearly marked.",
+          "Component availability, MOQ, sample costs and production timing must be confirmed for the proposed specification. A reference structure or design illustration does not confirm that a separate sleeve, card or complete kit is available for every project."
+        ]
+      }
+    ],
+    "faq": [
+      ["Are packaging sleeves always cheaper than custom-printed boxes?", "No. Compare the complete cost of the box, sleeve, setup, assembly, delivery and unused stock. The more economical route depends on the specification and quantity per design."],
+      ["Can one box be used for different products?", "Only after confirming fit, protection and identification for every product. A new sleeve or insert card does not compensate for an unsuitable box size or missing structural support."],
+      ["Does a paper sleeve make the pack recyclable?", "Not automatically. Assess the complete material combination and the recycling options in the destination market. Do not infer recyclability from a paper appearance or a removable sleeve alone."]
+    ],
+    "sources": [
+      {"title": "Reddit: Dubai buyer seeking a consistent mailer with changeable sleeves or cards", "url": "https://www.reddit.com/r/SmallBusinessUAE/comments/1xrknk1/recommendations_for_a_custom_packagingbox/", "checkedOn": "2026-11-10", "note": "Buyer-question discovery only. Found in past-week search; the readable page displayed 48m ago. Absolute publication time, votes and total comment count were not verified. No trend statistics or supplier promises are inferred."},
+      {"title": "Reddit: US buyer asking about small-batch branded packaging", "url": "https://www.reddit.com/r/smallbusiness/comments/1xr4rq4/lowmoq_eco_packaging_vendors_in_the_us_100200/", "checkedOn": "2026-11-10", "note": "Apparel-packaging question used only to identify the small-batch branding decision. Found in past-week search; the readable page displayed 23h ago. Absolute publication time, votes and total comment count were not verified. The buyer's requested quantity is not an MXPACKPRO MOQ."},
+      {"title": "Esko: A Complete Overview of Packaging Prepress", "url": "https://www.esko.com/en/blog/the-complete-overview-of-packaging-prepress", "checkedOn": "2026-11-10", "note": "Packaging-production software manufacturer's explanation of artwork, dieline alignment and proofing. Not evidence of MXPACKPRO software, certification or service capability."},
+      {"title": "FDA: Food Types and Conditions of Use for Food Contact Substances", "url": "https://www.fda.gov/food/packaging-food-contact-substances-fcs/food-types-conditions-use-food-contact-substances", "checkedOn": "2026-11-10", "note": "US reference for describing the intended application; not certification of these products or automatic compliance in Canada, the UAE or other markets."},
+      {"title": "FTC: Environmental Claims Summary of the Green Guides", "url": "https://www.ftc.gov/business-guidance/resources/environmental-claims-summary-green-guides", "checkedOn": "2026-11-10", "note": "US environmental-marketing guidance. No blanket environmental benefit, recycling availability or region-wide legal rule is claimed for the illustrated pack."}
+    ]
   }
 ]
