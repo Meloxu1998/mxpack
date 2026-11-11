@@ -581,5 +581,208 @@
       {"title": "FDA: Food Types and Conditions of Use for Food Contact Substances", "url": "https://www.fda.gov/food/packaging-food-contact-substances-fcs/food-types-conditions-use-food-contact-substances", "checkedOn": "2026-11-10", "note": "US reference for describing the intended application; not certification of these products or automatic compliance in Canada, the UAE or other markets."},
       {"title": "FTC: Environmental Claims Summary of the Green Guides", "url": "https://www.ftc.gov/business-guidance/resources/environmental-claims-summary-green-guides", "checkedOn": "2026-11-10", "note": "US environmental-marketing guidance. No blanket environmental benefit, recycling availability or region-wide legal rule is claimed for the illustrated pack."}
     ]
+  },
+  {
+    "slug": "holiday-cookie-box-inserts",
+    "plannedPublishOn": "2026-11-11",
+    "researchedOn": "2026-11-11",
+    "reviewedAt": "2026-11-11",
+    "technicalReviewer": null,
+    "title": "Holiday Cookie Box Inserts: How to Size a Mixed Assortment",
+    "seoTitle": "Holiday Cookie Box Inserts: Sizing & Sample Checks | MXPACKPRO",
+    "description": "Size holiday cookie box inserts around wrapped cookies. Compare dividers, trays and liners, then check clearance and fit on a loaded sample.",
+    "excerpt": "Measure the wrapped assortment, choose a compartment layout, and check the loaded sample before approving a holiday cookie box.",
+    "keyword": "holiday cookie box inserts",
+    "relatedKeywords": [
+      "cookie box divider sizing",
+      "cookie assortment packaging"
+    ],
+    "searchVolume": null,
+    "intent": "Help bakery and gift-box buyers size insert compartments around the wrapped assortment and approve a loaded sample, not plan a seasonal order deadline.",
+    "tags": [
+      "Bakery Packaging",
+      "Cookie Boxes",
+      "Packaging Inserts"
+    ],
+    "product": "custom-cookie-assortment-drawer-box",
+    "related": [
+      "custom-cookie-assortment-drawer-box",
+      "custom-folding-pastry-carton"
+    ],
+    "supportingLink": {
+      "href": "/christmas-packaging-order-checklist",
+      "label": "Plan your Christmas packaging order"
+    },
+    "ctaLabel": "Request a packaging review",
+    "introHeading": "Quick Answer",
+    "intro": "Size each compartment around the finished, wrapped portion, not the bare cookie or its cutter. Measure the widest point, the tallest decoration and any folded wrapper seam. Then load a physical sample and check that the box closes and opens without pressing the cookies, catching the wrappers or shifting the divider.",
+    "cover": {
+      "imagePath": "/assets/img/guides/holiday-cookie-drawer-cover-1440.webp",
+      "mediumPath": "/assets/img/guides/holiday-cookie-drawer-cover-960.webp",
+      "thumbnailPath": "/assets/img/guides/holiday-cookie-drawer-cover-480.webp",
+      "width": 1440,
+      "height": 960,
+      "alt": "Burgundy holiday cookie box with a partly open drawer and separately wrapped cookies in divided compartments",
+      "caption": "Packaging design concept. Final specifications subject to confirmation.",
+      "beforeIntro": true,
+      "kind": "design-concept"
+    },
+    "sections": [
+      {
+        "heading": "The Mixed Assortment",
+        "paragraphs": [
+          [
+            "A ",
+            {
+              "text": "holiday cookie box discussion on Reddit",
+              "href": "https://www.reddit.com/r/Baking/comments/1xqio1v/making_christmas_cookie_boxes_for_the_first_time/"
+            },
+            " raised two useful questions: what happens when strong flavors share a box, and what if a chocolate-dipped cookie marks the rest of the assortment? For a bakery, those questions belong in the packaging brief. Decide what needs its own wrap and what only needs a separate position in the box."
+          ]
+        ]
+      },
+      {
+        "heading": "Measure the Portion",
+        "paragraphs": [
+          "Make a list of the cookies going into the box and how many of each you will pack. Measure them as they will be presented: flat, upright or stacked. Include the bag seal, folded paper, liner or other component that goes into the compartment with them.",
+          "For example, three wrapped portions that each measure 64 mm across occupy 192 mm side by side. In a drawer with 220 mm of usable internal width, that leaves 28 mm before allowing for divider walls, the insert edge and room to load the portions. Those are example measurements, not a stock size or a recommended clearance. Confirm the finished layout on a sample."
+        ],
+        "figure": {
+          "imagePath": "/assets/img/guides/holiday-wrapped-cookie-fit-check-1440.webp",
+          "mediumPath": "/assets/img/guides/holiday-wrapped-cookie-fit-check-960.webp",
+          "thumbnailPath": "/assets/img/guides/holiday-wrapped-cookie-fit-check-480.webp",
+          "width": 1440,
+          "height": 960,
+          "alt": "Wrapped chocolate-dipped cookie and ruler beside an empty lined compartment in a divided cookie drawer"
+        }
+      },
+      {
+        "heading": "Choose the Insert",
+        "table": {
+          "headings": [
+            "Format",
+            "When to consider it",
+            "What to check on the sample"
+          ],
+          "rows": [
+            [
+              "Removable dividers",
+              "Several flavors need distinct positions, or the assortment may change",
+              "Walls stay in place when loaded, and staff can lift out each portion without pulling up the grid"
+            ],
+            [
+              "Shaped tray",
+              "The portion count and orientation stay consistent across orders",
+              "The largest wrapped pieces fit without force, and the smallest pieces do not move excessively"
+            ],
+            [
+              "Liner without dividers",
+              "The assortment can share one space and does not need fixed positions",
+              "Pieces do not slide into each other during the intended handoff, and the liner does not catch in the closure"
+            ]
+          ]
+        }
+      },
+      {
+        "heading": "Compare Two Box Formats",
+        "paragraphs": [
+          [
+            "The ",
+            {
+              "text": "Cookie Assortment Drawer Box",
+              "href": "/products/custom-cookie-assortment-drawer-box"
+            },
+            " shows a compartmented presentation format. Its illustrated grid is not a fixed capacity. The ",
+            {
+              "text": "Folding Pastry Carton",
+              "href": "/products/custom-folding-pastry-carton"
+            },
+            " is a separate format to compare when a hinged lid and simpler loading sequence matter more than a sliding drawer."
+          ]
+        ]
+      },
+      {
+        "heading": "Test It Loaded",
+        "steps": [
+          [
+            "Pack the real assortment",
+            "Include the tallest decorated cookie, the widest wrapped portion and any card that will sit above the cookies."
+          ],
+          [
+            "Close and reopen it",
+            "Look for marks on the decorations, wrapper seams catching under the sleeve and a tray that lifts when a cookie is removed. Repeat with the portions your team is most likely to find difficult to pack."
+          ],
+          [
+            "Check the delivery pack separately",
+            "A gift box can look tidy at the counter and still need a shipping outer and cushioning for parcel delivery. Review the complete packed arrangement for the chosen carrier and route."
+          ]
+        ],
+        "references": [
+          {
+            "title": "UPS packing guidance",
+            "url": "https://www.ups.com/us/en/support/shipping-support/packaging-tips"
+          }
+        ]
+      },
+      {
+        "heading": "Identify the Food-Contact Layer",
+        "paragraphs": [
+          "Identify the layer that will actually touch the food. For U.S. projects, FDA's reference distinguishes food types and conditions of use for food-contact substances. Use the actual recipe and packing conditions to request documentation for the proposed wrap, liner or tray. A divider does not establish food-contact suitability or shelf life, and the U.S. reference does not establish compliance in other markets."
+        ],
+        "references": [
+          {
+            "title": "FDA food-contact reference",
+            "url": "https://www.fda.gov/food/packaging-food-contact-substances-fcs/food-types-conditions-use-food-contact-substances"
+          }
+        ]
+      },
+      {
+        "heading": "Request a Sample",
+        "paragraphs": [
+          "Send a photo or sketch of the assortment, the wrapped dimensions and count for each portion, and whether the box is for pickup, local delivery or parcel shipping. Include the order quantity, destination and required packaging-in-hand date. Ask for the usable compartment dimensions, not just the box's outside measurements.",
+          "Insert availability, MOQ, sample cost and timing are confirmed for the project."
+        ]
+      }
+    ],
+    "faq": [
+      [
+        "Does a six-compartment insert hold exactly six cookies?",
+        "Not necessarily. Capacity depends on the finished portion, wrapper, compartment dimensions and intended arrangement. Confirm the count on a loaded sample."
+      ],
+      [
+        "Should I measure cookies before or after wrapping?",
+        "Measure after wrapping, in the orientation you will pack them. Include folded seams, decorations and the height of any stack."
+      ],
+      [
+        "Can a drawer gift box ship by itself?",
+        "Do not assume so. Check the complete packed arrangement, including any shipping outer and cushioning, against the chosen carrier and route."
+      ]
+    ],
+    "sources": [
+      {
+        "title": "Reddit: Holiday cookie box discussion in r/Baking",
+        "url": "https://www.reddit.com/r/Baking/comments/1xs1h40/important_info_for_holiday_cookie_boxes/",
+        "checkedOn": "2026-11-11",
+        "note": "The November 9 community discussion is a seasonal topic signal, not a packaging performance source. Votes and total comments were not verified."
+      },
+      {
+        "title": "Reddit: First-time holiday cookie assortment discussion",
+        "url": "https://www.reddit.com/r/Baking/comments/1xqio1v/making_christmas_cookie_boxes_for_the_first_time/",
+        "checkedOn": "2026-11-11",
+        "note": "Recent discussion of flavors and handling in mixed assortments. It informed the buyer question, not food safety or product specifications."
+      },
+      {
+        "title": "UPS packing guidance",
+        "url": "https://www.ups.com/us/en/support/shipping-support/packaging-tips",
+        "checkedOn": "2026-11-11",
+        "note": "General guidance on shipping outers and cushioning. Not a transit test or rating for a pictured gift box."
+      },
+      {
+        "title": "FDA food-contact reference",
+        "url": "https://www.fda.gov/food/packaging-food-contact-substances-fcs/food-types-conditions-use-food-contact-substances",
+        "checkedOn": "2026-11-11",
+        "note": "U.S. reference for food types and intended use conditions. Not certification of the illustrated components or compliance in another market."
+      }
+    ]
   }
 ]

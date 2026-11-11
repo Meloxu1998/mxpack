@@ -60,6 +60,14 @@ const server=http.createServer((req,res)=>{
      assert.equal((await page.request.get(`${base}${guide.cover.imagePath}`)).status(),200);
     }
     for(const section of guide.sections){
+     if(section.figure){
+      const figure=page.getByRole('heading',{name:section.heading,exact:true}).locator('..').locator('figure');
+      assert.equal(await figure.locator('img').getAttribute('src'),section.figure.imagePath);
+      assert.equal(await figure.locator('img').getAttribute('alt'),section.figure.alt);
+      assert((await figure.locator('img').getAttribute('srcset')).includes(section.figure.mediumPath));
+      assert.equal(await figure.locator('figcaption').count(),section.figure.caption?1:0);
+      assert.equal((await page.request.get(`${base}${section.figure.imagePath}`)).status(),200);
+     }
      for(const reference of section.references||[]){
       assert(guide.sources.some(source=>source.url===reference.url),'Inline reference must match a checked source');
       const sectionElement=page.getByRole('heading',{name:section.heading,exact:true}).locator('..');
@@ -84,6 +92,10 @@ const server=http.createServer((req,res)=>{
     assert(new URL(wa).searchParams.get('text').includes(`https://mxpackpro.com/${guide.slug}`));
     assert(await page.locator('a[href="mailto:sales@mxpackpro.com"]').count());
     await page.screenshot({path:`${output}/${guide.slug}-${mobile?'mobile':'desktop'}.png`});
+    if(guide.sections.some(section=>section.figure)){
+     await page.locator('article figure').first().screenshot({path:`${output}/${guide.slug}-cover-${mobile?'mobile':'desktop'}.png`});
+     await page.locator('article section figure').first().screenshot({path:`${output}/${guide.slug}-body-image-${mobile?'mobile':'desktop'}.png`});
+    }
     await page.locator('.buyer-table-wrap').first().scrollIntoViewIfNeeded();
     await page.screenshot({path:`${output}/${guide.slug}-table-${mobile?'mobile':'desktop'}.png`});
     await page.locator('.accordion details').first().locator('summary').click();
